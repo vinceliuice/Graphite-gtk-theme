@@ -1,0 +1,48 @@
+// Search entry
+%search-entry, .search-entry {
+  width: 320px;
+  min-height: $item_size;
+  padding: 0 $base_padding * 2;
+  color: $text-secondary;
+  transition-duration: 150ms;
+  border-radius: $base_radius;
+  caret-color: $text;
+  selection-background-color: $divider;
+  selected-color: on($primary) !important;
+  @include entry(normal, $bc: $base);
+
+  &:hover {
+    @include entry(hover, $bc: $base);
+  }
+
+  &:focus {
+    @if $theme == 'grey' {
+      @include entry(focus, $bc: $base, $fc: white);
+    } @else {
+      @include entry(focus, $bc: $base);
+    }
+  }
+
+  .search-entry-icon {
+    icon-size: 16px;
+    padding: 0 0;
+    color: $text-secondary-disabled;
+  }
+
+  &:hover, &:focus {
+    .search-entry-icon { color: $text-secondary; }
+  }
+
+  &:insensitive {
+    border: none;
+    color: $text-secondary-disabled;
+  }
+
+  StLabel.hint-text {
+    color: $text-disabled;
+  }
+}
+
+.popup-menu .search-entry { // reset
+  @extend %entry;
+}

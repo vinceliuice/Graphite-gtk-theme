@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="400"
+   height="200"
+   version="1.1"
+   viewBox="0 0 400 200"
+   id="svg200"
+   sodipodi:docname="assets-grey.svg"
+   inkscape:version="1.1 (c4e8f9ed74, 2021-05-24)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview202"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="2.3582011"
+     inkscape:cx="178.52591"
+     inkscape:cy="91.17119"
+     inkscape:window-width="1920"
+     inkscape:window-height="1012"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer2"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-nodes="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid1815" />
+  </sodipodi:namedview>
+  <defs
+     id="defs83">
+    <linearGradient
+       inkscape:collect="always"
+       id="color-primary-dark">
+      <stop
+         style="stop-color:#e0e0e0;stop-opacity:1"
+         offset="0"
+         id="stop3084" />
+      <stop
+         style="stop-color:#e0e0e0;stop-opacity:1"
+         offset="1"
+         id="stop3086" />
+    </linearGradient>
+    <linearGradient
+       id="color-on-primary-dark"
+       x1="6.2124"
+       x2="29.25"
+       y1="11.894"
+       y2="11.894"
+       gradientTransform="scale(1.1453,0.87314)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         stop-color="#FFFFFF"
+         offset="1"
+         id="stop2" />
+    </linearGradient>
+    <linearGradient
+       id="color-on-primary-light"
+       x1="6.2124"
+       x2="29.25"
+       y1="11.894"
+       y2="11.894"
+       gradientTransform="scale(1.1453,0.87314)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         stop-color="#000000"
+         stop-opacity=".87"
+         offset="1"
+         id="stop5" />
+    </linearGradient>
+    <linearGradient
+       id="color-text-secondary-disabled">
+      <stop
+         stop-color="#000000"
+         stop-opacity=".26"
+         offset="1"
+         id="stop8" />
+    </linearGradient>
+    <linearGradient
+       id="color-text-secondary-disabled-dark">
+      <stop
+         stop-color="#FFFFFF"
+         stop-opacity=".3"
+         offset="1"
+         id="stop11" />
+    </linearGradient>
+    <linearGradient
+       id="color-primary-light">
+      <stop
+         stop-color="#333333"
+         offset="1"
+         id="stop17" />
+    </linearGradient>
+    <linearGradient
+       id="color-background">
+      <stop
+         stop-color="#F2F2F2"
+         offset="1"
+         id="stop20" />
+    </linearGradient>
+    <linearGradient
+       id="color-background-dark">
+      <stop
+         stop-color="#212121"
+         offset="1"
+         id="stop23" />
+    </linearGradient>
+    <linearGradient
+       id="color-base"
+       x2="40"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         stop-color="#FFFFFF"
+         offset="1"
+         id="stop26" />
+    </linearGradient>
+    <linearGradient
+       id="color-base-dark"
+       x2="40"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         stop-color="#2c2c2c"
+         offset="1"
+         id="stop29" />
+    </linearGradient>
+    <g
+       id="base-selectionmode-checkbox">
+      <rect
+         width="40"
+         height="40"
+         fill="none"
+         id="rect51" />
+      <rect
+         x="2"
+         y="2"
+         width="36"
+         height="36"
+         rx="4"
+         id="rect53" />
+    </g>
+    <g
+       id="base-selectionmode-checkmark">
+      <path
+         transform="matrix(1.5 0 0 1.5 2 2)"
+         d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+         id="path56" />
+    </g>
+    <linearGradient
+       id="linearGradient976"
+       x2="200"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#color-background" />
+    <linearGradient
+       id="linearGradient1041"
+       x2="200"
+       gradientTransform="translate(200)"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#color-background-dark" />
+    <linearGradient
+       id="linearGradient1073"
+       x2="40"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#color-primary-dark" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#primary-dark"
+       id="linearGradient991"
+       gradientUnits="userSpaceOnUse"
+       x2="24" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#primary-dark"
+       id="linearGradient1401"
+       gradientUnits="userSpaceOnUse"
+       x2="24" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#primary-dark"
+       id="linearGradient1837"
+       gradientUnits="userSpaceOnUse"
+       x2="24" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#primary-dark"
+       id="linearGradient1843"
+       gradientUnits="userSpaceOnUse"
+       x2="24" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#color-base"
+       id="linearGradient2319"
+       x1="4"
+       y1="11.99863"
+       x2="19.997259"
+       y2="11.99863"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#color-primary-light"
+       id="linearGradient2345"
+       x1="6"
+       y1="12"
+       x2="18"
+       y2="12"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#color-text-secondary-disabled"
+       id="linearGradient2371"
+       x1="6"
+       y1="12"
+       x2="18"
+       y2="12"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#color-base"
+       id="linearGradient2397"
+       x1="4"
+       y1="11.99863"
+       x2="19.997259"
+       y2="11.99863"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#color-primary-light"
+       id="linearGradient3034"
+       x1="0"
+       y1="20"
+       x2="40"
+       y2="20"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#color-base-dark"
+       id="linearGradient3060"
+       x1="4"
+       y1="11.99863"
+       x2="19.997259"
+       y2="11.99863"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#color-primary-dark"
+       id="linearGradient3090"
+       x1="6"
+       y1="12"
+       x2="18"
+       y2="12"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#color-text-secondary-disabled-dark"
+       id="linearGradient21221"
+       x1="6"
+       y1="12"
+       x2="18"
+       y2="12"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#color-base-dark"
+       id="linearGradient21247"
+       x1="4"
+       y1="11.99863"
+       x2="19.997259"
+       y2="11.99863"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#color-base-dark"
+       id="linearGradient944"
+       gradientUnits="userSpaceOnUse"
+       x2="40" />
+  </defs>
+  <g
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="background"
+     sodipodi:insensitive="true">
+    <rect
+       width="200"
+       height="200"
+       fill="url(#linearGradient976)"
+       id="rect85"
+       x="0"
+       y="0" />
+    <rect
+       x="200"
+       width="200"
+       height="200"
+       fill="url(#linearGradient1041)"
+       id="rect135"
+       style="fill-opacity:1"
+       y="0" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="assets">
+    <g
+       id="scale-horz-marks-before-slider"
+       transform="translate(20,36)">
+      <g
+         id="use95"
+         style="fill:url(#linearGradient991)">
+        <rect
+           width="24"
+           height="24"
+           fill="none"
+           id="rect985"
+           x="0"
+           y="0" />
+        <path
+           transform="rotate(45,12,12)"
+           d="m 6,6 h 6 a 6,6 0 1 1 -6,6 z"
+           id="path987"
+           style="fill:url(#linearGradient2319);fill-opacity:1;stroke:url(#linearGradient2345);stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
+      </g>
+    </g>
+    <g
+       id="selectionmode-checkbox-unchecked"
+       transform="translate(20,121)">
+      <use
+         width="100%"
+         height="100%"
+         fill="url(#color-surface)"
+         xlink:href="#base-selectionmode-checkbox"
+         id="use127"
+         style="fill:url(#color-base)"
+         x="0"
+         y="0" />
+    </g>
+    <g
+       id="selectionmode-checkbox-checked"
+       transform="translate(70,121)">
+      <use
+         width="100%"
+         height="100%"
+         fill="url(#linearGradient1008)"
+         xlink:href="#base-selectionmode-checkbox"
+         id="use130"
+         style="fill:url(#linearGradient3034);fill-opacity:1"
+         x="0"
+         y="0" />
+      <use
+         width="100%"
+         height="100%"
+         fill="url(#color-on-primary-dark)"
+         xlink:href="#base-selectionmode-checkmark"
+         id="use132"
+         style="fill:url(#color-on-primary-dark)"
+         x="0"
+         y="0" />
+    </g>
+    <g
+       id="selectionmode-checkbox-unchecked-dark"
+       transform="translate(222,121)">
+      <use
+         width="100%"
+         height="100%"
+         fill="url(#color-surface-dark)"
+         xlink:href="#base-selectionmode-checkbox"
+         id="use177"
+         style="fill:url(#linearGradient944);fill-opacity:1"
+         x="0"
+         y="0" />
+    </g>
+    <g
+       id="selectionmode-checkbox-checked-dark"
+       transform="translate(270,121)">
+      <use
+         width="100%"
+         height="100%"
+         fill="url(#linearGradient1073)"
+         xlink:href="#base-selectionmode-checkbox"
+         id="use180"
+         style="fill:url(#linearGradient1073);fill-opacity:1"
+         x="0"
+         y="0" />
+      <use
+         width="100%"
+         height="100%"
+         fill="url(#color-on-primary-light)"
+         xlink:href="#base-selectionmode-checkmark"
+         id="use182"
+         style="fill:url(#color-on-primary-light)"
+         x="0"
+         y="0" />
+    </g>
+    <use
+       x="0"
+       y="0"
+       xlink:href="#scale-horz-marks-before-slider"
+       id="scale-horz-marks-after-slider"
+       transform="matrix(1,0,0,-1,35,96)"
+       width="100%"
+       height="100%" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#scale-horz-marks-before-slider"
+       id="scale-vert-marks-before-slider"
+       transform="rotate(-90,67,13)"
+       width="100%"
+       height="100%" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#scale-horz-marks-before-slider"
+       id="scale-vert-marks-after-slider"
+       transform="rotate(90,84.5,100.5)"
+       width="100%"
+       height="100%" />
+    <g
+       id="scale-horz-marks-before-slider-disabled"
+       transform="translate(20,71)">
+      <g
+         id="g1387"
+         style="fill:url(#linearGradient1401)">
+        <rect
+           width="24"
+           height="24"
+           fill="none"
+           id="rect1383"
+           x="0"
+           y="0" />
+        <path
+           transform="rotate(45,12,12)"
+           d="m 6,6 h 6 a 6,6 0 1 1 -6,6 z"
+           id="path1385"
+           style="fill:url(#linearGradient2397);fill-opacity:1;stroke:url(#linearGradient2371);stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.25;paint-order:stroke fill markers" />
+      </g>
+    </g>
+    <use
+       x="0"
+       y="0"
+       xlink:href="#scale-horz-marks-before-slider-disabled"
+       id="scale-horz-marks-after-slider-disabled"
+       transform="matrix(1,0,0,-1,35,166)"
+       width="100%"
+       height="100%" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#scale-horz-marks-before-slider-disabled"
+       id="scale-vert-marks-before-slider-disabled"
+       transform="rotate(-90,67,48)"
+       width="100%"
+       height="100%" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#scale-horz-marks-before-slider-disabled"
+       id="scale-vert-marks-after-slider-disabled"
+       transform="rotate(90,84.5,135.5)"
+       width="100%"
+       height="100%" />
+    <g
+       id="scale-horz-marks-before-slider-dark"
+       transform="translate(224,36)">
+      <g
+         id="g1821"
+         style="fill:url(#linearGradient1843)">
+        <rect
+           width="24"
+           height="24"
+           fill="none"
+           id="rect1817"
+           x="0"
+           y="0" />
+        <path
+           transform="rotate(45,12,12)"
+           d="m 6,6 h 6 a 6,6 0 1 1 -6,6 z"
+           id="path1819"
+           style="fill:url(#linearGradient3060);fill-opacity:1;stroke:url(#linearGradient3090);stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
+      </g>
+    </g>
+    <g
+       id="scale-horz-marks-before-slider-disabled-dark"
+       transform="translate(224,71)">
+      <g
+         id="g1829"
+         style="fill:url(#linearGradient1837)">
+        <rect
+           width="24"
+           height="24"
+           fill="none"
+           id="rect1825"
+           x="0"
+           y="0" />
+        <path
+           transform="rotate(45,12,12)"
+           d="m 6,6 h 6 a 6,6 0 1 1 -6,6 z"
+           id="path1827"
+           style="fill:url(#linearGradient21247);fill-opacity:1;stroke:url(#linearGradient21221);stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.3;paint-order:stroke fill markers" />
+      </g>
+    </g>
+    <use
+       x="0"
+       y="0"
+       xlink:href="#scale-horz-marks-before-slider-dark"
+       id="scale-horz-marks-after-slider-dark"
+       transform="rotate(180,253.5,48)"
+       width="100%"
+       height="100%" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#scale-horz-marks-before-slider-disabled-dark"
+       id="scale-horz-marks-after-slider-disabled-dark"
+       transform="rotate(180,253.5,83)"
+       width="100%"
+       height="100%" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#scale-horz-marks-before-slider-dark"
+       id="scale-vert-marks-before-slider-dark"
+       transform="rotate(-90,271,13)"
+       width="100%"
+       height="100%" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#scale-horz-marks-before-slider-disabled-dark"
+       id="scale-vert-marks-before-slider-disabled-dark"
+       transform="rotate(-90,271,48)"
+       width="100%"
+       height="100%" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#scale-horz-marks-before-slider-dark"
+       id="scale-vert-marks-after-slider-dark"
+       transform="rotate(90,288.5,100.5)"
+       width="100%"
+       height="100%" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#scale-horz-marks-before-slider-disabled-dark"
+       id="scale-vert-marks-after-slider-disabled-dark"
+       transform="rotate(90,288.5,135.5)"
+       width="100%"
+       height="100%" />
+  </g>
+</svg>

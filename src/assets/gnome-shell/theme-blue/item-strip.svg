@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="3"
+   height="16"
+   viewBox="0 0 0.79374998 4.2333332"
+   version="1.1"
+   id="svg1039"
+   inkscape:version="1.1 (c4e8f9ed74, 2021-05-24)"
+   sodipodi:docname="item-strip.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1041"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     units="px"
+     inkscape:zoom="16.33468"
+     inkscape:cx="-15.947665"
+     inkscape:cy="2.8773138"
+     inkscape:window-width="1920"
+     inkscape:window-height="1012"
+     inkscape:window-x="0"
+     inkscape:window-y="34"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1036">
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#color-primary-dark"
+       id="linearGradient1478"
+       x1="115"
+       y1="90"
+       x2="118"
+       y2="90"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="color-primary-dark">
+      <stop
+         stop-color="#1A73E8"
+         offset="1"
+         id="stop14" />
+    </linearGradient>
+  </defs>
+  <g
+     inkscape:label="图层 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="selected-line"
+       transform="matrix(0.26458333,0,0,0.26458333,-30.427083,-21.695833)">
+      <rect
+         width="3"
+         height="16"
+         rx="1.5"
+         ry="1.5"
+         fill="#1a73e8"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         id="rect2"
+         x="115"
+         y="82"
+         style="fill:url(#linearGradient1478);fill-opacity:1" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,50 @@
+.window-picker { //container around window thumbnails
+  -horizontal-spacing: 16px;
+  -vertical-spacing: 16px;
+  padding: 0 16px 32px;
+  spacing: 12px;
+
+  &.external-monitor { padding: 16px; }
+}
+
+.window-caption {
+  spacing: 25px;
+  color: on(black, secondary);
+  background-color: $scrim;
+  border-radius: $base_radius;
+  padding: $base_padding / 2 $base_padding * 2;
+  border: none;
+  font-weight: normal;
+  @include fontsize($font_size - 1);
+}
+
+.window-clone-border {
+  border: 4px solid on(black, track);
+  border-radius: $base_radius + 3px;
+  // For window decorations with round corners we can't match
+  // the exact shape when the window is scaled. So apply a shadow
+  // to fix that case
+  box-shadow: inset 0 0 0 1px on(black, track);
+}
+
+// Close button
+.window-close {
+  background-color: $scrim;
+  color: on($scrim);
+  border-radius: $window_close_button_size * 0.5 + $window_close_button_padding * 2;
+  padding: $window_close_button_padding;
+  height: $window_close_button_size;
+  width: $window_close_button_size;
+  box-shadow: -1px 1px 5px 0px rgba(black, 0.5);
+  transition-duration: 300ms;
+
+  &:hover {
+    color: on($scrim);
+    background-color: lighten($scrim, 6%);
+  }
+
+  &:active {
+    color: on($scrim);
+    background-color: darken($scrim, 6%);
+  }
+}

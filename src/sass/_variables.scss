@@ -1,0 +1,81 @@
+@import 'tweaks-temp';
+
+$asset-suffix: if($variant == 'dark', '-dark', '');
+
+//
+// Sizes
+//
+
+$space-size: if($compact == 'false', 6px, 4px);
+
+$small-size: if($compact == 'false', 24px, 22px);
+$medium-size: if($compact == 'false', 36px, 32px);
+$large-size: if($compact == 'false', 48px, 40px);
+
+$menuitem-size: if($compact == 'false', 28px, 24px);
+
+$root-font-size: if($compact == 'false', 14px, 13px);
+
+//
+// Radii
+//
+
+$window-radius: 12px;
+$modal-radius: 6px;
+$corner-radius: 6px;
+$menu-radius: $corner-radius + $space-size;
+$circular-radius: 9999px;
+
+//
+// Durations
+//
+
+$duration: 75ms;
+$ripple-fade-in-duration: 225ms;
+$ripple-fade-out-duration: 300ms;
+$ripple-fade-out-opacity-duration: 1200ms;
+
+//
+// Timing functions
+//
+
+$ease: cubic-bezier(0.4, 0.0, 0.2, 1);
+$ease-out: cubic-bezier(0.0, 0.0, 0.2, 1);
+$ease-in: cubic-bezier(0.4, 0.0, 1, 1);
+$ease-in-out: cubic-bezier(0.4, 0.0, 0.6, 1);
+
+//
+// Transition shorthands
+//
+
+$transition: all $duration $ease-out;
+$transition-shadow: box-shadow $duration $ease-out;
+
+//
+// Shadows
+//
+
+$shadow-z1:
+  0 2px 2px -2px rgba(black, 0.3),
+  0 1px 2px -1px rgba(black, 0.24),
+  0 1px 2px -.6px rgba(black, 0.17);
+$shadow-z2:
+  0 3px 2px -3px rgba(black, 0.3),
+  0 2px 2px -1px rgba(black, 0.24),
+  0 1px (5px * .6) 0 rgba(black, 0.12);
+$shadow-z3:
+  0 3px 2px -2px rgba(black, 0.2),
+  0 3px (4px * .6) 0 rgba(black, 0.14),
+  0 1px (8px * .6) 0 rgba(black, 0.12);
+$shadow-z4:
+  0 2px (4px * .6) -1px rgba(black, 0.2),
+  0 4px (5px * .6) 0 rgba(black, 0.14),
+  0 1px (10px * .6) 0 rgba(black, 0.12);
+$shadow-z12:
+  0 7px (8px * .6) -4px rgba(black, 0.2),
+  0 12px (17px * .6) 2px rgba(black, 0.14),
+  0 5px (22px * .6) 4px rgba(black, 0.12);
+$shadow-z16:
+  0 8px (10px * .6) -5px rgba(black, 0.2),
+  0 16px (24px * .6) 2px rgba(black, 0.14),
+  0 6px (30px * .6) 5px rgba(black, 0.12);
