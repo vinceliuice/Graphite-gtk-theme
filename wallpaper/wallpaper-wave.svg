@@ -24,9 +24,9 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      showgrid="false"
-     inkscape:zoom="0.034066342"
-     inkscape:cx="5225.0988"
-     inkscape:cy="2113.5231"
+     inkscape:zoom="0.13626537"
+     inkscape:cx="132.09519"
+     inkscape:cy="2634.5652"
      inkscape:window-width="1920"
      inkscape:window-height="1012"
      inkscape:window-x="0"
@@ -804,6 +804,56 @@
          id="path77319"
          inkscape:connector-curvature="0"
          style="fill:#333333;fill-opacity:1;stroke-width:1.6875" />
+    </g>
+  </g>
+  <g
+     id="wave-color"
+     transform="translate(0,702.32463)">
+    <rect
+       x="0"
+       y="0"
+       width="508"
+       height="285.75"
+       fill="url(#linearGradient84615)"
+       stroke-linecap="round"
+       stroke-linejoin="round"
+       stroke-width="0.257017"
+       style="fill:#183c90;fill-opacity:1;paint-order:stroke fill markers"
+       id="rect962" />
+    <g
+       id="g976"
+       clip-path="url(#clipPath840)">
+      <path
+         d="m 532.52,261.515 c 0,0 -20.448,-0.23405 -30.711,-2.2058 -24.472,-4.7012 -51.68,-24.876 -85.249,-33.521 -39.723,-10.23 -87.454,5.7354 -116.95,-0.72145 -60.36,-13.212 -73.187,-43.796 -114.76,-50.966 -37.922,-6.5411 -74.878,10.457 -115.82,1.7753 -32.171,-6.8218 -72.331,-42.981 -72.331,-42.981 l -9.6915,-263.96 541.38,-4.6525 z"
+         fill="url(#linearGradient14878)"
+         id="path964"
+         style="fill:#4e5ae2;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
+      <path
+         d="m 545.27,182.395 c 0,0 -29.204,9.7276 -62.698,3.2186 -31.698,-6.16 -36.835,-24.095 -69.984,-27.146 -23.362,-2.1505 -56.218,15.325 -84.235,11.298 -20.958,-3.0127 -59.836,-48.407 -59.836,-48.407 l 63.476,-56.308 212.55,17.675 z"
+         fill="url(#linearGradient29554)"
+         id="path966"
+         style="fill:#bddeee;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
+      <path
+         d="m 538.1,186.745 c 0,0 -40.995,-30.948 -91.798,-34.942 -47.77,-3.7557 -76.702,26.423 -129.78,18.301 -57.74,-8.8359 -73.392,-44.639 -119.64,-58.48 -50.718,-15.18 -83.915,3.2312 -131,-24.741 -41.216,-24.487 -76.23,-74.85 -76.23,-74.85 l -4.9455,-175.02 551.7,15.608 z"
+         fill="url(#linearGradient44051)"
+         id="path968"
+         style="fill:#8c31ae;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
+      <path
+         d="m 543.3,153.555 c 0,0 -3.9467,-0.9397 -11.58,-2.9571 -7.6332,-2.0174 -36.279,-19.226 -60.594,-26.778 -42.652,-13.248 -85.919,-0.80563 -126.45,-8.6784 -60.435,-11.738 -84.454,-43.625 -130,-49.987 C 183.281,60.77 148.10774,72.93309 104.826,63.0094 27.812621,39.97979 -22.667757,-26.593519 -22.667757,-26.593519 L -15.2935,-162.987 l 578.7633,29.9094 z"
+         fill="url(#linearGradient58716)"
+         id="path970"
+         style="fill:#f9425f;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+         sodipodi:nodetypes="cscccccccc" />
+      <path
+         d="m 549.33,111.885 c 0,0 -32.254,0.0326 -73.39,-13.516 -40.51,-13.343 -65.505,-29.642 -97.792,-39.995 -51.284,-16.445 -93.642,-0.59355 -141.48,-9.2493 -74.961,-13.564 -100.84,-74.329 -146.66,-101.8 -54.993,-32.964 -102.43,-24.775 -102.43,-24.775 l -2.2821,-71.214 575.79,13.853 z"
+         fill="url(#linearGradient61448)"
+         id="path972"
+         style="fill:#fd6944;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
+      <path
+         d="m 558.15,66.60051 c 0,0 -22.397,-5.2033 -32.249,-9.3179 -9.8522,-4.1146 -32.68,-14.871 -54.483,-21.887 -30.63,-9.8574 -68.317,-5.7996 -103.27,-11.527 -45.175,-7.4016 -79.837,-25.061 -91.939,-35.184998 -22.152,-18.533 -31.647,-42.896 -31.647,-42.896 l -10.083,-48.643002 340.06,-1.6146 z"
+         fill="url(#linearGradient78259)"
+         id="path974"
+         style="fill:#fea257;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
     </g>
   </g>
 </svg>
