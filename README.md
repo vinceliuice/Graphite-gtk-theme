@@ -1,4 +1,3 @@
-# Graphite-gtk-theme
 ![Graphite](preview.png?raw=true)
 
 ## Requirements
