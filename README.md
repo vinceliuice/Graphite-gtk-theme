@@ -28,6 +28,7 @@ Run the following commands in the terminal:
 -n, --name NAME         Specify theme name (Default: Graphite)
 -t, --theme VARIANT...  Specify theme color variant(s) [default|purple|pink|red|orange|yellow|green|teal|blue|all] (Default: grey)
 -c, --color VARIANT...  Specify color variant(s) [standard|light|dark] (Default: All variants)
+-s, --size VARIANT...   Specify size variant [standard|compact] (Default: standard variant)
 -N, --nord VARIANT...   Specify nord color variant(s)
 -h, --help              Show help
 ```
