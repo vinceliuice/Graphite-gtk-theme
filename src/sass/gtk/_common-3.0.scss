@@ -130,7 +130,7 @@
 }
 
 .view {
-  // background-color: $base;
+  background-color: $base;
   color: $text;
 
   &:hover { box-shadow: inset 0 0 0 9999px $overlay-hover; }
@@ -1462,6 +1462,8 @@ treeview.view {
   border-top-color: $divider; // while this is the grid lines color, better then nothing
   padding: $space-size / 2;
 
+  .csd &:not(:selected):not(:hover):not(.progressbar):not(.expander):not(.trough):not(.separator) { background-color: transparent; }
+
   // FIXME: Avoid transparency background-color being slightly darker
   &:selected {
     @extend %selected_items;
@@ -1603,8 +1605,10 @@ menu,
   padding: $space-size;
   background-color: $surface;
   background-clip: border-box;
-  border: none; // adds borders in a non composited env
+  border: 2px solid $primary; // adds borders in a non composited env
   border-radius: $menu-radius;
+
+  .csd & { border: none; }
 
   menuitem {
     transition: background-color $duration $ease-out;

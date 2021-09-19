@@ -107,6 +107,12 @@ window.background.chromium {
     background-color: $base; // FIXME: This should not be necessary
     // color: $text-secondary;
   }
+
+  menu {
+    border-color: if($variant == 'light', darken($background, 20%), lighten($background, 16%));
+
+    menuitem { border-radius: 0; }
+  }
 }
 
 tooltip.background.chromium { background-color: rgba($tooltip, 1); }
@@ -306,6 +312,17 @@ scrolledwindow#DialogNotebook {
  * Synapse *
  ***********/
 box.vertical > widget > widget:selected { @extend %selected_items; }
+
+
+/***************
+ * Libreoffice *
+ ***************/
+window.background {
+  > grid > widget > widget > scrolledwindow > viewport > grid > box > box > frame > box {
+    background-color: $base;
+  }
+}
+
 
 /*********
  * Pamac *

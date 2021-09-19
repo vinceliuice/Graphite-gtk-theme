@@ -140,6 +140,7 @@ entry selection, label selection, textview text selection:focus, textview text s
 }
 
 .view, window#gnome-system-monitor.background.csd > box.vertical > stack > box.vertical > scrolledwindow treeview.view:not(.progressbar):not(.trough), filechooser stack.view scrolledwindow treeview.view {
+  background-color: #FFFFFF;
   color: rgba(0, 0, 0, 0.87);
 }
 
@@ -2817,6 +2818,10 @@ treeview.view, window#gnome-system-monitor.background.csd > box.vertical > stack
   -GtkTreeView-expander-size: 16;
 }
 
+.csd treeview.view:not(:selected):not(:hover):not(.progressbar):not(.expander):not(.trough):not(.separator), window#gnome-system-monitor.background.csd > box.vertical > stack > box.vertical > scrolledwindow treeview.view:not(:selected):not(:hover):not(.progressbar):not(.expander):not(.trough):not(.separator), .csd filechooser stack.view scrolledwindow treeview.view:not(:selected):not(:hover):not(.progressbar):not(.expander):not(.trough):not(.separator), filechooser stack.view scrolledwindow .csd treeview.view:not(:selected):not(:hover):not(.progressbar):not(.expander):not(.trough):not(.separator) {
+  background-color: transparent;
+}
+
 treeview.view:selected, window#gnome-system-monitor.background.csd > box.vertical > stack > box.vertical > scrolledwindow treeview.view:selected:not(.progressbar):not(.trough), filechooser stack.view scrolledwindow treeview.view:selected {
   background-image: image(alpha(currentColor, 0.1));
 }
@@ -2984,8 +2989,12 @@ menu,
   padding: 6px;
   background-color: #FFFFFF;
   background-clip: border-box;
-  border: none;
+  border: 2px solid #333333;
   border-radius: 12px;
+}
+
+.csd menu, .csd .menu, .csd .context-menu {
+  border: none;
 }
 
 menu menuitem,
@@ -7148,6 +7157,14 @@ window.background.chromium treeview.view button, window.background.chromium file
   background-color: #FFFFFF;
 }
 
+window.background.chromium menu {
+  border-color: #cccccc;
+}
+
+window.background.chromium menu menuitem {
+  border-radius: 0;
+}
+
 tooltip.background.chromium {
   background-color: #343434;
 }
@@ -7346,6 +7363,13 @@ scrolledwindow#DialogNotebook > viewport.frame > notebook.frame button.close-but
 /***********
  * Synapse *
  ***********/
+/***************
+ * Libreoffice *
+ ***************/
+window.background > grid > widget > widget > scrolledwindow > viewport > grid > box > box > frame > box {
+  background-color: #FFFFFF;
+}
+
 /*********
  * Pamac *
  *********/
