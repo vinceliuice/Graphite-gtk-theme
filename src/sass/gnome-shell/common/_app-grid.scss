@@ -50,9 +50,14 @@
 // expanded folder
 .app-folder-dialog {
   border-radius: $menu_radius * 3;
-  border: 2px solid $inverse-indicator;
   padding: $base_padding * 2;
   background-color: $osd;
+
+  @if $rimless == 'false' {
+    border: 2px solid $inverse-indicator;
+  } @else {
+    border: none;
+  }
 
   & .folder-name-container {
     padding: ($base_padding * 4) ($base_padding * 6) 0;

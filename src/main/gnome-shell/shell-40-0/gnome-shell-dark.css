@@ -99,9 +99,9 @@ stage {
 
 .app-folder-dialog {
   border-radius: 36px;
-  border: 2px solid #E0E0E0;
   padding: 12px;
   background-color: #212121;
+  border: 2px solid #E0E0E0;
 }
 
 .app-folder-dialog .folder-name-container {
@@ -735,9 +735,9 @@ StWidget.focused .app-well-app-running-dot {
 .candidate-popup-content, .modal-dialog {
   background-color: #2C2C2C;
   border-radius: 12px;
-  border: none;
   box-shadow: 3px 3px 8px -5px rgba(0, 0, 0, 0.35);
   margin: 15px;
+  border: 2px solid #E0E0E0;
 }
 
 .modal-dialog-linked-button:last-child {
@@ -2329,10 +2329,10 @@ StEntry StLabel.hint-text, .popup-menu .search-entry StLabel.hint-text {
   padding: 6px 0 !important;
   background-color: #2C2C2C;
   border-radius: 12px;
-  border: 2px solid #E0E0E0;
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.15);
   margin: 4px 10px 12px;
   font-weight: normal;
+  border: 2px solid #E0E0E0;
 }
 
 .popup-menu .popup-menu-item {

@@ -3,9 +3,14 @@
 %theme_dialogs {
   background-color: $popover;
   border-radius: $modal_radius;
-  border: none;
   box-shadow: 3px 3px 8px -5px rgba(black, 0.35);
   margin: 15px;
+
+  @if $rimless == 'false' {
+    border: 2px solid $primary;
+  } @else {
+    border: none;
+  }
 }
 
 %last_dialog_button {

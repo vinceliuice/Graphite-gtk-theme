@@ -40,13 +40,13 @@
 }
 
 @function highlight($color) {
-  @if (lightness($color) >= 80%) { @return rgba(white, 0.4); }
+  @if (lightness($color) >= 80%) { @return rgba(white, 0); }
   @else if (lightness($color) >= 40%) { @return rgba(white, 0.2); }
   @else { @return rgba(white, 0.1); }
 }
 
 @function theme($color) {
-  @if ($nord == 'true') {
+  @if ($color_type == 'nord') {
     @if ($theme == 'default') {
       @if ($variant == 'light') { @return #3b4252; }
       @else { @return #e5e9f0; }
@@ -60,32 +60,32 @@
     @if ($theme == 'teal') { @return #83b9b8; }
     @if ($theme == 'blue') { @return #5e81ac; }
   } @else {
-  @if ($variant == 'light') {
-    @if ($theme == 'default') { @return $grey-900; }
-    @if ($theme == 'purple') { @return $purple-400; }
-    @if ($theme == 'pink') { @return $pink-400; }
-    @if ($theme == 'red') { @return $red-600; }
-    @if ($theme == 'orange') { @return $orange-700; }
-    @if ($theme == 'yellow') { @return $yellow-700; }
-    @if ($theme == 'green') { @return $green-500; }
-    @if ($theme == 'teal') { @return $teal-500; }
-    @if ($theme == 'blue') { @return #3684dd; }
-  } @else {
-    @if ($theme == 'default') { @return $grey-300; }
-    @if ($theme == 'purple') { @return $purple-300; }
-    @if ($theme == 'pink') { @return $pink-300; }
-    @if ($theme == 'red') { @return $red-500; }
-    @if ($theme == 'orange') { @return $orange-600; }
-    @if ($theme == 'yellow') { @return $yellow-a700; }
-    @if ($theme == 'green') { @return $green-400; }
-    @if ($theme == 'teal') { @return $teal-300; }
-    @if ($theme == 'blue') { @return #5294e2; }
-  }
+    @if ($variant == 'light') {
+      @if ($theme == 'default') { @return $grey-900; }
+      @if ($theme == 'purple') { @return $purple-400; }
+      @if ($theme == 'pink') { @return $pink-400; }
+      @if ($theme == 'red') { @return $red-600; }
+      @if ($theme == 'orange') { @return $orange-700; }
+      @if ($theme == 'yellow') { @return $yellow-700; }
+      @if ($theme == 'green') { @return $green-500; }
+      @if ($theme == 'teal') { @return $teal-500; }
+      @if ($theme == 'blue') { @return #3684dd; }
+    } @else {
+      @if ($theme == 'default') { @return $grey-300; }
+      @if ($theme == 'purple') { @return $purple-300; }
+      @if ($theme == 'pink') { @return $pink-300; }
+      @if ($theme == 'red') { @return $red-500; }
+      @if ($theme == 'orange') { @return $orange-600; }
+      @if ($theme == 'yellow') { @return $yellow-a700; }
+      @if ($theme == 'green') { @return $green-400; }
+      @if ($theme == 'teal') { @return $teal-300; }
+      @if ($theme == 'blue') { @return #5294e2; }
+    }
   }
 }
 
 @function background($type) {
-  @if ($nord == 'true') {
+  @if ($color_type == 'nord') {
     @if ($type == 'a') { @return #ffffff; }
     @if ($type == 'b') { @return #eceff4; }
     @if ($type == 'c') { @return #e5e9f0; }
@@ -94,7 +94,18 @@
     @if ($type == 'f') { @return #3b4252; }
     @if ($type == 'g') { @return #434c5e; }
     @if ($type == 'h') { @return #4c566a; }
-  } @else {
+  }
+  @if ($color_type == 'blackness') {
+    @if ($type == 'a') { @return #FFFFFF; }
+    @if ($type == 'b') { @return #FAFAFA; }
+    @if ($type == 'c') { @return #F2F2F2; }
+    @if ($type == 'd') { @return #CCCCCC; }
+    @if ($type == 'e') { @return #000000; }
+    @if ($type == 'f') { @return #030303; }
+    @if ($type == 'g') { @return #0F0F0F; }
+    @if ($type == 'h') { @return #121212; }
+  }
+  @if ($color_type == 'default') {
     @if ($type == 'a') { @return #FFFFFF; }
     @if ($type == 'b') { @return #FAFAFA; }
     @if ($type == 'c') { @return #F2F2F2; }

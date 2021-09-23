@@ -1969,7 +1969,7 @@ dialog.background.csd {
 window.background.csd.unified {
   // Remove the sheen on headerbar...
   headerbar {
-    // box-shadow: inset 0 -1px $divider;
+    box-shadow: none;
 
     &.selection-mode {
       box-shadow: none;
@@ -1978,7 +1978,9 @@ window.background.csd.unified {
 
   // ...and add it on the window itself
   > decoration-overlay {
-    // box-shadow: inset 0 1px highlight($titlebar);
+    @if $rimless == 'true' {
+      box-shadow: inset 0 1px highlight($titlebar);
+    };
   }
 
   &,

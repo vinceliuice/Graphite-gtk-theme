@@ -1127,9 +1127,12 @@ searchbar > revealer > box {
 .titlebar {
   transition: background-color $duration $ease-out, color $duration $ease-out;
   border-radius: $window-radius $window-radius 0 0;
-  // box-shadow: inset 0 -1px $divider, inset 0 1px highlight($titlebar);
   background-color: $titlebar;
   color: $titlebar-text;
+
+  @if $rimless == 'true' {
+    box-shadow: inset 0 1px highlight($titlebar);
+  }
 
   &:disabled { color: $titlebar-text-disabled; }
 
@@ -1605,8 +1608,14 @@ menu,
   padding: $space-size;
   background-color: $surface;
   background-clip: border-box;
-  border: 2px solid $primary; // adds borders in a non composited env
   border-radius: $menu-radius;
+
+  @if $rimless == 'true' {
+    border: 1px solid $solid-border;
+    box-shadow: inset 0 1px highlight($surface);
+  } @else {
+    border: 2px solid $primary;
+  }
 
   .csd & { border: none; }
 
@@ -1707,14 +1716,18 @@ menu,
 popover.background {
   transition: $transition-shadow;
   padding: 0;
-  box-shadow: none; // TODO: this should really have a highlight
   background-color: $surface;
-
-  // &:backdrop { box-shadow: $shadow-z2; }
+  border-radius: $menu-radius;
 
   &, .csd & {
-    border: 2px solid $primary;
-    border-radius: $menu-radius;
+    @if $rimless == 'true' {
+      border: none;
+      box-shadow: $shadow-z4;
+      &:backdrop { box-shadow: $shadow-z2; }
+    } @else {
+      border: 2px solid $primary;
+      box-shadow: none;
+    }
   }
 
   > stack { margin: -4px; } // remove extra padding from menu style popovers
@@ -2229,11 +2242,17 @@ radio {
 
     &:dir(rtl) { margin-left: 8px; }
 
-    &:not(:checked):not(:indeterminate):not(:disabled) { color: $text-secondary; }
+    &:not(:checked):not(:indeterminate):not(:disabled) {
+      color: $text-secondary;
+
+      &:hover {
+        color: inherit;
+      }
+    }
 
     &, &:hover, &:disabled {
       box-shadow: none;
-      // color: inherit;
+      color: inherit;
     }
   }
 }
@@ -3526,7 +3545,12 @@ colorchooser .popover.osd {
 decoration {
   transition: $transition-shadow;
   border-radius: $window-radius;
-  box-shadow: $shadow-z4, 0 0 0 2px $primary, 0 0 16px transparent;
+
+  @if $rimless == 'true' {
+    box-shadow: $shadow-z16, 0 0 34px transparent;
+  } @else {
+    box-shadow: $shadow-z4, 0 0 0 2px $primary, 0 0 16px transparent;
+  }
 
   // FIXME rationalize shadows
 
@@ -3538,7 +3562,12 @@ decoration {
     // change when we go to backdrop, to prevent jumping windows.
     // The biggest shadow should be in the same order then in the active state
     // or the jumping will happen during the transition.
-    box-shadow: $shadow-z1, 0 0 0 2px $primary, 0 0 16px transparent;
+
+    @if $rimless == 'true' {
+      box-shadow: $shadow-z4, 0 0 34px transparent;
+    } @else {
+      box-shadow: $shadow-z1, 0 0 0 2px $primary, 0 0 16px transparent;
+    }
   }
 
   .maximized &,
@@ -3557,6 +3586,12 @@ decoration {
   .csd.popup & {
     border-radius: $menu-radius;
     box-shadow: 0 0 0 2px $primary;
+
+    @if $rimless == 'true' {
+      box-shadow: $shadow-z4;
+    } @else {
+      box-shadow: 0 0 0 2px $primary;
+    }
   }
 
   tooltip.csd & {
@@ -3573,8 +3608,13 @@ decoration {
     padding: 2px;
     border-radius: 0;
     box-shadow: none;
-    box-shadow: inset 0 1px highlight($titlebar);
     background-color: $titlebar;
+
+    @if $rimless == 'true' {
+      border: 1px solid $solid-border;
+    } @else {
+      border: 2px solid $primary;
+    }
 
     &:backdrop { background-color: $titlebar-backdrop; }
   }

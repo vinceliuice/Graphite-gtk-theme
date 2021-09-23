@@ -51,6 +51,11 @@ OPTIONS:
 
   -s, --size VARIANT      Specify size variant [standard|compact] (Default: standard variants)
 
+  --tweaks                Specify versions for tweaks [nord|black|rimless] (nord can not mix use with black !)
+                          1. nord:     Nord color version
+                          2. black:    Blackness color version
+                          3. rimless:  Remove the 2px outline about windows and menus
+
   -h, --help              Show help
 EOF
 }
@@ -165,12 +170,6 @@ while [[ $# -gt 0 ]]; do
       name="${2}"
       shift 2
       ;;
-    -N|--nord)
-      nord="true"
-      ctype="-nord"
-      echo -e "Install Nord version! ..."
-      shift
-      ;;
     -c|--color)
       shift
       for color in "${@}"; do
@@ -278,6 +277,37 @@ while [[ $# -gt 0 ]]; do
         esac
       done
       ;;
+    --tweaks)
+      shift
+      for variant in $@; do
+        case "$variant" in
+          nord)
+            nord="true"
+            ctype="-nord"
+            echo -e "Install Nord version! ..."
+            shift
+            ;;
+          black)
+            blackness="true"
+            echo -e "Install Blackness version! ..."
+            shift
+            ;;
+          rimless)
+            rimless="true"
+            echo -e "Install Rimless version! ..."
+            shift
+            ;;
+          -*)
+            break
+            ;;
+          *)
+            echo "ERROR: Unrecognized tweaks variant '$1'."
+            echo "Try '$0 --help' for more information."
+            exit 1
+            ;;
+        esac
+      done
+      ;;
     -h|--help)
       usage
       exit 0
@@ -330,15 +360,19 @@ tweaks_temp() {
 }
 
 compact_size() {
-  if [[ "$compact" == 'true' ]]; then
-    sed -i "/\$compact:/s/false/true/" ${SRC_DIR}/sass/_tweaks-temp.scss
-  fi
+  sed -i "/\$compact:/s/false/true/" ${SRC_DIR}/sass/_tweaks-temp.scss
 }
 
 nord_color() {
-  if [[ "$nord" == 'true' ]]; then
-    sed -i "/\$nord:/s/false/true/" ${SRC_DIR}/sass/_tweaks-temp.scss
-  fi
+  sed -i "/\$color_type:/s/default/nord/" ${SRC_DIR}/sass/_tweaks-temp.scss
+}
+
+blackness_color() {
+  sed -i "/\$color_type:/s/default/blackness/" ${SRC_DIR}/sass/_tweaks-temp.scss
+}
+
+border_rimless() {
+  sed -i "/\$rimless:/s/false/true/" ${SRC_DIR}/sass/_tweaks-temp.scss
 }
 
 theme_color() {
@@ -374,7 +408,7 @@ theme_color() {
 }
 
 theme_tweaks() {
-  if [[ "$accent" == 'true' || "$compact" == 'true' || "$nord" == 'true' ]]; then
+  if [[ "$accent" == 'true' || "$compact" == 'true' || "$nord" == 'true'  || "$rimless" == 'true' || "$blackness" == 'true' ]]; then
     tweaks='true'
     install_package; tweaks_temp
   fi
@@ -389,6 +423,14 @@ theme_tweaks() {
 
   if [[ "$nord" = "true" ]] ; then
     nord_color
+  fi
+
+  if [[ "$blackness" = "true" ]] ; then
+    blackness_color
+  fi
+
+  if [[ "$rimless" = "true" ]] ; then
+    border_rimless
   fi
 }
 
