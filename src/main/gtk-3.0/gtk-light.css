@@ -2560,8 +2560,8 @@ searchbar > revealer > box {
 }
 
 .titlebar stackswitcher.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action).text-button:active {
-  box-shadow: inset 0 0 0 9999px rgba(255, 255, 255, 0.08);
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 10%, transparent 0%);
+  box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.08);
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.08) 10%, transparent 0%);
 }
 
 .titlebar stackswitcher.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action).text-button:checked {
@@ -2738,8 +2738,8 @@ headerbar.windowhandle viewswitcher button:not(.titlebutton):not(.suggested-acti
 }
 
 headerbar.windowhandle viewswitcher button:not(.titlebutton):not(.suggested-action):not(.destructive-action):active {
-  box-shadow: inset 0 0 0 9999px rgba(255, 255, 255, 0.08);
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 10%, transparent 0%);
+  box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.08);
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.08) 10%, transparent 0%);
 }
 
 headerbar.windowhandle viewswitcher button:not(.titlebutton):not(.suggested-action):not(.destructive-action):checked {

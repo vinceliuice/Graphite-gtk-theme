@@ -1196,8 +1196,8 @@ searchbar > revealer > box {
       border-radius: $circular-radius;
 
       &:active {
-        box-shadow: inset 0 0 0 9999px on($titlebar-primary, secondary-fill);
-        background-image: radial-gradient(circle, on($titlebar-primary, secondary-fill) 10%, transparent 0%);
+        box-shadow: inset 0 0 0 9999px on($titlebar, secondary-fill);
+        background-image: radial-gradient(circle, on($titlebar, secondary-fill) 10%, transparent 0%);
       }
 
       &:checked {
@@ -1385,8 +1385,8 @@ headerbar {
         > stack > box { padding: 0 $space-size * 2; }
 
         &:active {
-          box-shadow: inset 0 0 0 9999px on($titlebar-primary, secondary-fill);
-          background-image: radial-gradient(circle, on($titlebar-primary, secondary-fill) 10%, transparent 0%);
+          box-shadow: inset 0 0 0 9999px on($titlebar, secondary-fill);
+          background-image: radial-gradient(circle, on($titlebar, secondary-fill) 10%, transparent 0%);
         }
 
         &:checked {
