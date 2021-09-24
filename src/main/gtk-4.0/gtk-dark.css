@@ -2038,12 +2038,12 @@ notebook > header.top > tabs > arrow, notebook > header.bottom > tabs > arrow {
 }
 
 notebook > header.top > tabs > arrow.down, notebook > header.bottom > tabs > arrow.down {
-  margin-left: -8px;
+  margin-left: 0;
   -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
 }
 
 notebook > header.top > tabs > arrow.up, notebook > header.bottom > tabs > arrow.up {
-  margin-right: -8px;
+  margin-right: 0;
   -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
 }
 
@@ -2061,19 +2061,19 @@ notebook > header.left > tabs > arrow, notebook > header.right > tabs > arrow {
 }
 
 notebook > header.left > tabs > arrow.down, notebook > header.right > tabs > arrow.down {
-  margin-top: -8px;
+  margin-top: 0;
   -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
 }
 
 notebook > header.left > tabs > arrow.up, notebook > header.right > tabs > arrow.up {
-  margin-bottom: -8px;
+  margin-bottom: 0;
   -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
 }
 
 notebook > header > tabs > arrow {
   min-height: 16px;
   min-width: 16px;
-  border-radius: 0;
+  border-radius: 6px;
 }
 
 notebook > header tab > box {

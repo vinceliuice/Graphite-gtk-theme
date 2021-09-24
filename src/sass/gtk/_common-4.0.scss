@@ -1861,12 +1861,12 @@ notebook {
       padding-right: 4px;
 
       &.down {
-        margin-left: -8px;
+        margin-left: 0;
         -gtk-icon-source: -gtk-icontheme('pan-start-symbolic');
       }
 
       &.up {
-        margin-right: -8px;
+        margin-right: 0;
         -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
       }
     }
@@ -1888,12 +1888,12 @@ notebook {
       padding-bottom: 4px;
 
       &.down {
-        margin-top: -8px;
+        margin-top: 0;
         -gtk-icon-source: -gtk-icontheme('pan-up-symbolic');
       }
 
       &.up {
-        margin-bottom: -8px;
+        margin-bottom: 0;
         -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
       }
     }
@@ -1903,7 +1903,7 @@ notebook {
 
       min-height: 16px;
       min-width: 16px;
-      border-radius: 0;
+      border-radius: $corner-radius;
     }
 
     tab {

@@ -1126,9 +1126,14 @@ searchbar > revealer > box {
 
 .titlebar {
   transition: background-color $duration $ease-out, color $duration $ease-out;
-  border-radius: $window-radius $window-radius 0 0;
   background-color: $titlebar;
   color: $titlebar-text;
+
+  @if $topbar == 'dark' and $variant == 'light' and $rimless == 'false' {
+    border-radius: $window-radius - 1px $window-radius - 1px 0 0;
+  } @else {
+    border-radius: $window-radius $window-radius 0 0;
+  }
 
   @if $rimless == 'true' {
     box-shadow: inset 0 1px highlight($titlebar);
@@ -1293,8 +1298,17 @@ searchbar > revealer > box {
   &.default-decoration {
     min-height: $small-size;
     padding: $space-size;
-    box-shadow: inset 0 1px highlight($titlebar);
-    // border-radius: $corner-radius $corner-radius 0 0;
+
+    @if $rimless == 'true' {
+      box-shadow: inset 0 1px highlight($titlebar);
+      border-radius: $window-radius $window-radius 0 0;
+    } @else {
+      @if $topbar == 'dark' and $variant == 'light' {
+        border-radius: $window-radius - 1px  $window-radius - 1px 0 0;
+      } @else {
+        border-radius: $window-radius $window-radius 0 0;
+      }
+    }
 
     .tiled &,
     .maximized &,
@@ -1867,12 +1881,12 @@ notebook {
       padding-right: 4px;
 
       &.down {
-        margin-left: -8px;
+        margin-left: 0;
         -gtk-icon-source: -gtk-icontheme('pan-start-symbolic');
       }
 
       &.up {
-        margin-right: -8px;
+        margin-right: 0;
         -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
       }
     }
@@ -1894,12 +1908,12 @@ notebook {
       padding-bottom: 4px;
 
       &.down {
-        margin-top: -8px;
+        margin-top: 0;
         -gtk-icon-source: -gtk-icontheme('pan-up-symbolic');
       }
 
       &.up {
-        margin-bottom: -8px;
+        margin-bottom: 0;
         -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
       }
     }
@@ -1909,7 +1923,7 @@ notebook {
 
       min-height: 16px;
       min-width: 16px;
-      border-radius: 0;
+      border-radius: $corner-radius;
     }
 
     tab {
@@ -3559,12 +3573,15 @@ colorchooser .popover.osd {
  **********************/
 decoration {
   transition: $transition-shadow;
-  border-radius: $window-radius;
 
   @if $rimless == 'true' {
+    border-radius: $window-radius;
     box-shadow: $shadow-z16, 0 0 36px transparent;
   } @else {
-    box-shadow: $shadow-z4, 0 0 0 2px $primary, 0 0 16px transparent;
+    border-radius: $window-radius + 2px;
+    box-shadow: $shadow-z4, 0 0 16px transparent;
+    border: 2px solid $primary;
+    background-clip: border-box;
   }
 
   // FIXME rationalize shadows
@@ -3581,7 +3598,9 @@ decoration {
     @if $rimless == 'true' {
       box-shadow: $shadow-z4, 0 0 36px transparent;
     } @else {
-      box-shadow: $shadow-z1, 0 0 0 2px $primary, 0 0 16px transparent;
+      box-shadow: $shadow-z1, 0 0 16px transparent;
+      border: 2px solid $primary;
+      background-clip: border-box;
     }
   }
 
@@ -3596,26 +3615,36 @@ decoration {
   .popup & { box-shadow: none; }
 
   // server-side decorations as used by mutter
-  .ssd & { box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16); } // just doing borders, wm draws actual shadows
+  .ssd & {
+    @if $rimless == 'true' {
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16);
+    } @else {
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 0 0 2px $primary;
+      border: none;
+      border-radius: $window-radius $window-radius 0 0;
+    }
+  } // just doing borders, wm draws actual shadows
 
   .csd.popup & {
     border-radius: $menu-radius;
-    box-shadow: 0 0 0 2px $primary;
 
     @if $rimless == 'true' {
       box-shadow: $shadow-z4;
     } @else {
-      box-shadow: 0 0 0 2px $primary;
+      border: 2px solid $primary;
+      background-clip: border-box;
     }
   }
 
   tooltip.csd & {
     border-radius: $menu-radius;
     box-shadow: none;
+    border: none;
   }
 
   messagedialog.csd & {
     border-radius: $window-radius;
+    border: none;
   }
 
   .solid-csd & {

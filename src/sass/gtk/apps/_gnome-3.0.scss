@@ -1571,7 +1571,11 @@ window.background.csd {
  ************/
 terminal-window {
   decoration {
-    border-radius: $window_radius $window_radius 0 0;
+    @if $rimless == 'true' {
+      border-radius: $window-radius $window-radius 0 0;
+    } @else {
+      border-radius: $window-radius + 2px $window-radius + 2px 0 0;
+    }
   }
 
   &.background.csd,
@@ -2002,6 +2006,19 @@ window.background.csd.unified {
   > decoration,
   > decoration-overlay {
     border-radius: $window-radius;
+
+    @if $rimless == 'false' {
+      @if $topbar == 'dark' and $variant == 'light' {
+        border: 2px solid $primary;
+      } @else {
+        border: none;
+        box-shadow: 0 0 0 2px $primary, $shadow-z4, 0 0 16px transparent;
+
+        &:backdrop {
+          box-shadow: 0 0 0 2px $primary, $shadow-z1, 0 0 16px transparent;
+        }
+      }
+    }
   }
 
   &.tiled,
