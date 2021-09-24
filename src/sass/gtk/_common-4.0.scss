@@ -693,7 +693,7 @@ button {
 modelbutton.flat {
   min-height: $menuitem-size;
   padding: 0 $space-size * 1.5;
-  border-radius: $corner-radius / 2;
+  border-radius: $corner-radius;
   color: $text;
 
   @extend %button-flat-simple;
@@ -1136,7 +1136,7 @@ searchbar > revealer > box {
 .titlebar {
   transition: background-color $duration $ease-out, color $duration $ease-out;
   border-radius: $window-radius $window-radius 0 0;
-  box-shadow: inset 0 -1px $divider, inset 0 1px highlight($titlebar);
+  // box-shadow: inset 0 -1px $divider, inset 0 1px highlight($titlebar);
   background-color: $titlebar;
   color: $titlebar-text;
 
@@ -1245,7 +1245,7 @@ searchbar > revealer > box {
   &.default-decoration {
     min-height: $small-size;
     padding: $space-size;
-    box-shadow: inset 0 1px highlight($titlebar);
+    // box-shadow: inset 0 1px highlight($titlebar);
     border-radius: $corner-radius $corner-radius 0 0;
 
     // .tiled &,
@@ -1617,12 +1617,17 @@ popover.menu {
 
   & > arrow,
   &.background > contents {
-    padding: $menu-radius;
-    box-shadow: inset 0 1px highlight($surface), $shadow-z4;
+    padding: $space-size;
     background-color: $surface;
     background-clip: border-box;
-    border: none; // axes borders in a composited env
     border-radius: $menu-radius;
+
+    @if $rimless == 'true' {
+      border: none;
+      box-shadow: inset 0 1px highlight($surface), $shadow-z4;
+    } @else {
+      border: 2px solid $primary;
+    }
   }
 
   &.background separator {
@@ -1647,7 +1652,7 @@ popover.menu {
     transition: background-color $duration $ease-out;
     min-height: $menuitem-size - $space-size;
     min-width: $menuitem-size * 2;
-    padding: $space-size/2 $space-size*1.5;
+    padding: $space-size / 2 $space-size * 1.5;
     color: $text;
     font: initial;
     text-shadow: none;
@@ -1656,7 +1661,8 @@ popover.menu {
 
     &:hover {
       transition: none;
-      background-color: $overlay-hover;
+      background-color: $primary;
+      color: on($primary);
     }
 
     &:disabled { color: $text-disabled; }
@@ -1683,18 +1689,26 @@ popover.background {
   > contents {
     transition: $transition-shadow;
     padding: $space-size;
-    box-shadow: $shadow-z4; // TODO: this should really have a highlight
     background-color: $surface;
-    border-style: solid;
-    border-width: 0;
-    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.0) rgba(0, 0, 0, 0.0);
     border-radius: $corner-radius;
+
+    @if $rimless == 'true' {
+      border: none;
+      box-shadow: $shadow-z4;
+    } @else {
+      border: 2px solid $primary;
+    }
   }
 
   &:backdrop {
     > arrow,
     > contents {
-      box-shadow: $shadow-z2;
+      @if $rimless == 'true' {
+        border: none;
+        box-shadow: $shadow-z2;
+      } @else {
+        border: 2px solid $primary;
+      }
     }
   }
 
@@ -1713,7 +1727,7 @@ popover.background {
 
     separator {
       background-color: $divider;
-      margin: $space-size/2 0;
+      margin: $space-size / 2 0;
     }
 
     list separator { margin: 0; }
@@ -1724,12 +1738,12 @@ popover.background {
   toolbar { background-color: $surface; }
 
   .linked > button:not(.radio) {
-    background: none;
+    background-color: transparent;
     box-shadow: none;
-    border-radius: $corner-radius / 2;
-    &:first-child { border-radius: $corner-radius / 2; }
-    &:last-child { border-radius: $corner-radius / 2; }
-    &:only-child { border-radius: $corner-radius / 2; }
+    border-radius: $corner-radius;s
+    &:first-child { border-radius: $corner-radius; }
+    &:last-child { border-radius: $corner-radius; }
+    &:only-child { border-radius: $corner-radius; }
   }
 
   &.menu button,
@@ -1738,7 +1752,7 @@ popover.background {
 
     min-height: 32px;
     padding: 0 8px;
-    border-radius: $corner-radius / 2;
+    border-radius: $corner-radius;
   }
 
   .osd &,
@@ -1770,23 +1784,21 @@ magnifier {
  *************/
 
 %tabs_tab {
-  transition: $transition;
+  transition: $transition,
+              background-size 0ms,
+              background-image 0ms;
   min-height: $small-size;
   min-width: $small-size;
-  padding: $space-size 12px;
-
-  border-width: 1px;
-  border-color: transparent;
-  border-style: solid;
-
+  padding: $space-size / 2 $space-size * 2;
+  border: none;
   outline: none;
   background-clip: padding-box;
-
   color: $text-secondary;
   font-weight: 500;
+  border-radius: $modal-radius;
 
   &:hover {
-    background-color: $solid-border;
+    background-color: $fill;
     color: $text;
   }
 
@@ -1794,32 +1806,27 @@ magnifier {
 
   &:checked {
     transition: $transition;
-    background-color: $base;
-    background-clip: padding-box;
-    border-color: $solid-border;
+    background-color: if($variant == 'light', rgba($base, 1), rgba(white, 0.15));
     color: $text;
+    box-shadow: 0 1px 3px rgba(black, 0.06);
 
     &:disabled { color: $text-disabled; }
-
-    &.reorderable-page {
-      background-color: $base;
-    }
   }
 }
 
 notebook {
   frame > paned > & > header,
-  &.frame > header { background-color: $base-alt; }
+  &.frame > header { background-color: $fill; }
 
   &, &.frame {
     background-color: $base;
-    border-radius: $corner-radius;
+    border-radius: $modal-radius + $space-size;
   }
 
   &.frame frame {
     > border {
       border: none;
-      border-radius: $corner-radius;
+      border-radius: $modal-radius;
     }
 
     > list {
@@ -1829,73 +1836,13 @@ notebook {
     }
   }
 
-  &:focus tab:checked { box-shadow: none; }
-
   > header {
-    border-width: 1px;
-    border-color: $divider;
-    background-color: $background;
-    background-clip: border-box;
-
-    &.top {
-      border-bottom-style: solid;
-      border-radius: $corner-radius $corner-radius 0 0;
-
-      > tabs {
-        margin-bottom: -1px;
-        margin-top: 4px;
-
-        > tab {
-          border-radius: $corner-radius $corner-radius 0 0;
-          border-bottom: none;
-        }
-      }
-    }
-
-    &.bottom {
-      border-top-style: solid;
-      border-radius: 0 0 $corner-radius $corner-radius;
-
-      > tabs {
-        margin-top: -1px;
-        margin-bottom: 4px;
-
-        > tab {
-          border-radius: 0 0 $corner-radius $corner-radius;
-          border-top: none;
-        }
-      }
-    }
-
-    &.left {
-      border-right-style: solid;
-      border-radius: $corner-radius 0 0 $corner-radius;
-
-      > tabs {
-        margin-left: 4px;
-        margin-right: -1px;
-
-        > tab {
-          border-radius: $corner-radius 0 0 $corner-radius;
-          border-right: none;
-        }
-      }
-    }
-
-    &.right {
-      border-left-style: solid;
-      border-radius: 0 $corner-radius $corner-radius 0;
-
-      > tabs {
-        margin-left: -1px;
-        margin-right: 4px;
-
-        > tab {
-          border-radius: 0 $corner-radius $corner-radius 0;
-          border-left: none;
-        }
-      }
-    }
+    border: none;
+    background-color: $fill;
+    padding: $space-size / 2;
+    margin: $space-size / 2;
+    border-radius: $modal-radius + $space-size / 2;
+    // background-clip: border-box;
 
     &.top > tabs > arrow {
       @extend %notebook_vert_arrows;
@@ -1988,13 +1935,18 @@ notebook {
           margin-right: $space-size;
         }
       }
+
+      button.close-button {
+        min-width: $small-size;
+        min-height: $small-size;
+      }
     }
 
     &.top,
     &.bottom {
       tabs {
-        padding-left: 8px;
-        padding-right: 8px;
+        // padding-left: 8px;
+        // padding-right: 8px;
 
         &:not(:only-child) {
           &:first-child { margin-left: 0; }
@@ -2009,8 +1961,8 @@ notebook {
     &.left,
     &.right {
       tabs {
-        padding-top: 8px;
-        padding-bottom: 8px;
+        // padding-top: 8px;
+        // padding-bottom: 8px;
 
         &:not(:only-child) {
           &:first-child { margin-top: 0; }
@@ -2020,6 +1972,13 @@ notebook {
 
         tab.reorderable-page { border-style: solid; }
       }
+    }
+
+    > menubutton > button.image-button {
+      padding: $space-size / 2;
+      min-width: $small-size;
+      min-height: $small-size;
+      margin-left: $space-size / 2;
     }
   }
 
@@ -2158,15 +2117,18 @@ scrollbar {
 switch {
   transition: all $duration $ease-out;
   margin: $space-size 0;
-  padding: 0 2px;
-  border: 5px solid transparent;
+  padding: 0;
+  border: 2px solid $text-secondary;
   border-radius: $circular-radius;
-  background-color: $track;
-  background-clip: padding-box;
+  background-color: transparent;
+  background-clip: border-box;
   font-size: 0;
   color: transparent;
 
-  &:checked { background-color: rgba($primary, 0.5); }
+  &:checked {
+    background-color: $primary;
+    border-color: $primary;
+  }
 
   &:disabled { opacity: 0.5; }
 
@@ -2177,24 +2139,25 @@ switch {
 
   > slider {
     transition: all $duration $ease-out;
-    min-width: 20px;
-    min-height: 20px;
-    margin: -3px -2px;
+    min-width: 16px;
+    min-height: 16px;
+    margin: 2px;
     border-radius: $circular-radius;
     outline: none;
-    box-shadow: 0 0 0 10px transparent, $shadow-z1;
-    background-color: $surface;
+    box-shadow: none;
+    background-color: $text-secondary;
+    border: none;
   }
 
-  &:focus > slider { box-shadow: 0 0 0 10px $overlay-focus, $shadow-z1; }
+  &:focus > slider { box-shadow: 0 0 0 10px $fill; }
 
-  &:hover > slider { box-shadow: 0 0 0 10px $overlay-hover, $shadow-z1; }
+  &:hover > slider { box-shadow: 0 0 0 10px $divider; }
 
-  &:focus:hover > slider { box-shadow: 0 0 0 10px $overlay-focus-hover, $shadow-z1; }
+  &:focus:hover > slider { box-shadow: 0 0 0 10px $divider; }
 
   &:checked > slider {
-    background-color: $primary;
-    color: $primary;
+    background-color: $base;
+    color: $base;
   }
 
   row:selected & { }
@@ -2271,7 +2234,18 @@ radio {
       background-image: none;
     }
 
-    &:not(:checked):not(:indeterminate):not(:disabled) { color: $text-secondary; }
+    &:not(:checked):not(:indeterminate):not(:disabled) {
+      color: $text-secondary;
+
+      &:hover {
+        color: inherit;
+      }
+    }
+
+    &, &:hover, &:disabled {
+      box-shadow: none;
+      color: inherit;
+    }
 
     &.left:dir(rtl) {
       margin-left: -12px;
@@ -2293,11 +2267,17 @@ radio {
 
     &:dir(rtl) { margin-left: 8px; }
 
-    &:not(:checked):not(:indeterminate):not(:disabled) { color: $text-secondary; }
+    &:not(:checked):not(:indeterminate):not(:disabled) {
+      color: $text-secondary;
+
+      &:hover {
+        color: inherit;
+      }
+    }
 
     &, &:hover, &:disabled {
       box-shadow: none;
-      // color: inherit;
+      color: inherit;
     }
   }
 }
@@ -2392,124 +2372,110 @@ treeview.view radio:checked {
 /************
  * GtkScale *
  ************/
-scale {
-  // sizing
-  $_marks_length: 8px;
-  $_marks_distance: 7px;
+ scale {
+   // sizing
+   $_marks_length: 8px;
+   $_marks_distance: 7px;
 
-  $trough_size: 2px;
-  $finetune_trough_size: 4px;
+   $trough_size: 2px;
+   $finetune_trough_size: 4px;
 
-  $slider_size: 32px;
+   $slider_size: 18px;
 
-  $slider_margin: -($slider_size - $trough_size) / 2;
-  $finetune_slider_margin: -($slider_size - $finetune_trough_size) / 2;
+   $slider_margin: -($slider_size - $trough_size) / 2;
+   $finetune_slider_margin: -($slider_size - $finetune_trough_size) / 2;
 
-  $color_slider_margin: -($slider_size) * 3 / 4;
-  $color_marks_slider_margin: -($slider_size - 16px) - $color_slider_margin;
+   $color_slider_margin: -($slider_size) * 3 / 4;
+   $color_marks_slider_margin: -($slider_size - 16px) - $color_slider_margin;
 
-  min-height: $trough_size;
-  min-width: $trough_size;
+   min-height: $trough_size;
+   min-width: $trough_size;
 
-  &.horizontal { padding: ($medium-size - $trough_size) / 2 12px; }
+   &.horizontal { padding: ($medium-size - $trough_size) / 2 12px; }
 
-  &.vertical { padding: 12px ($medium-size - $trough_size) / 2; }
+   &.vertical { padding: 12px ($medium-size - $trough_size) / 2; }
 
-  // click-and-hold the slider to activate
-  &.fine-tune {
-    &.horizontal {
-      min-height: $finetune_trough_size;
-      padding-top: ($medium-size - $finetune_trough_size) / 2;
-      padding-bottom: ($medium-size - $finetune_trough_size) / 2;
-    }
+   // the slider is inside the trough, so to have make it bigger there's a negative margin
+   slider {
+     min-height: $slider_size;
+     min-width: $slider_size;
+     margin: $slider_margin;
+   }
 
-    &.vertical {
-      min-width: $finetune_trough_size;
-      padding-left: ($medium-size - $finetune_trough_size) / 2;
-      padding-right: ($medium-size - $finetune_trough_size) / 2;
-    }
+   // click-and-hold the slider to activate
+   &.fine-tune {
+     &.horizontal {
+       min-height: $finetune_trough_size;
+       padding-top: ($medium-size - $finetune_trough_size) / 2;
+       padding-bottom: ($medium-size - $finetune_trough_size) / 2;
+     }
 
-    // to make the trough grow in fine-tune mode
-    > trough > slider {
-      min-height: $slider_size;
-      min-width: $slider_size;
-      margin: $finetune_slider_margin;
-    }
-  }
+     &.vertical {
+       min-width: $finetune_trough_size;
+       padding-left: ($medium-size - $finetune_trough_size) / 2;
+       padding-right: ($medium-size - $finetune_trough_size) / 2;
+     }
 
-  // the backing bit
-  > trough {
-    transition: background-color $duration $ease-out;
-    outline: none;
-    background-color: $track;
+     // to make the trough grow in fine-tune mode
+     slider { margin: $finetune_slider_margin; }
+   }
 
-    &:disabled { background-color: $track-disabled; }
-  }
+   // the backing bit
+   trough {
+     transition: background-color $duration $ease-out;
+     outline: none;
+     background-color: $track;
 
-  // the colored part of the backing bit
-  > trough > highlight {
-    transition: background-image $duration $ease-out;
-    background-image: image($primary);
+     &:disabled { background-color: $track-disabled; }
+   }
 
-    &:disabled {
-      background-color: $background;
-      background-image: image($text-secondary-disabled);
-    }
-  }
+   // the colored part of the backing bit
+   highlight {
+     transition: background-image $duration $ease-out;
+     background-image: image($primary);
 
-  // this is another differently styled part of the backing bit, the most relevant use case is for example
-  // in media player to indicate how much video stream as been cached
-  > trough > fill {
-    transition: background-color $duration $ease-out;
-    background-color: $track;
+     &:disabled {
+       background-color: $background;
+       background-image: image($text-secondary-disabled);
+     }
+   }
 
-    &:disabled { background-color: transparent; }
-  }
+   // this is another differently styled part of the backing bit, the most relevant use case is for example
+   // in media player to indicate how much video stream as been cached
+   fill {
+     transition: background-color $duration $ease-out;
+     background-color: $track;
 
-  > trough > slider {
-    transition: background-color $duration $ease-out,
-                background-image $ripple-fade-out-opacity-duration $ease-out;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: auto;
-    min-height: $slider_size;
-    min-width: $slider_size;
-    margin: $slider_margin;
-    border-radius: 50%;
-    color: $primary;
+     &:disabled { background-color: transparent; }
+   }
 
-    @each $s, $as in ('', ''),
-                     (':disabled', '-disabled') {
-      &#{$s} {
-        $_url: 'assets/scale-slider#{$as}#{$asset-suffix}';
+   slider {
+     transition: all $duration $ease-out;
+     border-radius: $circular-radius;
+     color: $primary;
+     background-color: $base;
+     box-shadow: inset 0 0 0 2px $primary;
 
-        background-image: -gtk-scaled(url('#{$_url}.png'), url('#{$_url}@2.png'));
-      }
-    }
+     &:hover {
+       box-shadow: inset 0 0 0 2px $primary, 0 0 0 8px $divider;
+     }
 
-    &:focus { background-color: $overlay-focus; }
+     &:active {
+       box-shadow: inset 0 0 0 4px $primary, 0 0 0 8px $divider;
+     }
 
-    &:hover { background-color: $overlay-hover; }
+     &:disabled {
+       box-shadow: inset 0 0 0 2px $text-secondary-disabled;
+     }
+   }
 
-    &:focus:hover { background-color: $overlay-focus-hover; }
+   marks,
+   value { color: $text-secondary; }
 
-    &:active {
-      $_url: 'assets/scale-slider#{$asset-suffix}';
-
-      transition: background-color $duration $ease-out;
-      background-color: $overlay-hover;
-      background-image: -gtk-scaled(url('#{$_url}.png'), url('#{$_url}@2.png'));
-      background-size: auto, 0% 0%;
-    }
-  }
-
-  > marks,
-  > value { color: $text-secondary; }
-
-  indicator {
-    background-color: $track;
-    color: transparent;
-  }
+   indicator {
+     background-color: $track;
+     color: transparent;
+   }
 
   //marks margins
   @each $scale_orient, $marks_class, $marks_pos, $marks_margin in (horizontal, top, top, bottom),
@@ -2553,6 +2519,33 @@ scale {
                                         ('marks-after', 'marks-after:not(.marks-before)') {
       &.#{$dir_class}.#{$marks_class} {
         slider {
+          transition: background-color $duration $ease-out,
+                      background-size $ripple-fade-out-duration $ease-out,
+                      background-image $ripple-fade-out-opacity-duration $ease-out;
+          min-height: 32px;
+          min-width: 32px;
+          margin: -15px;
+          border-radius: 50%;
+          background-size: auto, 1000% 1000%;
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-color: transparent;
+
+          &, &:hover, &:active, &:disabled {
+            box-shadow: none;
+          }
+
+          &:focus { background-color: $overlay-focus; }
+
+          &:hover { background-color: $overlay-hover; }
+
+          &:focus:hover { background-color: $overlay-focus-hover; }
+
+          &:active {
+            background-size: auto, 0% 0%;
+            background-color: $overlay-hover;
+          }
+
           @each $state, $state_infix in ('', ''),
                                         (':disabled', '-disabled') {
             &#{$state} {
@@ -3672,16 +3665,26 @@ window {
     border-radius: $window-radius;
     box-shadow: $shadow-z4, 0 0 0 2px $primary, 0 0 16px transparent;
 
+    @if $rimless == 'true' {
+      box-shadow: $shadow-z16, 0 0 36px transparent;
+    } @else {
+      box-shadow: $shadow-z4, 0 0 0 2px $primary, 0 0 16px transparent;
+    }
+
     &:backdrop {
       // the transparent shadow here is to enforce that the shadow extents don't
       // change when we go to backdrop, to prevent jumping windows.
       // The biggest shadow should be in the same order then in the active state
       // or the jumping will happen during the transition.
-      box-shadow: $shadow-z1, 0 0 0 2px $primary, 0 0 16px transparent;
+      @if $rimless == 'true' {
+        box-shadow: $shadow-z4, 0 0 36px transparent;
+      } @else {
+        box-shadow: $shadow-z1, 0 0 0 2px $primary, 0 0 16px transparent;
+      }
     }
 
     &.popup {
-      border-radius: $corner-radius;
+      border-radius: $menu-radius;
       box-shadow: none;
     }
 
@@ -3693,9 +3696,13 @@ window {
       margin: 0;
       padding: 2px;
       border-radius: 0;
-      box-shadow: none;
-      box-shadow: inset 0 1px highlight($titlebar);
       background-color: $titlebar;
+
+      @if $rimless == 'true' {
+        border: 1px solid $solid-border;
+      } @else {
+        border: 2px solid $primary;
+      }
 
       &:backdrop { background-color: $titlebar-backdrop; }
     }
@@ -3718,16 +3725,33 @@ windowcontrols {
     &.start:dir(ltr),
     &.end:dir(rtl) {
       margin-right: $space-size;
+      margin-left: $space-size / 2;
     }
 
     &.start:dir(rtl),
     &.end:dir(ltr) {
       margin-left: $space-size;
+      margin-right: $space-size / 2;
     }
   }
 
-  button {
+  button:not(.suggested-action):not(.destructive-action) {
     @extend %circular-button;
+    min-height: 24px;
+    min-width: 24px;
+    padding: 0;
+    margin: 0 $space-size / 2;
+
+    &.close { // Window Close button
+      &:hover {
+        background-color: $primary;
+        color: on($primary);
+      }
+      &:active {
+        background-color: darken($primary, 10%);
+        color: on($primary);
+      }
+    }
   }
 }
 

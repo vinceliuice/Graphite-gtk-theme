@@ -757,12 +757,12 @@ button.font > box > box > label, button.file > box > box > label {
   font-weight: bold;
 }
 
-windowcontrols button, filechooser #pathbarbox > stack > box > button, check,
+windowcontrols button:not(.suggested-action):not(.destructive-action), filechooser #pathbarbox > stack > box > button, check,
 radio, button.image-button, button.close, button.circular {
   border-radius: 9999px;
 }
 
-windowcontrols button label, filechooser #pathbarbox > stack > box > button label, check label,
+windowcontrols button:not(.suggested-action):not(.destructive-action) label, filechooser #pathbarbox > stack > box > button label, check label,
 radio label, button.image-button label, button.close label, button.circular label {
   padding: 0;
 }
@@ -827,7 +827,7 @@ stackswitcher > button.needs-attention > image:dir(rtl) {
 modelbutton.flat {
   min-height: 28px;
   padding: 0 9px;
-  border-radius: 3px;
+  border-radius: 6px;
   color: rgba(0, 0, 0, 0.87);
 }
 
@@ -1315,7 +1315,6 @@ headerbar button:backdrop:checked:disabled:not(.suggested-action):not(.destructi
 .titlebar {
   transition: background-color 75ms cubic-bezier(0, 0, 0.2, 1), color 75ms cubic-bezier(0, 0, 0.2, 1);
   border-radius: 12px 12px 0 0;
-  box-shadow: inset 0 -1px rgba(0, 0, 0, 0.12), inset 0 1px rgba(255, 255, 255, 0.1);
   background-color: #2C2C2C;
   color: white;
 }
@@ -1421,7 +1420,6 @@ headerbar button:backdrop:checked:disabled:not(.suggested-action):not(.destructi
 .titlebar.default-decoration {
   min-height: 24px;
   padding: 6px;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
   border-radius: 6px 6px 0 0;
 }
 
@@ -1815,12 +1813,11 @@ popover.menu box.circular-buttons button.circular.image-button.model:focus {
 }
 
 popover.menu > arrow, popover.menu.background > contents {
-  padding: 12px;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0), 0 2px 2.4px -1px rgba(0, 0, 0, 0.2), 0 4px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+  padding: 6px;
   background-color: #FFFFFF;
   background-clip: border-box;
-  border: none;
   border-radius: 12px;
+  border: 2px solid #333333;
 }
 
 popover.menu.background separator {
@@ -1855,7 +1852,8 @@ popover.menu modelbutton {
 
 popover.menu modelbutton:hover {
   transition: none;
-  background-color: alpha(currentColor, 0.08);
+  background-color: #333333;
+  color: white;
 }
 
 popover.menu modelbutton:disabled {
@@ -1882,17 +1880,14 @@ popover.background > arrow,
 popover.background > contents {
   transition: box-shadow 75ms cubic-bezier(0, 0, 0.2, 1);
   padding: 6px;
-  box-shadow: 0 2px 2.4px -1px rgba(0, 0, 0, 0.2), 0 4px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
   background-color: #FFFFFF;
-  border-style: solid;
-  border-width: 0;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
   border-radius: 6px;
+  border: 2px solid #333333;
 }
 
 popover.background:backdrop > arrow,
 popover.background:backdrop > contents {
-  box-shadow: 0 3px 2px -3px rgba(0, 0, 0, 0.3), 0 2px 2px -1px rgba(0, 0, 0, 0.24), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  border: 2px solid #333333;
 }
 
 popover.background > contents > stack {
@@ -1926,28 +1921,29 @@ popover.background toolbar {
 }
 
 popover.background .linked > button:not(.radio) {
-  background: none;
+  background-color: transparent;
   box-shadow: none;
-  border-radius: 3px;
+  border-radius: 6px;
 }
 
+s
 popover.background .linked > button:not(.radio):first-child {
-  border-radius: 3px;
+  border-radius: 6px;
 }
 
 popover.background .linked > button:not(.radio):last-child {
-  border-radius: 3px;
+  border-radius: 6px;
 }
 
 popover.background .linked > button:not(.radio):only-child {
-  border-radius: 3px;
+  border-radius: 6px;
 }
 
 popover.background.menu button,
 popover.background button.model {
   min-height: 32px;
   padding: 0 8px;
-  border-radius: 3px;
+  border-radius: 6px;
 }
 
 .osd popover.background, popover.background.touch-selection, popover.background.magnifier {
@@ -1970,21 +1966,20 @@ magnifier {
  * Notebooks *
  *************/
 notebook > header tab {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1);
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), background-size 0ms, background-image 0ms;
   min-height: 24px;
   min-width: 24px;
-  padding: 6px 12px;
-  border-width: 1px;
-  border-color: transparent;
-  border-style: solid;
+  padding: 3px 12px;
+  border: none;
   outline: none;
   background-clip: padding-box;
   color: rgba(0, 0, 0, 0.6);
   font-weight: 500;
+  border-radius: 6px;
 }
 
 notebook > header tab:hover {
-  background-color: #e0e0e0;
+  background-color: rgba(0, 0, 0, 0.04);
   color: rgba(0, 0, 0, 0.87);
 }
 
@@ -1994,27 +1989,22 @@ notebook > header tab:disabled {
 
 notebook > header tab:checked {
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1);
-  background-color: #FFFFFF;
-  background-clip: padding-box;
-  border-color: #e0e0e0;
+  background-color: white;
   color: rgba(0, 0, 0, 0.87);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 notebook > header tab:checked:disabled {
   color: rgba(0, 0, 0, 0.38);
 }
 
-notebook > header tab:checked.reorderable-page {
-  background-color: #FFFFFF;
-}
-
 frame > paned > notebook > header, notebook.frame > header {
-  background-color: #FAFAFA;
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
 notebook, notebook.frame {
   background-color: #FFFFFF;
-  border-radius: 6px;
+  border-radius: 12px;
 }
 
 notebook.frame frame > border {
@@ -2026,75 +2016,12 @@ notebook.frame frame > list row.activatable {
   border-radius: 6px;
 }
 
-notebook:focus tab:checked {
-  box-shadow: none;
-}
-
 notebook > header {
-  border-width: 1px;
-  border-color: rgba(0, 0, 0, 0.12);
-  background-color: #FFFFFF;
-  background-clip: border-box;
-}
-
-notebook > header.top {
-  border-bottom-style: solid;
-  border-radius: 6px 6px 0 0;
-}
-
-notebook > header.top > tabs {
-  margin-bottom: -1px;
-  margin-top: 4px;
-}
-
-notebook > header.top > tabs > tab {
-  border-radius: 6px 6px 0 0;
-  border-bottom: none;
-}
-
-notebook > header.bottom {
-  border-top-style: solid;
-  border-radius: 0 0 6px 6px;
-}
-
-notebook > header.bottom > tabs {
-  margin-top: -1px;
-  margin-bottom: 4px;
-}
-
-notebook > header.bottom > tabs > tab {
-  border-radius: 0 0 6px 6px;
-  border-top: none;
-}
-
-notebook > header.left {
-  border-right-style: solid;
-  border-radius: 6px 0 0 6px;
-}
-
-notebook > header.left > tabs {
-  margin-left: 4px;
-  margin-right: -1px;
-}
-
-notebook > header.left > tabs > tab {
-  border-radius: 6px 0 0 6px;
-  border-right: none;
-}
-
-notebook > header.right {
-  border-left-style: solid;
-  border-radius: 0 6px 6px 0;
-}
-
-notebook > header.right > tabs {
-  margin-left: -1px;
-  margin-right: 4px;
-}
-
-notebook > header.right > tabs > tab {
-  border-radius: 0 6px 6px 0;
-  border-left: none;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.04);
+  padding: 3px;
+  margin: 3px;
+  border-radius: 9px;
 }
 
 notebook > header.top > tabs > arrow {
@@ -2170,9 +2097,9 @@ notebook > header tab button.flat:first-child {
   margin-right: 6px;
 }
 
-notebook > header.top tabs, notebook > header.bottom tabs {
-  padding-left: 8px;
-  padding-right: 8px;
+notebook > header tab button.close-button {
+  min-width: 24px;
+  min-height: 24px;
 }
 
 notebook > header.top tabs:not(:only-child):first-child, notebook > header.bottom tabs:not(:only-child):first-child {
@@ -2187,11 +2114,6 @@ notebook > header.top tabs tab.reorderable-page, notebook > header.bottom tabs t
   border-style: solid;
 }
 
-notebook > header.left tabs, notebook > header.right tabs {
-  padding-top: 8px;
-  padding-bottom: 8px;
-}
-
 notebook > header.left tabs:not(:only-child):first-child, notebook > header.right tabs:not(:only-child):first-child {
   margin-top: 0;
 }
@@ -2202,6 +2124,13 @@ notebook > header.left tabs:not(:only-child):last-child, notebook > header.right
 
 notebook > header.left tabs tab.reorderable-page, notebook > header.right tabs tab.reorderable-page {
   border-style: solid;
+}
+
+notebook > header > menubutton > button.image-button {
+  padding: 3px;
+  min-width: 24px;
+  min-height: 24px;
+  margin-left: 3px;
 }
 
 notebook > stack:not(:only-child) {
@@ -2356,17 +2285,18 @@ scrollbar.horizontal button.up {
 switch {
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1);
   margin: 6px 0;
-  padding: 0 2px;
-  border: 5px solid transparent;
+  padding: 0;
+  border: 2px solid rgba(0, 0, 0, 0.6);
   border-radius: 9999px;
-  background-color: rgba(0, 0, 0, 0.26);
-  background-clip: padding-box;
+  background-color: transparent;
+  background-clip: border-box;
   font-size: 0;
   color: transparent;
 }
 
 switch:checked {
-  background-color: rgba(51, 51, 51, 0.5);
+  background-color: #333333;
+  border-color: #333333;
 }
 
 switch:disabled {
@@ -2379,30 +2309,31 @@ switch image {
 
 switch > slider {
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1);
-  min-width: 20px;
-  min-height: 20px;
-  margin: -3px -2px;
+  min-width: 16px;
+  min-height: 16px;
+  margin: 2px;
   border-radius: 9999px;
   outline: none;
-  box-shadow: 0 0 0 10px transparent, 0 2px 2px -2px rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.24), 0 1px 2px -0.6px rgba(0, 0, 0, 0.17);
-  background-color: #FFFFFF;
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: none;
 }
 
 switch:focus > slider {
-  box-shadow: 0 0 0 10px alpha(currentColor, 0.08), 0 2px 2px -2px rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.24), 0 1px 2px -0.6px rgba(0, 0, 0, 0.17);
+  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.04);
 }
 
 switch:hover > slider {
-  box-shadow: 0 0 0 10px alpha(currentColor, 0.08), 0 2px 2px -2px rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.24), 0 1px 2px -0.6px rgba(0, 0, 0, 0.17);
+  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.12);
 }
 
 switch:focus:hover > slider {
-  box-shadow: 0 0 0 10px alpha(currentColor, 0.16), 0 2px 2px -2px rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.24), 0 1px 2px -0.6px rgba(0, 0, 0, 0.17);
+  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.12);
 }
 
 switch:checked > slider {
-  background-color: #333333;
-  color: #333333;
+  background-color: #FFFFFF;
+  color: #FFFFFF;
 }
 
 /*************************
@@ -2486,6 +2417,15 @@ popover modelbutton.flat check:not(:checked):not(:indeterminate):not(:disabled),
   color: rgba(0, 0, 0, 0.6);
 }
 
+popover modelbutton.flat check:not(:checked):not(:indeterminate):not(:disabled):hover, popover modelbutton.flat radio:not(:checked):not(:indeterminate):not(:disabled):hover {
+  color: inherit;
+}
+
+popover modelbutton.flat check, popover modelbutton.flat check:hover, popover modelbutton.flat check:disabled, popover modelbutton.flat radio, popover modelbutton.flat radio:hover, popover modelbutton.flat radio:disabled {
+  box-shadow: none;
+  color: inherit;
+}
+
 popover modelbutton.flat check.left:dir(rtl), popover modelbutton.flat radio.left:dir(rtl) {
   margin-left: -12px;
   margin-right: -4px;
@@ -2514,8 +2454,13 @@ popover.menu check:not(:checked):not(:indeterminate):not(:disabled), popover.men
   color: rgba(0, 0, 0, 0.6);
 }
 
+popover.menu check:not(:checked):not(:indeterminate):not(:disabled):hover, popover.menu radio:not(:checked):not(:indeterminate):not(:disabled):hover {
+  color: inherit;
+}
+
 popover.menu check, popover.menu check:hover, popover.menu check:disabled, popover.menu radio, popover.menu radio:hover, popover.menu radio:disabled {
   box-shadow: none;
+  color: inherit;
 }
 
 
@@ -2661,6 +2606,12 @@ scale.vertical {
   padding: 12px 17px;
 }
 
+scale slider {
+  min-height: 18px;
+  min-width: 18px;
+  margin: -8px;
+}
+
 scale.fine-tune.horizontal {
   min-height: 4px;
   padding-top: 16px;
@@ -2673,82 +2624,61 @@ scale.fine-tune.vertical {
   padding-right: 16px;
 }
 
-scale.fine-tune > trough > slider {
-  min-height: 32px;
-  min-width: 32px;
-  margin: -14px;
+scale.fine-tune slider {
+  margin: -7px;
 }
 
-scale > trough {
+scale trough {
   transition: background-color 75ms cubic-bezier(0, 0, 0.2, 1);
   outline: none;
   background-color: rgba(0, 0, 0, 0.26);
 }
 
-scale > trough:disabled {
+scale trough:disabled {
   background-color: rgba(0, 0, 0, 0.12);
 }
 
-scale > trough > highlight {
+scale highlight {
   transition: background-image 75ms cubic-bezier(0, 0, 0.2, 1);
   background-image: image(#333333);
 }
 
-scale > trough > highlight:disabled {
+scale highlight:disabled {
   background-color: #FFFFFF;
   background-image: image(rgba(0, 0, 0, 0.26));
 }
 
-scale > trough > fill {
+scale fill {
   transition: background-color 75ms cubic-bezier(0, 0, 0.2, 1);
   background-color: rgba(0, 0, 0, 0.26);
 }
 
-scale > trough > fill:disabled {
+scale fill:disabled {
   background-color: transparent;
 }
 
-scale > trough > slider {
-  transition: background-color 75ms cubic-bezier(0, 0, 0.2, 1), background-image 1200ms cubic-bezier(0, 0, 0.2, 1);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: auto;
-  min-height: 32px;
-  min-width: 32px;
-  margin: -15px;
-  border-radius: 50%;
+scale slider {
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1);
+  border-radius: 9999px;
   color: #333333;
+  background-color: #FFFFFF;
+  box-shadow: inset 0 0 0 2px #333333;
 }
 
-scale > trough > slider {
-  background-image: -gtk-scaled(url("assets/scale-slider.png"), url("assets/scale-slider@2.png"));
+scale slider:hover {
+  box-shadow: inset 0 0 0 2px #333333, 0 0 0 8px rgba(0, 0, 0, 0.12);
 }
 
-scale > trough > slider:disabled {
-  background-image: -gtk-scaled(url("assets/scale-slider-disabled.png"), url("assets/scale-slider-disabled@2.png"));
+scale slider:active {
+  box-shadow: inset 0 0 0 4px #333333, 0 0 0 8px rgba(0, 0, 0, 0.12);
 }
 
-scale > trough > slider:focus {
-  background-color: alpha(currentColor, 0.08);
+scale slider:disabled {
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.26);
 }
 
-scale > trough > slider:hover {
-  background-color: alpha(currentColor, 0.08);
-}
-
-scale > trough > slider:focus:hover {
-  background-color: alpha(currentColor, 0.16);
-}
-
-scale > trough > slider:active {
-  transition: background-color 75ms cubic-bezier(0, 0, 0.2, 1);
-  background-color: alpha(currentColor, 0.08);
-  background-image: -gtk-scaled(url("assets/scale-slider.png"), url("assets/scale-slider@2.png"));
-  background-size: auto, 0% 0%;
-}
-
-scale > marks,
-scale > value {
+scale marks,
+scale value {
   color: rgba(0, 0, 0, 0.6);
 }
 
@@ -2808,6 +2738,39 @@ scale.vertical indicator {
 }
 
 scale.horizontal.marks-before:not(.marks-after) slider {
+  transition: background-color 75ms cubic-bezier(0, 0, 0.2, 1), background-size 300ms cubic-bezier(0, 0, 0.2, 1), background-image 1200ms cubic-bezier(0, 0, 0.2, 1);
+  min-height: 32px;
+  min-width: 32px;
+  margin: -15px;
+  border-radius: 50%;
+  background-size: auto, 1000% 1000%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: transparent;
+}
+
+scale.horizontal.marks-before:not(.marks-after) slider, scale.horizontal.marks-before:not(.marks-after) slider:hover, scale.horizontal.marks-before:not(.marks-after) slider:active, scale.horizontal.marks-before:not(.marks-after) slider:disabled {
+  box-shadow: none;
+}
+
+scale.horizontal.marks-before:not(.marks-after) slider:focus {
+  background-color: alpha(currentColor, 0.08);
+}
+
+scale.horizontal.marks-before:not(.marks-after) slider:hover {
+  background-color: alpha(currentColor, 0.08);
+}
+
+scale.horizontal.marks-before:not(.marks-after) slider:focus:hover {
+  background-color: alpha(currentColor, 0.16);
+}
+
+scale.horizontal.marks-before:not(.marks-after) slider:active {
+  background-size: auto, 0% 0%;
+  background-color: alpha(currentColor, 0.08);
+}
+
+scale.horizontal.marks-before:not(.marks-after) slider {
   background-image: -gtk-scaled(url("assets/scale-horz-marks-before-slider.png"), url("assets/scale-horz-marks-before-slider@2.png"));
 }
 
@@ -2817,6 +2780,39 @@ scale.horizontal.marks-before:not(.marks-after) slider:disabled {
 
 scale.horizontal.marks-before:not(.marks-after) slider:active {
   background-image: -gtk-scaled(url("assets/scale-horz-marks-before-slider.png"), url("assets/scale-horz-marks-before-slider@2.png"));
+}
+
+scale.horizontal.marks-after:not(.marks-before) slider {
+  transition: background-color 75ms cubic-bezier(0, 0, 0.2, 1), background-size 300ms cubic-bezier(0, 0, 0.2, 1), background-image 1200ms cubic-bezier(0, 0, 0.2, 1);
+  min-height: 32px;
+  min-width: 32px;
+  margin: -15px;
+  border-radius: 50%;
+  background-size: auto, 1000% 1000%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: transparent;
+}
+
+scale.horizontal.marks-after:not(.marks-before) slider, scale.horizontal.marks-after:not(.marks-before) slider:hover, scale.horizontal.marks-after:not(.marks-before) slider:active, scale.horizontal.marks-after:not(.marks-before) slider:disabled {
+  box-shadow: none;
+}
+
+scale.horizontal.marks-after:not(.marks-before) slider:focus {
+  background-color: alpha(currentColor, 0.08);
+}
+
+scale.horizontal.marks-after:not(.marks-before) slider:hover {
+  background-color: alpha(currentColor, 0.08);
+}
+
+scale.horizontal.marks-after:not(.marks-before) slider:focus:hover {
+  background-color: alpha(currentColor, 0.16);
+}
+
+scale.horizontal.marks-after:not(.marks-before) slider:active {
+  background-size: auto, 0% 0%;
+  background-color: alpha(currentColor, 0.08);
 }
 
 scale.horizontal.marks-after:not(.marks-before) slider {
@@ -2832,6 +2828,39 @@ scale.horizontal.marks-after:not(.marks-before) slider:active {
 }
 
 scale.vertical.marks-before:not(.marks-after) slider {
+  transition: background-color 75ms cubic-bezier(0, 0, 0.2, 1), background-size 300ms cubic-bezier(0, 0, 0.2, 1), background-image 1200ms cubic-bezier(0, 0, 0.2, 1);
+  min-height: 32px;
+  min-width: 32px;
+  margin: -15px;
+  border-radius: 50%;
+  background-size: auto, 1000% 1000%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: transparent;
+}
+
+scale.vertical.marks-before:not(.marks-after) slider, scale.vertical.marks-before:not(.marks-after) slider:hover, scale.vertical.marks-before:not(.marks-after) slider:active, scale.vertical.marks-before:not(.marks-after) slider:disabled {
+  box-shadow: none;
+}
+
+scale.vertical.marks-before:not(.marks-after) slider:focus {
+  background-color: alpha(currentColor, 0.08);
+}
+
+scale.vertical.marks-before:not(.marks-after) slider:hover {
+  background-color: alpha(currentColor, 0.08);
+}
+
+scale.vertical.marks-before:not(.marks-after) slider:focus:hover {
+  background-color: alpha(currentColor, 0.16);
+}
+
+scale.vertical.marks-before:not(.marks-after) slider:active {
+  background-size: auto, 0% 0%;
+  background-color: alpha(currentColor, 0.08);
+}
+
+scale.vertical.marks-before:not(.marks-after) slider {
   background-image: -gtk-scaled(url("assets/scale-vert-marks-before-slider.png"), url("assets/scale-vert-marks-before-slider@2.png"));
 }
 
@@ -2841,6 +2870,39 @@ scale.vertical.marks-before:not(.marks-after) slider:disabled {
 
 scale.vertical.marks-before:not(.marks-after) slider:active {
   background-image: -gtk-scaled(url("assets/scale-vert-marks-before-slider.png"), url("assets/scale-vert-marks-before-slider@2.png"));
+}
+
+scale.vertical.marks-after:not(.marks-before) slider {
+  transition: background-color 75ms cubic-bezier(0, 0, 0.2, 1), background-size 300ms cubic-bezier(0, 0, 0.2, 1), background-image 1200ms cubic-bezier(0, 0, 0.2, 1);
+  min-height: 32px;
+  min-width: 32px;
+  margin: -15px;
+  border-radius: 50%;
+  background-size: auto, 1000% 1000%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: transparent;
+}
+
+scale.vertical.marks-after:not(.marks-before) slider, scale.vertical.marks-after:not(.marks-before) slider:hover, scale.vertical.marks-after:not(.marks-before) slider:active, scale.vertical.marks-after:not(.marks-before) slider:disabled {
+  box-shadow: none;
+}
+
+scale.vertical.marks-after:not(.marks-before) slider:focus {
+  background-color: alpha(currentColor, 0.08);
+}
+
+scale.vertical.marks-after:not(.marks-before) slider:hover {
+  background-color: alpha(currentColor, 0.08);
+}
+
+scale.vertical.marks-after:not(.marks-before) slider:focus:hover {
+  background-color: alpha(currentColor, 0.16);
+}
+
+scale.vertical.marks-after:not(.marks-before) slider:active {
+  background-size: auto, 0% 0%;
+  background-color: alpha(currentColor, 0.08);
 }
 
 scale.vertical.marks-after:not(.marks-before) slider {
@@ -2865,8 +2927,8 @@ scale.color.horizontal {
 }
 
 scale.color.horizontal slider:dir(ltr), scale.color.horizontal slider:dir(rtl) {
-  margin-bottom: -24px;
-  margin-top: 8px;
+  margin-bottom: -13.5px;
+  margin-top: 11.5px;
 }
 
 scale.color.vertical:dir(ltr) {
@@ -2874,8 +2936,8 @@ scale.color.vertical:dir(ltr) {
 }
 
 scale.color.vertical:dir(ltr) slider {
-  margin-left: -24px;
-  margin-right: 8px;
+  margin-left: -13.5px;
+  margin-right: 11.5px;
 }
 
 scale.color.vertical:dir(rtl) {
@@ -2883,8 +2945,8 @@ scale.color.vertical:dir(rtl) {
 }
 
 scale.color.vertical:dir(rtl) slider {
-  margin-right: -24px;
-  margin-left: 8px;
+  margin-right: -13.5px;
+  margin-left: 11.5px;
 }
 
 /*****************
@@ -3962,6 +4024,7 @@ window.csd {
   transition: box-shadow 75ms cubic-bezier(0, 0, 0.2, 1);
   border-radius: 12px;
   box-shadow: 0 2px 2.4px -1px rgba(0, 0, 0, 0.2), 0 4px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 0 0 2px #333333, 0 0 16px transparent;
+  box-shadow: 0 2px 2.4px -1px rgba(0, 0, 0, 0.2), 0 4px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 0 0 2px #333333, 0 0 16px transparent;
 }
 
 window.csd:backdrop {
@@ -3969,7 +4032,7 @@ window.csd:backdrop {
 }
 
 window.csd.popup {
-  border-radius: 6px;
+  border-radius: 12px;
   box-shadow: none;
 }
 
@@ -3981,9 +4044,8 @@ window.csd.dialog.message {
   margin: 0;
   padding: 2px;
   border-radius: 0;
-  box-shadow: none;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
   background-color: #2C2C2C;
+  border: 2px solid #333333;
 }
 
 .solid-csd window.csd:backdrop {
@@ -4000,10 +4062,29 @@ windowcontrols {
 
 windowcontrols:not(.empty).start:dir(ltr), windowcontrols:not(.empty).end:dir(rtl) {
   margin-right: 6px;
+  margin-left: 3px;
 }
 
 windowcontrols:not(.empty).start:dir(rtl), windowcontrols:not(.empty).end:dir(ltr) {
   margin-left: 6px;
+  margin-right: 3px;
+}
+
+windowcontrols button:not(.suggested-action):not(.destructive-action) {
+  min-height: 24px;
+  min-width: 24px;
+  padding: 0;
+  margin: 0 3px;
+}
+
+windowcontrols button:not(.suggested-action):not(.destructive-action).close:hover {
+  background-color: #333333;
+  color: white;
+}
+
+windowcontrols button:not(.suggested-action):not(.destructive-action).close:active {
+  background-color: #1a1a1a;
+  color: white;
 }
 
 gridview > child:selected, modelbutton.flat:selected, row:selected, calendar:selected, calendar > grid > label.day-number:selected {

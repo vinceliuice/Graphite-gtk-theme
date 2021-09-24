@@ -3562,7 +3562,7 @@ decoration {
   border-radius: $window-radius;
 
   @if $rimless == 'true' {
-    box-shadow: $shadow-z16, 0 0 34px transparent;
+    box-shadow: $shadow-z16, 0 0 36px transparent;
   } @else {
     box-shadow: $shadow-z4, 0 0 0 2px $primary, 0 0 16px transparent;
   }
@@ -3579,7 +3579,7 @@ decoration {
     // or the jumping will happen during the transition.
 
     @if $rimless == 'true' {
-      box-shadow: $shadow-z4, 0 0 34px transparent;
+      box-shadow: $shadow-z4, 0 0 36px transparent;
     } @else {
       box-shadow: $shadow-z1, 0 0 0 2px $primary, 0 0 16px transparent;
     }
@@ -3635,7 +3635,7 @@ decoration {
   }
 }
 
-// Window Close button
+// Windows button
 button.titlebutton:not(.suggested-action):not(.destructive-action) {
   @extend %circular-button;
   min-height: 24px;
@@ -3643,7 +3643,7 @@ button.titlebutton:not(.suggested-action):not(.destructive-action) {
   padding: 0;
   margin: 0 $space-size / 2;
 
-  &.close {
+  &.close { // Window Close button
     &:hover {
       background-color: $primary;
       color: on($primary);
