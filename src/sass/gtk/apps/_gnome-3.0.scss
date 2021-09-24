@@ -1779,7 +1779,7 @@ preferencesgroup, .geary-accounts-editor-pane {
   scrolledwindow.frame { border: none; }
 }
 
-.geary-main-window {
+.geary-main-window.unified {
   > deck > overlay > .geary-main-layout {
     background-color: $base;
 
@@ -1792,7 +1792,7 @@ preferencesgroup, .geary-accounts-editor-pane {
     > leaflet > leaflet > separator.sidebar { // left
       // border-right: none;
       background-color: $titlebar;
-      box-shadow: inset 0 -1px $divider;
+      box-shadow: inset 0 -1px $border;
       transition: background-color $duration $ease-out,
                   color $duration $ease-out,
                   box-shadow $duration $ease-out;
@@ -1802,7 +1802,7 @@ preferencesgroup, .geary-accounts-editor-pane {
 
     > leaflet > leaflet > box.vertical + separator.sidebar {
       min-width: 1px;
-      background-color: $divider;
+      background-color: $border;
     }
   }
 
@@ -1995,7 +1995,7 @@ window.background.csd.unified {
   > decoration-overlay {
     @if $rimless == 'true' {
       box-shadow: inset 0 1px highlight($titlebar);
-    };
+    }
   }
 
   &,
