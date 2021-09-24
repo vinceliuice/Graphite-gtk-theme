@@ -101,7 +101,7 @@ stage {
   border-radius: 36px;
   padding: 12px;
   background-color: #212121;
-  border: 2px solid #E0E0E0;
+  border: 2px solid white;
 }
 
 .app-folder-dialog .folder-name-container {
@@ -144,7 +144,7 @@ stage {
 }
 
 .app-folder-dialog .folder-name-container .edit-folder-button:checked, .app-folder-dialog .folder-name-container .edit-folder-button:active {
-  background-color: #E0E0E0;
+  background-color: white;
   color: rgba(0, 0, 0, 0.87);
 }
 
@@ -177,7 +177,7 @@ stage {
 
 StWidget.focused .app-well-app-running-dot {
   width: 24px;
-  background-color: #E0E0E0 !important;
+  background-color: white !important;
 }
 
 .app-menu,
@@ -3178,7 +3178,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 #dashtodockContainer:overview #dash StWidget.focused .app-well-app-running-dot {
-  background-color: #E0E0E0 !important;
+  background-color: white !important;
 }
 
 #dashtodockContainer .show-apps .overview-icon,

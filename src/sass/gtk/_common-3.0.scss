@@ -1194,6 +1194,16 @@ searchbar > revealer > box {
 
     &.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action).text-button {
       border-radius: $circular-radius;
+
+      &:active {
+        box-shadow: inset 0 0 0 9999px on($titlebar-primary, secondary-fill);
+        background-image: radial-gradient(circle, on($titlebar-primary, secondary-fill) 10%, transparent 0%);
+      }
+
+      &:checked {
+        background-color: $titlebar-primary;
+        color: on($titlebar-primary);
+      }
     }
   }
 
@@ -1374,9 +1384,14 @@ headerbar {
 
         > stack > box { padding: 0 $space-size * 2; }
 
+        &:active {
+          box-shadow: inset 0 0 0 9999px on($titlebar-primary, secondary-fill);
+          background-image: radial-gradient(circle, on($titlebar-primary, secondary-fill) 10%, transparent 0%);
+        }
+
         &:checked {
-          background-color: $primary;
-          color: on($primary);
+          background-color: $titlebar-primary;
+          color: on($titlebar-primary);
         }
 
         &:focus { box-shadow: none; }

@@ -2559,6 +2559,16 @@ searchbar > revealer > box {
   border-radius: 9999px;
 }
 
+.titlebar stackswitcher.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action).text-button:active {
+  box-shadow: inset 0 0 0 9999px rgba(255, 255, 255, 0.08);
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 10%, transparent 0%);
+}
+
+.titlebar stackswitcher.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action).text-button:checked {
+  background-color: #595959;
+  color: white;
+}
+
 .titlebar .path-bar button:not(.suggested-action):not(.destructive-action).text-button {
   min-width: 0;
   padding-left: 6px;
@@ -2727,8 +2737,13 @@ headerbar.windowhandle viewswitcher button:not(.titlebutton):not(.suggested-acti
   padding: 0 12px;
 }
 
+headerbar.windowhandle viewswitcher button:not(.titlebutton):not(.suggested-action):not(.destructive-action):active {
+  box-shadow: inset 0 0 0 9999px rgba(255, 255, 255, 0.08);
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 10%, transparent 0%);
+}
+
 headerbar.windowhandle viewswitcher button:not(.titlebutton):not(.suggested-action):not(.destructive-action):checked {
-  background-color: #333333;
+  background-color: #595959;
   color: white;
 }
 
@@ -5365,25 +5380,24 @@ popover.emoji-completion .emoji:hover {
 }
 
 .nautilus-window.background.csd placessidebar > viewport.frame {
-  margin: 0 15px 12px 0;
-  border-radius: 0 12px 12px 0;
-  background-color: #333333;
-  color: white;
+  margin: 0;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .nautilus-window.background.csd placessidebar > viewport.frame > list {
   background: none;
   padding: 6px;
   padding-right: 8px;
+  padding-right: 6px;
 }
 
 .nautilus-window.background.csd placessidebar > viewport.frame > list > row.activatable {
-  color: white;
   border-radius: 6px;
 }
 
 .nautilus-window.background.csd placessidebar > viewport.frame > list > row.activatable, .nautilus-window.background.csd placessidebar > viewport.frame > list > row.activatable image.sidebar-icon, .nautilus-window.background.csd placessidebar > viewport.frame > list > row.activatable label.sidebar-label, .nautilus-window.background.csd placessidebar > viewport.frame > list > row.activatable button.sidebar-button {
-  color: white;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .nautilus-window.background.csd placessidebar > viewport.frame > list > row.activatable:hover {
@@ -5438,7 +5452,7 @@ popover.emoji-completion .emoji:hover {
 .nautilus-window.background.csd notebook > stack {
   background-color: #FFFFFF;
   border-radius: 12px;
-  margin: 0 12px 12px 0;
+  margin: 0 6px 6px 0;
 }
 
 .nautilus-window.background.csd notebook scrolledwindow > .view:not(:selected):not(:hover):not(:checked), .nautilus-window.background.csd notebook window#gnome-system-monitor.background.csd > box.vertical > stack > box.vertical > scrolledwindow > treeview.view:not(:selected):not(:hover):not(:checked):not(.progressbar):not(.trough), .nautilus-window.background.csd notebook filechooser stack.view scrolledwindow > treeview.view:not(:selected):not(:hover):not(:checked), filechooser stack.view .nautilus-window.background.csd notebook scrolledwindow > treeview.view:not(:selected):not(:hover):not(:checked) {

@@ -29,22 +29,37 @@
       color: $titlebar-text-secondary;
 
       > viewport.frame {
-        margin: 0 $space-size * 2.5 $modal-radius + $space-size 0;
-        border-radius: 0 $modal-radius + $space-size  $modal-radius + $space-size 0;
-        background-color: $primary;
-        color: on($primary);
+        @if $topbar == 'dark' and $variant == 'light' {
+          margin: 0;
+          background-color: transparent;
+          color: $titlebar-text-secondary;
+        } @else {
+          background-color: $primary;
+          color: on($primary);
+          margin: 0 $space-size * 2.5 $modal-radius + $space-size 0;
+          border-radius: 0 $modal-radius + $space-size  $modal-radius + $space-size 0;
+        }
 
         > list {
           background: none;
           padding: $space-size;
           padding-right: $space-size + 2px;
 
+          @if $topbar == 'dark' and $variant == 'light' {
+            padding-right: $space-size;
+          } @else {
+            padding-right: $space-size + 2px;
+          }
+
           > row.activatable {
-            color: on($primary);
             border-radius: $modal-radius;
 
             &, image.sidebar-icon, label.sidebar-label, button.sidebar-button {
-              color: on($primary);
+              @if $topbar == 'dark' and $variant == 'light' {
+                color: $titlebar-text-secondary;
+              } @else {
+                color: on($primary);
+              }
             }
 
             // button.sidebar-button {
@@ -110,7 +125,7 @@
         border-radius: $modal-radius + $space-size;
 
         @if $variant == 'light' and $topbar == 'dark' {
-          margin: 0 $window-radius $window-radius 0;
+          margin: 0 $space-size $space-size 0;
         }
       }
 

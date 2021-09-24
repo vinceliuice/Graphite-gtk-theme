@@ -134,7 +134,7 @@ $primary:                               theme(color);
 $drop_target_color:                     $deep-orange-400;
 $indicator:                             theme(color);
 $titlebar-indicator:                    if($variant == 'dark', currentColor, $primary);
-$inverse-indicator:                     if($theme == 'grey', white, $primary);
+$inverse-indicator:                     if($theme == 'default', white, $primary);
 
 $background:                            if($variant == 'light', background(a), background(g));
 $surface:                               if($variant == 'light', background(a), background(h));
@@ -148,6 +148,7 @@ $scrim-alt:                             background(g);
 $scrim-inverse:                         rgba(white, 0.1);
 $titlebar:                              if($topbar == 'dark', background(g), background(a));
 $titlebar-backdrop:                     if($topbar == 'dark', background(g), background(a));
+$titlebar-primary:                      if($topbar == 'dark' and $theme == 'default', lighten($primary, 15%), $primary);
 $popover:                               $base;
 $panel-solid:                           if($topbar == 'dark', background(e), background(c)); // for Unity panel which doesn't allow translucent colors
 $panel:                                 rgba($panel-solid, $panel_opacity);
