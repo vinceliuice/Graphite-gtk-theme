@@ -29,11 +29,10 @@ Run the following commands in the terminal:
 -t, --theme VARIANT...  Specify theme color variant(s) [default|purple|pink|red|orange|yellow|green|teal|blue|all] (Default: grey)
 -c, --color VARIANT...  Specify color variant(s) [standard|light|dark] (Default: All variants)
 -s, --size VARIANT...   Specify size variant [standard|compact] (Default: standard variant)
---tweaks                Specify versions for tweaks [solid|compact|black] (Options can mix use)
-                        1. solid:    no transparency panel variant
-                        2. compact:  no floating panel variant
-                        3. black:    full black variant
-                        4. primary:  Change radio icon checked color to primary theme color (Default is Green)
+--tweaks                Specify versions for tweaks [nord|black|rimless] (nord can not mix use with black !)
+                        1. nord:     Nord color version
+                        2. black:    Blackness color version
+                        3. rimless:  Remove the 2px outline about windows and menus
 -h, --help              Show help
 ```
 
