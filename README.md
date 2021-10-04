@@ -38,6 +38,8 @@ Run the following commands in the terminal:
 
 > For more information, run: `./install.sh --help`
 
+![Tweaks](tweaks.png?raw=true)
+
 ### Flatpak Installation
 
 Automatically install your host GTK+ theme as a Flatpak. Use this:
