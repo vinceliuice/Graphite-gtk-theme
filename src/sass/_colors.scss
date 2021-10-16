@@ -135,6 +135,7 @@ $drop_target_color:                     $deep-orange-400;
 $indicator:                             theme(color);
 $titlebar-indicator:                    if($variant == 'dark', currentColor, $primary);
 $inverse-indicator:                     if($theme == 'default', white, $primary);
+$applet-primary:                        if($topbar == 'dark' and $theme == 'default' and $variant == 'light', #DDDDDD, $primary);
 
 $background:                            if($variant == 'light', background(a), background(g));
 $surface:                               if($variant == 'light', background(a), background(h));

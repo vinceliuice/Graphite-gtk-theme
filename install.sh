@@ -150,6 +150,26 @@ install() {
     cp -r "${SRC_DIR}/main/gtk-4.0/gtk${color}.css"                                          "${THEME_DIR}/gtk-4.0/gtk.css"
     cp -r "${SRC_DIR}/main/gtk-4.0/gtk-dark.css"                                             "${THEME_DIR}/gtk-4.0"
   fi
+
+  mkdir -p                                                                                   "${THEME_DIR}/cinnamon"
+  cp -r "${SRC_DIR}/assets/cinnamon/common-assets"                                           "${THEME_DIR}/cinnamon/assets"
+  cp -r "${SRC_DIR}/assets/cinnamon/assets${ELSE_DARK:-}/"*'.svg'                            "${THEME_DIR}/cinnamon/assets"
+  cp -r "${SRC_DIR}/assets/cinnamon/theme${theme}/"*'.svg'                                   "${THEME_DIR}/cinnamon/assets"
+
+  if [[ "$tweaks" == 'true' ]]; then
+    sassc $SASSC_OPT "${SRC_DIR}/main/cinnamon/cinnamon${color}.scss"                        "${THEME_DIR}/cinnamon/cinnamon.css"
+  else
+    cp -r "${SRC_DIR}/main/cinnamon/cinnamon${color}.css"                                    "${THEME_DIR}/cinnamon/cinnamon.css"
+  fi
+
+  cp -r "${SRC_DIR}/assets/cinnamon/thumbnail${color}.png"                                   "${THEME_DIR}/cinnamon/thumbnail.png"
+
+  mkdir -p                                                                                   "${THEME_DIR}/metacity-1"
+  cp -r "${SRC_DIR}/main/metacity-1/metacity-theme-2${color}.xml"                            "${THEME_DIR}/metacity-1/metacity-theme-2.xml"
+  cp -r "${SRC_DIR}/main/metacity-1/metacity-theme-3.xml"                                    "${THEME_DIR}/metacity-1"
+  cp -r "${SRC_DIR}/assets/metacity-1/assets"                                                "${THEME_DIR}/metacity-1"
+  cp -r "${SRC_DIR}/assets/metacity-1/thumbnail${ELSE_DARK:-}.png"                           "${THEME_DIR}/metacity-1/thumbnail.png"
+  cd "${THEME_DIR}/metacity-1" && ln -s metacity-theme-2.xml metacity-theme-1.xml
 }
 
 themes=()
