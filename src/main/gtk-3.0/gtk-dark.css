@@ -2565,7 +2565,7 @@ searchbar > revealer > box {
 }
 
 .titlebar stackswitcher.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action).text-button:checked {
-  background-color: white;
+  background-color: #E0E0E0;
   color: rgba(0, 0, 0, 0.87);
 }
 
@@ -2743,7 +2743,7 @@ headerbar.windowhandle viewswitcher button:not(.titlebutton):not(.suggested-acti
 }
 
 headerbar.windowhandle viewswitcher button:not(.titlebutton):not(.suggested-action):not(.destructive-action):checked {
-  background-color: white;
+  background-color: #E0E0E0;
   color: rgba(0, 0, 0, 0.87);
 }
 
@@ -3172,11 +3172,11 @@ popover.background, .csd popover.background {
 }
 
 popover.background > stack {
-  margin: -4px;
+  margin: 0;
 }
 
 popover.background > toolbar {
-  margin: -2px;
+  margin: 0;
 }
 
 popover.background > list,
@@ -7045,13 +7045,13 @@ window.background.csd.unified > decoration,
 window.background.csd.unified > decoration-overlay {
   border-radius: 12px;
   border: none;
-  box-shadow: 0 0 0 2px #E0E0E0, 0 2px 2.4px -1px rgba(0, 0, 0, 0.2), 0 4px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 0 16px transparent;
+  box-shadow: 0 2px 2.4px -1px rgba(0, 0, 0, 0.2), 0 4px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 0 0 2px #E0E0E0, 0 0 16px transparent;
 }
 
 window.background.csd.unified:backdrop,
 window.background.csd.unified > decoration:backdrop,
 window.background.csd.unified > decoration-overlay:backdrop {
-  box-shadow: 0 0 0 2px #E0E0E0, 0 2px 2px -2px rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.24), 0 1px 2px -0.6px rgba(0, 0, 0, 0.17), 0 0 16px transparent;
+  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.24), 0 1px 2px -0.6px rgba(0, 0, 0, 0.17), 0 0 0 2px #E0E0E0, 0 0 16px transparent;
 }
 
 window.background.csd.unified.tiled > decoration-overlay, window.background.csd.unified.tiled-top > decoration-overlay, window.background.csd.unified.tiled-right > decoration-overlay, window.background.csd.unified.tiled-bottom > decoration-overlay, window.background.csd.unified.tiled-left > decoration-overlay, window.background.csd.unified.maximized > decoration-overlay, window.background.csd.unified.fullscreen > decoration-overlay {

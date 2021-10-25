@@ -2012,10 +2012,10 @@ window.background.csd.unified {
         border: 2px solid $primary;
       } @else {
         border: none;
-        box-shadow: 0 0 0 2px $primary, $shadow-z4, 0 0 16px transparent;
+        box-shadow: $shadow-z4, 0 0 0 2px $primary, 0 0 16px transparent;
 
         &:backdrop {
-          box-shadow: 0 0 0 2px $primary, $shadow-z1, 0 0 16px transparent;
+          box-shadow: $shadow-z1, 0 0 0 2px $primary, 0 0 16px transparent;
         }
       }
     }

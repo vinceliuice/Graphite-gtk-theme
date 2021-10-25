@@ -1890,14 +1890,6 @@ popover.background:backdrop > contents {
   border: 2px solid #333333;
 }
 
-popover.background > contents > stack {
-  margin: -4px;
-}
-
-popover.background > contents > toolbar {
-  margin: -2px;
-}
-
 popover.background > contents > list,
 popover.background > contents > .view,
 popover.background > contents > toolbar {

@@ -3172,11 +3172,11 @@ popover.background, .csd popover.background {
 }
 
 popover.background > stack {
-  margin: -4px;
+  margin: 0;
 }
 
 popover.background > toolbar {
-  margin: -2px;
+  margin: 0;
 }
 
 popover.background > list,
