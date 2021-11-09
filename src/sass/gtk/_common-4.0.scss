@@ -835,9 +835,9 @@ spinbutton {
         color: $text-secondary;
       }
 
-      &.up { margin: 0 $space-size/2; }
+      &.up { margin: 0 $space-size / 2; }
 
-      &.down { margin: 0 $space-size/2; }
+      &.down { margin: 0 $space-size / 2; }
     }
   }
 

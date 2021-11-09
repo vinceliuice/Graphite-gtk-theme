@@ -4747,6 +4747,10 @@ stacksidebar.sidebar row:selected {
   font-weight: 500;
 }
 
+stacksidebar.sidebar row:selected label, stacksidebar.sidebar row:selected image {
+  color: white;
+}
+
 stacksidebar.sidebar row + row {
   margin-top: 3px;
 }
@@ -5251,16 +5255,19 @@ cursor-handle.insertion-cursor:dir(ltr), cursor-handle.insertion-cursor:dir(rtl)
 
 stackswitcher {
   min-height: 0;
-  padding: 0;
+  padding: 2px;
   margin: 6px 0;
   border-radius: 9999px;
-  background-color: alpha(currentColor, 0.05);
+  background-color: transparent;
+  border: 2px solid #333333;
 }
 
 stackswitcher.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action) {
   margin: 0 0;
   border-radius: 9999px;
   background-color: transparent;
+  min-height: 20px;
+  padding: 5px 10px;
 }
 
 stackswitcher.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action).text-button {

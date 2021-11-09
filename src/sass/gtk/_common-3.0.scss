@@ -3141,6 +3141,10 @@ stacksidebar.sidebar {
       background-color: $primary;
       color: on($primary);
       font-weight: 500;
+
+      label, image {
+        color: on($primary);
+      }
     }
 
     + row { margin-top: $space-size / 2; }
@@ -3734,15 +3738,18 @@ cursor-handle {
 
 stackswitcher {
   min-height: 0;
-  padding: 0;
+  padding: 2px;
   margin: $space-size 0;
   border-radius: $circular-radius;
-  background-color: $overlay-normal;
+  background-color: transparent;
+  border: 2px solid $primary;
 
   &.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action) {
     margin: 0 0;
     border-radius: $circular-radius;
     background-color: transparent;
+    min-height: 20px;
+    padding: ($medium-size - 26px) / 2 ($medium-size - 16px) / 2;
 
     &.text-button { min-width: 100px; }
 
