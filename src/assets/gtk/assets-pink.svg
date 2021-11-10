@@ -6,7 +6,7 @@
    viewBox="0 0 400 200"
    id="svg200"
    sodipodi:docname="assets-pink.svg"
-   inkscape:version="1.1 (c4e8f9ed74, 2021-05-24)"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20, custom)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -21,9 +21,9 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      showgrid="false"
-     inkscape:zoom="1.1791006"
-     inkscape:cx="219.65896"
-     inkscape:cy="114.9181"
+     inkscape:zoom="2.3582012"
+     inkscape:cx="120.00672"
+     inkscape:cy="65.728064"
      inkscape:window-width="1920"
      inkscape:window-height="1012"
      inkscape:window-x="0"
@@ -58,22 +58,6 @@
          stop-opacity=".87"
          offset="1"
          id="stop5" />
-    </linearGradient>
-    <linearGradient
-       id="color-text-secondary-disabled">
-      <stop
-         stop-color="#000000"
-         stop-opacity=".26"
-         offset="1"
-         id="stop8" />
-    </linearGradient>
-    <linearGradient
-       id="color-text-secondary-disabled-dark">
-      <stop
-         stop-color="#FFFFFF"
-         stop-opacity=".3"
-         offset="1"
-         id="stop11" />
     </linearGradient>
     <linearGradient
        id="color-primary-dark">
@@ -122,52 +106,6 @@
          id="stop29" />
     </linearGradient>
     <g
-       id="base-scale-slider">
-      <rect
-         width="24"
-         height="24"
-         fill="none"
-         id="rect32" />
-      <circle
-         cx="12"
-         cy="12"
-         r="6"
-         id="circle34" />
-    </g>
-    <g
-       id="base-scale-horz-marks-before-slider">
-      <rect
-         width="24"
-         height="24"
-         fill="none"
-         id="rect37" />
-      <path
-         transform="rotate(45 12 12)"
-         d="m6 6h6a6 6 0 1 1-6 6z"
-         id="path39" />
-    </g>
-    <g
-       id="base-scale-vert-marks-after-slider">
-      <use
-         transform="rotate(90 12 12)"
-         xlink:href="#base-scale-horz-marks-before-slider"
-         id="use42" />
-    </g>
-    <g
-       id="base-scale-horz-marks-after-slider">
-      <use
-         transform="rotate(180 12 12)"
-         xlink:href="#base-scale-horz-marks-before-slider"
-         id="use45" />
-    </g>
-    <g
-       id="base-scale-vert-marks-before-slider">
-      <use
-         transform="rotate(270 12 12)"
-         xlink:href="#base-scale-horz-marks-before-slider"
-         id="use48" />
-    </g>
-    <g
        id="base-selectionmode-checkbox">
       <rect
          width="40"
@@ -195,63 +133,6 @@
        gradientUnits="userSpaceOnUse"
        xlink:href="#color-background" />
     <linearGradient
-       id="linearGradient978"
-       x2="24"
-       gradientUnits="userSpaceOnUse"
-       xlink:href="#color-primary-dark" />
-    <linearGradient
-       id="linearGradient980"
-       x2="24"
-       gradientUnits="userSpaceOnUse"
-       xlink:href="#color-background" />
-    <linearGradient
-       id="linearGradient982"
-       x2="24"
-       gradientUnits="userSpaceOnUse"
-       xlink:href="#color-text-secondary-disabled" />
-    <linearGradient
-       id="linearGradient990"
-       x1="-3.5527e-15"
-       x2="24"
-       gradientUnits="userSpaceOnUse"
-       xlink:href="#color-primary-dark" />
-    <linearGradient
-       id="linearGradient992"
-       x1="-3.5527e-15"
-       x2="24"
-       gradientUnits="userSpaceOnUse"
-       xlink:href="#color-background" />
-    <linearGradient
-       id="linearGradient994"
-       x1="-3.5527e-15"
-       x2="24"
-       gradientUnits="userSpaceOnUse"
-       xlink:href="#color-text-secondary-disabled" />
-    <linearGradient
-       id="linearGradient996"
-       x1="-2.6324e-15"
-       x2="24"
-       y1="-3.5527e-15"
-       y2="-3.5527e-15"
-       gradientUnits="userSpaceOnUse"
-       xlink:href="#color-primary-dark" />
-    <linearGradient
-       id="linearGradient998"
-       x1="-2.6324e-15"
-       x2="24"
-       y1="-3.5527e-15"
-       y2="-3.5527e-15"
-       gradientUnits="userSpaceOnUse"
-       xlink:href="#color-background" />
-    <linearGradient
-       id="linearGradient1000"
-       x1="-2.6324e-15"
-       x2="24"
-       y1="-3.5527e-15"
-       y2="-3.5527e-15"
-       gradientUnits="userSpaceOnUse"
-       xlink:href="#color-text-secondary-disabled" />
-    <linearGradient
        id="linearGradient1008"
        x2="40"
        gradientUnits="userSpaceOnUse"
@@ -263,219 +144,130 @@
        gradientUnits="userSpaceOnUse"
        xlink:href="#color-background-dark" />
     <linearGradient
-       id="linearGradient1043"
-       x2="24"
-       gradientUnits="userSpaceOnUse"
-       xlink:href="#color-primary-light" />
-    <linearGradient
-       id="linearGradient1045"
-       x2="24"
-       gradientUnits="userSpaceOnUse"
-       xlink:href="#color-background-dark" />
-    <linearGradient
-       id="linearGradient1047"
-       x2="24"
-       gradientUnits="userSpaceOnUse"
-       xlink:href="#color-text-secondary-disabled-dark" />
-    <linearGradient
-       id="linearGradient1055"
-       x1="-3.5527e-15"
-       x2="24"
-       gradientUnits="userSpaceOnUse"
-       xlink:href="#color-primary-light" />
-    <linearGradient
-       id="linearGradient1057"
-       x1="-3.5527e-15"
-       x2="24"
-       gradientUnits="userSpaceOnUse"
-       xlink:href="#color-background-dark" />
-    <linearGradient
-       id="linearGradient1059"
-       x1="-3.5527e-15"
-       x2="24"
-       gradientUnits="userSpaceOnUse"
-       xlink:href="#color-text-secondary-disabled-dark" />
-    <linearGradient
-       id="linearGradient1061"
-       x1="-2.6324e-15"
-       x2="24"
-       y1="-3.5527e-15"
-       y2="-3.5527e-15"
-       gradientUnits="userSpaceOnUse"
-       xlink:href="#color-primary-light" />
-    <linearGradient
-       id="linearGradient1063"
-       x1="-2.6324e-15"
-       x2="24"
-       y1="-3.5527e-15"
-       y2="-3.5527e-15"
-       gradientUnits="userSpaceOnUse"
-       xlink:href="#color-background-dark" />
-    <linearGradient
-       id="linearGradient1065"
-       x1="-2.6324e-15"
-       x2="24"
-       y1="-3.5527e-15"
-       y2="-3.5527e-15"
-       gradientUnits="userSpaceOnUse"
-       xlink:href="#color-text-secondary-disabled-dark" />
-    <linearGradient
        id="linearGradient1073"
        x2="40"
        gradientUnits="userSpaceOnUse"
        xlink:href="#color-primary-light" />
     <linearGradient
-       id="linearGradient1064"
-       x1="72"
-       x2="192"
-       y1="260"
-       y2="260"
+       inkscape:collect="always"
+       xlink:href="#primary-dark"
+       id="linearGradient991"
        gradientUnits="userSpaceOnUse"
-       xlink:href="#color-primary-light" />
+       x2="24" />
     <linearGradient
-       id="linearGradient1066"
-       x1="72"
-       x2="192"
-       y1="260"
-       y2="260"
+       inkscape:collect="always"
+       xlink:href="#color-base"
+       id="linearGradient1298"
        gradientUnits="userSpaceOnUse"
-       xlink:href="#color-primary-dark" />
+       x1="4"
+       y1="11.99863"
+       x2="19.997259"
+       y2="11.99863" />
+    <linearGradient
+       id="color-base"
+       x2="40"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         stop-color="#FFFFFF"
+         offset="1"
+         id="stop26-3" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#color-primary-dark"
+       id="linearGradient1300"
+       gradientUnits="userSpaceOnUse"
+       x1="6"
+       y1="12"
+       x2="18"
+       y2="12" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#primary-dark"
+       id="linearGradient1401"
+       gradientUnits="userSpaceOnUse"
+       x2="24" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#primary-dark"
+       id="linearGradient1843"
+       gradientUnits="userSpaceOnUse"
+       x2="24" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#color-base-dark"
+       id="linearGradient1304"
+       gradientUnits="userSpaceOnUse"
+       x1="4"
+       y1="11.99863"
+       x2="19.997259"
+       y2="11.99863" />
+    <linearGradient
+       id="color-base-dark"
+       x2="40"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         stop-color="#2c2c2c"
+         offset="1"
+         id="stop29-1" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#color-primary-light"
+       id="linearGradient3090"
+       x1="6"
+       y1="12"
+       x2="18"
+       y2="12"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#primary-dark"
+       id="linearGradient1837"
+       gradientUnits="userSpaceOnUse"
+       x2="24" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#color-base"
+       id="linearGradient1292"
+       gradientUnits="userSpaceOnUse"
+       x1="4"
+       y1="11.99863"
+       x2="19.997259"
+       y2="11.99863" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#color-primary-dark"
+       id="linearGradient1294"
+       gradientUnits="userSpaceOnUse"
+       x1="6"
+       y1="12"
+       x2="18"
+       y2="12" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#color-base-dark"
+       id="linearGradient1296"
+       gradientUnits="userSpaceOnUse"
+       x1="4"
+       y1="11.99863"
+       x2="19.997259"
+       y2="11.99863" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#color-primary-light"
+       id="linearGradient1299"
+       gradientUnits="userSpaceOnUse"
+       x1="6"
+       y1="12"
+       x2="18"
+       y2="12" />
   </defs>
   <rect
      width="200"
      height="200"
      fill="url(#linearGradient976)"
      id="rect85" />
-  <g
-     id="scale-slider"
-     transform="translate(8,8)">
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient978)"
-       xlink:href="#base-scale-slider"
-       id="use87" />
-  </g>
-  <g
-     id="scale-slider-disabled"
-     transform="translate(8,40)">
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient980)"
-       xlink:href="#base-scale-slider"
-       id="use90" />
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient982)"
-       xlink:href="#base-scale-slider"
-       id="use92" />
-  </g>
-  <g
-     id="scale-horz-marks-before-slider"
-     transform="translate(40,8)">
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient978)"
-       xlink:href="#base-scale-horz-marks-before-slider"
-       id="use95" />
-  </g>
-  <g
-     id="scale-horz-marks-before-slider-disabled"
-     transform="translate(40,40)">
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient980)"
-       xlink:href="#base-scale-horz-marks-before-slider"
-       id="use98" />
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient982)"
-       xlink:href="#base-scale-horz-marks-before-slider"
-       id="use100" />
-  </g>
-  <g
-     id="scale-horz-marks-after-slider"
-     transform="translate(72,8)">
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient990)"
-       xlink:href="#base-scale-horz-marks-after-slider"
-       id="use103" />
-  </g>
-  <g
-     id="scale-horz-marks-after-slider-disabled"
-     transform="translate(72,40)">
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient992)"
-       xlink:href="#base-scale-horz-marks-after-slider"
-       id="use106" />
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient994)"
-       xlink:href="#base-scale-horz-marks-after-slider"
-       id="use108" />
-  </g>
-  <g
-     id="scale-vert-marks-before-slider"
-     transform="translate(104,8)">
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient996)"
-       xlink:href="#base-scale-vert-marks-before-slider"
-       id="use111" />
-  </g>
-  <g
-     id="scale-vert-marks-before-slider-disabled"
-     transform="translate(104,40)">
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient998)"
-       xlink:href="#base-scale-vert-marks-before-slider"
-       id="use114" />
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient1000)"
-       xlink:href="#base-scale-vert-marks-before-slider"
-       id="use116" />
-  </g>
-  <g
-     id="scale-vert-marks-after-slider"
-     transform="translate(136,8)">
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient978)"
-       xlink:href="#base-scale-vert-marks-after-slider"
-       id="use119" />
-  </g>
-  <g
-     id="scale-vert-marks-after-slider-disabled"
-     transform="translate(136,40)">
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient980)"
-       xlink:href="#base-scale-vert-marks-after-slider"
-       id="use122" />
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient982)"
-       xlink:href="#base-scale-vert-marks-after-slider"
-       id="use124" />
-  </g>
   <g
      id="selectionmode-checkbox-unchecked"
      transform="translate(8,72)">
@@ -509,136 +301,6 @@
      fill="url(#linearGradient1041)"
      id="rect135" />
   <g
-     id="scale-slider-dark"
-     transform="translate(208,8)">
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient1043)"
-       xlink:href="#base-scale-slider"
-       id="use137" />
-  </g>
-  <g
-     id="scale-slider-disabled-dark"
-     transform="translate(208,40)">
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient1045)"
-       xlink:href="#base-scale-slider"
-       id="use140" />
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient1047)"
-       xlink:href="#base-scale-slider"
-       id="use142" />
-  </g>
-  <g
-     id="scale-horz-marks-before-slider-dark"
-     transform="translate(240,8)">
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient1043)"
-       xlink:href="#base-scale-horz-marks-before-slider"
-       id="use145" />
-  </g>
-  <g
-     id="scale-horz-marks-before-slider-disabled-dark"
-     transform="translate(240,40)">
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient1045)"
-       xlink:href="#base-scale-horz-marks-before-slider"
-       id="use148" />
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient1047)"
-       xlink:href="#base-scale-horz-marks-before-slider"
-       id="use150" />
-  </g>
-  <g
-     id="scale-horz-marks-after-slider-dark"
-     transform="translate(272,8)">
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient1055)"
-       xlink:href="#base-scale-horz-marks-after-slider"
-       id="use153" />
-  </g>
-  <g
-     id="scale-horz-marks-after-slider-disabled-dark"
-     transform="translate(272,40)">
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient1057)"
-       xlink:href="#base-scale-horz-marks-after-slider"
-       id="use156" />
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient1059)"
-       xlink:href="#base-scale-horz-marks-after-slider"
-       id="use158" />
-  </g>
-  <g
-     id="scale-vert-marks-before-slider-dark"
-     transform="translate(304,8)">
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient1061)"
-       xlink:href="#base-scale-vert-marks-before-slider"
-       id="use161" />
-  </g>
-  <g
-     id="scale-vert-marks-before-slider-disabled-dark"
-     transform="translate(304,40)">
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient1063)"
-       xlink:href="#base-scale-vert-marks-before-slider"
-       id="use164" />
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient1065)"
-       xlink:href="#base-scale-vert-marks-before-slider"
-       id="use166" />
-  </g>
-  <g
-     id="scale-vert-marks-after-slider-dark"
-     transform="translate(336,8)">
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient1043)"
-       xlink:href="#base-scale-vert-marks-after-slider"
-       id="use169" />
-  </g>
-  <g
-     id="scale-vert-marks-after-slider-disabled-dark"
-     transform="translate(336,40)">
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient1045)"
-       xlink:href="#base-scale-vert-marks-after-slider"
-       id="use172" />
-    <use
-       width="100%"
-       height="100%"
-       fill="url(#linearGradient1047)"
-       xlink:href="#base-scale-vert-marks-after-slider"
-       id="use174" />
-  </g>
-  <g
      id="selectionmode-checkbox-unchecked-dark"
      transform="translate(208,72)">
     <use
@@ -664,4 +326,180 @@
        xlink:href="#base-selectionmode-checkmark"
        id="use182" />
   </g>
+  <g
+     id="scale-horz-marks-before-slider"
+     transform="translate(20,10)">
+    <g
+       id="use95"
+       style="fill:url(#linearGradient991)">
+      <rect
+         width="24"
+         height="24"
+         fill="none"
+         id="rect985"
+         x="0"
+         y="0" />
+      <path
+         transform="rotate(45,12,12)"
+         d="m 6,6 h 6 a 6,6 0 1 1 -6,6 z"
+         id="path987"
+         style="fill:url(#linearGradient1292);fill-opacity:1;stroke:url(#linearGradient1294);stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
+    </g>
+  </g>
+  <use
+     x="0"
+     y="0"
+     xlink:href="#scale-horz-marks-before-slider"
+     id="scale-horz-marks-after-slider"
+     transform="matrix(1,0,0,-1,35,44.000002)"
+     width="100%"
+     height="100%" />
+  <use
+     x="0"
+     y="0"
+     xlink:href="#scale-horz-marks-before-slider"
+     id="scale-vert-marks-before-slider"
+     transform="rotate(-90,67,-13)"
+     width="100%"
+     height="100%" />
+  <use
+     x="0"
+     y="0"
+     xlink:href="#scale-horz-marks-before-slider"
+     id="scale-vert-marks-after-slider"
+     transform="rotate(90,84.5,74.5)"
+     width="100%"
+     height="100%" />
+  <g
+     id="scale-horz-marks-before-slider-disabled"
+     transform="translate(20,38)">
+    <g
+       id="g1387"
+       style="fill:url(#linearGradient1401)">
+      <rect
+         width="24"
+         height="24"
+         fill="none"
+         id="rect1383"
+         x="0"
+         y="0" />
+      <path
+         transform="rotate(45,12,12)"
+         d="m 6,6 h 6 a 6,6 0 1 1 -6,6 z"
+         id="path1385"
+         style="fill:url(#linearGradient1298);fill-opacity:1;stroke:url(#linearGradient1300);stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.25;paint-order:stroke fill markers" />
+    </g>
+  </g>
+  <use
+     x="0"
+     y="0"
+     xlink:href="#scale-horz-marks-before-slider-disabled"
+     id="scale-horz-marks-after-slider-disabled"
+     transform="matrix(1,0,0,-1,35,99.999999)"
+     width="100%"
+     height="100%" />
+  <use
+     x="0"
+     y="0"
+     xlink:href="#scale-horz-marks-before-slider-disabled"
+     id="scale-vert-marks-before-slider-disabled"
+     transform="rotate(-90,67,15)"
+     width="100%"
+     height="100%" />
+  <use
+     x="0"
+     y="0"
+     xlink:href="#scale-horz-marks-before-slider-disabled"
+     id="scale-vert-marks-after-slider-disabled"
+     transform="rotate(90,84.5,102.5)"
+     width="100%"
+     height="100%" />
+  <g
+     id="scale-horz-marks-before-slider-dark"
+     transform="translate(224,10)">
+    <g
+       id="g1821"
+       style="fill:url(#linearGradient1843)">
+      <rect
+         width="24"
+         height="24"
+         fill="none"
+         id="rect1817"
+         x="0"
+         y="0" />
+      <path
+         transform="rotate(45,12,12)"
+         d="m 6,6 h 6 a 6,6 0 1 1 -6,6 z"
+         id="path1819"
+         style="fill:url(#linearGradient1296);fill-opacity:1;stroke:url(#linearGradient1299);stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
+    </g>
+  </g>
+  <g
+     id="scale-horz-marks-before-slider-disabled-dark"
+     transform="translate(224,38)">
+    <g
+       id="g1829"
+       style="fill:url(#linearGradient1837)">
+      <rect
+         width="24"
+         height="24"
+         fill="none"
+         id="rect1825"
+         x="0"
+         y="0" />
+      <path
+         transform="rotate(45,12,12)"
+         d="m 6,6 h 6 a 6,6 0 1 1 -6,6 z"
+         id="path1827"
+         style="fill:url(#linearGradient1304);fill-opacity:1;stroke:url(#linearGradient3090);stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.3;paint-order:stroke fill markers" />
+    </g>
+  </g>
+  <use
+     x="0"
+     y="0"
+     xlink:href="#scale-horz-marks-before-slider-dark"
+     id="scale-horz-marks-after-slider-dark"
+     transform="rotate(180,253.5,22)"
+     width="100%"
+     height="100%" />
+  <use
+     x="0"
+     y="0"
+     xlink:href="#scale-horz-marks-before-slider-disabled-dark"
+     id="scale-horz-marks-after-slider-disabled-dark"
+     transform="rotate(180,253.5,50)"
+     width="100%"
+     height="100%" />
+  <use
+     x="0"
+     y="0"
+     xlink:href="#scale-horz-marks-before-slider-dark"
+     id="scale-vert-marks-before-slider-dark"
+     transform="rotate(-90,271,-13)"
+     width="100%"
+     height="100%" />
+  <use
+     x="0"
+     y="0"
+     xlink:href="#scale-horz-marks-before-slider-disabled-dark"
+     id="scale-vert-marks-before-slider-disabled-dark"
+     transform="rotate(-90,271,15)"
+     width="100%"
+     height="100%" />
+  <use
+     x="0"
+     y="0"
+     xlink:href="#scale-horz-marks-before-slider-dark"
+     id="scale-vert-marks-after-slider-dark"
+     transform="rotate(90,288.5,74.5)"
+     width="100%"
+     height="100%" />
+  <use
+     x="0"
+     y="0"
+     xlink:href="#scale-horz-marks-before-slider-disabled-dark"
+     id="scale-vert-marks-after-slider-disabled-dark"
+     transform="rotate(90,288.5,102.5)"
+     width="100%"
+     height="100%" />
 </svg>

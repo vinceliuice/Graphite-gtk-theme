@@ -6,7 +6,7 @@ OPTIPNG="$(command -v optipng)" || true
 
 INDEX="assets.txt"
 
-for theme in '' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-grey'; do
+for theme in '' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-blue' '-teal'; do
 
 ASSETS_DIR="assets${theme}"
 SRC_FILE="assets${theme}.svg"

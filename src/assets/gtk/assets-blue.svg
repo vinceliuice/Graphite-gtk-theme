@@ -5,7 +5,7 @@
    version="1.1"
    viewBox="0 0 400 200"
    id="svg200"
-   sodipodi:docname="assets-teal.svg"
+   sodipodi:docname="assets-blue.svg"
    inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20, custom)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -20,16 +20,23 @@
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
-     showgrid="false"
+     showgrid="true"
      inkscape:zoom="1.6675001"
-     inkscape:cx="154.72263"
-     inkscape:cy="93.853071"
-     inkscape:window-width="1480"
-     inkscape:window-height="669"
-     inkscape:window-x="201"
-     inkscape:window-y="151"
+     inkscape:cx="198.50074"
+     inkscape:cy="76.761616"
+     inkscape:window-width="1484"
+     inkscape:window-height="974"
+     inkscape:window-x="564"
+     inkscape:window-y="241"
      inkscape:window-maximized="0"
-     inkscape:current-layer="svg200" />
+     inkscape:current-layer="svg200"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-nodes="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid1334" />
+  </sodipodi:namedview>
   <defs
      id="defs83">
     <linearGradient
@@ -62,14 +69,14 @@
     <linearGradient
        id="color-primary-dark">
       <stop
-         stop-color="#009688"
+         stop-color="#1A73E8"
          offset="1"
          id="stop14" />
     </linearGradient>
     <linearGradient
        id="color-primary-light">
       <stop
-         stop-color="#4DB6AC"
+         stop-color="#3281ea"
          offset="1"
          id="stop17" />
     </linearGradient>
@@ -157,12 +164,12 @@
     <linearGradient
        inkscape:collect="always"
        xlink:href="#color-base"
-       id="linearGradient1298"
-       gradientUnits="userSpaceOnUse"
+       id="linearGradient2319"
        x1="4"
        y1="11.99863"
        x2="19.997259"
-       y2="11.99863" />
+       y2="11.99863"
+       gradientUnits="userSpaceOnUse" />
     <linearGradient
        id="color-base"
        x2="40"
@@ -174,13 +181,13 @@
     </linearGradient>
     <linearGradient
        inkscape:collect="always"
-       xlink:href="#color-primary-dark"
-       id="linearGradient1300"
-       gradientUnits="userSpaceOnUse"
+       xlink:href="#color-primary-light"
+       id="linearGradient2345"
        x1="6"
        y1="12"
        x2="18"
-       y2="12" />
+       y2="12"
+       gradientUnits="userSpaceOnUse" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#primary-dark"
@@ -196,12 +203,12 @@
     <linearGradient
        inkscape:collect="always"
        xlink:href="#color-base-dark"
-       id="linearGradient1304"
-       gradientUnits="userSpaceOnUse"
+       id="linearGradient3060"
        x1="4"
        y1="11.99863"
        x2="19.997259"
-       y2="11.99863" />
+       y2="11.99863"
+       gradientUnits="userSpaceOnUse" />
     <linearGradient
        id="color-base-dark"
        x2="40"
@@ -229,7 +236,7 @@
     <linearGradient
        inkscape:collect="always"
        xlink:href="#color-base"
-       id="linearGradient1292"
+       id="linearGradient1298"
        gradientUnits="userSpaceOnUse"
        x1="4"
        y1="11.99863"
@@ -238,7 +245,16 @@
     <linearGradient
        inkscape:collect="always"
        xlink:href="#color-primary-dark"
-       id="linearGradient1294"
+       id="linearGradient1300"
+       gradientUnits="userSpaceOnUse"
+       x1="6"
+       y1="12"
+       x2="18"
+       y2="12" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#color-primary-dark"
+       id="linearGradient1302"
        gradientUnits="userSpaceOnUse"
        x1="6"
        y1="12"
@@ -247,21 +263,12 @@
     <linearGradient
        inkscape:collect="always"
        xlink:href="#color-base-dark"
-       id="linearGradient1296"
+       id="linearGradient1304"
        gradientUnits="userSpaceOnUse"
        x1="4"
        y1="11.99863"
        x2="19.997259"
        y2="11.99863" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#color-primary-light"
-       id="linearGradient1299"
-       gradientUnits="userSpaceOnUse"
-       x1="6"
-       y1="12"
-       x2="18"
-       y2="12" />
   </defs>
   <rect
      width="200"
@@ -343,7 +350,7 @@
          transform="rotate(45,12,12)"
          d="m 6,6 h 6 a 6,6 0 1 1 -6,6 z"
          id="path987"
-         style="fill:url(#linearGradient1292);fill-opacity:1;stroke:url(#linearGradient1294);stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
+         style="fill:url(#linearGradient1298);fill-opacity:1;stroke:url(#linearGradient1300);stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
     </g>
   </g>
   <use
@@ -387,7 +394,7 @@
          transform="rotate(45,12,12)"
          d="m 6,6 h 6 a 6,6 0 1 1 -6,6 z"
          id="path1385"
-         style="fill:url(#linearGradient1298);fill-opacity:1;stroke:url(#linearGradient1300);stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.25;paint-order:stroke fill markers" />
+         style="fill:url(#linearGradient2319);fill-opacity:1;stroke:url(#linearGradient1302);stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.25;paint-order:stroke fill markers" />
     </g>
   </g>
   <use
@@ -431,7 +438,7 @@
          transform="rotate(45,12,12)"
          d="m 6,6 h 6 a 6,6 0 1 1 -6,6 z"
          id="path1819"
-         style="fill:url(#linearGradient1296);fill-opacity:1;stroke:url(#linearGradient1299);stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
+         style="fill:url(#linearGradient1304);fill-opacity:1;stroke:url(#linearGradient3090);stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
     </g>
   </g>
   <g
@@ -451,7 +458,7 @@
          transform="rotate(45,12,12)"
          d="m 6,6 h 6 a 6,6 0 1 1 -6,6 z"
          id="path1827"
-         style="fill:url(#linearGradient1304);fill-opacity:1;stroke:url(#linearGradient3090);stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.3;paint-order:stroke fill markers" />
+         style="fill:url(#linearGradient3060);fill-opacity:1;stroke:url(#linearGradient2345);stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.3;paint-order:stroke fill markers" />
     </g>
   </g>
   <use
