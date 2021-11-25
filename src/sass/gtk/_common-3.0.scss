@@ -156,6 +156,10 @@ widget.view {
   }
 }
 
+window.background.csd > stack.view {
+  border-radius: 0 0 $window-radius $window-radius;
+}
+
 textview {
   // FIXME: we need to override background-color to ensure text rendering
 

@@ -156,6 +156,10 @@ entry selection, label selection, textview text selection:focus, textview text s
   box-shadow: none;
 }
 
+window.background.csd > stack.view {
+  border-radius: 0 0 12px 12px;
+}
+
 textview text {
   background-color: #FFFFFF;
 }
