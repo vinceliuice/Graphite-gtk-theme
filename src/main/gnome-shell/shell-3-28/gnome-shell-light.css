@@ -1842,8 +1842,12 @@ StEntry StLabel.hint-text, .popup-menu .search-entry StLabel.hint-text {
   color: rgba(255, 255, 255, 0.7);
   border-radius: 9999px;
   border: none;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
   icon-size: 64px;
+}
+
+.modal-dialog .user-icon {
+  box-shadow: none;
 }
 
 .user-icon:hover {

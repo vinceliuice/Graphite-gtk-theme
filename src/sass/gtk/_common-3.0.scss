@@ -1712,17 +1712,17 @@ menu,
     color: $text-secondary;
 
     &.top {
-      margin-top: -4px;
-      border-bottom: 1px solid $divider;
-      border-radius: $corner-radius $corner-radius 0 0;
+      margin-top: 0;
+      // border-bottom: 1px solid $divider;
+      border-radius: $corner-radius;
       -gtk-icon-source: -gtk-icontheme('pan-up-symbolic');
     }
 
     &.bottom {
       margin-top: 4px * 2;
       margin-bottom: -4px * 3;
-      border-top: 1px solid $divider;
-      border-radius: 0 0 $corner-radius $corner-radius;
+      // border-top: 1px solid $divider;
+      border-radius: $corner-radius;
       -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
     }
 
@@ -3662,6 +3662,7 @@ decoration {
     @if $rimless == 'true' {
       box-shadow: $shadow-z4;
     } @else {
+      border-radius: $menu-radius + 2px;
       border: 2px solid $primary;
       background-clip: border-box;
     }

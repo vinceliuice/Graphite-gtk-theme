@@ -11,8 +11,13 @@
   color: on(black, secondary);
   border-radius: $circular_radius;
   border: none;
-  box-shadow: 0 3px 8px rgba(black, 0.25);
+  box-shadow: 0 2px 3px rgba(black, 0.25);
   icon-size: $base_icon_size * 4; // 64px
+  // margin: 6px;
+
+  .modal-dialog & {
+    box-shadow: none;
+  }
 
   &:hover {
     color: on(black);

@@ -3123,9 +3123,8 @@ menu > arrow,
 menu > arrow.top,
 .menu > arrow.top,
 .context-menu > arrow.top {
-  margin-top: -4px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 6px 6px 0 0;
+  margin-top: 0;
+  border-radius: 6px;
   -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
 }
 
@@ -3134,8 +3133,7 @@ menu > arrow.bottom,
 .context-menu > arrow.bottom {
   margin-top: 8px;
   margin-bottom: -12px;
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 0 0 6px 6px;
+  border-radius: 6px;
   -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
 }
 
@@ -5187,6 +5185,7 @@ decoration:backdrop {
 
 .csd.popup decoration {
   border-radius: 12px;
+  border-radius: 14px;
   border: 2px solid #333333;
   background-clip: border-box;
 }
