@@ -56,15 +56,15 @@
     &:active, &:overview, &:focus, &:checked {
       &, &:hover {
         background-color: transparent;
-        color: on($primary);
-        box-shadow: inset 0 0 0 1000px $primary;
+        color: on($applet-primary);
+        box-shadow: inset 0 0 0 1000px $applet-primary;
       }
 
       &.clock-display {
         box-shadow: none;
 
         .clock {
-          box-shadow: inset 0 0 0 1000px $primary;
+          box-shadow: inset 0 0 0 1000px $applet-primary;
         }
       }
     }
