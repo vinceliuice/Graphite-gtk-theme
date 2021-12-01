@@ -259,12 +259,12 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .cinnamon-link {
-  color: #E0E0E0;
+  color: #2196F3;
   text-decoration: underline;
 }
 
 .cinnamon-link:hover {
-  color: #fafafa;
+  color: #51adf6;
 }
 
 #Tooltip {

@@ -46,8 +46,10 @@
 
       &.clock-display {
         box-shadow: none;
+        color: $panel-text-secondary;
 
         .clock {
+          color: $panel-text;
           box-shadow: inset 0 0 0 1000px overlay($panel, hover);
         }
       }
@@ -60,11 +62,31 @@
         box-shadow: inset 0 0 0 1000px $applet-primary;
       }
 
+      .panel-button {
+        background-color: transparent;
+        color: on($applet-primary);
+        box-shadow: inset 0 0 0 1000px $applet-primary;
+
+        &:hover {
+          color: on($applet-primary);
+          background-color: transparent;
+          box-shadow: inset 0 0 0 1000px overlay($applet-primary, hover);
+        }
+
+        &:active, &:overview, &:focus, &:checked {
+          color: on($applet-primary);
+          background-color: transparent;
+          box-shadow: inset 0 0 0 1000px overlay($applet-primary, active);
+        }
+      }
+
       &.clock-display {
         box-shadow: none;
+        color: $panel-text-secondary;
 
         .clock {
           box-shadow: inset 0 0 0 1000px $applet-primary;
+          color: on($applet-primary);
         }
       }
     }
@@ -73,6 +95,7 @@
     .login-screen &,
     .lock-screen & {
       color: $panel-text;
+
       &:focus, &:hover, &:active { color: $panel-text; }
     }
 
@@ -118,8 +141,10 @@
 
         &.clock-display {
           box-shadow: none;
+          color: on(dark);
 
           .clock {
+            color: on(dark);
             box-shadow: inset 0 0 0 1000px overlay(dark, hover);
           }
         }
@@ -132,9 +157,11 @@
 
         &.clock-display {
           box-shadow: none;
+          color: on(dark);
 
           .clock {
             box-shadow: inset 0 0 0 1000px overlay(dark, active);
+            color: on(dark);
           }
         }
       }

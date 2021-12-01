@@ -2132,7 +2132,7 @@ button.color {
  * Links *
  *********/
 *:link {
-  color: #E0E0E0;
+  color: #2196F3;
 }
 
 *:visited {
@@ -2140,7 +2140,7 @@ button.color {
 }
 
 button.link:link, button.link:link:focus, button.link:link:hover, button.link:link:active {
-  color: #E0E0E0;
+  color: #2196F3;
 }
 
 button.link:visited, button.link:visited:focus, button.link:visited:hover, button.link:visited:active {

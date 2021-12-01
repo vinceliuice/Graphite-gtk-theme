@@ -6,12 +6,27 @@
   background-size: contain;
   background-image: url("assets/toggle-off#{$asset_suffix}.svg");
 
-  &:checked { background-image: url("assets/toggle-on.svg"); }
+  &:checked {
+    @if $theme == 'default' {
+      background-image: url("assets/toggle-on#{$asset_suffix}.svg");
+    }
+    @else {
+      background-image: url("assets/toggle-on.svg");
+    }
+  }
 
   .popup-sub-menu & {
     @if $variant == 'dark' { background-image: url("assets/toggle-off.svg"); }
     @else { background-image: url("assets/toggle-off-dark.svg"); }
 
-    &:checked { background-image: url("assets/toggle-on.svg"); }
+    &:checked {
+      @if $theme == 'default' {
+        @if $variant == 'dark' { background-image: url("assets/toggle-on.svg"); }
+        @else { background-image: url("assets/toggle-on-dark.svg"); }
+      }
+      @else {
+        background-image: url("assets/toggle-on.svg");
+      }
+    }
   }
 }

@@ -203,17 +203,17 @@ StWidget.focused .app-well-app-running-dot {
 
 .shell-link {
   border-radius: 6px;
-  color: #333333;
+  color: #2196F3;
 }
 
 .shell-link:hover {
-  color: #333333;
-  background-color: rgba(51, 51, 51, 0.15);
+  color: #2196F3;
+  background-color: rgba(33, 150, 243, 0.15);
 }
 
 .shell-link:active {
-  color: #333333;
-  background-color: rgba(51, 51, 51, 0.25);
+  color: #2196F3;
+  background-color: rgba(33, 150, 243, 0.25);
 }
 
 .lowres-icon {
@@ -665,35 +665,14 @@ StWidget.focused .app-well-app-running-dot {
   height: 24px;
   padding: 3px;
   border-radius: 6px;
+}
+
+.check-box, .check-box:focus StBin {
   background-image: url("assets/checkbox-off.svg");
 }
 
-.check-box:focus StBin {
-  background-image: url("assets/checkbox-off.svg");
-}
-
-.check-box:hover StBin {
-  background-color: rgba(0, 0, 0, 0.12);
-}
-
-.check-box:active StBin {
-  background-color: rgba(0, 0, 0, 0.26);
-}
-
-.check-box:checked StBin {
+.check-box:checked StBin, .check-box:focus:checked StBin {
   background-image: url("assets/checkbox.svg");
-}
-
-.check-box:focus:checked StBin {
-  background-image: url("assets/checkbox.svg");
-}
-
-.check-box:hover:checked StBin {
-  background-color: #525252;
-}
-
-.check-box:active:checked StBin {
-  background-color: #1f1f1f;
 }
 
 /* Activities Ripple */
@@ -1606,15 +1585,15 @@ StEntry StLabel.hint-text, .popup-menu .search-entry StLabel.hint-text {
 }
 
 .lg-dialog .shell-link {
-  color: #333333;
+  color: #2196F3;
 }
 
 .lg-dialog .shell-link:hover {
-  color: #4d4d4d;
+  color: #51adf6;
 }
 
 .lg-dialog .shell-link:active {
-  color: #1a1a1a;
+  color: #0c7cd5;
 }
 
 .lg-dialog .actor-link {
@@ -1787,7 +1766,7 @@ StEntry StLabel.hint-text, .popup-menu .search-entry StLabel.hint-text {
 }
 
 .url-highlighter {
-  link-color: #333333;
+  link-color: #2196F3;
 }
 
 .message-media-control {
@@ -2224,9 +2203,11 @@ StEntry StLabel.hint-text, .popup-menu .search-entry StLabel.hint-text {
 
 #panel .panel-button:hover.clock-display {
   box-shadow: none;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 #panel .panel-button:hover.clock-display .clock {
+  color: rgba(0, 0, 0, 0.87);
   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.12);
 }
 
@@ -2236,12 +2217,32 @@ StEntry StLabel.hint-text, .popup-menu .search-entry StLabel.hint-text {
   box-shadow: inset 0 0 0 1000px #333333;
 }
 
+#panel .panel-button:active .panel-button, #panel .panel-button:overview .panel-button, #panel .panel-button:focus .panel-button, #panel .panel-button:checked .panel-button {
+  background-color: transparent;
+  color: white;
+  box-shadow: inset 0 0 0 1000px #333333;
+}
+
+#panel .panel-button:active .panel-button:hover, #panel .panel-button:overview .panel-button:hover, #panel .panel-button:focus .panel-button:hover, #panel .panel-button:checked .panel-button:hover {
+  color: white;
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.12);
+}
+
+#panel .panel-button:active .panel-button:active, #panel .panel-button:active .panel-button:overview, #panel .panel-button:active .panel-button:focus, #panel .panel-button:active .panel-button:checked, #panel .panel-button:overview .panel-button:active, #panel .panel-button:overview .panel-button:overview, #panel .panel-button:overview .panel-button:focus, #panel .panel-button:overview .panel-button:checked, #panel .panel-button:focus .panel-button:active, #panel .panel-button:focus .panel-button:overview, #panel .panel-button:focus .panel-button:focus, #panel .panel-button:focus .panel-button:checked, #panel .panel-button:checked .panel-button:active, #panel .panel-button:checked .panel-button:overview, #panel .panel-button:checked .panel-button:focus, #panel .panel-button:checked .panel-button:checked {
+  color: white;
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.2);
+}
+
 #panel .panel-button:active.clock-display, #panel .panel-button:overview.clock-display, #panel .panel-button:focus.clock-display, #panel .panel-button:checked.clock-display {
   box-shadow: none;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 #panel .panel-button:active.clock-display .clock, #panel .panel-button:overview.clock-display .clock, #panel .panel-button:focus.clock-display .clock, #panel .panel-button:checked.clock-display .clock {
   box-shadow: inset 0 0 0 1000px #333333;
+  color: white;
 }
 
 .unlock-screen #panel .panel-button, .login-screen #panel .panel-button, .lock-screen #panel .panel-button {
@@ -2289,9 +2290,11 @@ StEntry StLabel.hint-text, .popup-menu .search-entry StLabel.hint-text {
 
 #panel:overview .panel-button:hover.clock-display, #panel.unlock-screen .panel-button:hover.clock-display, #panel.login-screen .panel-button:hover.clock-display, #panel.lock-screen .panel-button:hover.clock-display {
   box-shadow: none;
+  color: white;
 }
 
 #panel:overview .panel-button:hover.clock-display .clock, #panel.unlock-screen .panel-button:hover.clock-display .clock, #panel.login-screen .panel-button:hover.clock-display .clock, #panel.lock-screen .panel-button:hover.clock-display .clock {
+  color: white;
   box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.12);
 }
 
@@ -2303,10 +2306,12 @@ StEntry StLabel.hint-text, .popup-menu .search-entry StLabel.hint-text {
 
 #panel:overview .panel-button:active.clock-display, #panel:overview .panel-button:overview.clock-display, #panel:overview .panel-button:focus.clock-display, #panel:overview .panel-button:checked.clock-display, #panel.unlock-screen .panel-button:active.clock-display, #panel.unlock-screen .panel-button:overview.clock-display, #panel.unlock-screen .panel-button:focus.clock-display, #panel.unlock-screen .panel-button:checked.clock-display, #panel.login-screen .panel-button:active.clock-display, #panel.login-screen .panel-button:overview.clock-display, #panel.login-screen .panel-button:focus.clock-display, #panel.login-screen .panel-button:checked.clock-display, #panel.lock-screen .panel-button:active.clock-display, #panel.lock-screen .panel-button:overview.clock-display, #panel.lock-screen .panel-button:focus.clock-display, #panel.lock-screen .panel-button:checked.clock-display {
   box-shadow: none;
+  color: white;
 }
 
 #panel:overview .panel-button:active.clock-display .clock, #panel:overview .panel-button:overview.clock-display .clock, #panel:overview .panel-button:focus.clock-display .clock, #panel:overview .panel-button:checked.clock-display .clock, #panel.unlock-screen .panel-button:active.clock-display .clock, #panel.unlock-screen .panel-button:overview.clock-display .clock, #panel.unlock-screen .panel-button:focus.clock-display .clock, #panel.unlock-screen .panel-button:checked.clock-display .clock, #panel.login-screen .panel-button:active.clock-display .clock, #panel.login-screen .panel-button:overview.clock-display .clock, #panel.login-screen .panel-button:focus.clock-display .clock, #panel.login-screen .panel-button:checked.clock-display .clock, #panel.lock-screen .panel-button:active.clock-display .clock, #panel.lock-screen .panel-button:overview.clock-display .clock, #panel.lock-screen .panel-button:focus.clock-display .clock, #panel.lock-screen .panel-button:checked.clock-display .clock {
   box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.2);
+  color: white;
 }
 
 #panel:overview .panel-corner, #panel.unlock-screen .panel-corner, #panel.login-screen .panel-corner, #panel.lock-screen .panel-corner {
@@ -2865,7 +2870,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .popup-sub-menu .toggle-switch:checked {
-  background-image: url("assets/toggle-on.svg");
+  background-image: url("assets/toggle-on-dark.svg");
 }
 
 /* Tiled window previews */

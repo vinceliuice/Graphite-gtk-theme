@@ -161,7 +161,7 @@ $entry:                                 if($variant == 'dark', on($background, s
 // Misc colors
 //
 
-$link:                                  $primary;
+$link:                                  $blue-500;
 $link-visited:                          if($variant == 'light', $purple-500, $purple-200);
 
 $warning:                               if($variant == 'light', #F4B400, #FDD633);
