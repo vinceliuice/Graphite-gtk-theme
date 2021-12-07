@@ -541,7 +541,7 @@ button {
     min-width: 24px;
     padding: ($medium-size - 24px) / 2;
 
-    @extend %circular-button;
+    &:not(.destructive-action) { @extend %circular-button; }
   }
 
   // NOTE: Some image-only buttons use this as well
@@ -3770,7 +3770,7 @@ stackswitcher {
   margin: $space-size 0;
   border-radius: $circular-radius;
   background-color: transparent;
-  border: 2px solid $primary;
+  border: 2px solid $applet-primary;
 
   &.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action) {
     margin: 0 0;
@@ -3781,16 +3781,16 @@ stackswitcher {
 
     &.text-button { min-width: 100px; }
 
-    &:focus { box-shadow: inset 0 0 0 2px $overlay-focus; }
+    &:focus:not(:hover) { box-shadow: inset 0 0 0 2px $overlay-focus; }
 
     &:active {
-      box-shadow: inset 0 0 0 9999px gtkalpha($primary, 0.08);
-      background-image: radial-gradient(circle, gtkalpha($primary, 0.08) 10%, transparent 0%);
+      box-shadow: inset 0 0 0 9999px gtkalpha($applet-primary, 0.08);
+      background-image: radial-gradient(circle, gtkalpha($applet-primary, 0.08) 10%, transparent 0%);
     }
 
     &:checked {
-      background-color: $primary;
-      color: on($primary);
+      background-color: $applet-primary;
+      color: on($applet-primary);
     }
   }
 

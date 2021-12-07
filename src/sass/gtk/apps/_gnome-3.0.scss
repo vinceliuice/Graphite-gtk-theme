@@ -120,6 +120,40 @@
     notebook {
       background: none;
 
+      @if $variant == 'light' and $topbar == 'dark' {
+        > header > tabs {
+          tab, tab button.flat {
+            color: $titlebar-text-secondary;
+
+            &:hover {
+              color: $titlebar-text;
+              background-color: $titlebar-fill;
+            }
+
+            &:active, &:checked {
+              color: $titlebar-text;
+              background-color: $titlebar-divider;
+            }
+
+            &:disabled {
+              color: $titlebar-text-secondary-disabled;
+            }
+          }
+
+          > arrow {
+            color: $titlebar-text-secondary;
+
+            &:hover, &:active {
+              color: $titlebar-text;
+            }
+
+            &:disabled {
+              color: $titlebar-text-secondary-disabled;
+            }
+          }
+        }
+      }
+
       > stack {
         background-color: $base;
         border-radius: $modal-radius + $space-size;
