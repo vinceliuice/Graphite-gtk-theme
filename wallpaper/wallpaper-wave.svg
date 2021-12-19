@@ -6,7 +6,7 @@
    viewBox="0 0 508 285.75"
    id="svg100"
    sodipodi:docname="wallpaper-wave.svg"
-   inkscape:version="1.1 (c4e8f9ed74, 2021-05-24)"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20, custom)"
    inkscape:export-filename="/home/vince/Documents/GitHub/Graphite-gtk-theme/wallpaper/wallpaper-wave.png"
    inkscape:export-xdpi="192"
    inkscape:export-ydpi="192"
@@ -24,15 +24,19 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      showgrid="false"
-     inkscape:zoom="0.13626537"
-     inkscape:cx="132.09519"
-     inkscape:cy="2634.5652"
+     inkscape:zoom="0.048177084"
+     inkscape:cx="4836.3243"
+     inkscape:cy="1785.0811"
      inkscape:window-width="1920"
-     inkscape:window-height="1012"
+     inkscape:window-height="1010"
      inkscape:window-x="0"
-     inkscape:window-y="32"
+     inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg100" />
+     inkscape:current-layer="svg100">
+    <inkscape:grid
+       type="xygrid"
+       id="grid953" />
+  </sodipodi:namedview>
   <defs
      id="defs70">
     <clipPath
@@ -49,366 +53,6 @@
          stroke-width="0.257017"
          style="fill:#d9d9d9;fill-opacity:1;paint-order:stroke fill markers"
          id="rect842" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath840-3">
-      <rect
-         x="0"
-         y="0"
-         width="508"
-         height="285.75"
-         fill="url(#linearGradient84615)"
-         stroke-linecap="round"
-         stroke-linejoin="round"
-         stroke-width="0.257017"
-         style="fill:#d9d9d9;fill-opacity:1;paint-order:stroke fill markers"
-         id="rect842-6" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath98119">
-      <rect
-         x="0"
-         y="0"
-         width="508"
-         height="285.75"
-         fill="url(#linearGradient84615)"
-         stroke-linecap="round"
-         stroke-linejoin="round"
-         stroke-width="0.257017"
-         style="fill:#d9d9d9;fill-opacity:1;paint-order:stroke fill markers"
-         id="rect98117" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath98123">
-      <rect
-         x="0"
-         y="0"
-         width="508"
-         height="285.75"
-         fill="url(#linearGradient84615)"
-         stroke-linecap="round"
-         stroke-linejoin="round"
-         stroke-width="0.257017"
-         style="fill:#d9d9d9;fill-opacity:1;paint-order:stroke fill markers"
-         id="rect98121" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath98127">
-      <rect
-         x="0"
-         y="0"
-         width="508"
-         height="285.75"
-         fill="url(#linearGradient84615)"
-         stroke-linecap="round"
-         stroke-linejoin="round"
-         stroke-width="0.257017"
-         style="fill:#d9d9d9;fill-opacity:1;paint-order:stroke fill markers"
-         id="rect98125" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath98131">
-      <rect
-         x="0"
-         y="0"
-         width="508"
-         height="285.75"
-         fill="url(#linearGradient84615)"
-         stroke-linecap="round"
-         stroke-linejoin="round"
-         stroke-width="0.257017"
-         style="fill:#d9d9d9;fill-opacity:1;paint-order:stroke fill markers"
-         id="rect98129" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath98135">
-      <rect
-         x="0"
-         y="0"
-         width="508"
-         height="285.75"
-         fill="url(#linearGradient84615)"
-         stroke-linecap="round"
-         stroke-linejoin="round"
-         stroke-width="0.257017"
-         style="fill:#d9d9d9;fill-opacity:1;paint-order:stroke fill markers"
-         id="rect98133" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath98139">
-      <rect
-         x="0"
-         y="0"
-         width="508"
-         height="285.75"
-         fill="url(#linearGradient84615)"
-         stroke-linecap="round"
-         stroke-linejoin="round"
-         stroke-width="0.257017"
-         style="fill:#d9d9d9;fill-opacity:1;paint-order:stroke fill markers"
-         id="rect98137" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath98143">
-      <rect
-         x="0"
-         y="0"
-         width="508"
-         height="285.75"
-         fill="url(#linearGradient84615)"
-         stroke-linecap="round"
-         stroke-linejoin="round"
-         stroke-width="0.257017"
-         style="fill:#d9d9d9;fill-opacity:1;paint-order:stroke fill markers"
-         id="rect98141" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath98147">
-      <rect
-         x="0"
-         y="0"
-         width="508"
-         height="285.75"
-         fill="url(#linearGradient84615)"
-         stroke-linecap="round"
-         stroke-linejoin="round"
-         stroke-width="0.257017"
-         style="fill:#d9d9d9;fill-opacity:1;paint-order:stroke fill markers"
-         id="rect98145" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath98151">
-      <rect
-         x="0"
-         y="0"
-         width="508"
-         height="285.75"
-         fill="url(#linearGradient84615)"
-         stroke-linecap="round"
-         stroke-linejoin="round"
-         stroke-width="0.257017"
-         style="fill:#d9d9d9;fill-opacity:1;paint-order:stroke fill markers"
-         id="rect98149" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath98155">
-      <rect
-         x="0"
-         y="0"
-         width="508"
-         height="285.75"
-         fill="url(#linearGradient84615)"
-         stroke-linecap="round"
-         stroke-linejoin="round"
-         stroke-width="0.257017"
-         style="fill:#d9d9d9;fill-opacity:1;paint-order:stroke fill markers"
-         id="rect98153" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath98159">
-      <rect
-         x="0"
-         y="0"
-         width="508"
-         height="285.75"
-         fill="url(#linearGradient84615)"
-         stroke-linecap="round"
-         stroke-linejoin="round"
-         stroke-width="0.257017"
-         style="fill:#d9d9d9;fill-opacity:1;paint-order:stroke fill markers"
-         id="rect98157" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath840-7">
-      <rect
-         x="0"
-         y="0"
-         width="508"
-         height="285.75"
-         fill="url(#linearGradient84615)"
-         stroke-linecap="round"
-         stroke-linejoin="round"
-         stroke-width="0.257017"
-         style="fill:#d9d9d9;fill-opacity:1;paint-order:stroke fill markers"
-         id="rect842-5" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath98598">
-      <rect
-         x="0"
-         y="0"
-         width="508"
-         height="285.75"
-         fill="url(#linearGradient84615)"
-         stroke-linecap="round"
-         stroke-linejoin="round"
-         stroke-width="0.257017"
-         style="fill:#d9d9d9;fill-opacity:1;paint-order:stroke fill markers"
-         id="rect98596" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath98602">
-      <rect
-         x="0"
-         y="0"
-         width="508"
-         height="285.75"
-         fill="url(#linearGradient84615)"
-         stroke-linecap="round"
-         stroke-linejoin="round"
-         stroke-width="0.257017"
-         style="fill:#d9d9d9;fill-opacity:1;paint-order:stroke fill markers"
-         id="rect98600" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath98606">
-      <rect
-         x="0"
-         y="0"
-         width="508"
-         height="285.75"
-         fill="url(#linearGradient84615)"
-         stroke-linecap="round"
-         stroke-linejoin="round"
-         stroke-width="0.257017"
-         style="fill:#d9d9d9;fill-opacity:1;paint-order:stroke fill markers"
-         id="rect98604" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath98610">
-      <rect
-         x="0"
-         y="0"
-         width="508"
-         height="285.75"
-         fill="url(#linearGradient84615)"
-         stroke-linecap="round"
-         stroke-linejoin="round"
-         stroke-width="0.257017"
-         style="fill:#d9d9d9;fill-opacity:1;paint-order:stroke fill markers"
-         id="rect98608" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath98614">
-      <rect
-         x="0"
-         y="0"
-         width="508"
-         height="285.75"
-         fill="url(#linearGradient84615)"
-         stroke-linecap="round"
-         stroke-linejoin="round"
-         stroke-width="0.257017"
-         style="fill:#d9d9d9;fill-opacity:1;paint-order:stroke fill markers"
-         id="rect98612" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath98618">
-      <rect
-         x="0"
-         y="0"
-         width="508"
-         height="285.75"
-         fill="url(#linearGradient84615)"
-         stroke-linecap="round"
-         stroke-linejoin="round"
-         stroke-width="0.257017"
-         style="fill:#d9d9d9;fill-opacity:1;paint-order:stroke fill markers"
-         id="rect98616" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath98622">
-      <rect
-         x="0"
-         y="0"
-         width="508"
-         height="285.75"
-         fill="url(#linearGradient84615)"
-         stroke-linecap="round"
-         stroke-linejoin="round"
-         stroke-width="0.257017"
-         style="fill:#d9d9d9;fill-opacity:1;paint-order:stroke fill markers"
-         id="rect98620" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath98626">
-      <rect
-         x="0"
-         y="0"
-         width="508"
-         height="285.75"
-         fill="url(#linearGradient84615)"
-         stroke-linecap="round"
-         stroke-linejoin="round"
-         stroke-width="0.257017"
-         style="fill:#d9d9d9;fill-opacity:1;paint-order:stroke fill markers"
-         id="rect98624" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath98630">
-      <rect
-         x="0"
-         y="0"
-         width="508"
-         height="285.75"
-         fill="url(#linearGradient84615)"
-         stroke-linecap="round"
-         stroke-linejoin="round"
-         stroke-width="0.257017"
-         style="fill:#d9d9d9;fill-opacity:1;paint-order:stroke fill markers"
-         id="rect98628" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath98634">
-      <rect
-         x="0"
-         y="0"
-         width="508"
-         height="285.75"
-         fill="url(#linearGradient84615)"
-         stroke-linecap="round"
-         stroke-linejoin="round"
-         stroke-width="0.257017"
-         style="fill:#d9d9d9;fill-opacity:1;paint-order:stroke fill markers"
-         id="rect98632" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath98638">
-      <rect
-         x="0"
-         y="0"
-         width="508"
-         height="285.75"
-         fill="url(#linearGradient84615)"
-         stroke-linecap="round"
-         stroke-linejoin="round"
-         stroke-width="0.257017"
-         style="fill:#d9d9d9;fill-opacity:1;paint-order:stroke fill markers"
-         id="rect98636" />
     </clipPath>
   </defs>
   <g
@@ -590,10 +234,11 @@
            style="fill:#333333;fill-opacity:1;stroke-width:1.5649" />
       </g>
       <path
-         d="m 4.7624,-4.2335 v 2.513 H 4.76357 L 4.7624,-0.79373 H 6.879 v -1.0583 h 2.6458 v -2.3812 l -4.7624,0.00675 m 5.2916,-0.00675 v 8.4665 h 2.1166 v -8.4665 m -4.7624,2.9104 v 5.5561 h 2.1166 v -5.5561 m -4.7624,1.0583 0.00117,4.4981 2.1155,-2.5e-4 v -4.4978"
+         d="m 4.7624,-4.2335 v 2.513 H 4.76357 L 4.7624,-0.27863545 v 0.22324875 l 0.00117,4.2889567 2.1155,-2.5e-4 0,-4.2886567 -7e-5,-0.22329875 V -1.85203 h 2.6458 v -2.3812 l -4.7624,0.00675 m 5.2916,-0.00675 v 8.4665 h 2.1166 v -8.4665 m -4.7624,2.9104 v 5.5561 h 2.1166 v -5.5561"
          id="path164"
          inkscape:connector-curvature="0"
-         style="fill:#ffffff;fill-rule:evenodd;stroke-width:1.2656" />
+         style="fill:#ffffff;fill-rule:evenodd;stroke-width:1.2656"
+         sodipodi:nodetypes="ccccccccccccccccccccc" />
     </g>
   </g>
   <g
@@ -622,10 +267,11 @@
            style="fill:#e0e0e0;fill-opacity:1;stroke-width:1.5649" />
       </g>
       <path
-         d="m 4.7624,-4.2335 v 2.513 H 4.76357 L 4.7624,-0.79373 H 6.879 v -1.0583 h 2.6458 v -2.3812 l -4.7624,0.00675 m 5.2916,-0.00675 v 8.4665 h 2.1166 v -8.4665 m -4.7624,2.9104 v 5.5561 h 2.1166 v -5.5561 m -4.7624,1.0583 0.00117,4.4981 2.1155,-2.5e-4 v -4.4978"
+         d="m 4.7624,-4.2335 v 2.513 H 4.76357 L 4.7624,-0.79373 v 0.5292 l 0.00117,4.4981 2.1155,-2.5e-4 v -4.4978 l -7e-5,-0.52925 v -1.0583 h 2.6458 v -2.3812 l -4.7624,0.00675 m 5.2916,-0.00675 v 8.4665 h 2.1166 v -8.4665 m -4.7624,2.9104 v 5.5561 h 2.1166 v -5.5561"
          id="path24138"
          inkscape:connector-curvature="0"
-         style="fill:#333333;fill-opacity:1;fill-rule:evenodd;stroke-width:1.2656" />
+         style="fill:#333333;fill-opacity:1;fill-rule:evenodd;stroke-width:1.2656"
+         sodipodi:nodetypes="ccccccccccccccccccccc" />
     </g>
   </g>
   <g

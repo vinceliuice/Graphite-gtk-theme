@@ -6,7 +6,7 @@
    viewBox="0 0 508 285.75"
    id="svg100"
    sodipodi:docname="wallpaper-wave-nord.svg"
-   inkscape:version="1.1 (c4e8f9ed74, 2021-05-24)"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20, custom)"
    inkscape:export-filename="/home/vince/Documents/GitHub/Graphite-gtk-theme/wallpaper/wallpaper-wave.png"
    inkscape:export-xdpi="192"
    inkscape:export-ydpi="192"
@@ -24,13 +24,13 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      showgrid="false"
-     inkscape:zoom="0.11313709"
-     inkscape:cx="-1723.5728"
-     inkscape:cy="2775.3941"
+     inkscape:zoom="0.16000001"
+     inkscape:cx="5412.4998"
+     inkscape:cy="1118.75"
      inkscape:window-width="1920"
-     inkscape:window-height="1012"
+     inkscape:window-height="1010"
      inkscape:window-x="0"
-     inkscape:window-y="32"
+     inkscape:window-y="0"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg100" />
   <defs
@@ -242,10 +242,11 @@
            style="fill:#3b4252;fill-opacity:1;stroke-width:1.5649" />
       </g>
       <path
-         d="m 4.7624,-4.2335 v 2.513 H 4.76357 L 4.7624,-0.79373 H 6.879 v -1.0583 h 2.6458 v -2.3812 l -4.7624,0.00675 m 5.2916,-0.00675 v 8.4665 h 2.1166 v -8.4665 m -4.7624,2.9104 v 5.5561 h 2.1166 v -5.5561 m -4.7624,1.0583 0.00117,4.4981 2.1155,-2.5e-4 v -4.4978"
+         d="m 4.7624,-4.2335 v 2.513 H 4.76357 L 4.7624,-0.79373 v 0.5292 l 0.00117,4.4981 2.1155,-2.5e-4 v -4.4978 l -7e-5,-0.52925 v -1.0583 h 2.6458 v -2.3812 l -4.7624,0.00675 m 5.2916,-0.00675 v 8.4665 h 2.1166 v -8.4665 m -4.7624,2.9104 v 5.5561 h 2.1166 v -5.5561"
          id="path164"
          inkscape:connector-curvature="0"
-         style="fill:#ffffff;fill-rule:evenodd;stroke-width:1.2656" />
+         style="fill:#ffffff;fill-rule:evenodd;stroke-width:1.2656"
+         sodipodi:nodetypes="ccccccccccccccccccccc" />
     </g>
   </g>
   <g
@@ -273,10 +274,11 @@
            style="fill:#e5e9f0;fill-opacity:1;stroke-width:1.5649" />
       </g>
       <path
-         d="m 4.7624,-4.2335 v 2.513 H 4.76357 L 4.7624,-0.79373 H 6.879 v -1.0583 h 2.6458 v -2.3812 l -4.7624,0.00675 m 5.2916,-0.00675 v 8.4665 h 2.1166 v -8.4665 m -4.7624,2.9104 v 5.5561 h 2.1166 v -5.5561 m -4.7624,1.0583 0.00117,4.4981 2.1155,-2.5e-4 v -4.4978"
+         d="m 4.7624,-4.2335 v 2.513 H 4.76357 L 4.7624,-0.79373 v 0.5292 l 0.00117,4.4981 2.1155,-2.5e-4 v -4.4978 l -7e-5,-0.52925 v -1.0583 h 2.6458 v -2.3812 l -4.7624,0.00675 m 5.2916,-0.00675 v 8.4665 h 2.1166 v -8.4665 m -4.7624,2.9104 v 5.5561 h 2.1166 v -5.5561"
          id="path24138"
          inkscape:connector-curvature="0"
-         style="fill:#3c4353;fill-opacity:1;fill-rule:evenodd;stroke-width:1.2656" />
+         style="fill:#3c4353;fill-opacity:1;fill-rule:evenodd;stroke-width:1.2656"
+         sodipodi:nodetypes="ccccccccccccccccccccc" />
     </g>
   </g>
   <g
