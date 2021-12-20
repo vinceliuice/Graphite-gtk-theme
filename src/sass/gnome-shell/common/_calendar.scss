@@ -7,6 +7,7 @@
   border: none;
   box-shadow: none;
   text-shadow: none;
+  padding: $base_padding $base_padding * 1.5;
 
   &:hover, &:focus {
     color: $text;
@@ -41,8 +42,8 @@
   border: 0 solid $border;
   padding: 0 $base_padding * 2;
 
-  &:ltr {margin-right: $base_margin * 2; border-left-width: 0; }
-  &:rtl {margin-left: $base_margin * 2; border-right-width: 0; }
+  &:ltr { margin-right: $base_margin * 2; border-left-width: 0; }
+  &:rtl { margin-left: $base_margin * 2; border-right-width: 0; }
 
   .datemenu-displays-section { padding-bottom: 0; }
 

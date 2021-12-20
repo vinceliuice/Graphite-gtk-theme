@@ -5,12 +5,22 @@
   StBin {
     width: 24px;
     height: 24px;
-    padding: $base_padding / 2;
+    padding: $base_padding;
     border-radius: $base_radius;
   }
-  &, &:focus StBin {
+
+  StBin, &:focus StBin {
     background-image: url("assets/checkbox-off.svg");
   }
+
+  &:hover StBin {
+    background-color: $divider;
+  }
+
+  &:active StBin {
+    background-color: $track;
+  }
+
   &:checked StBin, &:focus:checked StBin {
     @if $theme == 'default' {
       background-image: url("assets/checkbox#{$asset_suffix}.svg");
