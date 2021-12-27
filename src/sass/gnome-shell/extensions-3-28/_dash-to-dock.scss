@@ -75,6 +75,66 @@
     }
   }
 
+  .app-well-app-running-dot {
+    background-color: on($panel, track) !important;
+  }
+
+  StWidget.focused .app-well-app-running-dot {
+    background-color: $indicator !important;
+  }
+
+  &:overview #dash .app-well-app-running-dot {
+    background-color: on(dark, track) !important;
+  }
+
+  &:overview #dash StWidget.focused .app-well-app-running-dot {
+    background-color: $inverse-indicator !important;
+  }
+
+  .show-apps,
+  .app-well-app {
+    & .overview-icon {
+      color: on($panel, secondary);
+    }
+
+    &:hover .overview-icon,
+    &:focus .overview-icon,
+    &:selected .overview-icon {
+      background-color: on($panel, divider);
+    }
+
+    &:active .overview-icon,
+    &:checked .overview-icon {
+      background-color: on($panel, track);
+    }
+  }
+
+  &:overview #dash .show-apps,
+  &:overview #dash .app-well-app {
+    & .overview-icon {
+      color: on(dark, secondary);
+    }
+
+    &:hover .overview-icon,
+    &:focus .overview-icon,
+    &:selected .overview-icon {
+      background-color: on(dark, divider);
+    }
+
+    &:active .overview-icon,
+    &:checked .overview-icon {
+      background-color: on(dark, track);
+    }
+  }
+
+  .app-well-app-running-dot {
+    background-color: on(black, track);
+  }
+
+  StWidget.focused .app-well-app-running-dot {
+    background-color: $indicator;
+  }
+
   &.opaque #dash { // solid-mode
     background-color: $panel;
   }
