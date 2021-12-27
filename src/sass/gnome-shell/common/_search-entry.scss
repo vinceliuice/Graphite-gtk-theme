@@ -34,8 +34,11 @@
   }
 
   &:insensitive {
-    border: none;
-    color: $text-secondary-disabled;
+    @include entry(insensitive, $bc: rgba($base, 0.35));
+
+    StLabel.hint-text, .search-entry-icon {
+      color: $track;
+    }
   }
 
   StLabel.hint-text {
