@@ -42,7 +42,7 @@ $app_icon_spacing: 6px;
     background-gradient-start: rgba(255, 255, 255, 0.05);
     background-gradient-end: transparent;
     background-gradient-direction: horizontal;
-    border-radius: 15px 0px 0px 15px;
+    border-radius: 18px 0px 0px 18px;
   }
 
   &.previous:ltr,
@@ -50,12 +50,13 @@ $app_icon_spacing: 6px;
     background-gradient-start: transparent;
     background-gradient-end: rgba(255, 255, 255, 0.05);
     background-gradient-direction: horizontal;
-    border-radius: 0px 15px 15px 0px;
+    border-radius: 0px 18px 18px 0px;
   }
 }
 
 .page-navigation-arrow {
-  margin: $base_margin + 2px;
+  margin: 0;
   width: 24px;
   height: 24px;
+  color: white;
 }
