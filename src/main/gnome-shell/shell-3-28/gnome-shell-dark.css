@@ -2692,7 +2692,12 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .app-folder-dialog .folder-name-container .folder-name-entry:insensitive, .search-entry:insensitive {
-  border: none;
+  background-color: rgba(44, 44, 44, 0.35);
+  color: rgba(255, 255, 255, 0.35);
+  border-color: transparent;
+}
+
+.app-folder-dialog .folder-name-container .folder-name-entry:insensitive StLabel.hint-text, .app-folder-dialog .folder-name-container .folder-name-entry:insensitive .search-entry-icon, .search-entry:insensitive StLabel.hint-text, .search-entry:insensitive .search-entry-icon {
   color: rgba(255, 255, 255, 0.3);
 }
 
@@ -3024,6 +3029,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 .app-view-control:hover {
   color: white;
   background-color: rgba(255, 255, 255, 0.12);
+  box-shadow: none;
 }
 
 .app-view-control:active {
@@ -3594,6 +3600,60 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 #dashtodockContainer #dash StWidget.focused .app-well-app-running-dot {
+  background-color: #E0E0E0;
+}
+
+#dashtodockContainer .app-well-app-running-dot {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+#dashtodockContainer StWidget.focused .app-well-app-running-dot {
+  background-color: #E0E0E0 !important;
+}
+
+#dashtodockContainer:overview #dash .app-well-app-running-dot {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+#dashtodockContainer:overview #dash StWidget.focused .app-well-app-running-dot {
+  background-color: white !important;
+}
+
+#dashtodockContainer .show-apps .overview-icon,
+#dashtodockContainer .app-well-app .overview-icon {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#dashtodockContainer .show-apps:hover .overview-icon, #dashtodockContainer .show-apps:focus .overview-icon, #dashtodockContainer .show-apps:selected .overview-icon,
+#dashtodockContainer .app-well-app:hover .overview-icon,
+#dashtodockContainer .app-well-app:focus .overview-icon,
+#dashtodockContainer .app-well-app:selected .overview-icon {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+#dashtodockContainer .show-apps:active .overview-icon, #dashtodockContainer .show-apps:checked .overview-icon,
+#dashtodockContainer .app-well-app:active .overview-icon,
+#dashtodockContainer .app-well-app:checked .overview-icon {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+#dashtodockContainer:overview #dash .show-apps .overview-icon, #dashtodockContainer:overview #dash .app-well-app .overview-icon {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#dashtodockContainer:overview #dash .show-apps:hover .overview-icon, #dashtodockContainer:overview #dash .show-apps:focus .overview-icon, #dashtodockContainer:overview #dash .show-apps:selected .overview-icon, #dashtodockContainer:overview #dash .app-well-app:hover .overview-icon, #dashtodockContainer:overview #dash .app-well-app:focus .overview-icon, #dashtodockContainer:overview #dash .app-well-app:selected .overview-icon {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+#dashtodockContainer:overview #dash .show-apps:active .overview-icon, #dashtodockContainer:overview #dash .show-apps:checked .overview-icon, #dashtodockContainer:overview #dash .app-well-app:active .overview-icon, #dashtodockContainer:overview #dash .app-well-app:checked .overview-icon {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+#dashtodockContainer .app-well-app-running-dot {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+#dashtodockContainer StWidget.focused .app-well-app-running-dot {
   background-color: #E0E0E0;
 }
 

@@ -101,6 +101,7 @@ $app_icon_spacing: 6px;
   &:hover {
     color: on(black);
     background-color: overlay(black, hover);
+    box-shadow: none;
   }
 
   &:active {
