@@ -2651,11 +2651,6 @@ searchbar > revealer > box {
   border-radius: 0;
 }
 
-.titlebar > box.left,
-.titlebar > box.right {
-  padding: 0 3px;
-}
-
 .titlebar.default-decoration {
   min-height: 24px;
   padding: 6px;
@@ -2694,6 +2689,11 @@ headerbar:not(.titlebar) {
 
 box.vertical headerbar {
   background-color: #FFFFFF;
+}
+
+headerbar > box.left,
+headerbar > box.right {
+  padding: 0 3px;
 }
 
 headerbar entry,
