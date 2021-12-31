@@ -1296,9 +1296,6 @@ searchbar > revealer > box {
     border-radius: 0;
   }
 
-  > box.left,
-  > box.right { padding: 0 $space-size / 2; }
-
   &.default-decoration {
     min-height: $small-size;
     padding: $space-size;
@@ -1350,6 +1347,9 @@ headerbar {
   box.vertical & {
     background-color: $titlebar;
   }
+
+  > box.left,
+  > box.right { padding: 0 $space-size / 2; }
 
   // add vertical margins to common widget on the headerbar to avoid them spanning the whole height
   entry,
@@ -2806,15 +2806,15 @@ scrolledwindow {
   }
 
   // Overflow indication, works similarly to the overshoot, the size if fixed tho.
-  @at-root undershoot {
-    &.top { @include undershoot(top); }
-
-    &.bottom { @include undershoot(bottom); }
-
-    &.left { @include undershoot(left); }
-
-    &.right { @include undershoot(right); }
-  }
+  // @at-root undershoot {
+  //   &.top { @include undershoot(top); }
+  //
+  //   &.bottom { @include undershoot(bottom); }
+  //
+  //   &.left { @include undershoot(left); }
+  //
+  //   &.right { @include undershoot(right); }
+  // }
 
   @at-root junction { // the small square between two scrollbars
     border-style: solid none none solid;

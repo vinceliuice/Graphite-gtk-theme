@@ -51,10 +51,11 @@ OPTIONS:
 
   -s, --size VARIANT      Specify size variant [standard|compact] (Default: standard variants)
 
-  --tweaks                Specify versions for tweaks [nord|black|rimless] (nord can not mix use with black !)
+  --tweaks                Specify versions for tweaks [nord|black|rimless|normal] (only nord and black option can not mix use with!)
                           1. nord:     Nord color version
                           2. black:    Blackness color version
                           3. rimless:  Remove the 2px outline about windows and menus
+                          4. normal:   Normal sidebar style (Nautilus)
 
   -h, --help              Show help
 EOF
@@ -327,6 +328,11 @@ while [[ $# -gt 0 ]]; do
             echo -e "Install Rimless version! ..."
             shift
             ;;
+          normal)
+            normal="true"
+            echo -e "Install Normal sidebar version! ..."
+            shift
+            ;;
           -*)
             break
             ;;
@@ -405,6 +411,10 @@ border_rimless() {
   sed -i "/\$rimless:/s/false/true/" ${SRC_DIR}/sass/_tweaks-temp.scss
 }
 
+normal_sidebar() {
+  sed -i "/\$sidebar:/s/styled/normal/" ${SRC_DIR}/sass/_tweaks-temp.scss
+}
+
 theme_color() {
   if [[ "$theme" != '' ]]; then
     case "$theme" in
@@ -438,7 +448,7 @@ theme_color() {
 }
 
 theme_tweaks() {
-  if [[ "$accent" == 'true' || "$compact" == 'true' || "$nord" == 'true'  || "$rimless" == 'true' || "$blackness" == 'true' ]]; then
+  if [[ "$accent" == 'true' || "$compact" == 'true' || "$nord" == 'true'  || "$rimless" == 'true' || "$blackness" == 'true' || "$normal" = "true" ]]; then
     tweaks='true'
     install_package; tweaks_temp
   fi
@@ -461,6 +471,10 @@ theme_tweaks() {
 
   if [[ "$rimless" = "true" ]] ; then
     border_rimless
+  fi
+
+  if [[ "$normal" = "true" ]] ; then
+    normal_sidebar
   fi
 }
 

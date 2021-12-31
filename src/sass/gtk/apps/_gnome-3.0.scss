@@ -8,7 +8,13 @@
 
 .nautilus-window {
   &.background.csd.unified {
-    headerbar { box-shadow: none; } // reset
+    headerbar { // reset
+      @if $sidebar == 'styled' {
+        box-shadow: none;
+      } @else {
+        box-shadow: inset 0 -1px $border;
+      }
+    }
   }
 
   &.background.csd {
@@ -17,8 +23,12 @@
 
     headerbar {
       padding-left: 12px;
-      // background-color: if($variant == 'light', $titlebar, $base);
-      box-shadow: inset 0 1px highlight($titlebar);
+
+      @if $sidebar == 'styled' {
+        box-shadow: inset 0 1px highlight($titlebar);
+      } @else {
+        box-shadow: inset 0 1px highlight($titlebar), inset 0 -1px $border;
+      }
     }
 
     > grid.horizontal > paned.horizontal > separator,
@@ -28,80 +38,78 @@
       background-color: transparent;
       color: $titlebar-text-secondary;
 
-      > viewport.frame {
-        @if $topbar == 'dark' and $variant == 'light' {
-          margin: 0;
-          background-color: transparent;
-          color: $titlebar-text-secondary;
-        } @else {
-          background-color: $primary;
-          color: on($primary);
-          margin: 0 $space-size * 2.5 $modal-radius + $space-size 0;
-          border-radius: 0 $modal-radius + $space-size  $modal-radius + $space-size 0;
-        }
-
-        > list {
-          background: none;
-          padding: $space-size;
-          padding-right: $space-size + 2px;
-
+      @if $sidebar == 'styled' {
+        > viewport.frame {
           @if $topbar == 'dark' and $variant == 'light' {
-            padding-right: $space-size;
+            margin: 0;
+            background-color: transparent;
+            color: $titlebar-text-secondary;
           } @else {
-            padding-right: $space-size + 2px;
+            background-color: $primary;
+            color: on($primary);
+            margin: 0 $space-size * 2.5 $modal-radius + $space-size 0;
+            border-radius: 0 $modal-radius + $space-size  $modal-radius + $space-size 0;
           }
 
-          > row.activatable {
-            border-radius: $modal-radius;
+          > list {
+            background: none;
+            padding: $space-size;
+            padding-right: $space-size + 2px;
 
-            &, image.sidebar-icon, label.sidebar-label, button.sidebar-button {
-              @if $topbar == 'dark' and $variant == 'light' {
-                color: $titlebar-text-secondary;
-              } @else {
-                color: on($primary);
-              }
+            @if $topbar == 'dark' and $variant == 'light' {
+              padding-right: $space-size;
+            } @else {
+              padding-right: $space-size + 2px;
             }
 
-            // button.sidebar-button {
-            //   @extend %button-flat-simple;
-            // }
-
-            &:hover {
-              background-color: on($primary, divider);
-              color: on($primary);
-            }
-
-            &:selected {
-              background-color: $base;
-              font-weight: 700;
+            > row.activatable {
+              border-radius: $modal-radius;
 
               &, image.sidebar-icon, label.sidebar-label, button.sidebar-button {
-                color: $primary;
+                @if $topbar == 'dark' and $variant == 'light' {
+                  color: $titlebar-text-secondary;
+                } @else {
+                  color: on($primary);
+                }
               }
-            }
 
-            &:disabled {
-              &, image.sidebar-icon, label.sidebar-label {
-                color: $titlebar-text-secondary-disabled;
+              &:hover {
+                background-color: on($primary, divider);
+                color: on($primary);
+              }
+
+              &:selected {
+                background-color: $base;
+                font-weight: 700;
+
+                &, image.sidebar-icon, label.sidebar-label, button.sidebar-button {
+                  color: $primary;
+                }
+              }
+
+              &:disabled {
+                &, image.sidebar-icon, label.sidebar-label {
+                  color: $titlebar-text-secondary-disabled;
+                }
               }
             }
           }
-
-          > separator { background: none; }
         }
-      }
 
-      scrollbar {
-        background: none;
-        border: none;
-      }
-
-      > undershoot {
-        &.top {
+        scrollbar {
           background: none;
+          border: none;
         }
+      }
+    }
 
-        &.bottom {
+    @if $sidebar == 'styled' {
+      paned > separator {
+        background: none;
+
+        &.wide {
+          min-width: 0;
+          min-height: 0;
           background: none;
         }
       }
@@ -179,16 +187,6 @@
 
           > revealer > box { background-color: transparent; }
         }
-      }
-    }
-
-    paned > separator {
-      background: none;
-
-      &.wide {
-        min-width: 0;
-        min-height: 0;
-        background: none;;
       }
     }
   }

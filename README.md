@@ -29,10 +29,11 @@ Run the following commands in the terminal:
 -t, --theme VARIANT...  Specify theme color variant(s) [default|purple|pink|red|orange|yellow|green|teal|blue|all] (Default: grey)
 -c, --color VARIANT...  Specify color variant(s) [standard|light|dark] (Default: All variants)
 -s, --size VARIANT...   Specify size variant [standard|compact] (Default: standard variant)
---tweaks                Specify versions for tweaks [nord|black|rimless] (nord can not mix use with black !)
+--tweaks                Specify versions for tweaks [nord|black|rimless|normal] (only nord and black option can not mix use with!)
                         1. nord:     Nord color version
                         2. black:    Blackness color version
                         3. rimless:  Remove the 2px outline about windows and menus
+                        4. normal:   Normal sidebar style (Nautilus)
 -h, --help              Show help
 ```
 
@@ -45,4 +46,3 @@ Run the following commands in the terminal:
 Automatically install your host GTK+ theme as a Flatpak. Use this:
 
 - [pakitheme](https://github.com/refi64/pakitheme)
-
