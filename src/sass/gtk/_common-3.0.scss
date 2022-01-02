@@ -541,7 +541,9 @@ button {
     min-width: 24px;
     padding: ($medium-size - 24px) / 2;
 
-    &:not(.destructive-action) { @extend %circular-button; }
+    @extend %circular-button;
+
+    &.destructive-action { border-radius: $corner-radius; }
   }
 
   // NOTE: Some image-only buttons use this as well

@@ -1777,7 +1777,7 @@ window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked 
 window.csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > box.horizontal > button,
 window.solid-csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > .linked > button,
 window.solid-csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > box.horizontal > button, .nautilus-window headerbar revealer > button, button.titlebutton:not(.suggested-action):not(.destructive-action), filechooser #pathbarbox > stack > box > button, check,
-radio, button.close, button.circular, .inline-toolbar button:not(.text-button), button.image-button:not(.destructive-action) {
+radio, button.close, button.circular, .inline-toolbar button:not(.text-button), button.image-button {
   border-radius: 9999px;
 }
 
@@ -1786,7 +1786,7 @@ window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked 
 window.csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > box.horizontal > button label,
 window.solid-csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > .linked > button label,
 window.solid-csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > box.horizontal > button label, .nautilus-window headerbar revealer > button label, button.titlebutton:not(.suggested-action):not(.destructive-action) label, filechooser #pathbarbox > stack > box > button label, check label,
-radio label, button.close label, button.circular label, .inline-toolbar button:not(.text-button) label, button.image-button:not(.destructive-action) label {
+radio label, button.close label, button.circular label, .inline-toolbar button:not(.text-button) label, button.image-button label {
   padding: 0;
 }
 
@@ -1912,6 +1912,10 @@ button.text-button.flat {
 button.image-button {
   min-width: 24px;
   padding: 6px;
+}
+
+button.image-button.destructive-action {
+  border-radius: 6px;
 }
 
 button.text-button.image-button {
