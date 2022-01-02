@@ -1,0 +1,57 @@
+#!/bin/bash
+
+INKSCAPE="/usr/bin/inkscape"
+OPTIPNG="/usr/bin/optipng"
+
+if [[ "$1" == "assets" ]]; then
+  INDEX="assets.txt"
+  SRC_FILE="assets.svg"
+else
+  INDEX="logos.txt"
+  SRC_FILE="logos.svg"
+fi
+
+if [[ "$2" == "1080p" ]]; then
+  ASSETS_DIR="$1/1080p"
+  EXPORT_DPI="96"
+elif [[ "$2" == "2k" ]]; then
+  ASSETS_DIR="$1/2k"
+  EXPORT_DPI="144"
+elif [[ "$2" == "4k" ]]; then
+  ASSETS_DIR="$1/4k"
+  EXPORT_DPI="192"
+else
+  echo "Please use either '1080p', '2k' or '4k'"
+  exit 1
+fi
+
+install -d "$ASSETS_DIR"
+
+while read -r i; do
+  if [[ -f "$ASSETS_DIR/$i.png" ]]; then
+    echo "$ASSETS_DIR/$i.png exists"
+  elif [[ "$i" == "" ]]; then
+    continue
+  else
+    echo -e "\nRendering $ASSETS_DIR/$i.png"
+    $INKSCAPE "--export-id=$i" \
+              "--export-dpi=$EXPORT_DPI" \
+              "--export-id-only" \
+              "--export-filename=$ASSETS_DIR/$i.png" "$SRC_FILE" >/dev/null
+    $OPTIPNG -strip all -nc "$ASSETS_DIR/$i.png"
+  fi
+done < "$INDEX"
+
+if [[ "$EXPORT_TYPE" == "icons" ]]; then
+  cd "$ASSETS_DIR" || exit 1
+  cp -a archlinux.png arch.png
+  cp -a gnu-linux.png linux.png
+  cp -a gnu-linux.png unknown.png
+  cp -a gnu-linux.png lfs.png
+  cp -a manjaro.png Manjaro.i686.png
+  cp -a manjaro.png Manjaro.x86_64.png
+  cp -a manjaro.png manjarolinux.png
+  cp -a pop-os.png pop.png
+  cp -a driver.png memtest.png
+fi
+exit 0
