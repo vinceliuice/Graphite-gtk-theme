@@ -65,3 +65,27 @@ window.background.csd {
   }
 }
 
+/**********
+ * Polari *
+ **********/
+.polari-room-list {
+  .sidebar {
+    background: none;
+
+    > row.activatable:selected {
+      background-color: $primary;
+      color: on($primary);
+
+      // > widget > box.horizontal > label {
+      //   color: $text; // not use !
+      // }
+    }
+  }
+
+  popover.background {
+    > arrow,
+    > contents {
+      padding: 0;
+    }
+  }
+}

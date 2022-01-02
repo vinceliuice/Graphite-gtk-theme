@@ -1690,7 +1690,7 @@ popover.background {
     transition: $transition-shadow;
     padding: $space-size;
     background-color: $surface;
-    border-radius: $corner-radius;
+    border-radius: $menu-radius;
 
     @if $rimless == 'true' {
       border: none;
@@ -1736,7 +1736,7 @@ popover.background {
   .linked > button:not(.radio) {
     background-color: transparent;
     box-shadow: none;
-    border-radius: $corner-radius;s
+    border-radius: $corner-radius;
     &:first-child { border-radius: $corner-radius; }
     &:last-child { border-radius: $corner-radius; }
     &:only-child { border-radius: $corner-radius; }
@@ -2862,7 +2862,6 @@ row {
 
   &:selected {
     @extend %selected_items;
-    color: inherit; // for overlays
 
     image,
     label { color: $text; }
@@ -3900,7 +3899,7 @@ popover.emoji-picker {
 
 .emoji-toolbar {
   padding: 0;
-  border-spacing: $space-size/2;
+  border-spacing: $space-size / 2;
   border-top: 1px solid $divider;
   background: none;
 }
@@ -3908,7 +3907,7 @@ popover.emoji-picker {
 button.emoji-section {
   margin: 0;
   padding: $space-size;
-  border-radius: $corner-radius -$space-size/2;
+  border-radius: $corner-radius;
 
   &:checked {
     color: $primary;
@@ -3929,7 +3928,7 @@ popover.emoji-picker emoji {
 
 emoji-completion-row {
   min-height: $menuitem-size;
-  padding: 0 $space-size*2;
+  padding: 0 $space-size * 2;
 
   > box {
     border-spacing: $space-size;

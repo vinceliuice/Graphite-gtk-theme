@@ -1881,8 +1881,12 @@ popover.background > contents {
   transition: box-shadow 75ms cubic-bezier(0, 0, 0.2, 1);
   padding: 6px;
   background-color: #3C3C3C;
-  border-radius: 6px;
+  border-radius: 12px;
   border: 2px solid #E0E0E0;
+}
+
+popover.background > arrow {
+  padding: 0 6px;
 }
 
 popover.background:backdrop > arrow,
@@ -1918,7 +1922,6 @@ popover.background .linked > button:not(.radio) {
   border-radius: 6px;
 }
 
-s
 popover.background .linked > button:not(.radio):first-child {
   border-radius: 6px;
 }
@@ -3231,10 +3234,6 @@ treeview.view > header > button:active, row.activatable.has-open-popup, row.acti
   box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.12);
 }
 
-row:selected {
-  color: inherit;
-}
-
 row:selected image,
 row:selected label {
   color: white;
@@ -4185,7 +4184,7 @@ popover.emoji-picker > contents {
 button.emoji-section {
   margin: 0;
   padding: 6px;
-  border-radius: 3px;
+  border-radius: 6px;
 }
 
 button.emoji-section:checked {
@@ -4275,6 +4274,23 @@ window.background.csd > stack > box > stack > scrolledwindow > viewport > list {
 
 window.background.csd > stack > box > .sidebar > scrolledwindow > viewport > list {
   padding: 0 0;
+}
+
+/**********
+ * Polari *
+ **********/
+.polari-room-list .sidebar {
+  background: none;
+}
+
+.polari-room-list .sidebar > row.activatable:selected {
+  background-color: #E0E0E0;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.polari-room-list popover.background > arrow,
+.polari-room-list popover.background > contents {
+  padding: 0;
 }
 
 /* GTK NAMED COLORS
