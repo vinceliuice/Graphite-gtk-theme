@@ -48,8 +48,8 @@
 @function theme($color) {
   @if ($color_type == 'nord') {
     @if ($theme == 'default') {
-      @if ($variant == 'light') { @return #3b4252; }
-      @else { @return #e5e9f0; }
+      @if ($variant == 'light') { @return #2b303b; }
+      @else { @return #dbdee5; }
     }
     @if ($theme == 'purple') { @return #b57daa; }
     @if ($theme == 'pink') { @return #cd7092; }
@@ -87,13 +87,13 @@
 @function background($type) {
   @if ($color_type == 'nord') {
     @if ($type == 'a') { @return #ffffff; }
-    @if ($type == 'b') { @return #eceff4; }
-    @if ($type == 'c') { @return #e5e9f0; }
-    @if ($type == 'd') { @return #d8dee9; }
-    @if ($type == 'e') { @return #2e3440; }
-    @if ($type == 'f') { @return #3b4252; }
-    @if ($type == 'g') { @return #434c5e; }
-    @if ($type == 'h') { @return #4c566a; }
+    @if ($type == 'b') { @return #f9fafb; }
+    @if ($type == 'c') { @return #f0f1f4; }
+    @if ($type == 'd') { @return #c4c9d4; }
+    @if ($type == 'e') { @return #1c1f26; }
+    @if ($type == 'f') { @return #1e222a; }
+    @if ($type == 'g') { @return #252a33; }
+    @if ($type == 'h') { @return #333a47; }
   }
   @if ($color_type == 'blackness') {
     @if ($type == 'a') { @return #FFFFFF; }

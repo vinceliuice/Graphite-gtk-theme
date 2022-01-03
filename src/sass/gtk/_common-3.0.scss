@@ -2973,7 +2973,7 @@ expander {
  * Calendar *
  ************/
 calendar {
-  padding: 1px;
+  padding: $space-size / 2 $space-size;
   border: 1px solid $divider;
   color: $text;
 
@@ -2982,7 +2982,7 @@ calendar {
   &:selected {
     @extend %selected_items;
 
-    border-radius: $corner-radius + 1px;
+    border-radius: $corner-radius;
   }
 
   &.header {
@@ -2991,7 +2991,10 @@ calendar {
     border-radius: 0;
   }
 
-  &.button { @extend %button-flat-simple; }
+  &.button {
+    @extend %button-flat-simple;
+    border-radius: $corner-radius;
+  }
 
   &.highlight {
     color: $text-secondary;

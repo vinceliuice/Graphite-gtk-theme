@@ -4558,7 +4558,7 @@ expander title > arrow:disabled {
  * Calendar *
  ************/
 calendar {
-  padding: 1px;
+  padding: 3px 6px;
   border: 1px solid rgba(0, 0, 0, 0.12);
   color: rgba(0, 0, 0, 0.87);
 }
@@ -4568,13 +4568,17 @@ calendar:disabled {
 }
 
 calendar:selected {
-  border-radius: 7px;
+  border-radius: 6px;
 }
 
 calendar.header {
   border-style: none none solid;
   border-color: rgba(0, 0, 0, 0.12);
   border-radius: 0;
+}
+
+calendar.button {
+  border-radius: 6px;
 }
 
 calendar.highlight {
