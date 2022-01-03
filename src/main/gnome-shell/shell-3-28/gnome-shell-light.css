@@ -2432,18 +2432,18 @@ StEntry StLabel.hint-text, .popup-menu .search-entry StLabel.hint-text {
 }
 
 .popup-menu .popup-sub-menu {
-  background-color: #333333;
-  color: rgba(255, 255, 255, 0.7);
   border: none;
   box-shadow: none;
   margin: 0 6px;
   border-radius: 0 0 6px 6px;
+  background-color: #333333;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .popup-menu .popup-sub-menu .popup-menu-item {
-  color: rgba(255, 255, 255, 0.7);
   border-radius: 6px;
   margin: 0;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .popup-menu .popup-sub-menu .popup-menu-item.selected {
@@ -3595,16 +3595,8 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   background-color: #f2f2f2;
 }
 
-#dashtodockContainer #dash .app-well-app-running-dot {
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
-#dashtodockContainer #dash StWidget.focused .app-well-app-running-dot {
-  background-color: #333333;
-}
-
 #dashtodockContainer .app-well-app-running-dot {
-  background-color: rgba(0, 0, 0, 0.26) !important;
+  background-color: rgba(0, 0, 0, 0.26);
 }
 
 #dashtodockContainer StWidget.focused .app-well-app-running-dot {
@@ -3612,7 +3604,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 #dashtodockContainer:overview #dash .app-well-app-running-dot {
-  background-color: rgba(255, 255, 255, 0.3) !important;
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 #dashtodockContainer:overview #dash StWidget.focused .app-well-app-running-dot {
@@ -3649,14 +3641,6 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-#dashtodockContainer .app-well-app-running-dot {
-  background-color: rgba(255, 255, 255, 0.3);
-}
-
-#dashtodockContainer StWidget.focused .app-well-app-running-dot {
-  background-color: #333333;
-}
-
 #dashtodockContainer.opaque #dash {
   background-color: #f2f2f2;
 }
@@ -3667,14 +3651,6 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 #dashtodockContainer:overview #dash {
   background-color: rgba(255, 255, 255, 0.12);
-}
-
-#dashtodockContainer:overview #dash .app-well-app-running-dot {
-  background-color: rgba(255, 255, 255, 0.3);
-}
-
-#dashtodockContainer:overview #dash StWidget.focused .app-well-app-running-dot {
-  background-color: #333333;
 }
 
 #dashtodockContainer.opaque:overview #dash, #dashtodockContainer.transparent:overview #dash {

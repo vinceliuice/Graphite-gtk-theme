@@ -81,29 +81,38 @@
   }
 
   .popup-sub-menu {
-    background-color: $primary;
-    color: on($primary, secondary);
     border: none;
     box-shadow: none;
     margin: 0 $base_padding;
     border-radius: 0 0 $base_radius $base_radius;
 
-    .popup-menu-item {
+    @if $sidebar == 'styled' {
+      background-color: $primary;
       color: on($primary, secondary);
+    } @else {
+      background-color: $divider;
+      color: $text;
+    }
+
+    .popup-menu-item {
       border-radius: $base_radius;
       margin: 0;
 
-      &.selected {
-        color: on($primary);
-        background-color: on($primary, divider);
-      }
+      @if $sidebar == 'styled' {
+        color: on($primary, secondary);
 
-      &:active, &.selected:active {
-        color: on($primary);
-        background-color: on($primary, track);
-      }
+        &.selected {
+          color: on($primary);
+          background-color: on($primary, divider);
+        }
 
-      &:insensitive { color: on($primary, secondary-disabled); }
+        &:active, &.selected:active {
+          color: on($primary);
+          background-color: on($primary, track);
+        }
+
+        &:insensitive { color: on($primary, secondary-disabled); }
+      }
     }
   }
 
@@ -145,7 +154,8 @@
       padding: 0 0;
       margin: 0 32px 0 0;
       height: 1px;
-      background-color: on($primary, divider);
+
+      @if $sidebar == 'styled' { background-color: on($primary, divider); }
     }
   }
 }

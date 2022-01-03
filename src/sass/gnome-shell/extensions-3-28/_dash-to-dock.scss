@@ -65,26 +65,18 @@
 
   #dash { // default-mode
     background-color: $panel;
-
-    .app-well-app-running-dot {
-      background-color: $panel-text-secondary;
-    }
-
-    StWidget.focused .app-well-app-running-dot {
-      background-color: $indicator;
-    }
   }
 
   .app-well-app-running-dot {
-    background-color: on($panel, track) !important;
+    background-color: on($panel, track);
   }
 
   StWidget.focused .app-well-app-running-dot {
-    background-color: $indicator !important;
+    background-color: $applet-primary !important;
   }
 
   &:overview #dash .app-well-app-running-dot {
-    background-color: on(dark, track) !important;
+    background-color: on(dark, track);
   }
 
   &:overview #dash StWidget.focused .app-well-app-running-dot {
@@ -127,14 +119,6 @@
     }
   }
 
-  .app-well-app-running-dot {
-    background-color: on(black, track);
-  }
-
-  StWidget.focused .app-well-app-running-dot {
-    background-color: $indicator;
-  }
-
   &.opaque #dash { // solid-mode
     background-color: $panel;
   }
@@ -145,14 +129,6 @@
 
   &:overview #dash { // overview-mode #1
     background-color: on(black, divider);
-
-    .app-well-app-running-dot {
-      background-color: on(black, track);
-    }
-
-    StWidget.focused .app-well-app-running-dot {
-      background-color: $indicator;
-    }
   }
 
   &.opaque:overview,
