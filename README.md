@@ -46,3 +46,9 @@ Run the following commands in the terminal:
 Automatically install your host GTK+ theme as a Flatpak. Use this:
 
 - [pakitheme](https://github.com/refi64/pakitheme)
+
+## Grub2 theme
+
+- [Install from here](other/grub2)
+
+![grub2](other/grub2/preview.svg?raw=true)
