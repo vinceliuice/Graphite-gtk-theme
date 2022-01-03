@@ -3595,16 +3595,8 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   background-color: #212121;
 }
 
-#dashtodockContainer #dash .app-well-app-running-dot {
-  background-color: rgba(255, 255, 255, 0.7);
-}
-
-#dashtodockContainer #dash StWidget.focused .app-well-app-running-dot {
-  background-color: #E0E0E0;
-}
-
 #dashtodockContainer .app-well-app-running-dot {
-  background-color: rgba(255, 255, 255, 0.3) !important;
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 #dashtodockContainer StWidget.focused .app-well-app-running-dot {
@@ -3612,7 +3604,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 #dashtodockContainer:overview #dash .app-well-app-running-dot {
-  background-color: rgba(255, 255, 255, 0.3) !important;
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 #dashtodockContainer:overview #dash StWidget.focused .app-well-app-running-dot {
@@ -3649,14 +3641,6 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-#dashtodockContainer .app-well-app-running-dot {
-  background-color: rgba(255, 255, 255, 0.3);
-}
-
-#dashtodockContainer StWidget.focused .app-well-app-running-dot {
-  background-color: #E0E0E0;
-}
-
 #dashtodockContainer.opaque #dash {
   background-color: #212121;
 }
@@ -3667,14 +3651,6 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 #dashtodockContainer:overview #dash {
   background-color: rgba(255, 255, 255, 0.12);
-}
-
-#dashtodockContainer:overview #dash .app-well-app-running-dot {
-  background-color: rgba(255, 255, 255, 0.3);
-}
-
-#dashtodockContainer:overview #dash StWidget.focused .app-well-app-running-dot {
-  background-color: #E0E0E0;
 }
 
 #dashtodockContainer.opaque:overview #dash, #dashtodockContainer.transparent:overview #dash {
