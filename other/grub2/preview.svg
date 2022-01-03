@@ -33,6 +33,19 @@
          style="fill:#d9d9d9;fill-opacity:1;paint-order:stroke fill markers"
          id="rect842" />
     </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1101">
+      <rect
+         style="fill:#333333;stroke:none;stroke-width:0.529169"
+         id="rect1103"
+         width="508"
+         height="285.75"
+         x="-8.1475598e-14"
+         y="-4.4140625e-06"
+         rx="13.426337"
+         ry="13.426337" />
+    </clipPath>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -42,8 +55,8 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.24748738"
-     inkscape:cx="998.03069"
-     inkscape:cy="535.38083"
+     inkscape:cx="476.79199"
+     inkscape:cy="567.70571"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -81,7 +94,8 @@
      transform="translate(0,-287.47498)">
     <g
        id="wave-dark"
-       transform="translate(0,287.47498)">
+       transform="translate(0,287.47498)"
+       clip-path="url(#clipPath1101)">
       <rect
          x="0"
          y="0"
