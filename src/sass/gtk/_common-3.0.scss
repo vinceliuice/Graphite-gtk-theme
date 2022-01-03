@@ -3768,18 +3768,27 @@ cursor-handle {
 
 stackswitcher {
   min-height: 0;
-  padding: 2px;
-  margin: $space-size 0;
   border-radius: $circular-radius;
-  background-color: transparent;
-  border: 2px solid $applet-primary;
+
+  @if $rimless == 'true' {
+    padding: 0;
+    background-color: $overlay-normal;
+  } @else {
+    padding: 2px;
+    margin: $space-size 0;
+    background-color: transparent;
+    border: 2px solid $applet-primary;
+  }
 
   &.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action) {
     margin: 0 0;
     border-radius: $circular-radius;
     background-color: transparent;
-    min-height: 20px;
-    padding: ($medium-size - 26px) / 2 ($medium-size - 16px) / 2;
+
+    @if $rimless == 'false' {
+      min-height: 20px;
+      padding: ($medium-size - 26px) / 2 ($medium-size - 16px) / 2;
+    }
 
     &.text-button { min-width: 100px; }
 

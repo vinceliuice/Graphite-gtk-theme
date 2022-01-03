@@ -5239,9 +5239,9 @@ cursor-handle.insertion-cursor:dir(ltr), cursor-handle.insertion-cursor:dir(rtl)
 
 stackswitcher {
   min-height: 0;
+  border-radius: 9999px;
   padding: 2px;
   margin: 6px 0;
-  border-radius: 9999px;
   background-color: transparent;
   border: 2px solid #333333;
 }

@@ -2432,18 +2432,18 @@ StEntry StLabel.hint-text, .popup-menu .search-entry StLabel.hint-text {
 }
 
 .popup-menu .popup-sub-menu {
-  background-color: #E0E0E0;
-  color: rgba(0, 0, 0, 0.6);
   border: none;
   box-shadow: none;
   margin: 0 6px;
   border-radius: 0 0 6px 6px;
+  background-color: #E0E0E0;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .popup-menu .popup-sub-menu .popup-menu-item {
-  color: rgba(0, 0, 0, 0.6);
   border-radius: 6px;
   margin: 0;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .popup-menu .popup-sub-menu .popup-menu-item.selected {
