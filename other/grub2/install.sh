@@ -55,6 +55,7 @@ usage() {
   printf "%s\n" "Usage: ${0##*/} [OPTIONS...]"
   printf "\n%s\n" "OPTIONS:"
   printf "  %-25s%s\n" "-b, --boot" "install grub theme into /boot/grub/themes"
+  printf "  %-25s%s\n" "-s, --screen" "screen display variant(s) [1080p|2k|4k] (default is 1080p)"
   printf "  %-25s%s\n" "-r, --remove" "Remove theme (must add theme name option)"
   printf "  %-25s%s\n" "-h, --help" "Show this help"
 }

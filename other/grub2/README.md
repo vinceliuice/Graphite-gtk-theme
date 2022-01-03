@@ -17,6 +17,7 @@ Usage:  `sudo ./install.sh [OPTIONS...]`
 |  Options:              | Description: |
 |:-----------------------|:-------------|
 | -b, --boot             | Install grub theme into `/boot/grub/themes` |
+| -s, --screen           | screen display variant(s) [1080p/2k/4k] (default is 1080p) |
 | -r, --remove           | Uninstall theme |
 | -h, --help             | Show this help |
 
