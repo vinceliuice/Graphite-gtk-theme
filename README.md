@@ -24,7 +24,7 @@ Run the following commands in the terminal:
 > Tip: `./install.sh` allows the following options:
 
 ```
--d, --dest DIR          Specify destination directory (Default: /usr/share/themes)
+-d, --dest DIR          Specify destination directory (Default: $HOME/.themes, with sudo: /usr/share/themes)
 -n, --name NAME         Specify theme name (Default: Graphite)
 -t, --theme VARIANT...  Specify theme color variant(s) [default|purple|pink|red|orange|yellow|green|teal|blue|all] (Default: grey)
 -c, --color VARIANT...  Specify color variant(s) [standard|light|dark] (Default: All variants)

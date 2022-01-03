@@ -181,6 +181,13 @@ install() {
   mkdir -p                                                                                   "${THEME_DIR}-xhdpi/xfwm4"
   cp -r "${SRC_DIR}/assets/xfwm4/assets${ELSE_LIGHT:-}${ctype}-xhdpi/"*.png                  "${THEME_DIR}-xhdpi/xfwm4"
   cp -r "${SRC_DIR}/main/xfwm4/themerc${ELSE_LIGHT:-}"                                       "${THEME_DIR}-xhdpi/xfwm4/themerc"
+
+  mkdir -p                                                                                   "${THEME_DIR}/plank"
+  if [[ "$color" == '-light' ]]; then
+    cp -r "${SRC_DIR}/main/plank/theme-light/"*                                              "${THEME_DIR}/plank"
+  else
+    cp -r "${SRC_DIR}/main/plank/theme-dark/"*                                               "${THEME_DIR}/plank"
+  fi
 }
 
 themes=()
