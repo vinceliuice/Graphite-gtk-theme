@@ -86,8 +86,8 @@
 
 @function background($type) {
   @if ($color_type == 'nord') {
-    @if ($type == 'a') { @return #ffffff; }
-    @if ($type == 'b') { @return #f9fafb; }
+    @if ($type == 'a') { @return #f9fafb; }
+    @if ($type == 'b') { @return #f3f4f6; }
     @if ($type == 'c') { @return #f0f1f4; }
     @if ($type == 'd') { @return #c4c9d4; }
     @if ($type == 'e') { @return #1c1f26; }
