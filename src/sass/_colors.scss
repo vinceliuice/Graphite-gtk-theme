@@ -103,7 +103,17 @@
     @if ($type == 'e') { @return #000000; }
     @if ($type == 'f') { @return #030303; }
     @if ($type == 'g') { @return #0F0F0F; }
-    @if ($type == 'h') { @return #121212; }
+    @if ($type == 'h') { @return #121212; }     
+  }
+  @if ($color_type == 'midblackness') {
+    @if ($type == 'a') { @return #FFFFFF; }
+    @if ($type == 'b') { @return #FAFAFA; }
+    @if ($type == 'c') { @return #F2F2F2; }
+    @if ($type == 'd') { @return #CCCCCC; }   
+    @if ($type == 'e') { @return lighten($black, 4.0%); }
+    @if ($type == 'f') { @return lighten($black, 4.0% * 2); }
+    @if ($type == 'g') { @return lighten($black, 4.0% * 3); }
+    @if ($type == 'h') { @return lighten($black, 4.0% * 4); }
   }
   @if ($color_type == 'default') {
     @if ($type == 'a') { @return #FFFFFF; }
