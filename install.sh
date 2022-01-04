@@ -54,8 +54,9 @@ OPTIONS:
   --tweaks                Specify versions for tweaks [nord|black|rimless|normal] (only nord and black option can not mix use with!)
                           1. nord:     Nord color version
                           2. black:    Blackness color version
-                          3. rimless:  Remove the 2px outline about windows and menus
-                          4. normal:   Normal sidebar style (Nautilus)
+                          3. midblack:    Mid-Blackness color version
+                          4. rimless:  Remove the 2px outline about windows and menus
+                          5. normal:   Normal sidebar style (Nautilus)
 
   -h, --help              Show help
 EOF
@@ -330,6 +331,11 @@ while [[ $# -gt 0 ]]; do
             echo -e "Install Blackness version! ..."
             shift
             ;;
+         midblack)
+            midblackness="true"
+            echo -e "Install MidBlackness version! ..."
+            shift
+            ;;
           rimless)
             rimless="true"
             echo -e "Install Rimless version! ..."
@@ -414,6 +420,10 @@ blackness_color() {
   sed -i "/\$color_type:/s/default/blackness/" ${SRC_DIR}/sass/_tweaks-temp.scss
 }
 
+midblackness_color() {
+  sed -i "/\$color_type:/s/default/midblackness/" ${SRC_DIR}/sass/_tweaks-temp.scss
+}
+
 border_rimless() {
   sed -i "/\$rimless:/s/false/true/" ${SRC_DIR}/sass/_tweaks-temp.scss
 }
@@ -455,7 +465,7 @@ theme_color() {
 }
 
 theme_tweaks() {
-  if [[ "$accent" == 'true' || "$compact" == 'true' || "$nord" == 'true'  || "$rimless" == 'true' || "$blackness" == 'true' || "$normal" = "true" ]]; then
+  if [[ "$accent" == 'true' || "$compact" == 'true' || "$nord" == 'true'  || "$rimless" == 'true' || "$blackness" == 'true' || "$midblackness" == 'true' || "$normal" = "true" ]]; then
     tweaks='true'
     install_package; tweaks_temp
   fi
@@ -475,6 +485,10 @@ theme_tweaks() {
   if [[ "$blackness" = "true" ]] ; then
     blackness_color
   fi
+  
+  if [[ "$midblackness" = "true" ]] ; then
+    midblackness_color
+  fi
 
   if [[ "$rimless" = "true" ]] ; then
     border_rimless
@@ -489,7 +503,7 @@ install_theme() {
   for theme in "${themes[@]}"; do
     for color in "${colors[@]}"; do
       for size in "${sizes[@]}"; do
-        install "${dest:-$DEST_DIR}" "${_name:-$THEME_NAME}" "$theme" "$color" "$size" "$ctype"
+        install "${dest:-$DEST_DIR}" "${name:-$THEME_NAME}" "$theme" "$color" "$size" "$ctype"
       done
     done
   done
