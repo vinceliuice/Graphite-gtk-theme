@@ -3008,7 +3008,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .dash-background {
-  background-color: rgba(0, 0, 0, 0.26);
+  background-color: rgba(0, 0, 0, 0.26); /* light dash background color */
   margin-bottom: 16px;
   padding: 10px;
   border-radius: 16px;
