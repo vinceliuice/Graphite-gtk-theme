@@ -48,7 +48,7 @@
 @function theme($color) {
   @if ($color_type == 'nord') {
     @if ($theme == 'default') {
-      @if ($variant == 'light') { @return #2b303b; }
+      @if ($variant == 'light') { @return #434c5e; }
       @else { @return #dbdee5; }
     }
     @if ($theme == 'purple') { @return #b57daa; }
@@ -103,13 +103,13 @@
     @if ($type == 'e') { @return #000000; }
     @if ($type == 'f') { @return #030303; }
     @if ($type == 'g') { @return #0F0F0F; }
-    @if ($type == 'h') { @return #121212; }     
+    @if ($type == 'h') { @return #121212; }
   }
   @if ($color_type == 'midblackness') {
     @if ($type == 'a') { @return #FFFFFF; }
     @if ($type == 'b') { @return #FAFAFA; }
     @if ($type == 'c') { @return #F2F2F2; }
-    @if ($type == 'd') { @return #CCCCCC; }   
+    @if ($type == 'd') { @return #CCCCCC; }
     @if ($type == 'e') { @return lighten($black, 4.0%); }
     @if ($type == 'f') { @return lighten($black, 4.0% * 2); }
     @if ($type == 'g') { @return lighten($black, 4.0% * 3); }
