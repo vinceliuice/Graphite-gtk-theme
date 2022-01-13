@@ -81,7 +81,7 @@ install() {
     # Don't preserve ownership because the owner will be root, and that causes the script to crash if it is ran from terminal by sudo
     cp -a --no-preserve=ownership "${REO_DIR}/common/"{*.png,*.pf2} "${THEME_DIR}"
     cp -a --no-preserve=ownership "${REO_DIR}/config/theme-${screen}.txt" "${THEME_DIR}/theme.txt"
-    cp -a --no-preserve=ownership "${REO_DIR}/backgrounds/${screen}/wave-dark.jpg" "${THEME_DIR}/${theme}/background.jpg"
+    cp -a --no-preserve=ownership "${REO_DIR}/backgrounds/${screen}/wave-dark.png" "${THEME_DIR}/${theme}/background.png"
     cp -a --no-preserve=ownership "${REO_DIR}/assets/logos/${screen}" "${THEME_DIR}/${theme}/icons"
     cp -a --no-preserve=ownership "${REO_DIR}/assets/assets/${screen}/"*.png "${THEME_DIR}/${theme}"
 
