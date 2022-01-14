@@ -32,10 +32,10 @@ terminal-border: "0"
 }
 
 + image {
-  left = 30%
-  top = 30%
-  width = 40%
-  height = 40%
+  left = 28%
+  top = 27%
+  width = 44%
+  height = 46%
   file = "viewbox.png"
 }
 
