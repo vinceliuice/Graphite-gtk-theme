@@ -15,6 +15,7 @@ REO_DIR="$(cd $(dirname $0) && pwd)"
 }
 
 name=Graphite
+THEME_VARIANTS=('' 'nord')
 SCREEN_VARIANTS=('1080p' '2k' '4k')
 
 #COLORS
@@ -54,16 +55,22 @@ function has_command() {
 usage() {
   printf "%s\n" "Usage: ${0##*/} [OPTIONS...]"
   printf "\n%s\n" "OPTIONS:"
-  printf "  %-25s%s\n" "-b, --boot" "install grub theme into /boot/grub/themes"
-  printf "  %-25s%s\n" "-s, --screen" "screen display variant(s) [1080p|2k|4k] (default is 1080p)"
+  printf "  %-25s%s\n" "-b, --boot" "Install grub theme into /boot/grub/themes"
+  printf "  %-25s%s\n" "-t, --theme" "Color theme variant(s) [default|nord] (default is grey color)"
+  printf "  %-25s%s\n" "-s, --screen" "Screen display variant(s) [1080p|2k|4k] (default is 1080p)"
   printf "  %-25s%s\n" "-r, --remove" "Remove theme (must add theme name option)"
   printf "  %-25s%s\n" "-h, --help" "Show this help"
 }
 
 install() {
-  local screen="${1}"
+  local theme="${1}"
+  local screen="${2}"
 
-  local THEME_DIR="${DEST_DIR}/${name}"
+  local THEME_DIR="${DEST_DIR}/${name}${theme}"
+
+  if [[ "$theme" == "nord" ]]; then
+    local COLORSCHEME="-nord"
+  fi
 
   # Check for root access and proceed if it is present
   if [[ "$UID" -eq "$ROOT_UID" ]]; then
@@ -81,12 +88,12 @@ install() {
     # Don't preserve ownership because the owner will be root, and that causes the script to crash if it is ran from terminal by sudo
     cp -a --no-preserve=ownership "${REO_DIR}/common/"{*.png,*.pf2} "${THEME_DIR}"
     cp -a --no-preserve=ownership "${REO_DIR}/config/theme-${screen}.txt" "${THEME_DIR}/theme.txt"
-    cp -a --no-preserve=ownership "${REO_DIR}/backgrounds/${screen}/wave-dark.png" "${THEME_DIR}/${theme}/background.png"
-    cp -a --no-preserve=ownership "${REO_DIR}/assets/logos/${screen}" "${THEME_DIR}/${theme}/icons"
-    cp -a --no-preserve=ownership "${REO_DIR}/assets/assets/${screen}/"*.png "${THEME_DIR}/${theme}"
+    cp -a --no-preserve=ownership "${REO_DIR}/backgrounds/${screen}/wave-dark${COLORSCHEME}.png" "${THEME_DIR}/background.png"
+    cp -a --no-preserve=ownership "${REO_DIR}/assets/logos${COLORSCHEME}/${screen}" "${THEME_DIR}/icons"
+    cp -a --no-preserve=ownership "${REO_DIR}/assets/assets${COLORSCHEME}/${screen}/"*.png "${THEME_DIR}"
 
     # Set theme
-    prompt -s "\n Setting ${name} as default..."
+    prompt -s "\n Setting ${name}${COLORSCHEME} as default..."
 
     # Backup grub config
     cp -an /etc/default/grub /etc/default/grub.bak
@@ -160,19 +167,19 @@ install() {
 
     updating_grub
 
-    prompt -w "\n * At the next restart of your computer you will see your new Grub theme: '${name}' "
+    prompt -w "\n * At the next restart of your computer you will see your new Grub theme: '${name}${COLORSCHEME}' "
   else
     #Check if password is cached (if cache timestamp not expired yet)
     sudo -n true 2> /dev/null && echo
 
     if [[ $? == 0 ]]; then
       #No need to ask for password
-      sudo "$0" -s ${screen}
+      sudo "$0" -t ${theme} -s ${screen}
     else
       #Ask for password
       if [[ -n ${tui_root_login} ]] ; then
         if [[ -n "${screen}" ]]; then
-          sudo -S $0 -s ${screen} <<< ${tui_root_login}
+          sudo -S $0 -t ${theme} -s ${screen} <<< ${tui_root_login}
         fi
       else
         prompt -e "\n [ Error! ] -> Run me as root! "
@@ -182,7 +189,7 @@ install() {
 
         if [[ $? == 0 ]]; then
           #Correct password, use with sudo's stdin
-          sudo -S "$0" -s ${screen} <<< ${REPLY}
+          sudo -S "$0" -t ${theme} -s ${screen} <<< ${REPLY}
         else
           #block for 3 seconds before allowing another attempt
           sleep 3
@@ -217,7 +224,7 @@ updating_grub() {
 }
 
 remove() {
-  local THEME_DIR="${DEST_DIR}/${name}"
+  local THEME_DIR="${DEST_DIR}/${name}${COLORSCHEME}"
 
   # Check for root access and proceed if it is present
   if [ "$UID" -eq "$ROOT_UID" ]; then
@@ -225,7 +232,7 @@ remove() {
     if [[ -d "${THEME_DIR}" ]]; then
       rm -rf "${THEME_DIR}"
     else
-      prompt -e "\n ${name} grub theme not exist!"
+      prompt -e "\n ${name}${COLORSCHEME} grub theme not exist!"
       exit 0
     fi
 
@@ -287,6 +294,29 @@ while [[ $# -gt 0 ]]; do
       remove='true'
       shift 1
       ;;
+    -t|--theme)
+      shift
+      for theme in "${@}"; do
+        case "${theme}" in
+          default)
+            themes+=("${THEME_VARIANTS[0]}")
+            shift
+            ;;
+          nord)
+            themes+=("${THEME_VARIANTS[1]}")
+            shift
+            ;;
+          -*|--*)
+            break
+            ;;
+          *)
+            prompt -e "ERROR: Unrecognized theme variant '$1'."
+            prompt -i "Try '$0 --help' for more information."
+            exit 1
+            ;;
+        esac
+      done
+      ;;
     -s|--screen)
       shift
       for screen in "${@}"; do
@@ -329,9 +359,11 @@ done
 if [[ "${remove:-}" == 'true' ]]; then
   remove
 else
-  for screen in "${screens[@]-${SCREEN_VARIANTS[0]}}"; do
-    install "${screen}"
+  for theme in "${themes[@]-${THEME_VARIANTS[0]}}"; do
+    for screen in "${screens[@]-${SCREEN_VARIANTS[0]}}"; do
+      install "${theme}" "${screen}"
+    done
   done
 fi
 
-exit 1
+exit 1THEME_VARIANTS
