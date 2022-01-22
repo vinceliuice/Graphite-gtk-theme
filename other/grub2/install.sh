@@ -366,4 +366,4 @@ else
   done
 fi
 
-exit 1THEME_VARIANTS
+exit 1
