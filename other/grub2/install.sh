@@ -366,4 +366,4 @@ else
   done
 fi
 
-exit 1
+exit 0
