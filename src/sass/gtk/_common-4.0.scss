@@ -1189,8 +1189,6 @@ searchbar > revealer > box {
     }
   }
 
-  button.toggle { border-radius: $circular-radius; }
-
   stackswitcher { // reset
     margin: $space-size 0;
     border-radius: $circular-radius;
@@ -3064,20 +3062,14 @@ window.dialog.message { // Message Dialog styling
   }
 
   &.csd { // rounded bottom border styling for csd version
-    &.background {
-      // bigger radius for better antialiasing
-      border-bottom-left-radius: $window-radius;
-      border-bottom-right-radius: $window-radius;
-    }
-
     .dialog-action-area {
       margin-top: -$space-size;
-      // padding: $space-size;
+      padding: $space-size;
 
       > button {
         @extend %button-flat;
 
-        &, &:first-child, &:last-child { border-radius: $circular-radius; }
+        &, &:first-child, &:last-child { border-radius: $corner-radius; }
 
         &:not(:last-child) { margin-right: $space-size; }
 

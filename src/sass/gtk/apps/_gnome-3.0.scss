@@ -343,27 +343,29 @@
 .conflict-row:not(:selected) { background-color: mix($warning, $base, percentage(0.3)); }
 
 // Icon view
-.nautilus-window flowboxchild {
-  // .icon-background { background-color: black; }
+.nautilus-window {
+  flowboxchild {
+    // .icon-background { background-color: black; }
 
-  .icon-item-background {
-    padding: 4px;
+    .icon-item-background {
+      padding: 4px;
+      border-radius: $space-size;
+    }
+
+    &:selected {
+      background-color: transparent;
+
+      .icon-item-background { @extend %selected_items_color; }
+    }
+  }
+
+  notebook :not(treeview).view {
     border-radius: $space-size;
-  }
 
-  &:selected {
-    background-color: transparent;
-
-    .icon-item-background { @extend %selected_items_color; }
-  }
-}
-
-.nautilus-window notebook :not(treeview).view {
-  border-radius: $space-size;
-
-  selection,
-  &:selected {
-    @extend %selected_items_color;
+    selection,
+    &:selected {
+      @extend %selected_items_color;
+    }
   }
 }
 

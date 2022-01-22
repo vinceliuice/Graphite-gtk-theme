@@ -1782,6 +1782,19 @@ popover.background {
   .view:not(:selected),
   toolbar { background-color: $surface; }
 
+  &.combo {
+    viewport.frame > list {
+      background-color: transparent;
+
+      > row {
+        padding: $space-size $space-size * 2;
+
+        &:first-child { border-radius: $menu-radius $menu-radius 0 0; }
+        &:last-child { border-radius: 0 0 $menu-radius $menu-radius; }
+      }
+    }
+  }
+
   .linked > button:not(.radio) {
     border-radius: $corner-radius;
     &:first-child { border-radius: $corner-radius; }

@@ -3205,6 +3205,22 @@ popover.background toolbar {
   background-color: #3C3C3C;
 }
 
+popover.background.combo viewport.frame > list {
+  background-color: transparent;
+}
+
+popover.background.combo viewport.frame > list > row {
+  padding: 6px 12px;
+}
+
+popover.background.combo viewport.frame > list > row:first-child {
+  border-radius: 12px 12px 0 0;
+}
+
+popover.background.combo viewport.frame > list > row:last-child {
+  border-radius: 0 0 12px 12px;
+}
+
 popover.background .linked > button:not(.radio) {
   border-radius: 6px;
 }

@@ -1371,10 +1371,6 @@ headerbar button:backdrop:checked:disabled:not(.suggested-action):not(.destructi
   color: rgba(255, 255, 255, 0.5);
 }
 
-.titlebar button.toggle {
-  border-radius: 9999px;
-}
-
 .titlebar stackswitcher {
   margin: 6px 0;
   border-radius: 9999px;
@@ -3421,17 +3417,13 @@ window.dialog.message .titlebar:backdrop {
   color: rgba(0, 0, 0, 0.6);
 }
 
-window.dialog.message.csd.background {
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
-}
-
 window.dialog.message.csd .dialog-action-area {
   margin-top: -6px;
+  padding: 6px;
 }
 
 window.dialog.message.csd .dialog-action-area > button, window.dialog.message.csd .dialog-action-area > button:first-child, window.dialog.message.csd .dialog-action-area > button:last-child {
-  border-radius: 9999px;
+  border-radius: 6px;
 }
 
 window.dialog.message.csd .dialog-action-area > button:not(:last-child) {
