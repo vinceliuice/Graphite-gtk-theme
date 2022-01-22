@@ -55,10 +55,12 @@ function has_command() {
 usage() {
   printf "%s\n" "Usage: ${0##*/} [OPTIONS...]"
   printf "\n%s\n" "OPTIONS:"
+  printf "  %-25s%s\n" "-d, --dest" "Specify destination directory (Default: $DEST_DIR)"
   printf "  %-25s%s\n" "-b, --boot" "Install grub theme into /boot/grub/themes"
   printf "  %-25s%s\n" "-t, --theme" "Color theme variant(s) [default|nord] (default is grey color)"
   printf "  %-25s%s\n" "-s, --screen" "Screen display variant(s) [1080p|2k|4k] (default is 1080p)"
   printf "  %-25s%s\n" "-r, --remove" "Remove theme (must add theme name option)"
+  printf "  %-25s%s\n" "-j, --justcopy" "Just copy the theme files, without setting the theme system wide"
   printf "  %-25s%s\n" "-h, --help" "Show this help"
 }
 
@@ -73,9 +75,7 @@ install() {
   fi
 
   # Check for root access and proceed if it is present
-  if [[ "$UID" -eq "$ROOT_UID" ]]; then
-    clear
-
+  if [[ "$UID" -eq "$ROOT_UID" || "${justcopy:-}" == 'true' ]]; then
     # Create themes directory if it didn't exist
     prompt -s "\n Checking for the existence of themes directory..."
 
@@ -91,6 +91,8 @@ install() {
     cp -a --no-preserve=ownership "${REO_DIR}/backgrounds/${screen}/wave-dark${COLORSCHEME}.png" "${THEME_DIR}/background.png"
     cp -a --no-preserve=ownership "${REO_DIR}/assets/logos${COLORSCHEME}/${screen}" "${THEME_DIR}/icons"
     cp -a --no-preserve=ownership "${REO_DIR}/assets/assets${COLORSCHEME}/${screen}/"*.png "${THEME_DIR}"
+
+    [[ "${justcopy:-}" == 'true' ]] && exit 0
 
     # Set theme
     prompt -s "\n Setting ${name}${COLORSCHEME} as default..."
@@ -286,12 +288,20 @@ while [[ $# -gt 0 ]]; do
   PROG_ARGS+=("${1}")
   dialog='false'
   case "${1}" in
+    -d|--dest)
+      DEST_DIR="${2}"
+      shift 2
+      ;;
     -b|--boot)
       THEME_DIR="/boot/grub/themes"
       shift 1
       ;;
     -r|--remove)
       remove='true'
+      shift 1
+      ;;
+    -j|--justcopy)
+      justcopy='true'
       shift 1
       ;;
     -t|--theme)
