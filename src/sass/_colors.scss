@@ -90,40 +90,44 @@
     @if ($type == 'b') { @return #f3f4f6; }
     @if ($type == 'c') { @return #f0f1f4; }
     @if ($type == 'd') { @return #c4c9d4; }
-    @if ($type == 'e') { @return #1c1f26; }
-    @if ($type == 'f') { @return #1e222a; }
-    @if ($type == 'g') { @return #252a33; }
-    @if ($type == 'h') { @return #333a47; }
-  }
-  @if ($color_type == 'blackness') {
+
+    @if ($darker == 'true') {
+      @if ($type == 'e') { @return #1c1f26; }
+      @if ($type == 'f') { @return #1e222a; }
+      @if ($type == 'g') { @return #252a33; }
+      @if ($type == 'h') { @return #333a47; }
+    } @else {
+      @if ($type == 'e') { @return #292e38; }
+      @if ($type == 'f') { @return #2b303b; }
+      @if ($type == 'g') { @return #313744; }
+      @if ($type == 'h') { @return #404859; }
+    }
+  } @else {
     @if ($type == 'a') { @return #FFFFFF; }
     @if ($type == 'b') { @return #FAFAFA; }
     @if ($type == 'c') { @return #F2F2F2; }
     @if ($type == 'd') { @return #CCCCCC; }
-    @if ($type == 'e') { @return #000000; }
-    @if ($type == 'f') { @return #030303; }
-    @if ($type == 'g') { @return #0F0F0F; }
-    @if ($type == 'h') { @return #121212; }
-  }
-  @if ($color_type == 'midblackness') {
-    @if ($type == 'a') { @return #FFFFFF; }
-    @if ($type == 'b') { @return #FAFAFA; }
-    @if ($type == 'c') { @return #F2F2F2; }
-    @if ($type == 'd') { @return #CCCCCC; }
-    @if ($type == 'e') { @return lighten($black, 4.0%); }
-    @if ($type == 'f') { @return lighten($black, 4.0% * 2); }
-    @if ($type == 'g') { @return lighten($black, 4.0% * 3); }
-    @if ($type == 'h') { @return lighten($black, 4.0% * 4); }
-  }
-  @if ($color_type == 'default') {
-    @if ($type == 'a') { @return #FFFFFF; }
-    @if ($type == 'b') { @return #FAFAFA; }
-    @if ($type == 'c') { @return #F2F2F2; }
-    @if ($type == 'd') { @return #CCCCCC; }
-    @if ($type == 'e') { @return #212121; }
-    @if ($type == 'f') { @return #242424; }
-    @if ($type == 'g') { @return #2C2C2C; }
-    @if ($type == 'h') { @return #3C3C3C; }
+
+    @if ($color_type == 'blackness') {
+      @if ($type == 'e') { @return #000000; }
+      @if ($type == 'f') { @return #030303; }
+      @if ($type == 'g') { @return #0F0F0F; }
+      @if ($type == 'h') { @return #121212; }
+    }
+
+    @if ($color_type == 'default') {
+      @if ($darker == 'true') {
+        @if ($type == 'e') { @return #0A0A0A; }
+        @if ($type == 'f') { @return #141414; }
+        @if ($type == 'g') { @return #1F1F1F; }
+        @if ($type == 'h') { @return #292929; }
+      } @else {
+        @if ($type == 'e') { @return #212121; }
+        @if ($type == 'f') { @return #242424; }
+        @if ($type == 'g') { @return #2C2C2C; }
+        @if ($type == 'h') { @return #3C3C3C; }
+      }
+    }
   }
 }
 
