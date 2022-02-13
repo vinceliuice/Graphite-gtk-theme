@@ -609,6 +609,10 @@ frame.gedit-map-frame > border {
   .csd & {
     border-bottom-left-radius: $window-radius;
   }
+
+  .csd.maximized &, .csd.tiled & {
+    border-bottom-left-radius: 0;
+  }
 }
 
 .tweak {
@@ -747,12 +751,62 @@ window.background.csd {
       }
     }
   }
+
+  &.maximized, &.tiled {
+    > headerbar.titlebar {
+      > leaflet,
+      > hdyleaflet {
+        > headerbar {
+          &:first-child:not(:only-child) {
+            border-top-left-radius: 0;
+          }
+
+          &:last-child:not(:only-child) {
+            border-top-right-radius: 0;
+          }
+
+          &:first-child:only-child, &:last-child:only-child {
+            border-top-right-radius: 0;
+            border-top-left-radius: 0;
+          }
+        }
+      }
+    }
+
+    > stack:not(.titlebar) > stack.background { border-radius: 0; }
+
+    > leaflet,
+    > hdyleaflet,
+    > box.horizontal {
+      > stack.background {
+        > widget {
+          > box.vertical > box.vertical {
+            > scrolledwindow > viewport.frame {
+              border-bottom-right-radius: 0;
+            }
+          }
+        }
+      }
+
+      > box.vertical > scrolledwindow.view { // > 3.25.90
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
 }
 
 dialog.background.csd {
   > box.vertical.dialog-vbox { // wifi setting
     > notebook > stack > box.horizontal > notebook > stack {
       border-radius: 0 0 $window-radius $window-radius;
+    }
+  }
+
+  &.maximized, &.tiled {
+    > box.vertical.dialog-vbox {
+      > notebook > stack > box.horizontal > notebook > stack {
+        border-radius: 0;
+      }
     }
   }
 }

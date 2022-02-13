@@ -106,7 +106,7 @@ entry selection, label selection, textview text selection:focus, textview text s
   border-radius: 0 0 12px 12px;
 }
 
-.background.maximized, .background.solid-csd {
+.background.tiled .background.maximized, .background.solid-csd {
   border-radius: 0;
 }
 
@@ -5901,6 +5901,10 @@ window.background.csd > box.vertical > overlay > stack > box.vertical > box.hori
   border-bottom-left-radius: 12px;
 }
 
+.csd.maximized .tweak-categories, .csd.tiled .tweak-categories {
+  border-bottom-left-radius: 0;
+}
+
 .tweak {
   padding: 3px;
 }
@@ -6024,8 +6028,53 @@ window.background.csd > box.horizontal > box.vertical > scrolledwindow.view > vi
   background-color: transparent;
 }
 
+window.background.csd.maximized > headerbar.titlebar > leaflet > headerbar:first-child:not(:only-child),
+window.background.csd.maximized > headerbar.titlebar > hdyleaflet > headerbar:first-child:not(:only-child), window.background.csd.tiled > headerbar.titlebar > leaflet > headerbar:first-child:not(:only-child),
+window.background.csd.tiled > headerbar.titlebar > hdyleaflet > headerbar:first-child:not(:only-child) {
+  border-top-left-radius: 0;
+}
+
+window.background.csd.maximized > headerbar.titlebar > leaflet > headerbar:last-child:not(:only-child),
+window.background.csd.maximized > headerbar.titlebar > hdyleaflet > headerbar:last-child:not(:only-child), window.background.csd.tiled > headerbar.titlebar > leaflet > headerbar:last-child:not(:only-child),
+window.background.csd.tiled > headerbar.titlebar > hdyleaflet > headerbar:last-child:not(:only-child) {
+  border-top-right-radius: 0;
+}
+
+window.background.csd.maximized > headerbar.titlebar > leaflet > headerbar:first-child:only-child, window.background.csd.maximized > headerbar.titlebar > leaflet > headerbar:last-child:only-child,
+window.background.csd.maximized > headerbar.titlebar > hdyleaflet > headerbar:first-child:only-child,
+window.background.csd.maximized > headerbar.titlebar > hdyleaflet > headerbar:last-child:only-child, window.background.csd.tiled > headerbar.titlebar > leaflet > headerbar:first-child:only-child, window.background.csd.tiled > headerbar.titlebar > leaflet > headerbar:last-child:only-child,
+window.background.csd.tiled > headerbar.titlebar > hdyleaflet > headerbar:first-child:only-child,
+window.background.csd.tiled > headerbar.titlebar > hdyleaflet > headerbar:last-child:only-child {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+window.background.csd.maximized > stack:not(.titlebar) > stack.background, window.background.csd.tiled > stack:not(.titlebar) > stack.background {
+  border-radius: 0;
+}
+
+window.background.csd.maximized > leaflet > stack.background > widget > box.vertical > box.vertical > scrolledwindow > viewport.frame,
+window.background.csd.maximized > hdyleaflet > stack.background > widget > box.vertical > box.vertical > scrolledwindow > viewport.frame,
+window.background.csd.maximized > box.horizontal > stack.background > widget > box.vertical > box.vertical > scrolledwindow > viewport.frame, window.background.csd.tiled > leaflet > stack.background > widget > box.vertical > box.vertical > scrolledwindow > viewport.frame,
+window.background.csd.tiled > hdyleaflet > stack.background > widget > box.vertical > box.vertical > scrolledwindow > viewport.frame,
+window.background.csd.tiled > box.horizontal > stack.background > widget > box.vertical > box.vertical > scrolledwindow > viewport.frame {
+  border-bottom-right-radius: 0;
+}
+
+window.background.csd.maximized > leaflet > box.vertical > scrolledwindow.view,
+window.background.csd.maximized > hdyleaflet > box.vertical > scrolledwindow.view,
+window.background.csd.maximized > box.horizontal > box.vertical > scrolledwindow.view, window.background.csd.tiled > leaflet > box.vertical > scrolledwindow.view,
+window.background.csd.tiled > hdyleaflet > box.vertical > scrolledwindow.view,
+window.background.csd.tiled > box.horizontal > box.vertical > scrolledwindow.view {
+  border-bottom-left-radius: 0;
+}
+
 dialog.background.csd > box.vertical.dialog-vbox > notebook > stack > box.horizontal > notebook > stack {
   border-radius: 0 0 12px 12px;
+}
+
+dialog.background.csd.maximized > box.vertical.dialog-vbox > notebook > stack > box.horizontal > notebook > stack, dialog.background.csd.tiled > box.vertical.dialog-vbox > notebook > stack > box.horizontal > notebook > stack {
+  border-radius: 0;
 }
 
 hdyleaflet frame > border, leaflet frame > border, box.horizontal > stack.background frame > border {

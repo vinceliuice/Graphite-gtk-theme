@@ -97,7 +97,7 @@
     border-radius: 0 0 $window-radius $window-radius;
   }
 
-  &.maximized, &.solid-csd { // No radius when windows maximized
+  &.tiled &.maximized, &.solid-csd { // No radius when windows maximized
     border-radius: 0;
   }
 }
