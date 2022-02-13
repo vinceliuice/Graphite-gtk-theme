@@ -16,16 +16,19 @@
 <constant name="C_highlight_unfocused" value="gtk:custom(wm_highlight,gtk:base[NORMAL])"/>
 <constant name="C_title_focused" value="gtk:custom(wm_title,gtk:fg[NORMAL])"/>
 <constant name="C_title_unfocused" value="gtk:custom(wm_unfocused_title,gtk:fg[INSENSITIVE])"/>
+<constant name="C_button_close_icon" value="gtk:custom(wm_button_close_icon,gtk:base[NORMAL])" />
+<constant name="C_button_close_bg_hover" value="gtk:custom(wm_button_close_hover_bg,gtk:fg[INSENSITIVE])" />
+<constant name="C_button_close_bg_active" value="gtk:custom(wm_button_close_active_bg,gtk:fg[INSENSITIVE])" />
 
 <!-- geometries -->
 
-<frame_geometry name="normal" title_scale="medium" rounded_top_left="4" rounded_top_right="4">
+<frame_geometry name="normal" title_scale="medium" rounded_top_left="12" rounded_top_right="12">
   <distance name="left_width" value="0"/>
   <distance name="right_width" value="0"/>
   <distance name="bottom_height" value="0"/>
   <distance name="left_titlebar_edge" value="0"/>
   <distance name="right_titlebar_edge" value="0"/>
-  <distance name="title_vertical_pad" value="12"/>
+  <distance name="title_vertical_pad" value="18"/>
   <border name="title_border" left="10" right="10" top="0" bottom="0"/>
   <border name="button_border" left="0" right="0" top="0" bottom="0"/>
   <aspect_ratio name="button" value="1"/>
@@ -73,8 +76,8 @@
   <border name="title_border" left="0" right="0" top="0" bottom="0"/>
 </frame_geometry>
 
-<frame_geometry name="attached" hide_buttons="true" rounded_bottom_left="4" rounded_bottom_right="4" parent="normal">
-  <distance name="title_vertical_pad" value="4"/>
+<frame_geometry name="attached" hide_buttons="true" rounded_bottom_left="8" rounded_bottom_right="8" parent="normal">
+  <distance name="title_vertical_pad" value="8"/>
 </frame_geometry>
 
 <!-- drawing operations -->
@@ -146,11 +149,13 @@
 </draw_ops>
 
 <draw_ops name="close_focused_prelight">
-  <include name="close_focused"/>
+  <image filename="assets/button.svg" colorize="C_button_close_bg_hover" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height"/>
+  <image filename="assets/close.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" colorize="C_titlebar_focused"/>
 </draw_ops>
 
 <draw_ops name="close_focused_pressed">
-  <include name="close_focused"/>
+  <image filename="assets/button.svg" colorize="C_button_close_bg_active" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height"/>
+  <image filename="assets/close.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" colorize="C_titlebar_focused"/>
 </draw_ops>
 
 <draw_ops name="close_unfocused">
@@ -158,11 +163,13 @@
 </draw_ops>
 
 <draw_ops name="close_unfocused_prelight">
-  <include name="close_unfocused"/>
+  <image filename="assets/button.svg" alpha="0.7" colorize="C_button_close_bg_hover" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height"/>
+  <image filename="assets/close.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.7" colorize="C_titlebar_unfocused"/>
 </draw_ops>
 
 <draw_ops name="close_unfocused_pressed">
-  <include name="close_unfocused"/>
+  <image filename="assets/button.svg" alpha="0.7" colorize="C_button_close_bg_active" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height"/>
+  <image filename="assets/close.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.7" colorize="C_titlebar_unfocused"/>
 </draw_ops>
 
 <!-- maximize -->

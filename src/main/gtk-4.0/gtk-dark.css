@@ -1488,7 +1488,7 @@ headerbar .entry-tag {
   margin-bottom: 5px;
 }
 
-headerbar.windowhandle > viewswitcher > box > button:not(.titlebutton):not(.suggested-action):not(.destructive-action) {
+headerbar.windowhandle > viewswitcher > box > button:not(.suggested-action):not(.destructive-action) {
   border-radius: 0;
   margin-top: 0;
   margin-bottom: 0;
@@ -4021,12 +4021,12 @@ windowcontrols button:not(.suggested-action):not(.destructive-action) {
 
 windowcontrols button:not(.suggested-action):not(.destructive-action).close:hover {
   background-color: #E0E0E0;
-  color: rgba(0, 0, 0, 0.87);
+  color: #2C2C2C;
 }
 
 windowcontrols button:not(.suggested-action):not(.destructive-action).close:active {
   background-color: #c7c7c7;
-  color: rgba(0, 0, 0, 0.87);
+  color: #2C2C2C;
 }
 
 gridview > child:selected, modelbutton.flat:selected, row:selected, calendar:selected, calendar > grid > label.day-number:selected {
@@ -4364,6 +4364,9 @@ read if you used those and something break with a version upgrade you're on your
 @define-color wm_highlight rgba(255, 255, 255, 0.1);
 @define-color wm_bg #2C2C2C;
 @define-color wm_unfocused_bg #2C2C2C;
+@define-color wm_button_close_icon #2C2C2C;
+@define-color wm_button_close_hover_bg #E0E0E0;
+@define-color wm_button_close_active_bg #c7c7c7;
 /*
 FIXME this is really an API */
 @define-color content_view_bg #2C2C2C;

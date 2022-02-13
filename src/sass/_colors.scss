@@ -150,6 +150,7 @@ $indicator:                             theme(color);
 $titlebar-indicator:                    if($variant == 'dark', currentColor, $primary);
 $inverse-indicator:                     if($theme == 'default', white, $primary);
 $applet-primary:                        if($topbar == 'dark' and $theme == 'default' and $variant == 'light', #DDDDDD, $primary);
+$titlebar-primary:                      if($topbar == 'dark' and $theme == 'default' and $variant == 'light', if($color_type == 'nord', #dbdee5, #e0e0e0), $primary);
 
 $background:                            if($variant == 'light', background(a), background(g));
 $surface:                               if($variant == 'light', background(a), background(h));
@@ -163,7 +164,6 @@ $scrim-alt:                             background(g);
 $scrim-inverse:                         rgba(white, 0.1);
 $titlebar:                              if($topbar == 'dark', background(g), background(a));
 $titlebar-backdrop:                     if($topbar == 'dark', background(g), background(a));
-$titlebar-primary:                      if($topbar == 'dark' and $theme == 'default' and $variant == 'light', lighten($primary, 15%), $primary);
 $popover:                               $base;
 $panel-solid:                           if($topbar == 'dark', background(e), background(c)); // for Unity panel which doesn't allow translucent colors
 $panel:                                 rgba($panel-solid, $panel_opacity);

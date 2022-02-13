@@ -92,6 +92,9 @@ read if you used those and something break with a version upgrade you're on your
 @define-color wm_highlight #{"" + highlight($titlebar)};
 @define-color wm_bg #{"" + $titlebar};
 @define-color wm_unfocused_bg #{"" + $titlebar-backdrop};
+@define-color wm_button_close_icon #{"" + $titlebar};
+@define-color wm_button_close_hover_bg #{"" + $titlebar-primary};
+@define-color wm_button_close_active_bg #{"" + darken($titlebar-primary, 10%)};
 
 /*
 FIXME this is really an API */

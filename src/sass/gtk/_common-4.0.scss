@@ -1336,7 +1336,7 @@ headerbar {
   }
 
   &.windowhandle {
-    > viewswitcher > box > button:not(.titlebutton):not(.suggested-action):not(.destructive-action) {
+    > viewswitcher > box > button:not(.suggested-action):not(.destructive-action) {
       border-radius: 0;
       margin-top: 0;
       margin-bottom: 0;
@@ -3713,7 +3713,7 @@ window {
   }
 }
 
-// Window button
+// Windows button
 windowcontrols {
   border-spacing: $space-size;
 
@@ -3740,12 +3740,13 @@ windowcontrols {
 
     &.close { // Window Close button
       &:hover {
-        background-color: $primary;
-        color: on($primary);
+        background-color: $titlebar-primary;
+        color: $titlebar;
       }
+
       &:active {
-        background-color: darken($primary, 10%);
-        color: on($primary);
+        background-color: darken($titlebar-primary, 10%);
+        color: $titlebar;
       }
     }
   }
@@ -3829,7 +3830,7 @@ stackswitcher {
     padding: 2px;
     margin: $space-size 0;
     background-color: transparent;
-    border: 2px solid $applet-primary;
+    border: 2px solid $primary;
   }
 
   &.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action) {
@@ -3847,12 +3848,12 @@ stackswitcher {
     &:focus:not(:hover) { box-shadow: inset 0 0 0 2px $overlay-focus; }
 
     &:active {
-      box-shadow: inset 0 0 0 9999px gtkalpha($applet-primary, 0.16);
+      box-shadow: inset 0 0 0 9999px gtkalpha($primary, 0.16);
     }
 
     &:checked {
-      background-color: $applet-primary;
-      color: on($applet-primary);
+      background-color: $primary;
+      color: on($primary);
     }
   }
 

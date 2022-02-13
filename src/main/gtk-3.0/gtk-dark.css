@@ -2560,11 +2560,7 @@ searchbar > revealer > box {
 }
 
 .titlebar stackswitcher {
-  border-radius: 9999px;
-}
-
-.titlebar stackswitcher.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action).text-button {
-  border-radius: 9999px;
+  border: 2px solid #E0E0E0;
 }
 
 .titlebar stackswitcher.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action).text-button:active {
@@ -2574,7 +2570,7 @@ searchbar > revealer > box {
 
 .titlebar stackswitcher.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action).text-button:checked {
   background-color: #E0E0E0;
-  color: rgba(0, 0, 0, 0.87);
+  color: #2C2C2C;
 }
 
 .titlebar .path-bar button:not(.suggested-action):not(.destructive-action).text-button {
@@ -2734,7 +2730,7 @@ headerbar .entry-tag, headerbar .photos-entry-tag, headerbar .documents-entry-ta
 
 headerbar.windowhandle viewswitcher button:not(.titlebutton):not(.suggested-action):not(.destructive-action) {
   border-radius: 0 0 12px 12px;
-  margin: 0 1px;
+  margin: 0;
   min-width: 120px;
   padding: 0;
   background-image: none;
@@ -5201,12 +5197,12 @@ button.titlebutton:not(.suggested-action):not(.destructive-action) {
 
 button.titlebutton:not(.suggested-action):not(.destructive-action).close:hover {
   background-color: #E0E0E0;
-  color: rgba(0, 0, 0, 0.87);
+  color: #2C2C2C;
 }
 
 button.titlebutton:not(.suggested-action):not(.destructive-action).close:active {
   background-color: #c7c7c7;
-  color: rgba(0, 0, 0, 0.87);
+  color: #2C2C2C;
 }
 
 .monospace {
@@ -9000,6 +8996,9 @@ read if you used those and something break with a version upgrade you're on your
 @define-color wm_highlight rgba(255, 255, 255, 0.1);
 @define-color wm_bg #2C2C2C;
 @define-color wm_unfocused_bg #2C2C2C;
+@define-color wm_button_close_icon #2C2C2C;
+@define-color wm_button_close_hover_bg #E0E0E0;
+@define-color wm_button_close_active_bg #c7c7c7;
 /*
 FIXME this is really an API */
 @define-color content_view_bg #2C2C2C;

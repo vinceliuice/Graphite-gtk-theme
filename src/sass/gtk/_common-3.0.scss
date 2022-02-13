@@ -1201,11 +1201,11 @@ searchbar > revealer > box {
   // button.toggle { border-radius: $corner-radius; }
 
   stackswitcher { // reset
-    border-radius: $circular-radius;
+    @if $rimless == 'false' {
+      border: 2px solid $titlebar-primary;
+    }
 
     &.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action).text-button {
-      border-radius: $circular-radius;
-
       &:active {
         box-shadow: inset 0 0 0 9999px on($titlebar, secondary-fill);
         background-image: radial-gradient(circle, on($titlebar, secondary-fill) 10%, transparent 0%);
@@ -1213,7 +1213,7 @@ searchbar > revealer > box {
 
       &:checked {
         background-color: $titlebar-primary;
-        color: on($titlebar-primary);
+        color: $titlebar;
       }
     }
   }
@@ -1395,8 +1395,8 @@ headerbar {
   &.windowhandle {
     viewswitcher {
       button:not(.titlebutton):not(.suggested-action):not(.destructive-action) {
-        border-radius: 0 0 $window-radius $window-radius;
-        margin: 0 1px;
+        border-radius: if($topbar == 'dark' and $theme == 'default' and $variant == 'light', $corner-radius, 0 0 $window-radius $window-radius);
+        margin: if($topbar == 'dark' and $theme == 'default' and $variant == 'light', 2px 0, 0);
         min-width: 120px;
         padding: 0;
         background-image: none;
@@ -3724,12 +3724,13 @@ button.titlebutton:not(.suggested-action):not(.destructive-action) {
 
   &.close { // Window Close button
     &:hover {
-      background-color: $primary;
-      color: on($primary);
+      background-color: $titlebar-primary;
+      color: $titlebar;
     }
+
     &:active {
-      background-color: darken($primary, 10%);
-      color: on($primary);
+      background-color: darken($titlebar-primary, 10%);
+      color: $titlebar;
     }
   }
 }
@@ -3793,7 +3794,7 @@ stackswitcher {
     padding: 2px;
     margin: $space-size 0;
     background-color: transparent;
-    border: 2px solid $applet-primary;
+    border: 2px solid $primary;
   }
 
   &.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action) {
@@ -3811,13 +3812,13 @@ stackswitcher {
     &:focus:not(:hover) { box-shadow: inset 0 0 0 2px $overlay-focus; }
 
     &:active {
-      box-shadow: inset 0 0 0 9999px gtkalpha($applet-primary, 0.08);
-      background-image: radial-gradient(circle, gtkalpha($applet-primary, 0.08) 10%, transparent 0%);
+      box-shadow: inset 0 0 0 9999px gtkalpha($primary, 0.08);
+      background-image: radial-gradient(circle, gtkalpha($primary, 0.08) 10%, transparent 0%);
     }
 
     &:checked {
-      background-color: $applet-primary;
-      color: on($applet-primary);
+      background-color: $primary;
+      color: on($primary);
     }
   }
 

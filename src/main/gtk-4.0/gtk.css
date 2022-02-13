@@ -1385,8 +1385,8 @@ headerbar button:backdrop:checked:disabled:not(.suggested-action):not(.destructi
 }
 
 .titlebar stackswitcher.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action).text-button:checked {
-  background-color: #595959;
-  color: white;
+  background-color: #e0e0e0;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 .titlebar.selection-mode {
@@ -1488,7 +1488,7 @@ headerbar .entry-tag {
   margin-bottom: 5px;
 }
 
-headerbar.windowhandle > viewswitcher > box > button:not(.titlebutton):not(.suggested-action):not(.destructive-action) {
+headerbar.windowhandle > viewswitcher > box > button:not(.suggested-action):not(.destructive-action) {
   border-radius: 0;
   margin-top: 0;
   margin-bottom: 0;
@@ -4020,13 +4020,13 @@ windowcontrols button:not(.suggested-action):not(.destructive-action) {
 }
 
 windowcontrols button:not(.suggested-action):not(.destructive-action).close:hover {
-  background-color: #333333;
-  color: white;
+  background-color: #e0e0e0;
+  color: #2C2C2C;
 }
 
 windowcontrols button:not(.suggested-action):not(.destructive-action).close:active {
-  background-color: #1a1a1a;
-  color: white;
+  background-color: #c7c7c7;
+  color: #2C2C2C;
 }
 
 gridview > child:selected, modelbutton.flat:selected, row:selected, calendar:selected, calendar > grid > label.day-number:selected {
@@ -4098,7 +4098,7 @@ stackswitcher {
   padding: 2px;
   margin: 6px 0;
   background-color: transparent;
-  border: 2px solid #DDDDDD;
+  border: 2px solid #333333;
 }
 
 stackswitcher.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action) {
@@ -4118,12 +4118,12 @@ stackswitcher.linked:not(.vertical) > button:not(.suggested-action):not(.destruc
 }
 
 stackswitcher.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action):active {
-  box-shadow: inset 0 0 0 9999px alpha(#DDDDDD, 0.16);
+  box-shadow: inset 0 0 0 9999px alpha(#333333, 0.16);
 }
 
 stackswitcher.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action):checked {
-  background-color: #DDDDDD;
-  color: rgba(0, 0, 0, 0.87);
+  background-color: #333333;
+  color: white;
 }
 
 stackswitcher button.text-button {
@@ -4364,6 +4364,9 @@ read if you used those and something break with a version upgrade you're on your
 @define-color wm_highlight rgba(255, 255, 255, 0.1);
 @define-color wm_bg #2C2C2C;
 @define-color wm_unfocused_bg #2C2C2C;
+@define-color wm_button_close_icon #2C2C2C;
+@define-color wm_button_close_hover_bg #e0e0e0;
+@define-color wm_button_close_active_bg #c7c7c7;
 /*
 FIXME this is really an API */
 @define-color content_view_bg #FFFFFF;
