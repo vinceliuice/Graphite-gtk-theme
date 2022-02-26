@@ -11,6 +11,8 @@
   - `gtk2-engines-murrine` on Debian, Ubuntu, etc.
 - `sassc` — build dependency
 
+- `Icon theme` [Tela-circle-icon-theme](https://github.com/vinceliuice/Tela-circle-icon-theme)
+
 ## Installation
 
 ### Manual Installation
