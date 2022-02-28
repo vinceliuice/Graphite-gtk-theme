@@ -37,9 +37,12 @@
 
   // icon container
   .message-icon-bin {
-    margin: 8px 0;
-    padding: 8px 0px 8px 8px;
-    &:rtl { padding: 8px 8px 8px 0px; }
+    padding: $base_spacing * 3 $base_spacing * 2;
+    padding-right: $base_spacing;
+
+    &:rtl {
+      padding-left: $base_spacing;
+    }
 
     // icon size and color
     > StIcon {
@@ -61,7 +64,7 @@
       color: $text-disabled;
       @include fontsize($font_size - 2);
       text-align: right;
-      padding-bottom: 0.13em;
+      padding-bottom: 0;
 
       &:ltr { text-align: right };
       &:rtl { text-align: left };
@@ -71,20 +74,22 @@
   .message-title {
     color: $text;
     font-weight: bold;
+    padding-top: 0.57em;
   }
 
   .message-content {
-    padding: $base_padding + $base_margin * 2;
-    spacing: 4px;
+    padding: $base_padding;
+    margin-bottom: $base_margin;
+    spacing: $base_margin;
     color: $text-disabled;
   }
 
   // close button
   .message-close-button {
     color: $text-secondary;
-    padding: 0;
-    height: 24px;
-    width: 24px;
+    padding: $base_margin;
+    height: $base_padding + 14px;
+    width: $base_padding + 14px;
     border-radius: $circular_radius;
 
     &:hover, &:active { color: $text; }
@@ -104,10 +109,11 @@
 }
 
 .message-media-control {
-  margin: 18px $base_padding;
+  margin: $base_padding * 3 + 2px $base_padding;
   padding: $base_padding * 1.5;
   border-radius: $circular_radius;
   color: $text-secondary;
+
   &:hover, &:focus { color: $text; background-color: $divider; }
   &:active { color: $text; background-color: $track; }
   &:insensitive { color: $text-secondary-disabled; }
@@ -121,9 +127,10 @@
   icon-size: 32px !important;
 
   &.fallback {
-    icon-size: 32px !important;
+    icon-size: 24px !important;
+    padding: $base_padding;
     border: none;
-    border-radius: $menu_radius;
+    border-radius: $base_radius;
     background-color: $divider;
     color: $text-disabled;
   }
