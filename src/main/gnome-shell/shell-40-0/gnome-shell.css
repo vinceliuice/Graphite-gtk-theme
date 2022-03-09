@@ -2131,13 +2131,13 @@ StEntry StLabel.hint-text, .popup-menu .search-entry StLabel.hint-text {
 }
 
 .osd-window .level {
-  height: 2px;
+  height: 3px;
   border-radius: 2px;
-  background-color: rgba(0, 0, 0, 0.12);
-  color: rgba(0, 0, 0, 0.87);
-  -barlevel-height: 2px;
-  -barlevel-background-color: rgba(0, 0, 0, 0.12);
-  -barlevel-active-background-color: #333333;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  -barlevel-height: 3px;
+  -barlevel-background-color: rgba(255, 255, 255, 0.15);
+  -barlevel-active-background-color: white;
   -barlevel-overdrive-color: #D93025;
   -barlevel-overdrive-separator-width: 2px;
   -barlevel-border-width: 0;
