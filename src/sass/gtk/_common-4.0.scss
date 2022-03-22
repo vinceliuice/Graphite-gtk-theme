@@ -761,14 +761,20 @@ button.link {
  * GtkSpinButton *
  *****************/
 spinbutton {
+  border-radius: $corner-radius;
+  padding: 0;
+  border-spacing: 0;
+  min-height: 0;
+  @include entry(normal);
+
+  &:focus-within { @include entry(checked); }
+
+  &:disabled { @include entry(disabled); }
+
   &:not(.vertical) {
     // in this horizontal configuration, the whole spinbutton
     // behaves as the entry, so we extend the entry styling
     // and nuke the style on the internal entry
-    @extend %entry;
-
-    padding: 0;
-    border-spacing: 0;
 
     > text {
       min-width: $large-size - 8px * 2;
@@ -804,12 +810,6 @@ spinbutton {
 
   // Vertical
   &.vertical {
-    @extend %entry;
-
-    padding: 0;
-
-    &:disabled { color: $text-disabled; }
-
     > text {
       margin: 0;
       border-image: none;
@@ -842,15 +842,16 @@ spinbutton {
   }
 
   // Misc
-  treeview &:not(.vertical),
-  row &:not(.vertical) {
-    min-height: 0;
-    border-style: none;
-    border-radius: 0;
+  // treeview &:not(.vertical),
+  list > row &:not(.vertical) {
+    > button {
+      margin: $space-size;
 
-    > text {
-      min-height: 0;
-      padding: 1px 2px;
+      &.up:dir(ltr),
+      &.down:dir(rtl) { margin-left: $space-size / 2; }
+
+      &.up:dir(rtl),
+      &.down:dir(ltr) { margin-right: $space-size / 2; }
     }
   }
 }
@@ -1057,13 +1058,6 @@ toolbar {
 
     switch { margin: 2px + $space-size 2px; }
   }
-}
-
-// oldstyle toolbar buttons
-.toolbar button {
-  margin: 1px;
-  @extend %button-flat;
-  border-radius: $corner-radius / 2;
 }
 
 // searchbar
@@ -2344,6 +2338,7 @@ treeview.view,
 columnview.view {
   check, radio {
     padding: 0;
+    margin: 0;
     box-shadow: none;
     background: none;
 
@@ -2358,7 +2353,7 @@ columnview.view {
     &:checked:disabled, &:indeterminate:disabled { color: $text-secondary-disabled; }
   }
 
-  &:hover, &:selected, &:focus, &:focus-within {
+  &:hover, &:selected, &:focus {
     check, radio {
       box-shadow: none;
       background-color: transparent;
@@ -2865,6 +2860,10 @@ row {
     button.circular {
       @extend %button-flat-simple;
     }
+  }
+
+  button &.activatable {
+    &:focus, &:hover, &:active { box-shadow: none; }
   }
 
   &:selected {

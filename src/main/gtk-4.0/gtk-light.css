@@ -221,7 +221,7 @@ spinner:checked:disabled {
 /****************
  * Text Entries *
  ****************/
-spinbutton.vertical, spinbutton:not(.vertical),
+
 entry {
   min-height: 36px;
   padding: 0 8px;
@@ -234,31 +234,31 @@ entry {
   color: rgba(0, 0, 0, 0.87);
 }
 
-spinbutton.vertical:focus-within, spinbutton:focus-within:not(.vertical),
+
 entry:focus-within {
   background-color: rgba(0, 0, 0, 0.04);
   box-shadow: inset 0 0 0 2px #333333;
 }
 
-spinbutton.vertical:drop(active), spinbutton:drop(active):not(.vertical),
+
 entry:drop(active) {
   background-color: alpha(currentColor, 0.08);
   box-shadow: inset 0 0 0 2px alpha(currentColor, 0.08);
 }
 
-spinbutton.vertical:disabled, spinbutton:disabled:not(.vertical),
+
 entry:disabled {
   box-shadow: inset 0 0 0 2px transparent;
   background-color: rgba(0, 0, 0, 0.04);
   color: rgba(0, 0, 0, 0.38);
 }
 
-spinbutton.search.vertical, spinbutton.search:not(.vertical),
+
 entry.search {
   border-radius: 9999px;
 }
 
-spinbutton.flat.vertical, spinbutton.flat:not(.vertical),
+
 entry.flat {
   min-height: 0;
   padding: 2px;
@@ -266,35 +266,35 @@ entry.flat {
   background-color: transparent;
 }
 
-spinbutton.vertical image, spinbutton:not(.vertical) image,
+
 entry image {
   color: rgba(0, 0, 0, 0.6);
 }
 
-spinbutton.vertical image:hover, spinbutton:not(.vertical) image:hover, spinbutton.vertical image:active, spinbutton:not(.vertical) image:active,
+
 entry image:hover,
 entry image:active {
   color: rgba(0, 0, 0, 0.87);
 }
 
-spinbutton.vertical image:disabled, spinbutton:not(.vertical) image:disabled,
+
 entry image:disabled {
   color: rgba(0, 0, 0, 0.38);
 }
 
-spinbutton.vertical image.left, spinbutton:not(.vertical) image.left,
+
 entry image.left {
   margin-left: 2px;
   margin-right: 6px;
 }
 
-spinbutton.vertical image.right, spinbutton:not(.vertical) image.right,
+
 entry image.right {
   margin-left: 6px;
   margin-right: 2px;
 }
 
-spinbutton.vertical undershoot.left, spinbutton:not(.vertical) undershoot.left,
+
 entry undershoot.left {
   background-color: transparent;
   background-image: linear-gradient(to top, transparent 50%, rgba(0, 0, 0, 0.26) 50%);
@@ -307,7 +307,7 @@ entry undershoot.left {
   margin: 4px 0;
 }
 
-spinbutton.vertical undershoot.right, spinbutton:not(.vertical) undershoot.right,
+
 entry undershoot.right {
   background-color: transparent;
   background-image: linear-gradient(to top, transparent 50%, rgba(0, 0, 0, 0.26) 50%);
@@ -320,7 +320,7 @@ entry undershoot.right {
   margin: 4px 0;
 }
 
-spinbutton.error.vertical, spinbutton.error:not(.vertical),
+
 entry.error {
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0, 0, 0.2, 1);
   box-shadow: inset 0 0 0 2px transparent;
@@ -328,20 +328,20 @@ entry.error {
   color: rgba(0, 0, 0, 0.87);
 }
 
-spinbutton.error.vertical:focus-within, spinbutton.error:focus-within:not(.vertical),
+
 entry.error:focus-within {
   background-color: rgba(0, 0, 0, 0.04);
   box-shadow: inset 0 0 0 2px #D93025;
 }
 
-spinbutton.error.vertical:disabled, spinbutton.error:disabled:not(.vertical),
+
 entry.error:disabled {
   box-shadow: inset 0 0 0 2px transparent;
   background-color: rgba(0, 0, 0, 0.04);
   color: rgba(0, 0, 0, 0.38);
 }
 
-spinbutton.warning.vertical, spinbutton.warning:not(.vertical),
+
 entry.warning {
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0, 0, 0.2, 1);
   box-shadow: inset 0 0 0 2px transparent;
@@ -349,22 +349,20 @@ entry.warning {
   color: rgba(0, 0, 0, 0.87);
 }
 
-spinbutton.warning.vertical:focus-within, spinbutton.warning:focus-within:not(.vertical),
+
 entry.warning:focus-within {
   background-color: rgba(0, 0, 0, 0.04);
   box-shadow: inset 0 0 0 2px #F4B400;
 }
 
-spinbutton.warning.vertical:disabled, spinbutton.warning:disabled:not(.vertical),
+
 entry.warning:disabled {
   box-shadow: inset 0 0 0 2px transparent;
   background-color: rgba(0, 0, 0, 0.04);
   color: rgba(0, 0, 0, 0.38);
 }
 
-spinbutton.vertical > progress, spinbutton:not(.vertical) > progress,
-spinbutton.vertical progress > trough > progress,
-spinbutton:not(.vertical) progress > trough > progress,
+
 entry > progress,
 entry progress > trough > progress {
   margin: 2px -8px;
@@ -787,39 +785,39 @@ stackswitcher > button.needs-attention > image:dir(rtl) {
   background-position: left 3px;
 }
 
-.linked:not(.vertical) > spinbutton.vertical, .linked:not(.vertical) > spinbutton:not(.vertical), .linked:not(.vertical) > entry, .linked:not(.vertical) > button, .linked:not(.vertical) > button.image-button {
+.linked:not(.vertical) > entry, .linked:not(.vertical) > button, .linked:not(.vertical) > button.image-button {
   border-radius: 0;
 }
 
-.linked:not(.vertical) > spinbutton.vertical:first-child, .linked:not(.vertical) > spinbutton:first-child:not(.vertical), .linked:not(.vertical) > entry:first-child, .linked:not(.vertical) > button:first-child {
+.linked:not(.vertical) > entry:first-child, .linked:not(.vertical) > button:first-child {
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
 }
 
-.linked:not(.vertical) > spinbutton.vertical:last-child, .linked:not(.vertical) > spinbutton:last-child:not(.vertical), .linked:not(.vertical) > entry:last-child, .linked:not(.vertical) > button:last-child {
+.linked:not(.vertical) > entry:last-child, .linked:not(.vertical) > button:last-child {
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
 }
 
-.linked:not(.vertical) > spinbutton.vertical:only-child, .linked:not(.vertical) > spinbutton:only-child:not(.vertical), .linked:not(.vertical) > entry:only-child, .linked:not(.vertical) > button:only-child {
+.linked:not(.vertical) > entry:only-child, .linked:not(.vertical) > button:only-child {
   border-radius: 6px;
 }
 
-.linked.vertical > spinbutton.vertical, .linked.vertical > spinbutton:not(.vertical), .linked.vertical > entry, .linked.vertical > button, .linked.vertical > button.image-button {
+.linked.vertical > entry, .linked.vertical > button, .linked.vertical > button.image-button {
   border-radius: 0;
 }
 
-.linked.vertical > spinbutton.vertical:first-child, .linked.vertical > spinbutton:first-child:not(.vertical), .linked.vertical > entry:first-child, .linked.vertical > button:first-child {
+.linked.vertical > entry:first-child, .linked.vertical > button:first-child {
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
 }
 
-.linked.vertical > spinbutton.vertical:last-child, .linked.vertical > spinbutton:last-child:not(.vertical), .linked.vertical > entry:last-child, .linked.vertical > button:last-child {
+.linked.vertical > entry:last-child, .linked.vertical > button:last-child {
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
 }
 
-.linked.vertical > spinbutton.vertical:only-child, .linked.vertical > spinbutton:only-child:not(.vertical), .linked.vertical > entry:only-child, .linked.vertical > button:only-child {
+.linked.vertical > entry:only-child, .linked.vertical > button:only-child {
   border-radius: 6px;
 }
 
@@ -902,9 +900,26 @@ button.link > label {
 /*****************
  * GtkSpinButton *
  *****************/
-spinbutton:not(.vertical) {
+spinbutton {
+  border-radius: 6px;
   padding: 0;
   border-spacing: 0;
+  min-height: 0;
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0, 0, 0.2, 1);
+  box-shadow: inset 0 0 0 2px transparent;
+  background-color: rgba(0, 0, 0, 0.04);
+  color: rgba(0, 0, 0, 0.87);
+}
+
+spinbutton:focus-within {
+  background-color: rgba(0, 0, 0, 0.04);
+  box-shadow: inset 0 0 0 2px #333333;
+}
+
+spinbutton:disabled {
+  box-shadow: inset 0 0 0 2px transparent;
+  background-color: rgba(0, 0, 0, 0.04);
+  color: rgba(0, 0, 0, 0.38);
 }
 
 spinbutton:not(.vertical) > text {
@@ -932,14 +947,6 @@ spinbutton:not(.vertical) > button.up:dir(ltr), spinbutton:not(.vertical) > butt
 
 spinbutton:not(.vertical) > button.up:dir(rtl), spinbutton:not(.vertical) > button.down:dir(ltr) {
   margin-right: -3px;
-}
-
-spinbutton.vertical {
-  padding: 0;
-}
-
-spinbutton.vertical:disabled {
-  color: rgba(0, 0, 0, 0.38);
 }
 
 spinbutton.vertical > text {
@@ -971,15 +978,16 @@ spinbutton.vertical > button.down {
   margin: 0 3px;
 }
 
-treeview spinbutton:not(.vertical), row spinbutton:not(.vertical) {
-  min-height: 0;
-  border-style: none;
-  border-radius: 0;
+list > row spinbutton:not(.vertical) > button {
+  margin: 6px;
 }
 
-treeview spinbutton:not(.vertical) > text, row spinbutton:not(.vertical) > text {
-  min-height: 0;
-  padding: 1px 2px;
+list > row spinbutton:not(.vertical) > button.up:dir(ltr), list > row spinbutton:not(.vertical) > button.down:dir(rtl) {
+  margin-left: 3px;
+}
+
+list > row spinbutton:not(.vertical) > button.up:dir(rtl), list > row spinbutton:not(.vertical) > button.down:dir(ltr) {
+  margin-right: 3px;
 }
 
 /**************
@@ -1229,11 +1237,6 @@ toolbar:not(.inline-toolbar):not(.osd) spinbutton button {
 .toolbar:not(.inline-toolbar):not(.osd) switch,
 toolbar:not(.inline-toolbar):not(.osd) switch {
   margin: 8px 2px;
-}
-
-.toolbar button {
-  margin: 1px;
-  border-radius: 3px;
 }
 
 searchbar > revealer > box {
@@ -2533,6 +2536,7 @@ treeview.view check, treeview.view radio,
 columnview.view check,
 columnview.view radio {
   padding: 0;
+  margin: 0;
   box-shadow: none;
   background: none;
   color: rgba(0, 0, 0, 0.6);
@@ -2568,15 +2572,13 @@ columnview.view radio:indeterminate:disabled {
   color: rgba(0, 0, 0, 0.26);
 }
 
-treeview.view:hover check, treeview.view:hover radio, treeview.view:selected check, treeview.view:selected radio, treeview.view:focus check, treeview.view:focus radio, treeview.view:focus-within check, treeview.view:focus-within radio,
+treeview.view:hover check, treeview.view:hover radio, treeview.view:selected check, treeview.view:selected radio, treeview.view:focus check, treeview.view:focus radio,
 columnview.view:hover check,
 columnview.view:hover radio,
 columnview.view:selected check,
 columnview.view:selected radio,
 columnview.view:focus check,
-columnview.view:focus radio,
-columnview.view:focus-within check,
-columnview.view:focus-within radio {
+columnview.view:focus radio {
   box-shadow: none;
   background-color: transparent;
 }
@@ -3233,6 +3235,10 @@ treeview.view > header > button.has-open-popup, columnview.view > header > butto
 treeview.view > header > button:active, row.activatable.has-open-popup, row.activatable:active {
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1);
   box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.12);
+}
+
+button row.activatable:focus, button row.activatable:hover, button row.activatable:active {
+  box-shadow: none;
 }
 
 row:selected image,
@@ -4039,7 +4045,7 @@ gridview > child:selected, modelbutton.flat:selected, row:selected, calendar:sel
 }
 
 textview text selection:focus, textview text selection, label > selection,
-entry > text > selection, spinbutton:not(.vertical) > text > selection, spinbutton.vertical > text > selection, calendar > grid > label.today:selected {
+entry > text > selection, calendar > grid > label.today:selected {
   color: white;
   background-color: #333333;
 }
