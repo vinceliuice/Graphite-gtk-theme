@@ -92,7 +92,7 @@
     }
 
     .popup-menu-item {
-      border-radius: $base_radius;
+      border-radius: 0;
       margin: 0;
 
       @if $sidebar == 'styled' {
@@ -109,6 +109,12 @@
         }
 
         &:insensitive { color: on($primary, secondary-disabled) !important; }
+      }
+    }
+
+    .popup-menu-section {
+      &:last-child .popup-menu-item:last-child {
+        border-radius: 0 0 $base_radius $base_radius;
       }
     }
   }

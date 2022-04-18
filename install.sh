@@ -28,10 +28,13 @@ if [[ "$(command -v gnome-shell)" ]]; then
   SHELL_VERSION="$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f -1)"
   if [[ "${SHELL_VERSION:-}" -ge "42" ]]; then
     GS_VERSION="42"
+    echo "gnome-shell 42"
   elif [[ "${SHELL_VERSION:-}" -ge "40" ]]; then
     GS_VERSION="40"
+    echo "gnome-shell 40"
   else
     GS_VERSION="38"
+    echo "gnome-shell 38"
   fi
   else
     echo "'gnome-shell' not found, using styles for last gnome-shell version available."
@@ -380,11 +383,8 @@ install_package() {
   fi
 }
 
-tweaks_temp() {
+sass_temp() {
   cp -rf ${SRC_DIR}/sass/_tweaks.scss ${SRC_DIR}/sass/_tweaks-temp.scss
-}
-
-shell_temp() {
   cp -rf ${SRC_DIR}/sass/gnome-shell/_common.scss ${SRC_DIR}/sass/gnome-shell/_common-temp.scss
 }
 
@@ -455,7 +455,6 @@ theme_color() {
 theme_tweaks() {
   if [[ "$accent" == 'true' || "$compact" == 'true' || "$nord" == 'true'  || "$rimless" == 'true' || "$blackness" == 'true' || "$darker" == 'true' || "$normal" = "true" ]]; then
     tweaks='true'
-    tweaks_temp
   fi
 
   if [[ "$accent" = "true" ]] ; then
@@ -497,7 +496,7 @@ install_theme() {
   done
 }
 
-install_package && shell_temp && gnome_shell_version && install_theme
+install_package && sass_temp && gnome_shell_version && install_theme
 
 echo
 echo Done.

@@ -28,7 +28,7 @@ if [ ! -z "${COLOR_VARIANTS:-}" ]; then
 fi
 
 cp -rf src/sass/_tweaks.scss src/sass/_tweaks-temp.scss
-cp -rf ${SRC_DIR}/sass/gnome-shell/_common.scss ${SRC_DIR}/sass/gnome-shell/_common-temp.scss
+cp -rf src/sass/gnome-shell/_common.scss src/sass/gnome-shell/_common-temp.scss
 
 for color in "${_COLOR_VARIANTS[@]}"; do
   sassc $SASSC_OPT src/main/gtk-3.0/gtk${color}.{scss,css}
