@@ -28,16 +28,15 @@ if [ ! -z "${COLOR_VARIANTS:-}" ]; then
 fi
 
 cp -rf src/sass/_tweaks.scss src/sass/_tweaks-temp.scss
+cp -rf ${SRC_DIR}/sass/gnome-shell/_common.scss ${SRC_DIR}/sass/gnome-shell/_common-temp.scss
 
 for color in "${_COLOR_VARIANTS[@]}"; do
   sassc $SASSC_OPT src/main/gtk-3.0/gtk${color}.{scss,css}
   echo "==> Generating the 3.0 gtk${color}.css..."
   sassc $SASSC_OPT src/main/gtk-4.0/gtk${color}.{scss,css}
   echo "==> Generating the 4.0 gtk${color}.css..."
-  sassc $SASSC_OPT src/main/gnome-shell/shell-3-28/gnome-shell${color}.{scss,css}
-  echo "==> Generating the 3.28 gnome-shell${color}.css..."
-  sassc $SASSC_OPT src/main/gnome-shell/shell-40-0/gnome-shell${color}.{scss,css}
-  echo "==> Generating the 40.0 gnome-shell${color}.css..."
+  sassc $SASSC_OPT src/main/gnome-shell/gnome-shell${color}.{scss,css}
+  echo "==> Generating the gnome-shell${color}.css..."
   sassc $SASSC_OPT src/main/cinnamon/cinnamon${color}.{scss,css}
   echo "==> Generating the cinnamon${color}.css..."
 done

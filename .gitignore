@@ -9,3 +9,6 @@ src/main/gtk-3.0/gtk.css
 src/main/gtk-4.0/gtk-dark.css
 src/main/gtk-4.0/gtk-light.css
 src/main/gtk-4.0/gtk.css
+src/main/gnome-shell/gnome-shell-dark.css
+src/main/gnome-shell/gnome-shell-light.css
+src/main/gnome-shell/gnome-shell.css
