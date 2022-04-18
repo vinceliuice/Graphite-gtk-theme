@@ -11,9 +11,9 @@
 .candidate-popup-content {
   @extend %theme_dialogs;
   color: $text-secondary;
-  box-shadow: 0 5px 12px 0 rgba(black, 0.35);
+  box-shadow: 0 3px 8px 0 rgba(black, 0.35) !important;
   border: none;
-  margin: ($base_padding / 2) 8px;
+  margin: ($base_padding / 2) 8px 12px !important;
   padding: $base_padding;
   spacing: $base_padding;
 }
@@ -42,7 +42,7 @@
 }
 
 .candidate-page-button {
-  padding: 4px;
+  padding: $base_padding $base_padding * 1.5;
   @extend %flat_button;
 }
 

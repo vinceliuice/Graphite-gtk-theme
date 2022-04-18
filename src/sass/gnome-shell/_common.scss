@@ -28,3 +28,7 @@ stage {
   @include fontsize($font_size);
   color: $text;
 }
+
+@import 'widgets-42-0';
+@import 'extensions-40-0';
+

@@ -303,6 +303,26 @@
   }
 }
 
+.windowhandle .linked.nautilus-path-bar {
+  background-color: $titlebar-fill;
+  border-radius: $corner-radius;
+  margin: $space-size 0;
+
+  button:not(.suggested-action):not(.destructive-action) {
+    margin-top: 0;
+    margin-bottom: 0;
+
+    &.current-dir {
+      color: $titlebar-text;
+
+      &:hover, &:active {
+        background: none;
+        box-shadow: none;
+      }
+    }
+  }
+}
+
 .disk-space-display {
   // border-style: solid;
   // border-width: 2px;
