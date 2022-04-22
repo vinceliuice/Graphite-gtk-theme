@@ -382,11 +382,8 @@ install_package() {
   fi
 }
 
-shell_temp() {
+sass_temp() {
   cp -rf ${SRC_DIR}/sass/gnome-shell/_common.scss ${SRC_DIR}/sass/gnome-shell/_common-temp.scss
-}
-
-tweaks_temp() {
   cp -rf ${SRC_DIR}/sass/_tweaks.scss ${SRC_DIR}/sass/_tweaks-temp.scss
 }
 
@@ -455,11 +452,6 @@ theme_color() {
 }
 
 theme_tweaks() {
-  if [[ "$accent" == 'true' || "$compact" == 'true' || "$nord" == 'true'  || "$rimless" == 'true' || "$blackness" == 'true' || "$darker" == 'true' || "$normal" = "true" ]]; then
-    tweaks='true'
-    tweaks_temp
-  fi
-
   if [[ "$accent" = "true" ]] ; then
     theme_color
   fi
@@ -499,7 +491,7 @@ install_theme() {
   done
 }
 
-install_package && shell_temp && gnome_shell_version && install_theme
+install_package && sass_temp && gnome_shell_version && install_theme
 
 echo
 echo Done.
