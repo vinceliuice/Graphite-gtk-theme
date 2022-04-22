@@ -383,9 +383,12 @@ install_package() {
   fi
 }
 
-sass_temp() {
-  cp -rf ${SRC_DIR}/sass/_tweaks.scss ${SRC_DIR}/sass/_tweaks-temp.scss
+shell_temp() {
   cp -rf ${SRC_DIR}/sass/gnome-shell/_common.scss ${SRC_DIR}/sass/gnome-shell/_common-temp.scss
+}
+
+tweaks_temp() {
+  cp -rf ${SRC_DIR}/sass/_tweaks.scss ${SRC_DIR}/sass/_tweaks-temp.scss
 }
 
 compact_size() {
@@ -413,10 +416,10 @@ normal_sidebar() {
 }
 
 gnome_shell_version() {
-  sed -i "/\widgets/s/42/${GS_VERSION}/" ${SRC_DIR}/sass/gnome-shell/_common.scss
+  sed -i "/\widgets/s/40/${GS_VERSION}/" ${SRC_DIR}/sass/gnome-shell/_common-temp.scss
 
   if [[ "${GS_VERSION}" == '38' ]]; then
-    sed -i "/\extensions/s/40-0/3-28/" ${SRC_DIR}/sass/gnome-shell/_common.scss
+    sed -i "/\extensions/s/40-0/3-28/" ${SRC_DIR}/sass/gnome-shell/_common-temp.scss
   fi
 }
 
@@ -455,6 +458,7 @@ theme_color() {
 theme_tweaks() {
   if [[ "$accent" == 'true' || "$compact" == 'true' || "$nord" == 'true'  || "$rimless" == 'true' || "$blackness" == 'true' || "$darker" == 'true' || "$normal" = "true" ]]; then
     tweaks='true'
+    tweaks_temp
   fi
 
   if [[ "$accent" = "true" ]] ; then
@@ -496,7 +500,7 @@ install_theme() {
   done
 }
 
-install_package && sass_temp && gnome_shell_version && install_theme
+install_package && shell_temp && gnome_shell_version && install_theme
 
 echo
 echo Done.

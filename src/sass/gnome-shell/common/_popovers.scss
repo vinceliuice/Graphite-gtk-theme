@@ -30,7 +30,7 @@
 
     @if $rimless == 'false' {
       border: 2px solid $primary;
-    }
+    } @else { border: none; }
   }
 
   .popup-menu-item {
