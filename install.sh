@@ -25,20 +25,18 @@ COLOR_VARIANTS=('' '-light' '-dark')
 SIZE_VARIANTS=('' '-compact')
 
 if [[ "$(command -v gnome-shell)" ]]; then
+  gnome-shell --version
   SHELL_VERSION="$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f -1)"
   if [[ "${SHELL_VERSION:-}" -ge "42" ]]; then
-    GS_VERSION="42"
-    echo "gnome-shell 42"
+    GS_VERSION="42-0"
   elif [[ "${SHELL_VERSION:-}" -ge "40" ]]; then
-    GS_VERSION="40"
-    echo "gnome-shell 40"
+    GS_VERSION="40-0"
   else
-    GS_VERSION="38"
-    echo "gnome-shell 38"
+    GS_VERSION="3-28"
   fi
   else
     echo "'gnome-shell' not found, using styles for last gnome-shell version available."
-    GS_VERSION="42"
+    GS_VERSION="42-0"
 fi
 
 usage() {
@@ -412,10 +410,10 @@ normal_sidebar() {
 }
 
 gnome_shell_version() {
-  sed -i "/\widgets/s/40/${GS_VERSION}/" ${SRC_DIR}/sass/gnome-shell/_common-temp.scss
+  sed -i "/\widgets/s/40-0/${GS_VERSION}/" ${SRC_DIR}/sass/gnome-shell/_common-temp.scss
 
-  if [[ "${GS_VERSION}" == '38' ]]; then
-    sed -i "/\extensions/s/40-0/3-28/" ${SRC_DIR}/sass/gnome-shell/_common-temp.scss
+  if [[ "${GS_VERSION}" == '3-28' ]]; then
+    sed -i "/\extensions/s/40-0/${GS_VERSION}/" ${SRC_DIR}/sass/gnome-shell/_common-temp.scss
   fi
 }
 

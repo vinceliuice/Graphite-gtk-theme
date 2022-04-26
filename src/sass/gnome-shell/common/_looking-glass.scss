@@ -2,34 +2,45 @@
 
 // Dialog
 #LookingGlassDialog {
-  background-color: $base;
+  background-color: $base !important;
   spacing: 4px;
   padding: 0;
-  border: none;
   border-radius: $base_radius;
   box-shadow: 0 3px 8px 0 rgba(black, 0.25);
-  color: $text;
+  color: $text !important;
+
+  @if $rimless == 'false' {
+    border: 2px solid $primary;
+    border-top: none;
+  } @else { border: none; }
 
   & > #Toolbar {
-    padding: 0 8px;
+    padding: 0 $base_padding;
     border: none;
     border-radius: 0;
-    background-color: $background;
+    background-color: $background !important;
     box-shadow: inset 0 -1px 0 $border;
+    spacing: $base_padding;
+
+    .lg-toolbar-button {
+      padding: $base_padding $base_padding * 2;
+      @extend %flat_button;
+
+      & > StIcon { icon-size: 16px; }
+    }
   }
 
-  .labels { spacing: 0; }
+  .labels { spacing: $base_padding; }
+
   .notebook-tab {
-    -natural-hpadding: 12px;
-    -minimum-hpadding: 6px;
+    -natural-hpadding: $base_padding * 2;
+    -minimum-hpadding: $base_padding * 2;
     font-weight: bold;
     color: $text-disabled;
-    padding-left: 16px;
-    padding-right: 16px;
-    min-height: $item_size;
-    padding: 0 32px;
+    padding: $base_padding $base_padding * 2;
     transition-duration: 100ms;
     border-bottom-width: 0;
+    border-radius: 0;
 
     &:hover {
       background-color: $fill;
@@ -40,13 +51,14 @@
     &:selected {
       border-color: transparent;
       background-color: $divider;
-      box-shadow: inset 0 -2px 0px $indicator;
+      box-shadow: inset 0 -2px 0 $indicator;
       color: $text;
       text-shadow: none;
     }
   }
-  StBoxLayout#EvalBox { padding: 4px; spacing: 4px; }
-  StBoxLayout#ResultsArea { spacing: 4px; }
+
+  StBoxLayout#EvalBox { padding: 4px; spacing: $base_padding; padding: $base_padding; }
+  StBoxLayout#ResultsArea { spacing: $base_padding; padding: $base_padding; }
 }
 
 .lg-dialog {
@@ -94,10 +106,15 @@
 }
 
 .lg-extension {
-  border: none;
   border-radius: $base_radius;
-  background-color: $background;
+  background-color: $fill !important;
+  color: $text !important;
   padding: $base_padding * 2;
+  box-shadow: none;
+
+  @if $rimless == 'false' {
+    border: 2px solid $primary;
+  } @else { border: none; }
 }
 
 .lg-extension-name {
@@ -110,11 +127,26 @@
 
 // Inspector
 #LookingGlassPropertyInspector {
-  color: $text_secondary;
-  background: $base;
+  color: $text-secondary !important;
+  background: $base !important;
   border: none;
   border-radius: $base_radius;
   padding: $base_padding;
   margin: 5px 8px 11px;
   box-shadow: 0 3px 8px 0 rgba(black, 0.25);
+}
+
+.lg-debug-flag-button {
+  StLabel { padding: $base_padding 2 * $base_padding; }
+
+  color: $text_secondary;
+  &:hover { color: $text; }
+  &:active { color: $text-secondary; }
+}
+
+.lg-debug-flags-header {
+  padding-top: 2 * $base_padding;
+  padding: $base_padding;
+  margin: $base_padding;
+  color: $text-secondary-disabled;
 }
