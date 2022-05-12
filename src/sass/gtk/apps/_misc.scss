@@ -70,13 +70,19 @@ window.background > box.vertical > scrolledwindow > widget toolbar {
 window.background.chromium {
   background-color: $surface;
 
+  decoration {
+    // border: none;
+    background-clip: padding-box;
+    box-shadow: $shadow-z16;
+  }
+
   // FIXME: There is no way to change the color of the toolbar buttons
   // toolbar button { color: $text-secondary; }
 
   // toolbar's border-bottom refers to button's border
   // FIXME: Chrome's button border ignores theme's alpha value :(
   entry,
-  > button { border: 1px solid $track; }
+  > button { border: 1px solid $solid-border; }
 
   > button {
     color: $primary;
@@ -103,7 +109,7 @@ window.background.chromium {
 
   // For table header
   treeview.view button {
-    border: 1px solid $track;
+    border: 1px solid $solid-border;
     background-color: $base; // FIXME: This should not be necessary
     // color: $text-secondary;
   }
