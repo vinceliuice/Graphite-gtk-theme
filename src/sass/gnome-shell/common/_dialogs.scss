@@ -46,7 +46,7 @@
   &-linked-button {
     min-height: $item_size;
     padding: $base_padding;
-    margin: $base_padding / 2;
+    margin: $base_padding / 2 !important;
     border: none !important;
     border-radius: $base_radius;
     @extend %flat_button;

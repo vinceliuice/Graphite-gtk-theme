@@ -3,7 +3,7 @@
 
 .message-list {
   width: if($compact == 'true', 25.5em, 31.5em);
-  padding: 0 $base_padding * 2;
+  padding: $base_padding;
   text-shadow: none;
 
   .message-list-placeholder { spacing: $base_spacing * 2; }

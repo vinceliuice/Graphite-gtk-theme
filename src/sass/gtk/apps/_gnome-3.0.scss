@@ -167,7 +167,7 @@
         border-radius: $modal-radius + $space-size;
 
         @if $variant == 'light' and $topbar == 'dark' {
-          margin: 0 $space-size $space-size 0;
+          margin: 0 $space-size $space-size;
         }
       }
 
