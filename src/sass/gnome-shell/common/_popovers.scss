@@ -36,7 +36,7 @@
   .popup-menu-item {
     spacing: $base_spacing * 1.5;
     padding: $base_padding;
-    color: $text-secondary;
+    color: $text-secondary !important;
     text-shadow: none;
     border-radius: $base_radius;
     margin: 0 $base_padding;
@@ -50,7 +50,7 @@
       background-color: $primary !important;
       border-radius: $base_radius $base_radius 0 0;
 
-      &:focus, &.hover, &.selected {
+      &:focus, &:hover, &.selected {
         color: on($primary) !important;
         background-color: lighten($primary, 5%) !important;
       }
@@ -63,15 +63,15 @@
       &:insensitive { color: on($primary, disabled) !important; }
     }
 
-    &:focus, &.hover, &.selected {
+    &:focus, &:hover, &.selected {
       color: $text !important;
       background-color: $divider !important;
       transition-duration: 0;
     }
 
     &:active, &.selected:active {
-      color: on($primary) !important;
-      background-color: $primary !important;
+      color: $text !important;
+      background-color: $track !important;
     }
 
     &:insensitive { color: $text-secondary-disabled !important; }
