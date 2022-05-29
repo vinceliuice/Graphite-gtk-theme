@@ -1498,7 +1498,7 @@ treeview.view {
 
   border-left-color: $track; // this is actually the tree lines color,
   border-top-color: $divider; // while this is the grid lines color, better then nothing
-  padding: $space-size / 2;
+  min-height: $medium-size;
 
   .csd &:not(:selected):not(:hover):not(.progressbar):not(.expander):not(.trough):not(.separator) { background-color: transparent; }
 
