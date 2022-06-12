@@ -178,9 +178,7 @@ clean() {
 
   local THEME_DIR="${1}/${2}${3}${4}${5}${6}"
 
-  if [[ ${theme} == '' && ${color} == '' && ${size} == '' ]]; then
-    cleantheme='none'
-  elif [[ -d ${THEME_DIR} ]]; then
+  if [[ ${color} != '' && -d ${THEME_DIR} ]]; then
     rm -rf ${THEME_DIR}
     echo -e "Find: ${THEME_DIR} ! removing it ..."
   fi
