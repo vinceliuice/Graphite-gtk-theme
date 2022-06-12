@@ -6,7 +6,7 @@
    viewBox="0 0 52.917 39.688"
    id="svg202"
    sodipodi:docname="thumbnail.svg"
-   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20, custom)"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -22,15 +22,17 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      showgrid="false"
-     inkscape:zoom="0.21095352"
-     inkscape:cx="-47.403806"
-     inkscape:cy="23.701903"
+     inkscape:zoom="2.3866666"
+     inkscape:cx="1495.6006"
+     inkscape:cy="20.949721"
      inkscape:window-width="1920"
-     inkscape:window-height="1012"
+     inkscape:window-height="1016"
      inkscape:window-x="0"
-     inkscape:window-y="32"
+     inkscape:window-y="28"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg202" />
+     inkscape:current-layer="svg202"
+     inkscape:showpageshadow="2"
+     inkscape:deskcolor="#d1d1d1" />
   <g
      id="thumbnail"
      transform="translate(0,-257.31)">
@@ -71,7 +73,7 @@
        id="path10" />
   </g>
   <g
-     id="thumbnail-dark"
+     id="thumbnail-Dark"
      transform="translate(0,-257.31)">
     <rect
        x="12.171"
@@ -149,7 +151,7 @@
        id="path32" />
   </g>
   <g
-     id="thumbnail-green-dark"
+     id="thumbnail-green-Dark"
      transform="translate(47.36,-257.31)">
     <rect
        x="12.171"
@@ -227,7 +229,7 @@
        id="path54" />
   </g>
   <g
-     id="thumbnail-yellow-dark"
+     id="thumbnail-yellow-Dark"
      transform="translate(89.694,-257.31)">
     <rect
        x="12.171"
@@ -305,7 +307,7 @@
        id="path76" />
   </g>
   <g
-     id="thumbnail-gey-dark"
+     id="thumbnail-gey-Dark"
      transform="translate(132.03,-257.31)">
     <rect
        x="12.171"
@@ -383,7 +385,7 @@
        id="path98" />
   </g>
   <g
-     id="thumbnail-purple-dark"
+     id="thumbnail-purple-Dark"
      transform="translate(177.01,-257.31)">
     <rect
        x="12.171"
@@ -461,7 +463,7 @@
        id="path120" />
   </g>
   <g
-     id="thumbnail-pink-dark"
+     id="thumbnail-pink-Dark"
      transform="translate(220.66,-257.31)">
     <rect
        x="12.171"
@@ -539,7 +541,7 @@
        id="path142" />
   </g>
   <g
-     id="thumbnail-dark-red"
+     id="thumbnail-red-Dark"
      transform="translate(261.67,-257.31)">
     <rect
        x="12.171"
@@ -617,7 +619,7 @@
        id="path164" />
   </g>
   <g
-     id="thumbnail-orange-dark"
+     id="thumbnail-orange-Dark"
      transform="translate(305.33,-257.31)">
     <rect
        x="12.171"
@@ -695,7 +697,7 @@
        id="path186" />
   </g>
   <g
-     id="thumbnail-teal-dark"
+     id="thumbnail-teal-Dark"
      transform="translate(352.85,-257.31)">
     <rect
        x="12.171"

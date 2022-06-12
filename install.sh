@@ -21,7 +21,7 @@ SASSC_OPT="-M -t expanded"
 
 THEME_NAME=Graphite
 THEME_VARIANTS=('' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-teal' '-blue')
-COLOR_VARIANTS=('' '-light' '-dark')
+COLOR_VARIANTS=('' '-Light' '-Dark')
 SIZE_VARIANTS=('' '-compact')
 
 if [[ "$(command -v gnome-shell)" ]]; then
@@ -124,14 +124,14 @@ install() {
   cp -r "${SRC_DIR}/assets/gtk/scalable"                                                     "${THEME_DIR}/gtk-3.0/assets"
   cp -r "${SRC_DIR}/assets/gtk/thumbnail${ELSE_DARK:-}.png"                                  "${THEME_DIR}/gtk-3.0/thumbnail.png"
   sassc $SASSC_OPT "${SRC_DIR}/main/gtk-3.0/gtk${color}.scss"                                "${THEME_DIR}/gtk-3.0/gtk.css"
-  sassc $SASSC_OPT "${SRC_DIR}/main/gtk-3.0/gtk-dark.scss"                                   "${THEME_DIR}/gtk-3.0/gtk-dark.css"
+  sassc $SASSC_OPT "${SRC_DIR}/main/gtk-3.0/gtk-Dark.scss"                                   "${THEME_DIR}/gtk-3.0/gtk-dark.css"
 
   mkdir -p                                                                                   "${THEME_DIR}/gtk-4.0"
   cp -r "${SRC_DIR}/assets/gtk/assets${theme}"                                               "${THEME_DIR}/gtk-4.0/assets"
   cp -r "${SRC_DIR}/assets/gtk/scalable"                                                     "${THEME_DIR}/gtk-4.0/assets"
   cp -r "${SRC_DIR}/assets/gtk/thumbnail${ELSE_DARK:-}.png"                                  "${THEME_DIR}/gtk-4.0/thumbnail.png"
   sassc $SASSC_OPT "${SRC_DIR}/main/gtk-4.0/gtk${color}.scss"                                "${THEME_DIR}/gtk-4.0/gtk.css"
-  sassc $SASSC_OPT "${SRC_DIR}/main/gtk-4.0/gtk-dark.scss"                                   "${THEME_DIR}/gtk-4.0/gtk-dark.css"
+  sassc $SASSC_OPT "${SRC_DIR}/main/gtk-4.0/gtk-Dark.scss"                                   "${THEME_DIR}/gtk-4.0/gtk-dark.css"
 
   mkdir -p                                                                                   "${THEME_DIR}/cinnamon"
   cp -r "${SRC_DIR}/assets/cinnamon/common-assets"                                           "${THEME_DIR}/cinnamon/assets"
@@ -158,10 +158,31 @@ install() {
   cp -r "${SRC_DIR}/main/xfwm4/themerc${ELSE_LIGHT:-}"                                       "${THEME_DIR}-xhdpi/xfwm4/themerc"
 
   mkdir -p                                                                                   "${THEME_DIR}/plank"
-  if [[ "$color" == '-light' ]]; then
-    cp -r "${SRC_DIR}/main/plank/theme-light/"*                                              "${THEME_DIR}/plank"
+  if [[ "$color" == '-Light' ]]; then
+    cp -r "${SRC_DIR}/main/plank/theme-Light/"*                                              "${THEME_DIR}/plank"
   else
-    cp -r "${SRC_DIR}/main/plank/theme-dark/"*                                               "${THEME_DIR}/plank"
+    cp -r "${SRC_DIR}/main/plank/theme-Dark/"*                                               "${THEME_DIR}/plank"
+  fi
+}
+
+clean() {
+  local dest="${1}"
+  local name="${2}"
+  local theme="${3}"
+  local color="${4}"
+  local size="${5}"
+  local type="${6}"
+
+  [[ "${color}" == '-light' ]] && local ELSE_LIGHT="${color}"
+  [[ "${color}" == '-dark' ]] && local ELSE_DARK="${color}"
+
+  local THEME_DIR="${1}/${2}${3}${4}${5}${6}"
+
+  if [[ ${theme} == '' && ${color} == '' && ${size} == '' ]]; then
+    cleantheme='none'
+  elif [[ -d ${THEME_DIR} ]]; then
+    rm -rf ${THEME_DIR}
+    echo -e "Find: ${THEME_DIR} ! removing it ..."
   fi
 }
 
@@ -479,6 +500,18 @@ theme_tweaks() {
   fi
 }
 
+clean_theme() {
+  for theme in "${THEME_VARIANTS[@]}"; do
+    for color in '' '-light' '-dark'; do
+      for size in "${SIZE_VARIANTS[@]}"; do
+        for type in '' '-nord'; do
+          clean "${dest:-$DEST_DIR}" "${name:-$THEME_NAME}" "$theme" "$color" "$size" "$type"
+        done
+      done
+    done
+  done
+}
+
 install_theme() {
   for theme in "${themes[@]}"; do
     for color in "${colors[@]}"; do
@@ -490,7 +523,7 @@ install_theme() {
   done
 }
 
-install_package && sass_temp && gnome_shell_version && install_theme
+clean_theme && install_package && sass_temp && gnome_shell_version && install_theme
 
 echo
 echo Done.

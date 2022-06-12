@@ -8,20 +8,20 @@ HD_ASSETS_DIR="assets-hdpi"
 XHD_ASSETS_DIR="assets-xhdpi"
 SRC_FILE="assets.svg"
 
-LIGHT_ASSETS_DIR="assets-light"
-LIGHT_HD_ASSETS_DIR="assets-light-hdpi"
-LIGHT_XHD_ASSETS_DIR="assets-light-xhdpi"
-LIGHT_SRC_FILE="assets-light.svg"
+LIGHT_ASSETS_DIR="assets-Light"
+LIGHT_HD_ASSETS_DIR="assets-Light-hdpi"
+LIGHT_XHD_ASSETS_DIR="assets-Light-xhdpi"
+LIGHT_SRC_FILE="assets-Light.svg"
 
 NORD_ASSETS_DIR="assets-nord"
 NORD_HD_ASSETS_DIR="assets-nord-hdpi"
 NORD_XHD_ASSETS_DIR="assets-nord-xhdpi"
 NORD_SRC_FILE="assets-nord.svg"
 
-NORD_LIGHT_ASSETS_DIR="assets-light-nord"
-NORD_LIGHT_HD_ASSETS_DIR="assets-light-nord-hdpi"
-NORD_LIGHT_XHD_ASSETS_DIR="assets-light-nord-xhdpi"
-NORD_LIGHT_SRC_FILE="assets-light-nord.svg"
+NORD_LIGHT_ASSETS_DIR="assets-Light-nord"
+NORD_LIGHT_HD_ASSETS_DIR="assets-Light-nord-hdpi"
+NORD_LIGHT_XHD_ASSETS_DIR="assets-Light-nord-xhdpi"
+NORD_LIGHT_SRC_FILE="assets-Light-nord.svg"
 
 INDEX="assets.txt"
 

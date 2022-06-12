@@ -22,7 +22,7 @@ fi
 
 SASSC_OPT="-M -t expanded"
 
-_COLOR_VARIANTS=('' '-light' '-dark')
+_COLOR_VARIANTS=('' '-Light' '-Dark')
 if [ ! -z "${COLOR_VARIANTS:-}" ]; then
   IFS=', ' read -r -a _COLOR_VARIANTS <<< "${COLOR_VARIANTS:-}"
 fi

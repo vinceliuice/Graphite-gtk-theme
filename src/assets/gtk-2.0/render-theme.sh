@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 for theme in '' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-teal' '-blue'; do
-for color in '' '-dark'; do
+for color in '' '-Dark'; do
 for type in '' '-nord'; do
   if [[ "$color" == '' ]]; then
     case "$theme" in
