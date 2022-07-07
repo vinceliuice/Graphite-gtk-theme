@@ -3668,7 +3668,7 @@ decoration {
     @if $rimless == 'true' {
       box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16);
     } @else {
-      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16);
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 0 0 2px $primary;
       border: none;
       border-radius: $window-radius $window-radius 0 0;
     }
