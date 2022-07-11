@@ -1,6 +1,8 @@
 
 .popup-menu {
   .popup-menu-item {
+    padding: $base_padding $base_padding * 2;
+
     &:ltr { padding-right: $base_padding * 1.5 !important; padding-left: 0 !important; }
     &:rtl { padding-right: 0 !important; padding-left: $base_padding * 1.5 !important; }
   }
