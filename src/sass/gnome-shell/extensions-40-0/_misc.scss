@@ -52,3 +52,38 @@
   &-sunset-icon,
   &-build-icon { color: $text-secondary; }
 }
+
+.popup-sub-menu .openweather {
+  &-current {
+    &-icon,
+    &-summary,
+    &-summarybox {
+      background: none;
+      color: on($primary);
+    }
+
+    &-databox-values {
+      color: on($primary, secondary);
+    }
+
+    &-databox-captions {
+      color: on($primary, secondary);
+    }
+  }
+
+  &-forecast {
+    &-icon,
+    &-summary {
+      color: on($primary);
+    }
+
+    &-day,
+    &-temperature {
+      color: on($primary, secondary);
+    }
+  }
+
+  &-sunrise-icon,
+  &-sunset-icon,
+  &-build-icon { color: on($primary); }
+}

@@ -1503,7 +1503,7 @@ treeview.view {
   .csd &:not(:selected):not(:hover):not(.progressbar):not(.expander):not(.trough):not(.separator) { background-color: transparent; }
 
   // FIXME: Avoid transparency background-color being slightly darker
-  &:selected {
+  &:selected:not(.progressbar):not(.trough) {
     @extend %selected_items;
     background-image: image($overlay-checked);
   }
