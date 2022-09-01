@@ -3,16 +3,8 @@
  * Base States *
  ***************/
 .background {
-  background-color: rgba($background, 1);
+  background-color: $background;
   color: $text;
-
-  &.csd { // Set csd windows botttom border radius
-    border-radius: $window-radius;
-  }
-
-  &.maximized, &.tiled, &.fullscreen, &.solid-csd { // No radius when windows maximized
-    border-radius: 0;
-  }
 }
 
 dnd {
@@ -1069,6 +1061,8 @@ searchbar > revealer > box {
   border-color: $divider;
   background-color: $background;
   background-clip: border-box;
+
+  entry { margin: 0; }
 }
 
 /***************
@@ -1127,29 +1121,33 @@ searchbar > revealer > box {
   }
 }
 
-.titlebar {
-  transition: background-color $duration $ease-out, color $duration $ease-out;
-  border-radius: $window-radius $window-radius 0 0;
-  // box-shadow: inset 0 -1px $divider, inset 0 1px highlight($titlebar);
-  background-color: $titlebar;
+headerbar {
+  min-height: $large-size;
+  padding: 0 $space-size;
+  transition: all $duration $ease-out;
+  background-color: transparent;
   color: $titlebar-text;
+
+  @if $rimless == 'true' {
+    box-shadow: inset 0 1px highlight($titlebar);
+  } @else { box-shadow: none; }
 
   &:disabled { color: $titlebar-text-disabled; }
 
   &:backdrop {
-    background-color: $titlebar-backdrop;
+    background-color: transparent;
     color: $titlebar-text-secondary;
 
     &:disabled { color: $titlebar-text-secondary-disabled; }
   }
 
   .title {
-    padding: 0 12px;
+    padding: 0 $space-size * 2;
     font-weight: bold;
   }
 
   .subtitle {
-    padding: 0 12px;
+    padding: 0 $space-size * 2;
     font-size: smaller;
   }
 
@@ -1159,6 +1157,85 @@ searchbar > revealer > box {
     color: $titlebar-text-secondary;
 
     &:backdrop { color: $titlebar-text-disabled; }
+  }
+
+  > windowhandle > box {
+    &,
+    > box.start,
+    > box.end {
+      border-spacing: $space-size;
+    }
+  }
+
+  // add vertical margins to common widget on the headerbar to avoid them spanning the whole height
+  entry,
+  spinbutton,
+  button,
+  stackswitcher,
+  separator {
+    margin-top: $space-size;
+    margin-bottom: $space-size;
+  }
+
+  menubutton > button,
+  spinbutton > button,
+  splitbutton > button {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  button:not(.suggested-action):not(.destructive-action) {
+    @extend %titlebar-button;
+  }
+
+  separator:not(.spacer) {
+    background-color: $titlebar-divider;
+  }
+
+  switch {
+    margin-top: ($large-size - 24px) / 2;
+    margin-bottom: ($large-size - 24px) / 2;
+  }
+
+  // reset button margins of the spinbutton
+  spinbutton button {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  // FIXME: This is a hacky workaround.
+  .entry-tag {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  &.windowhandle {
+    > viewswitcher > box > button:not(.suggested-action):not(.destructive-action) {
+      border-radius: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    > button.popup {
+      label, image { min-height: 0; }
+    }
+
+    viewswitchertitle > squeezer {
+      margin-top: 0;
+      margin-bottom: 0;
+      background: none;
+
+      > viewswitcher {
+        margin: 0 0;
+        background: none;
+
+        > box.horizontal > button.radio {
+          margin: 0;
+          padding: 0;
+          border-radius: 0;
+        }
+      }
+    }
   }
 
   // Don't draw titlebar above titlebar
@@ -1275,90 +1352,6 @@ searchbar > revealer > box {
   }
 }
 
-headerbar {
-  // The sizing factor needs to be defined in the headerbar node for the case of split headerbars
-  min-height: $large-size;
-  padding: 0 $space-size;
-
-  &:not(.titlebar) { box-shadow: none; }
-
-  box.vertical & {
-    background-color: $titlebar;
-  }
-
-  > windowhandle > box {
-    &,
-    > box.start,
-    > box.end {
-      border-spacing: $space-size;
-    }
-  }
-
-  // add vertical margins to common widget on the headerbar to avoid them spanning the whole height
-  entry,
-  spinbutton,
-  button {
-    margin-top: $space-size;
-    margin-bottom: $space-size;
-  }
-
-  button:not(.suggested-action):not(.destructive-action) {
-    @extend %titlebar-button;
-  }
-
-  separator:not(.sidebar) {
-    margin-top: $large-size / 4;
-    margin-bottom: $large-size / 4;
-    background-color: $titlebar-divider;
-  }
-
-  switch {
-    margin-top: ($large-size - 24px) / 2;
-    margin-bottom: ($large-size - 24px) / 2;
-  }
-
-  // reset button margins of the spinbutton
-  spinbutton button {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  // FIXME: This is a hacky workaround.
-  .entry-tag {
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
-
-  &.windowhandle {
-    > viewswitcher > box > button:not(.suggested-action):not(.destructive-action) {
-      border-radius: 0;
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-
-    > button.popup {
-      label, image { min-height: 0; }
-    }
-
-    viewswitchertitle > squeezer {
-      margin-top: 0;
-      margin-bottom: 0;
-      background: none;
-
-      > viewswitcher {
-        margin: 0 0;
-        background: none;
-
-        > box.horizontal > button.radio {
-          margin: 0;
-          padding: 0;
-          border-radius: 0;
-        }
-      }
-    }
-  }
-}
-
 window.devel {
   headerbar.titlebar {
     $c: $titlebar;
@@ -1419,6 +1412,7 @@ columnview.view,
 treeview.view {
   border-left-color: $solid-border; // this is actually the tree lines color,
   border-top-color: $solid-border; // while this is the grid lines color, better then nothing
+  background-color: $base;
 
   // FIXME: Avoid transparency background-color being slightly darker
   &:selected {
@@ -1996,26 +1990,34 @@ scrollbar {
   background-color: $base;
 
   // scrollbar border
-  &.top { border-bottom: 1px solid $divider; }
-  &.bottom { border-top: 1px solid $divider; }
-  &.left { border-right: 1px solid $divider; }
-  &.right { border-left: 1px solid $divider; }
+  // &.top { border-bottom: 1px solid $divider; }
+  // &.bottom { border-top: 1px solid $divider; }
+  // &.left { border-right: 1px solid $divider; }
+  // &.right { border-left: 1px solid $divider; }
 
   // slider
-  > range > trough > slider {
-    transition: background-color $duration $ease-out;
-    min-width: 8px;
-    min-height: 8px;
-    border: 4px solid transparent;
-    border-radius: $circular-radius;
-    background-clip: padding-box;
-    background-color: $text-disabled;
+  > range > trough {
+    outline: none;
+    background: none;
+    border: none;
 
-    &:hover { background-color: $text-secondary; }
+    > slider {
+      transition: background-color $duration $ease-out;
+      min-width: 8px;
+      min-height: 8px;
+      border: 4px solid transparent;
+      border-radius: $circular-radius;
+      background-clip: padding-box;
+      background-color: $text-disabled;
+      box-shadow: none;
+      outline: none;
 
-    &:active { background-color: $text; }
+      &:hover { background-color: $text-secondary; }
 
-    &:disabled { background-color: $text-secondary-disabled; }
+      &:active { background-color: $text; }
+
+      &:disabled { background-color: $text-secondary-disabled; }
+    }
   }
 
   > range.fine-tune {
@@ -2806,7 +2808,7 @@ scrolledwindow {
 }
 
 // vbox and hbox separators
-separator {
+separator:not(.spacer) {
   min-width: 1px;
   min-height: 1px;
   background-color: $divider;
@@ -2822,20 +2824,118 @@ separator {
 /*********
  * Lists *
  *********/
+
+%circular_list {
+  border-radius: $corner-radius + 1px;
+  box-shadow: none;
+  border: 1px solid $divider;
+}
+
+%circular_row {
+  border-radius: 0;
+
+  &:first-child {
+    border-top-left-radius: $corner-radius;
+    border-top-right-radius: $corner-radius;
+  }
+
+  &:last-child { // Not use ?
+    border-bottom-left-radius: $corner-radius;
+    border-bottom-right-radius: $corner-radius;
+  }
+
+  &:only-child {
+    border-radius: $corner-radius;
+  }
+
+  &:focus {
+    box-shadow: inset 0 0 0 1000px $overlay-focus;
+  }
+}
+
 listview,
 list {
   border-color: $divider;
   background-color: $base;
+  color: $text-secondary;
 
-  row { padding: 2px; }
+  row { padding: 2px; color: $text-secondary; }
 
   > row.expander { padding: 0px; }
   > row.expander .row-header { padding: 2px; }
+
+  &.content:not(.conversation-listbox) {
+    @extend %circular_list;
+
+    > row {
+      @extend %circular_row;
+    }
+  }
+
+  &.boxed-list {
+    @extend %circular_list;
+
+    > row {
+      @extend %circular_row;
+
+      &.expander {
+        list {
+          background-color: transparent;
+          box-shadow: none;
+          border: none;
+
+          > row {
+            @extend %circular_row;
+          }
+        }
+      }
+    }
+  }
 }
 
 list.frame { border-radius: $corner-radius; }
 
+listview.view {
+  color: $text;
+  background-color: transparent;
+
+  popover.menu & {
+    padding: 0;
+
+    > row {
+      margin-left: 0;
+      margin-right: 0;
+
+      &:first-child, &:last-child, & { border-radius: $corner-radius; }
+    }
+  }
+}
+
 row {
+  color: $text-secondary;
+  background-clip: padding-box;
+
+  label.subtitle {
+    font-size: smaller;
+    @extend .dim-label;
+  }
+
+  > box.header {
+    margin-left: $space-size * 2;
+    margin-right: $space-size * 2;
+    min-height: $large-size;
+
+    > .icon:disabled {
+      filter: opacity(0.35);
+    }
+
+    > box.title {
+      margin-top: $space-size;
+      margin-bottom: $space-size;
+      border-spacing: $space-size / 2;
+    }
+  }
+
   @at-root %row_activatable, &.activatable {
     transition: $transition;
     outline: none;
@@ -3156,7 +3256,7 @@ filechooserbutton:drop(active) {
  ***********/
 .sidebar {
   border-style: none;
-  background-color: $base-alt;
+  background-color: $base;
 
   &:not(separator) {
     @at-root %sidebar_left,
@@ -3175,6 +3275,22 @@ filechooserbutton:drop(active) {
     }
   }
 
+  separator + &,
+  separator + box > & {
+    &:not(separator) {
+      &:dir(ltr),
+      &.left,
+      &.left:dir(rtl) {
+        border-right: none;
+      }
+
+      &:dir(rtl),
+      &.right {
+        border-left: none;
+      }
+    }
+  }
+
   listview.view,
   list { background-color: transparent; }
 
@@ -3185,22 +3301,28 @@ stacksidebar {
   + separator.vertical,
   separator.horizontal { @extend %hide_separators; }
 
+  leaflet.unfolded > box > &.sidebar {
+    border: none;
+  }
+
   list {
     padding: $space-size;
-    background-color: $base-alt; // This should not be necessary, but the parent stacksidebar ignores background-color.
+    background-color: $base; // This should not be necessary, but the parent stacksidebar ignores background-color.
   }
 
   row {
     min-height: $small-size;
     padding: $space-size $space-size * 1.5;
-    border-radius: $corner-radius / 2;
+    border-radius: $corner-radius;
+    margin: 2px 0;
+
+    &:first-child { margin-top: 0; }
+    &:last-child { margin-bottom: 0; }
 
     &:selected {
-      @extend %selected_items_color;
+      @extend %selected_items_primary;
       font-weight: 500;
     }
-
-    + row { margin-top: 4px; }
 
     > label {
       padding-left: 6px;
@@ -3234,7 +3356,11 @@ separator.sidebar {
   > row {
     min-height: $small-size;
     padding: $space-size $space-size * 1.5;
-    border-radius: $corner-radius / 2;
+    border-radius: $corner-radius;
+    margin: $space-size / 2 0;
+
+    &:first-child { margin-top: 0; }
+    &:last-child { margin-bottom: 0; }
 
     &:hover,
     &:focus-visible:focus-within {
@@ -3242,12 +3368,12 @@ separator.sidebar {
     }
 
     &:selected {
-      @extend %selected_items_color;
+      @extend %selected_items_primary;
 
-      label { color: $primary; }
+      label, image { color: on($primary); }
 
       &:hover {
-        background-color: $overlay-focus-hover;
+        background-color: lighten($primary, 5%);
       }
 
       &:focus-visible:focus-within {
@@ -3655,61 +3781,59 @@ colorchooser .popover.osd {
  * Window Decorations *
  **********************/
 window {
-  &.csd {
-    transition: $transition-shadow;
-    border-radius: $window-radius;
+  transition: $transition-shadow;
+  border-radius: $window-radius;
+  box-shadow: $shadow-z4, 0 0 0 2px $primary, 0 0 16px transparent;
+
+  @if $rimless == 'true' {
+    box-shadow: $shadow-z16, 0 0 36px transparent;
+  } @else {
     box-shadow: $shadow-z4, 0 0 0 2px $primary, 0 0 16px transparent;
+  }
+
+  &:backdrop {
+    // the transparent shadow here is to enforce that the shadow extents don't
+    // change when we go to backdrop, to prevent jumping windows.
+    // The biggest shadow should be in the same order then in the active state
+    // or the jumping will happen during the transition.
+    @if $rimless == 'true' {
+      box-shadow: $shadow-z4, 0 0 36px transparent;
+    } @else {
+      box-shadow: $shadow-z1, 0 0 0 2px $primary, 0 0 16px transparent;
+    }
+  }
+
+  &.popup {
+    border-radius: $menu-radius;
+    box-shadow: none;
+  }
+
+  &.dialog.message {
+    border-radius: $window-radius;
+  }
+
+  .solid-csd & {
+    margin: 0;
+    padding: 2px;
+    border-radius: 0;
+    background-color: $titlebar;
 
     @if $rimless == 'true' {
-      box-shadow: $shadow-z16, 0 0 36px transparent;
+      border: 1px solid $solid-border;
     } @else {
-      box-shadow: $shadow-z4, 0 0 0 2px $primary, 0 0 16px transparent;
+      border: 2px solid $primary;
     }
 
-    &:backdrop {
-      // the transparent shadow here is to enforce that the shadow extents don't
-      // change when we go to backdrop, to prevent jumping windows.
-      // The biggest shadow should be in the same order then in the active state
-      // or the jumping will happen during the transition.
-      @if $rimless == 'true' {
-        box-shadow: $shadow-z4, 0 0 36px transparent;
-      } @else {
-        box-shadow: $shadow-z1, 0 0 0 2px $primary, 0 0 16px transparent;
-      }
-    }
-
-    &.popup {
-      border-radius: $menu-radius;
-      box-shadow: none;
-    }
-
-    &.dialog.message {
-      border-radius: $window-radius;
-    }
-
-    .solid-csd & {
-      margin: 0;
-      padding: 2px;
-      border-radius: 0;
-      background-color: $titlebar;
-
-      @if $rimless == 'true' {
-        border: 1px solid $solid-border;
-      } @else {
-        border: 2px solid $primary;
-      }
-
-      &:backdrop { background-color: $titlebar-backdrop; }
-    }
-
-    &.maximized,
-    &.fullscreen,
-    &.tiled,
-    &.tiled-top,
-    &.tiled-right,
-    &.tiled-bottom,
-    &.tiled-left { border-radius: 0; }
+    &:backdrop { background-color: $titlebar-backdrop; }
   }
+
+  &.maximized,
+  &.fullscreen,
+  &.tiled,
+  &.tiled-top,
+  &.tiled-right,
+  &.tiled-bottom,
+  &.tiled-left { border-radius: 0; }
 }
 
 // Windows button
@@ -3736,6 +3860,8 @@ windowcontrols {
     min-width: 24px;
     padding: 0;
     margin: 0 $space-size / 2;
+
+    image { background: none; }
 
     &.close { // Window Close button
       &:hover {

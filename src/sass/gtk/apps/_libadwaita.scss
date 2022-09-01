@@ -43,6 +43,21 @@ avatar {
 }
 
 //
+// Cards
+//
+
+.card {
+  @at-root %card, & {
+    border-radius: $corner-radius;
+    box-shadow: none;
+    border: 1px solid $border;
+    background-clip: border-box;
+    background-color: $base;
+    color: $text-secondary;
+  }
+}
+
+//
 // preferencespage
 //
 
@@ -111,4 +126,30 @@ statuspage {
       }
     }
   }
+}
+
+//
+// Toasts
+//
+
+toast {
+  margin: $space-size * 2;
+  margin-bottom: $space-size * 4;
+  border-radius: $circular-radius;
+  border-spacing: $space-size;
+  padding: $space-size;
+  box-shadow: $shadow-z12, inset 0 1px highlight($osd);
+  background-color: $osd;
+  color: on($osd);
+  border: none;
+
+  &:dir(ltr) { padding-left: $space-size * 2; }
+  &:dir(rtl) { padding-right: $space-size * 2; }
+
+  > label {
+    margin: 0 $space-size;
+  }
+
+  button, button.text-button,
+  button.circular.flat { @extend %button-on-dark; }
 }

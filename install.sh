@@ -54,6 +54,10 @@ OPTIONS:
 
   -s, --size VARIANT      Specify size variant [standard|compact] (Default: standard variants)
 
+  -l, --libadwaita        Install link to gtk4 config for theming libadwaita
+
+  -u, --uninstall         Uninstall themes or link for libadwaita
+
   --tweaks                Specify versions for tweaks [nord|black|darker|rimless|normal]
                           (WORRING: 'nord' and 'darker' can not mix use with 'black'!)
                           1. nord:     Nord colorscheme version
@@ -187,6 +191,7 @@ clean() {
 themes=()
 colors=()
 sizes=()
+lcolors=()
 
 while [[ $# -gt 0 ]]; do
   case "${1}" in
@@ -202,20 +207,31 @@ while [[ $# -gt 0 ]]; do
       name="${2}"
       shift 2
       ;;
+    -l|--libadwaita)
+      libadwaita="true"
+      shift
+      ;;
+    -u|--uninstall)
+      uninstall="true"
+      shift
+      ;;
     -c|--color)
       shift
       for color in "${@}"; do
         case "${color}" in
           standard)
             colors+=("${COLOR_VARIANTS[0]}")
+            lcolors+=("${COLOR_VARIANTS[0]}")
             shift
             ;;
           light)
             colors+=("${COLOR_VARIANTS[1]}")
+            lcolors+=("${COLOR_VARIANTS[1]}")
             shift
             ;;
           dark)
             colors+=("${COLOR_VARIANTS[2]}")
+            lcolors+=("${COLOR_VARIANTS[2]}")
             shift
             ;;
           -*|--*)
@@ -370,6 +386,10 @@ if [[ "${#colors[@]}" -eq 0 ]] ; then
   colors=("${COLOR_VARIANTS[@]}")
 fi
 
+if [[ "${#lcolors[@]}" -eq 0 ]] ; then
+  lcolors=("${COLOR_VARIANTS[1]}")
+fi
+
 if [[ "${#sizes[@]}" -eq 0 ]] ; then
   sizes=("${SIZE_VARIANTS[0]}")
 fi
@@ -498,6 +518,54 @@ theme_tweaks() {
   fi
 }
 
+uninstall_link() {
+  rm -rf "${HOME}/.config/gtk-4.0"/{assets,gtk.css,gtk-dark.css}
+}
+
+link_libadwaita() {
+  local dest="${1}"
+  local name="${2}"
+  local theme="${3}"
+  local lcolor="${4}"
+  local size="${5}"
+  local ctype="${6}"
+
+  local THEME_DIR="${1}/${2}${3}${4}${5}${6}"
+
+  echo -e "\nLink '$THEME_DIR/gtk-4.0' to '${HOME}/.config/gtk-4.0' for libadwaita..."
+
+  mkdir -p                                                                      "${HOME}/.config/gtk-4.0"
+  ln -sf "${THEME_DIR}/gtk-4.0/assets"                                          "${HOME}/.config/gtk-4.0/assets"
+  ln -sf "${THEME_DIR}/gtk-4.0/gtk.css"                                         "${HOME}/.config/gtk-4.0/gtk.css"
+  ln -sf "${THEME_DIR}/gtk-4.0/gtk-dark.css"                                    "${HOME}/.config/gtk-4.0/gtk-dark.css"
+}
+
+uninstall() {
+  local dest="${1}"
+  local name="${2}"
+  local theme="${3}"
+  local color="${4}"
+  local size="${5}"
+  local ctype="${6}"
+
+  local THEME_DIR="${1}/${2}${3}${4}${5}${6}"
+
+  if [[ -d "${THEME_DIR}" ]]; then
+    echo -e "Uninstall ${THEME_DIR}... "
+    rm -rf "${THEME_DIR}"
+  fi
+}
+
+link_theme() {
+  for theme in "${themes[@]}"; do
+    for color in "${lcolors[@]}"; do
+      for size in "${sizes[@]}"; do
+        link_libadwaita "${dest:-$DEST_DIR}" "${_name:-$THEME_NAME}" "$theme" "$color" "$size" "$ctype"
+      done
+    done
+  done
+}
+
 clean_theme() {
   for theme in "${THEME_VARIANTS[@]}"; do
     for color in '' '-light' '-dark'; do
@@ -505,6 +573,16 @@ clean_theme() {
         for type in '' '-nord'; do
           clean "${dest:-$DEST_DIR}" "${name:-$THEME_NAME}" "$theme" "$color" "$size" "$type"
         done
+      done
+    done
+  done
+}
+
+uninstall_theme() {
+  for theme in "${themes[@]}"; do
+    for color in "${colors[@]}"; do
+      for size in "${sizes[@]}"; do
+        uninstall "${dest:-$DEST_DIR}" "${_name:-$THEME_NAME}" "$theme" "$color" "$size" "$ctype"
       done
     done
   done
@@ -521,7 +599,20 @@ install_theme() {
   done
 }
 
-clean_theme && install_package && sass_temp && gnome_shell_version && install_theme
+if [[ "$uninstall" == 'true' ]]; then
+  if [[ "$libadwaita" == 'true' ]]; then
+    echo -e "\nUninstall ${HOME}/.config/gtk-4.0 links ..."
+    uninstall_link
+  else
+    echo && uninstall_theme && uninstall_link
+  fi
+else
+   clean_theme && install_package && sass_temp && gnome_shell_version && install_theme && uninstall_link
+
+   if [[ "$libadwaita" == 'true' ]]; then
+     link_theme
+   fi
+fi
 
 echo
 echo Done.

@@ -1,14 +1,14 @@
 *-temp.scss
 
-src/main/cinnamon/cinnamon-dark.css
-src/main/cinnamon/cinnamon-light.css
+src/main/cinnamon/cinnamon-Dark.css
+src/main/cinnamon/cinnamon-Light.css
 src/main/cinnamon/cinnamon.css
-src/main/gtk-3.0/gtk-dark.css
-src/main/gtk-3.0/gtk-light.css
+src/main/gtk-3.0/gtk-Dark.css
+src/main/gtk-3.0/gtk-Light.css
 src/main/gtk-3.0/gtk.css
-src/main/gtk-4.0/gtk-dark.css
-src/main/gtk-4.0/gtk-light.css
+src/main/gtk-4.0/gtk-Dark.css
+src/main/gtk-4.0/gtk-Light.css
 src/main/gtk-4.0/gtk.css
-src/main/gnome-shell/gnome-shell-dark.css
-src/main/gnome-shell/gnome-shell-light.css
+src/main/gnome-shell/gnome-shell-Dark.css
+src/main/gnome-shell/gnome-shell-Light.css
 src/main/gnome-shell/gnome-shell.css
