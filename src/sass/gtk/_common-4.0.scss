@@ -681,23 +681,6 @@ button {
   }
 }
 
-/* menu buttons */
-modelbutton.flat {
-  min-height: $menuitem-size;
-  padding: 0 $space-size * 1.5;
-  border-radius: $corner-radius;
-  color: $text;
-
-  @extend %button-flat-simple;
-
-  &:selected { @extend %selected_items; }
-}
-
-modelbutton.flat arrow {
-  &.left { -gtk-icon-source: -gtk-icontheme("go-previous-symbolic"); }
-  &.right { -gtk-icon-source: -gtk-icontheme("go-next-symbolic"); }
-}
-
 button.color {
   min-height: $small-size;
   min-width: $small-size;
@@ -777,6 +760,8 @@ spinbutton {
       border-radius: 0;
       box-shadow: none;
       background-color: transparent;
+
+      selection { @extend %selected_items_primary; }
     }
 
     > button {
@@ -852,7 +837,6 @@ spinbutton {
 /**************
  * ComboBoxes *
  **************/
-dropdown > popover.menu.background > contents { padding: 0; }
 
 dropdown > button > box {
   border-spacing: $space-size;
@@ -868,8 +852,8 @@ combobox {
 
   // align menu labels with the button label
   > popover.menu > contents modelbutton {
-    padding-left: 9px;
-    padding-right: 9px;
+    padding-left: $space-size * 1.5;
+    padding-right: $space-size * 1.5;
   }
 
   button.combo cellview {
@@ -883,7 +867,7 @@ combobox {
    padding: 0;
 
    listview {
-      margin: $space-size 0;
+      margin: 0;
 
       & > row {
          padding: $space-size;
@@ -1058,9 +1042,10 @@ searchbar > revealer > box {
   border-spacing: $space-size;
   border-style: solid;
   border-width: 0 0 1px;
-  border-color: $divider;
+  border-color: $border;
   background-color: $background;
   background-clip: border-box;
+  box-shadow: none;
 
   entry { margin: 0; }
 }
@@ -1072,10 +1057,6 @@ searchbar > revealer > box {
 %titlebar-button {
   @extend %button-flat;
   color: $titlebar-text-secondary;
-
-  .linked:not(.vertical) > & {
-    border-radius: $circular-radius;
-  }
 
   &:focus, &:hover, &:active, &:checked { color: $titlebar-text; }
 
@@ -1123,7 +1104,9 @@ searchbar > revealer > box {
 
 headerbar {
   min-height: $large-size;
-  padding: 0 $space-size;
+  padding: 0;
+  margin: 0;
+  border: none;
   transition: all $duration $ease-out;
   background-color: transparent;
   color: $titlebar-text;
@@ -1160,6 +1143,8 @@ headerbar {
   }
 
   > windowhandle > box {
+    padding: 0 $space-size;
+
     &,
     > box.start,
     > box.end {
@@ -1186,6 +1171,10 @@ headerbar {
 
   button:not(.suggested-action):not(.destructive-action) {
     @extend %titlebar-button;
+  }
+
+  popover button:not(.suggested-action):not(.destructive-action):not(.flat) {
+    @extend %button-basic;
   }
 
   separator:not(.spacer) {
@@ -1323,15 +1312,7 @@ headerbar {
   &.default-decoration {
     min-height: $small-size;
     padding: $space-size;
-    // box-shadow: inset 0 1px highlight($titlebar);
     border-radius: $corner-radius $corner-radius 0 0;
-
-    // .tiled &,
-    // .maximized &,
-    // .fullscreen & {
-    //   box-shadow: none;
-    //   border-radius: 0;
-    // }
 
     windowcontrols {
       button,
@@ -1404,6 +1385,34 @@ pathbar > button {
   }
 }
 
+.pathbar {
+  background-color: $fill;
+  color: $text-secondary;
+  border: none;
+  border-radius: $corner-radius;
+  padding: 2px;
+
+  headerbar & {
+    margin-top: $space-size;
+    margin-bottom: $space-size;
+    background-color: on($titlebar, fill);
+    color: $titlebar-text-secondary;
+  }
+
+  > button {
+    margin-top: 0;
+    margin-bottom: 0;
+    min-height: 20px;
+    border-radius: $corner-radius - 2px;
+    border: none;
+    box-shadow: none;
+
+    &:last-child {
+      @include button(flat-checked);
+    }
+  }
+}
+
 
 /**************
  * Tree Views *
@@ -1455,7 +1464,7 @@ treeview.view {
   &.expander {
     min-width: 16px;
     min-height: 16px;
-    -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
+    -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
 
     &:dir(rtl) { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl'); }
 
@@ -1561,14 +1570,9 @@ menubar {
     label:disabled { color: inherit; } // to inherit the above color
   }
 
-  & > item popover.menu.background > contents {
-    padding: $menu-radius;
-    border-radius: $menu-radius;
-  }
-
   //nested submenus
   & > item popover.menu popover.menu {
-    margin-left: $space-size*1.5;
+    margin-left: $space-size * 1.5;
   }
 
   & > item popover.menu.background popover.menu.background > contents {
@@ -1593,7 +1597,7 @@ popover.menu {
       outline: none;
       transition: none;
 
-      &:selected { background: image($overlay-selected); }
+      &:selected { background-image: image($overlay-selected); }
     }
   }
 
@@ -1602,6 +1606,7 @@ popover.menu {
 
     button.circular.image-button.model {
       @extend %small-button;
+      @extend %button-flat-simple;
       padding: $space-size;
 
       &:focus {
@@ -1648,6 +1653,7 @@ popover.menu {
     min-height: $menuitem-size - $space-size;
     min-width: $menuitem-size * 2;
     padding: $space-size / 2 $space-size * 1.5;
+    border-radius: $corner-radius;
     color: $text;
     font: initial;
     text-shadow: none;
@@ -1661,6 +1667,11 @@ popover.menu {
     }
 
     &:disabled { color: $text-disabled; }
+
+    arrow {
+      &.left { -gtk-icon-source: -gtk-icontheme("go-previous-symbolic"); }
+      &.right { -gtk-icon-source: -gtk-icontheme("go-next-symbolic"); }
+    }
   }
 
   label.title {
@@ -1722,24 +1733,19 @@ popover.background {
     }
 
     list separator { margin: 0; }
+
+    stack > box { padding: 0; }
+
+    > box > button { margin: 0; }
   }
 
   // FIXME: Use the popover color instead of transparent as a workaround for .view
   .view:not(:selected),
   toolbar { background-color: $surface; }
 
-  .linked > button:not(.radio) {
-    background-color: transparent;
-    box-shadow: none;
-    border-radius: $corner-radius;
-    &:first-child { border-radius: $corner-radius; }
-    &:last-child { border-radius: $corner-radius; }
-    &:only-child { border-radius: $corner-radius; }
-  }
-
   &.menu button,
   button.model {
-    @extend %button-flat;
+    // @extend %button-flat;
 
     min-height: 32px;
     padding: 0 8px;
@@ -1780,7 +1786,7 @@ magnifier {
               background-image 0ms;
   min-height: $small-size;
   min-width: $small-size;
-  padding: $space-size / 2 $space-size * 2;
+  padding: $space-size / 2 $space-size;
   border: none;
   outline: none;
   background-clip: padding-box;
@@ -1795,7 +1801,7 @@ magnifier {
 
   &:disabled { color: $text-secondary-disabled; }
 
-  &:checked {
+  &:checked, &:selected {
     transition: $transition;
     background-color: if($variant == 'light', rgba($base, 1), rgba(white, 0.15));
     color: $text;
@@ -1936,9 +1942,6 @@ notebook {
     &.top,
     &.bottom {
       tabs {
-        // padding-left: 8px;
-        // padding-right: 8px;
-
         &:not(:only-child) {
           &:first-child { margin-left: 0; }
 
@@ -1977,6 +1980,189 @@ notebook {
     background-color: transparent;
     border-radius: $corner-radius;
   }
+}
+
+tabbar {
+  .box {
+    min-height: $medium-size;
+  }
+
+  &:not(.inline) {
+    .box {
+      border: none;
+      background-color: $fill;
+      padding: 0;
+      margin: $space-size / 2;
+      border-radius: $modal-radius + $space-size;
+      box-shadow: none;
+    }
+
+    &:backdrop .box {
+      background-color: $fill;
+
+      > scrolledwindow,
+      > .start-action,
+      > .end-action {
+        filter: opacity(0.5);
+      }
+    }
+  }
+
+  scrolledwindow:not(.pinned) > tabbox {
+    > tabboxchild {
+      padding: $space-size / 2 0;
+      margin: 0 -3px;
+
+      > tab {
+        margin: $space-size / 2;
+      }
+    }
+
+    tab {
+      @extend %tabs_tab;
+    }
+  }
+
+  scrolledwindow.pinned > tabbox {
+    > tabboxchild {
+      padding: $space-size / 2 0;
+      margin: 0;
+
+      > tab {
+        margin: $space-size / 2;
+        padding: $space-size / 2;
+      }
+    }
+  }
+
+  .start-action,
+  .end-action {
+    padding: $space-size;
+  }
+
+  .start-action:dir(ltr),
+  .end-action:dir(rtl) {
+    padding-right: 0;
+  }
+
+  .start-action:dir(rtl),
+  .end-action:dir(ltr) {
+    padding-left: 0;
+  }
+}
+
+dnd tab {
+  min-height: $small-size;
+  background-color: $titlebar;
+  color: $titlebar-text;
+  margin: $small-size;
+  outline: none;
+  box-shadow: 0 1px 5px 1px transparentize(black, .91),
+              0 2px 14px 3px transparentize(black, .95),
+              0 0 0 1px transparentize(black, .95);
+}
+
+tabbar,
+dnd {
+  tab {
+    padding: $space-size;
+
+    button.image-button {
+      padding: 0;
+      margin: 0;
+      min-width: $small-size;
+      min-height: $small-size;
+      border-radius: $circular-radius;
+    }
+
+    indicator {
+      min-height: 2px;
+      border-radius: 2px;
+      background: gtkalpha($primary, 0.5);
+      transform: translateY(4px);
+    }
+  }
+}
+
+tabthumbnail {
+  border-radius: $corner-radius + 4px;
+
+  > box {
+    margin: $space-size;
+  }
+
+  &:drop(active) {
+    box-shadow: inset 0 0 0 2px gtkalpha($drop_target_color, .4);
+    background-color: gtkalpha($drop_target_color, .1);
+  }
+
+  transition: box-shadow 200ms $ease-out,
+              background-color $ease-out;
+
+  .needs-attention {
+    &:dir(ltr) { transform: translate(8px, -8px); }
+    &:dir(rtl) { transform: translate(-8px, -8px); }
+
+    > widget {
+      background: $primary;
+      min-width: $space-size * 2;
+      min-height: $space-size * 2;
+      border-radius: $corner-radius;
+      margin: $space-size / 2;
+      box-shadow: 0 1px 2px gtkalpha($primary, .4);
+    }
+  }
+
+  .card {
+    picture {
+      outline: none;
+      border-radius: $corner-radius;
+    }
+
+    background: none;
+    color: inherit;
+  }
+
+  &.pinned .card {
+    background-color: $background;
+    color: $text;
+  }
+
+  .pinned-box {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .icon-title-box {
+    border-spacing: $space-size;
+  }
+
+  .tab-unpin-icon {
+    margin: $space-size;
+    min-width: $small-size;
+    min-height: $small-size;
+  }
+}
+
+taboverview > .overview {
+  &.scrolled-to-top {
+    headerbar,
+    searchbar > revealer > box {
+      background: none;
+      color: inherit;
+      box-shadow: none;
+    }
+  }
+
+  .new-tab-button {
+    margin: 18px;
+  }
+}
+
+tabview:drop(active),
+tabbox:drop(active),
+tabgrid:drop(active) {
+  box-shadow: none;
 }
 
 
@@ -2166,30 +2352,6 @@ switch {
 /*************************
  * Check and Radio items *
  *************************/
-// draw regular check and radio items using our PNG assets
-// all assets are rendered from assets.svg. never add pngs directly
-
-// selection-mode
-.view.content-view.check:not(list),
-.content-view .tile check:not(list) {
-  min-height: 40px;
-  min-width: 40px;
-  margin: 0;
-  padding: 0;
-  box-shadow: none;
-  background-color: transparent;
-  background-image: none;
-
-  &:hover, &:active { box-shadow: 0 0 0 10px $divider; }
-
-  @each $s, $as in ('', '-unchecked'),
-                   (':checked', '-checked') {
-    &#{$s} {
-      -gtk-icon-source: -gtk-scaled(url("assets/selectionmode-checkbox#{$as}#{$asset-suffix}.png"),
-                                    url("assets/selectionmode-checkbox#{$as}#{$asset-suffix}@2.png"));
-    }
-  }
-}
 
 checkbutton,
 radiobutton {
@@ -2205,28 +2367,67 @@ radiobutton.text-button {
   label:not(:only-child) { margin: 0 4px; }
 }
 
-$check_radio_size: 40px;
-$check_radio_icon_size: ($space-size + 6px) * 2;
+$check_radio_icon_size: if($compact == 'false', 16px, 20px);
 
 check,
 radio {
-  min-height: $check_radio_icon_size;
-  min-width: $check_radio_icon_size;
-  margin: -($space-size + 2px);
-  padding: ($space-size + 2px);
+  min-height: 16px;
+  min-width: 16px;
+  -gtk-icon-size: 16px;
+  padding: 0;
+  margin: $space-size / 2;
+  border: 2px solid $text-secondary;
+  background-clip: border-box;
+  background-color: transparent;
+  border-radius: $circular-radius;
+  box-shadow: 0 0 0 10px transparent;
+  transition: $transition,
+  background-color $ripple-fade-in-duration $ease-out,
+  box-shadow $ripple-fade-in-duration $ease-out;
 
-  @extend %button-flat-simple;
-  @extend %circular-button;
-
-  &:checked, &:indeterminate {
-    color: $primary;
-
-    &:disabled { color: $text-secondary-disabled; }
+  &:hover {
+    border-color: inherit;
+    box-shadow: 0 0 0 10px $fill;
   }
 
-  &:not(:hover):focus { box-shadow: inset 0 0 0 9999px transparent; }
+  &:active {
+    border-color: $text;
+    box-shadow: 0 0 0 10px $divider;
+  }
 
-  popover modelbutton.flat & {
+  &:checked, &:indeterminate {
+    border-color: transparent;
+    background-color: $primary;
+    color: on($primary);
+
+    &:hover {
+      background-color: lighten($primary, 10%);
+      color: on($primary);
+    }
+
+    &:active {
+      background-color: lighten($primary, 6%);
+      color: on($primary);
+    }
+
+    &:disabled {
+      border-color: transparent;
+      background-color: $text-secondary-disabled;
+      color: $background;
+    }
+  }
+
+  &:disabled {
+    border-color: $text-secondary-disabled;
+  }
+
+  &:not(:hover):focus { box-shadow: none; }
+
+  popover.menu & {
+    transition: none;
+    margin: 0; // this is a workaround for a menu check/radio size allocation issue
+    padding: 0;
+
     &, &:focus, &:hover, &:focus:hover, &:active, &:disabled {
       transition: none; // FIXME: this is a workaround for a popover check/radio long transition issue
       box-shadow: none;
@@ -2234,140 +2435,96 @@ radio {
     }
 
     &:not(:checked):not(:indeterminate):not(:disabled) {
-      color: $text-secondary;
-
       &:hover {
-        color: inherit;
+        border-color: on($primary);
+        background-color: transparent;
       }
     }
 
-    &, &:hover, &:disabled {
+    &:checked, &:indeterminate {
+      border-color: transparent;
+      background-color: $primary;
+      color: on($primary);
+
+      &:hover {
+        border-color: transparent;
+        background-color: on($primary);
+        color: $primary;
+      }
+
+      &:disabled {
+        border-color: transparent;
+        background-color: $text-secondary-disabled;
+        color: $background;
+      }
+    }
+
+    &, &:hover, &:active, &:disabled {
       box-shadow: none;
       color: inherit;
     }
 
-    &.left:dir(rtl) {
-      margin-left: -12px;
-      margin-right: -4px;
-    }
+    &:dir(ltr) { margin-right: $space-size; }
 
-    &.right:dir(ltr) {
-      margin-left: -4px;
-      margin-right: -12px;
-    }
-  }
-
-  popover.menu & {
-    transition: none;
-    margin: 0; // this is a workaround for a menu check/radio size allocation issue
-    padding: 0;
-
-    &:dir(ltr) { margin-right: 8px; }
-
-    &:dir(rtl) { margin-left: 8px; }
-
-    &:not(:checked):not(:indeterminate):not(:disabled) {
-      color: $text-secondary;
-
-      &:hover {
-        color: inherit;
-      }
-    }
-
-    &, &:hover, &:disabled {
-      box-shadow: none;
-      color: inherit;
-    }
+    &:dir(rtl) { margin-left: $space-size; }
   }
 }
 
 %check,
 check {
-  -gtk-icon-size: 24px;
-  -gtk-icon-source: -gtk-recolor(url("assets/scalable/checkbox-unchecked-symbolic.svg"));
-
-  &:checked { -gtk-icon-source: -gtk-recolor(url("assets/scalable/checkbox-checked-symbolic.svg")); }
-
-  &:indeterminate { -gtk-icon-source: -gtk-recolor(url("assets/scalable/checkbox-mixed-symbolic.svg")); }
+  &:checked { -gtk-icon-source: -gtk-scaled(-gtk-recolor(url("assets/scalable/check-symbolic.svg")),
+                                            -gtk-recolor(url("assets/scalable/check-symbolic@2.svg"))); }
 }
 
 %radio,
 radio {
-  -gtk-icon-size: 24px;
-  -gtk-icon-source: -gtk-recolor(url("assets/scalable/radio-unchecked-symbolic.svg"));
-
-  &:checked { -gtk-icon-source: -gtk-recolor(url("assets/scalable/radio-checked-symbolic.svg")); }
-
-  &:indeterminate { -gtk-icon-source: -gtk-recolor(url("assets/scalable/radio-mixed-symbolic.svg")); }
+  &:checked { -gtk-icon-source: -gtk-scaled(-gtk-recolor(url("assets/scalable/dot-symbolic.svg")),
+                                            -gtk-recolor(url("assets/scalable/dot-symbolic@2.svg"))); }
 }
 
-%small_check,
-popover.menu check {
-  & {
-    min-height: 16px;
-    min-width: 16px;
-    -gtk-icon-size: 16px;
-    border-radius: $corner-radius;
-    -gtk-icon-source: -gtk-recolor(url("assets/scalable/small-checkbox-unchecked-symbolic.svg"));
-  }
-
-  &:checked { -gtk-icon-source: -gtk-recolor(url("assets/scalable/small-checkbox-checked-symbolic.svg")); }
-
-  &:indeterminate { -gtk-icon-source: -gtk-recolor(url("assets/scalable/small-checkbox-mixed-symbolic.svg")); }
-}
-
-%small_radio,
-popover.menu radio {
-  & {
-    min-height: 16px;
-    min-width: 16px;
-    border-image: none;
-    -gtk-icon-size: 16px;
-    -gtk-icon-source: -gtk-recolor(url("assets/scalable/small-radio-unchecked-symbolic.svg"));
-  }
-
-  &:checked { -gtk-icon-source: -gtk-recolor(url("assets/scalable/small-radio-checked-symbolic.svg")); }
-
-  &:indeterminate { -gtk-icon-source: -gtk-recolor(url("assets/scalable/small-radio-mixed-symbolic.svg")); }
+check, radio {
+  &:indeterminate { -gtk-icon-source: -gtk-scaled(-gtk-recolor(url("assets/scalable/line-symbolic.svg")),
+                                                  -gtk-recolor(url("assets/scalable/line-symbolic@2.svg"))); }
 }
 
 // ANIMATION:
 // this is made with those pretty convoluted transitions, since checks and radios have to animate only on state changes,
 // the transformation is set on the active state and it get reset on the checked state.
-// radio:not(:checked):active { -gtk-icon-transform: scale(0); }
+check:not(:checked):active { -gtk-icon-transform: rotate(90deg); }
+radio:not(:checked):active { -gtk-icon-transform: scale(0); }
 
-treeview.view,
-columnview.view {
-  check, radio {
-    padding: 0;
-    margin: 0;
-    box-shadow: none;
-    background: none;
+check:not(:checked):indeterminate:active,
+radio:not(:checked):indeterminate:active { -gtk-icon-transform: scaleX(-1); } // instead of rotateY(180deg)
 
-    color: $text-secondary;
-
-    &:hover, &:active { color: $text; }
-
-    &:disabled { color: $text-secondary-disabled; }
-
-    &:checked, &:indeterminate { color: $primary; }
-
-    &:checked:disabled, &:indeterminate:disabled { color: $text-secondary-disabled; }
-  }
-
-  &:hover, &:selected, &:focus {
-    check, radio {
-      box-shadow: none;
+// theme-selector
+checkbutton.theme-selector {
+  radio {
+    &, &:hover, &:disabled {
+      border-color: transparent;
       background-color: transparent;
+    }
+
+    &:not(:checked):not(:indeterminate):not(:disabled) {
+      &:hover {
+        border-color: transparent;
+        background-color: transparent;
+      }
+    }
+
+    &:checked, &:active {
+      border-color: transparent;
+      background-color: $primary;
+      color: on($primary);
+      -gtk-icon-source: -gtk-scaled(-gtk-recolor(url("assets/scalable/check-symbolic.svg")),
+                                    -gtk-recolor(url("assets/scalable/check-symbolic@2.svg")));
+    }
+
+    &:checked:hover {
+      background-color: lighten($primary, 10%);
+      color: on($primary);
     }
   }
 }
-
-treeview.view radio:checked {
-  -gtk-icon-source: -gtk-recolor(url("assets/scalable/radio-checked-symbolic.svg"));
-  border-image: none;
-}
-
 
 /************
  * GtkScale *
@@ -2636,6 +2793,9 @@ progressbar {
     min-width: $space-size;
     min-height: $space-size;
     background-color: transparent;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
 
     trough { background-color: transparent; }
 
@@ -2747,6 +2907,7 @@ actionbar > revealer > box {
   border-top: 1px solid $divider;
   background-color: $base;
   background-clip: border-box;
+  box-shadow: none;
 
   .background.csd box.vertical > & {
     border-radius: 0 0 $window-radius $window-radius;
@@ -2828,7 +2989,7 @@ separator:not(.spacer) {
 %circular_list {
   border-radius: $corner-radius + 1px;
   box-shadow: none;
-  border: 1px solid $divider;
+  border: 1px solid $border;
 }
 
 %circular_row {
@@ -2846,6 +3007,10 @@ separator:not(.spacer) {
 
   &:only-child {
     border-radius: $corner-radius;
+  }
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $border;
   }
 
   &:focus {
@@ -2964,6 +3129,10 @@ row {
 
   button &.activatable {
     &:focus, &:hover, &:active { box-shadow: none; }
+  }
+
+  button:checked &.activatable {
+    color: on($primary);
   }
 
   &:selected {
@@ -3183,11 +3352,6 @@ window.dialog.message { // Message Dialog styling
 }
 
 filechooser {
-  .csd & {
-    background-color: $base;
-    border-radius: 0 0 $window-radius $window-radius;
-  }
-
   .dialog-action-box { border-top: 1px solid $divider; }
 
   #pathbarbox {
@@ -3201,43 +3365,7 @@ filechooser {
   }
 
   stack.view {
-    background-color: transparent;
-
-    scrolledwindow {
-      background-color: transparent;
-      border-radius: 0 0 $window-radius 0;
-
-      list { background-color: transparent; }
-
-      treeview.view {
-        @extend %view;
-        background-color: transparent;
-      }
-    }
-
-    > placesview {
-      background-color: transparent;
-      // border-bottom-right-radius: $window-radius;
-
-      > actionbar {
-        &, > revealer > box {
-          background-color: transparent;
-        }
-      }
-    }
-
     frame > border { border: none; }
-  }
-
-  .csd & placessidebar {
-    background: none;
-    border-bottom-left-radius: $window-radius;
-  }
-
-  actionbar {
-    &, > revealer > box {
-      background-color: transparent;
-    }
   }
 }
 
@@ -3350,14 +3478,14 @@ separator.sidebar {
  **********************/
 
 .navigation-sidebar {
-  padding: $space-size; //only vertical padding. horizontal row size would clip
+  padding: 0; //only vertical padding. horizontal row size would clip
   border-right: none;
 
   > row {
     min-height: $small-size;
     padding: $space-size $space-size * 1.5;
     border-radius: $corner-radius;
-    margin: $space-size / 2 0;
+    margin: $space-size / 2 $space-size;
 
     &:first-child { margin-top: 0; }
     &:last-child { margin-bottom: 0; }
@@ -3385,6 +3513,10 @@ separator.sidebar {
 
     &:disabled { color: $text-disabled; }
   }
+
+  > separator {
+    margin: $space-size / 2 0;
+  }
 }
 
 /****************
@@ -3401,28 +3533,10 @@ row image.sidebar-icon {
 placessidebar {
   > viewport.frame { border-style: none; }
 
-  list { padding: 1px 0 4px; }
-
   .navigation-sidebar > row {
-    // Needs overriding of the GtkListBoxRow padding
-    min-height: 32px;
-    margin: -1px 4px -1px 0; // Remove unwanted hard-coded vertical margins with -1px
-    padding: 0;
-    border-radius: 0 $circular_radius $circular_radius 0;
-
-    // Using margins/padding directly in the SidebarRow
-    // will make the animation of the new bookmark row jump
-    > revealer { padding: 0 8px 0 16px; }
-
     &:selected {
-      background-color: $overlay-checked;
-      color: $primary;
       font-weight: 500;
-
-      image.sidebar-icon { color: $primary; }
     }
-
-    &:disabled { color: $text-disabled; }
 
     image.sidebar-icon {
       &:dir(ltr) { padding-right: 8px; }
@@ -3483,10 +3597,11 @@ paned {
     min-width: 1px;
     min-height: 1px;
     -gtk-icon-source: none; // defeats the ugly default handle decoration
-    border-style: none; // just to be sure
+    border: none; // just to be sure
+    box-shadow: none;
     background-color: transparent;
     // workaround, using background istead of a border since the border will get rendered twice (?)
-    background-image: image($divider);
+    background-image: image($solid-border);
     background-size: 1px 1px;
     background-clip: content-box; // avoids borders image being rendered twice (?)
 
@@ -3494,7 +3609,7 @@ paned {
       min-width: 6px;
       min-height: 6px;
       background-color: $background;
-      background-image: image($divider), image($divider);
+      background-image: image($solid-border), image($solid-border);
       background-size: 1px 1px, 1px 1px;
     }
   }
@@ -3647,11 +3762,13 @@ tooltip {
     background-color: $tooltip;
     color: on($tooltip);
     box-shadow: $shadow-z4;
-    border-radius: $corner-radius/2;
+    border-radius: $corner-radius;
     margin: 2px 6px 8px 6px;
   }
 
-  padding: $space-size $space-size*2;
+  border: none;
+  background-clip: padding-box;
+  padding: $space-size $space-size * 2;
   box-shadow: none; // otherwise it gets inherited by windowframe.csd
 
   > box {
@@ -3782,14 +3899,16 @@ colorchooser .popover.osd {
  **********************/
 window {
   transition: $transition-shadow;
-  border-radius: $window-radius;
   box-shadow: $shadow-z4, 0 0 0 2px $primary, 0 0 16px transparent;
+  outline: none;
 
   @if $rimless == 'true' {
     box-shadow: $shadow-z16, 0 0 36px transparent;
   } @else {
     box-shadow: $shadow-z4, 0 0 0 2px $primary, 0 0 16px transparent;
   }
+
+  &.csd { border-radius: $window-radius; }
 
   &:backdrop {
     // the transparent shadow here is to enforce that the shadow extents don't
@@ -3812,7 +3931,7 @@ window {
     border-radius: $window-radius;
   }
 
-  .solid-csd & {
+  &.solid-csd {
     margin: 0;
     padding: 2px;
     border-radius: 0;

@@ -78,6 +78,32 @@ preferencesgroup > box {
   > box.single-line {
     min-height: 34px;
   }
+
+  button.background-preview-button.toggle {
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    outline-color: transparent;
+    outline-width: 3px;
+    outline-offset: $space-size / 2;
+    outline-style: solid;
+
+    &, > background-preview {
+      border-radius: 6px;
+    }
+
+    &:hover {
+      outline-color: $fill;
+    }
+
+    &:active {
+      outline-color: $track;
+    }
+
+    &:checked {
+      outline-color: $primary;
+    }
+  }
 }
 
 //
@@ -152,4 +178,105 @@ toast {
 
   button, button.text-button,
   button.circular.flat { @extend %button-on-dark; }
+}
+
+//
+// viewswitcher
+//
+
+viewswitcher {
+  margin: 0;
+
+  &.wide {
+    margin-top: $space-size;
+    margin-bottom: $space-size;
+
+    button.toggle:checked, button.toggle.flat:checked {
+      background-color: $primary;
+      color: on($primary);
+
+      &:backdrop { color: on($primary, disabled); }
+
+      indicatorbin.needs-attention > indicator {
+        > label { color: $primary; }
+        background-color: on($primary);
+      }
+    }
+  }
+
+  &.narrow button.toggle {
+    border-radius: 0;
+    margin: 0;
+    border: none;
+  }
+
+  button.toggle {
+    font-weight: bold;
+    padding: 0;
+    min-height: 0;
+    margin: 0;
+
+    > stack > box {
+      &.narrow {
+        font-size: 0.75rem;
+        padding-top: $space-size + 1px;
+        padding-bottom: $space-size - 1px;
+        border-spacing: $space-size - 2px;
+
+        > stack > label {
+          padding-left: $space-size + 2px;
+          padding-right: $space-size + 2px;
+        }
+      }
+
+      &.wide {
+        padding: 0 $space-size * 2;
+        border-spacing: $space-size;
+      }
+    }
+  }
+}
+
+// AdwViewSwitcherBar
+viewswitcherbar actionbar > revealer > box {
+  padding: 0;
+}
+
+// AdwViewSwitcherTitle
+viewswitchertitle viewswitcher {
+  margin-left: $space-size * 2;
+  margin-right: $space-size * 2;
+}
+
+// AdwIndicatorBin
+indicatorbin {
+  > indicator, > mask {
+    min-width: $space-size;
+    min-height: $space-size;
+    border-radius: $circular-radius;
+  }
+
+  > indicator {
+    margin: 1px;
+    padding: 0;
+    background: gtkalpha(currentColor, .4);
+
+    > label {
+      font-size: 0.6rem;
+      font-weight: bold;
+      padding: 2px 5px;
+      color: white;
+    }
+  }
+
+  > mask {
+    padding: 1px;
+    background: black;
+  }
+
+  &.needs-attention > indicator {
+    background-color: $primary;
+
+    > label { color: on($primary); }
+  }
 }

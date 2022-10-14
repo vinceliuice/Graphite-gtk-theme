@@ -1,73 +1,427 @@
 
- %circular_list {
-   border-radius: $corner-radius + 1px;
-   box-shadow: none;
-   border: 1px solid $divider;
- }
+//
+// Nautilus
+//
+.nautilus-window {
+  flap.unfolded > placessidebar {
+    background-color: transparent;
+    color: $titlebar-text-secondary;
 
- %circular_row {
-   &:first-child {
-     border-top-left-radius: $corner-radius;
-     border-top-right-radius: $corner-radius;
-   }
+    @if $sidebar == 'styled' {
+      @if $topbar == 'dark' and $variant == 'light' {
+        margin: 0;
+        background-color: transparent;
+        color: $titlebar-text-secondary;
+      } @else {
+        background-color: $primary;
+        color: on($primary);
+        margin: 0 0 $modal-radius + $space-size 0;
+        border-radius: 0 $modal-radius + $space-size  $modal-radius + $space-size 0;
+      }
 
-   &:last-child { // Not use ?
-     border-bottom-left-radius: $corner-radius;
-     border-bottom-right-radius: $corner-radius;
-   }
+      > scrolledwindow > viewport {
+        > list.navigation-sidebar {
+          background: none;
+          padding: $space-size;
+          padding-right: $space-size + 2px;
 
-   &:only-child {
-     border-radius: $corner-radius;
-   }
+          @if $topbar == 'dark' and $variant == 'light' {
+            padding-right: $space-size;
+          } @else {
+            padding-right: $space-size + 2px;
+          }
 
-   &:focus {
-     box-shadow: inset 0 0 0 2px $overlay-focus;
-   }
- }
+          > separator { background: none; }
 
-/**************
- * Extensions *
- **************/
-window.background.csd {
-  > stack, // GameMode setting
-  > stack > scrolledwindow > viewport > box, // User Themes (Workspace) setting
-  > box > stack > scrolledwindow > viewport > box {
-    > list {
-      @extend %circular_list;
+          > row.activatable {
+            border-radius: $modal-radius;
 
-      row.activatable { @extend %circular_row; }
+            &, image.sidebar-icon, label.sidebar-label, button.sidebar-button {
+              @if $topbar == 'dark' and $variant == 'light' {
+                color: $titlebar-text-secondary;
+              } @else {
+                color: on($primary);
+              }
+            }
+
+            &:hover {
+              background-color: on($primary, divider);
+              color: on($primary);
+            }
+
+            &:selected {
+              background-color: $base;
+              font-weight: 700;
+
+              &, image.sidebar-icon, label.sidebar-label, button.sidebar-button {
+                color: $primary;
+              }
+            }
+
+            &:disabled {
+              &, image.sidebar-icon, label.sidebar-label {
+                color: $titlebar-text-secondary-disabled;
+              }
+            }
+          }
+        }
+      }
+
+      > scrolledwindow > scrollbar {
+        background-color: $primary;
+        border: none;
+
+        > range > though {
+          background: none;
+
+          > slider {
+            border: none;
+          }
+        }
+      }
     }
   }
 
-  stack stack stack frame, // ArcMenu setting
-  > stack > stack > box > frame, // Night Theme Switcher setting
-  > stack > stack > box > box > frame, // Night Theme Switcher setting bottom lists
-  > stack > box > stack > box > frame, // ArcMenu setting
-  > stack > box > stack > scrolledwindow > viewport frame, // ArcMenu setting
-  > stack > box > stack > box > scrolledwindow > viewport > frame, // ArcMenu setting
-  > stack > grid > scrolledwindow > viewport > box > frame { // GSConnect setting
-    > border { border: none; }
-
-    > list {
-      @extend %circular_list;
-
-      row.activatable { @extend %circular_row; }
+  @if $sidebar == 'styled' {
+    flap > separator {
+      background: none;
     }
   }
 
-  > stack > box > box > list,
-  > stack > box > stack > scrolledwindow > viewport > list { // ArcMenu setting sidebar
-    border-bottom-left-radius: $window-radius;
+  placesview {
+    label { color: $text-secondary; }
   }
 
-  > stack > box > .sidebar > scrolledwindow > viewport > list {
-    padding: 0 0;
+  infobar {
+    margin: $space-size / 2;
+
+    > revealer > box {
+      border-radius: $corner-radius + $space-size;
+    }
+  }
+
+  .floating-bar {
+    min-height: 32px;
+    padding: 0;
+    margin: $space-size;
+    border-style: none;
+    border-radius: $corner-radius;
+    background-color: $primary;
+    color: on($primary);
+    box-shadow: $shadow-z3;
+
+    button {
+      margin: (32px - $small-size) / 2;
+      color: on($primary);
+
+      @extend %small-button;
+    }
   }
 }
 
-/**********
- * Polari *
- **********/
+#NautilusViewCell {
+  clamp box {
+    margin: 0;
+    border-spacing: 0;
+  }
+}
+
+#NautilusQueryEditor { // search entry
+  > menubutton > button {
+    min-width: 16px;
+    min-height: 16px;
+    margin: 0;
+  }
+
+  > text { margin: 0; }
+}
+
+#NautilusPathBar {
+  background-color: $titlebar-fill;
+  border-radius: $circular-radius;
+  margin: $space-size 0;
+
+  #NautilusPathButton {
+    margin: 0 $space-size / 2;
+    border-radius: $circular-radius;
+
+    &.current-dir {
+      color: $titlebar-text;
+
+      &:hover, &:active {
+        background: none;
+        box-shadow: none;
+      }
+    }
+
+    &:first-child { margin-left: 0; }
+  }
+
+  > menubutton > button {
+    border-radius: $circular-radius;
+  }
+}
+
+#NautilusQueryEditorTag {
+  border-radius: $circular-radius;
+
+  > button {
+   margin: $space-size / 2;
+   padding: 0;
+   min-height: $small-size - 2px;
+   min-width: $small-size - 2px;
+  }
+}
+
+//
+// Gnome Control Center
+//
+window.dialog {
+  > box > stack > box > box {
+    > notebook.frame {
+      border-width: 0 0 0 1px;
+      border-radius: 0;
+    }
+  }
+}
+
+//
+// Calculator
+//
+
+.history-view { background-color: $base; }
+
+#displayitem {
+  border-top: 1px solid $border;
+}
+
+.small .card {
+  border-radius: 0;
+  box-shadow: none;
+
+  &.forecast-card {
+    border-width: 1px 0;
+  }
+
+  &.display-container {
+    border-width: 0 0 1px 0;
+  }
+}
+
+leaflet {
+  button.number-button {
+    background-color: rgba($text, 0.1);
+
+    &:hover {
+      background-color: rgba($text, 0.2);
+    }
+
+    &:active {
+      background-color: rgba($text, 0.3);
+    }
+  }
+
+  button.clear-button.image-button {
+    border-radius: $corner-radius;
+  }
+}
+
+//
+// Calendar
+//
+
+datechooser.view {
+  button.flat.pill, button.circular.day {
+    min-height: 24px;
+    min-width: 24px;
+    padding: $space-size;
+  }
+}
+
+//
+// Contacts
+//
+
+.contacts-contact-list list.navigation-sidebar {
+  background: none;
+}
+
+//
+// Gnome Software
+//
+
+flowboxchild > button.card {
+  &.category-tile {
+    padding: $space-size * 3.5;
+    border: none;
+    border-radius: $corner-radius;
+  }
+
+  &.category-tile-iconless {
+    padding: $space-size * 1.5 $space-size * 2.5;
+  }
+}
+
+app-context-bar {
+  > box:not(:first-child) > button.flat {
+    border-radius: 0;
+
+    &:last-child {
+      border-radius: 0 $corner-radius $corner-radius 0;
+    }
+  }
+
+  > box:first-child > button.flat {
+    border-radius: 0;
+
+    &:first-child {
+      border-radius: $corner-radius 0 0 $corner-radius;
+    }
+  }
+
+  > box > button.flat {
+    border-left-color: $border;
+  }
+}
+
+carousel.card {
+  border: none;
+}
+
+.context-tile-lozenge {
+  min-height: 28px;
+  min-width: 28px;
+  padding: $space-size;
+
+  &.grey {
+    color: $text;
+    background-color: $divider;
+  }
+
+  &.green, &.details-rating-0 {
+    color: darken($success, 15%);
+    background-color: rgba($success, 0.15);
+  }
+
+  &.blue,
+  &.details-rating-5 {
+    color: $blue-500;
+    background-color: rgba($blue-500, 0.15);
+  }
+
+  &.yellow, &.details-rating-12 {
+    color: darken($warning, 15%);
+    background-color: rgba($warning, 0.15);
+  }
+
+  &.details-rating-15 {
+    color: $orange-500;
+    background-color: rgba($orange-500, .15);
+  }
+
+  &.red, &.details-rating-18 {
+    color: darken($error, 15%);
+    background-color: rgba($error, 0.15);
+  }
+}
+
+screenshot-carousel box.frame.view {
+  border-width: 1px 0;
+  border-radius: 0;
+}
+
+
+/* Styling for specific category buttons. */
+.category-tile.category-create {
+  background: linear-gradient(180deg, #ce8cd7 0%, #2861c6 100%);
+  color: white;
+
+  &:hover {
+    background: linear-gradient(180deg, shade(#ce8cd7, 1.07) 0%, shade(#2861c6, 1.1) 100%);
+  }
+
+  &:active {
+    background: linear-gradient(180deg, shade(#ce8cd7, .95) 0%, shade(#2861c6, .95) 100%);
+  }
+}
+
+.category-tile.category-develop {
+  background: #5e5c64;
+  color: white;
+
+  &:hover {
+    background: shade(#5e5c64, 1.2);
+  }
+
+  &:active {
+    background-color: shade(#5e5c64, .95);
+  }
+}
+
+.category-tile.category-learn {
+  background: linear-gradient(180deg, #2ec27e 30%, #27a66c 100%);
+  color: white;
+
+  &:hover {
+    background: linear-gradient(180deg, shade(#2ec27e, 1.06) 30%, shade(#27a66c, 1.06) 100%);
+  }
+
+  &:active {
+    background: linear-gradient(180deg, shade(#2ec27e, .95) 30%, shade(#27a66c, .95) 100%);
+  }
+}
+
+.category-tile.category-play {
+  background: linear-gradient(75deg, #f9e2a7 0%, #eb5ec3 50%, #6d53e0 100%);
+  color: #393484;
+
+  &:hover {
+    background: linear-gradient(75deg, shade(#f9e2a7, 1.07) 0%, shade(#eb5ec3, 1.07) 50%, shade(#6d53e0, 1.07) 100%);
+  }
+
+  &:active {
+    background: linear-gradient(75deg, shade(#f9e2a7, .97) 0%, shade(#eb5ec3, .95) 50%, shade(#6d53e0, 1.07) 100%);
+  }
+}
+
+.category-tile.category-socialize {
+  background: linear-gradient(90deg, #ef4e9b 0%, #f77466 100%);
+  color: $text-secondary;
+
+  &:hover {
+    background: linear-gradient(90deg, shade(#ef4e9b, 1.08) 0%, shade(#f77466, 1.08) 100%);
+  }
+
+  &:active {
+    background: linear-gradient(90deg, shade(#ef4e9b, .95) 0%, shade(#f77466, .95) 100%);
+  }
+}
+
+.category-tile.category-work {
+  padding: 1px; /* FIXME: work around https://gitlab.gnome.org/GNOME/gtk/-/issues/4324 */
+  color: #1c71d8;
+  background-color:#fdf8d7;
+  background-image: linear-gradient($border 1px, transparent 1px),
+           linear-gradient(90deg, $border 1px, transparent 1px);
+  background-size: 10px 10px, 10px 10px;
+  background-position: -1px -4px, center -1px;
+
+  &:hover {
+    background-color: lighten(#fdf8d7, 5%);
+    background-image: linear-gradient($border 1px, transparent 1px),
+             linear-gradient(90deg, $border 1px, transparent 1px);
+  }
+
+  &:active {
+    background-color: darken(#fdf8d7, 5%);
+    background-image: linear-gradient($border 1px, transparent 1px),
+             linear-gradient(90deg, $border 1px, transparent 1px);
+  }
+}
+
+//
+// Polari
+//
 .polari-room-list {
   .sidebar {
     background: none;
@@ -86,6 +440,156 @@ window.background.csd {
     > arrow,
     > contents {
       padding: 0;
+    }
+  }
+}
+
+//
+// Builder
+//
+
+window.org-gnome-Builder {
+  headerbar {
+    box-shadow: inset 0 -1px $border;
+
+    splitbutton {
+      button {
+        border-radius: $corner-radius;
+      }
+
+      notification button {
+        margin: 0;
+        min-height: $small-size;
+        min-width: $small-size;
+        padding: 0;
+      }
+    }
+
+    menubutton > button {
+      border-radius: $corner-radius;
+      padding: $space-size $space-size * 1.5;
+    }
+
+    paneltogglebutton {
+      button {
+        border-radius: $corner-radius;
+      }
+    }
+  }
+}
+
+popover.background.global-search {
+  > arrow, > contents { padding: 0; }
+}
+
+panelframeswitcher {
+  padding: $space-size;
+}
+
+.frameheader.header {
+  min-height: $small-size;
+  background-color: $base-alt;
+
+  > button {
+    border: none;
+    margin: 0;
+    padding: $space-size / 2;
+  }
+
+  tabbar.inline {
+    > revealer > box {
+      min-height: $small-size;
+
+      .start-action {
+        padding: 0;
+        border: none;
+      }
+
+      .end-action {
+        padding: 0;
+        border-left: 1px solid $border;
+
+        menubutton > button {
+          margin: $space-size;
+          min-height: $small-size;
+          min-width: $small-size;
+          padding: $space-size / 2;
+          border-radius: $corner-radius;
+        }
+      }
+
+      tabbox {
+        border: none;
+        background: none;
+      }
+    }
+  }
+}
+
+panelstatusbar {
+  > menubutton > button,
+  > paneltogglebutton button.image-button { border-radius: 0; }
+}
+
+// Setting window
+
+.style-variant {
+  padding: 0 $space-size * 2;
+
+  button.toggle {
+    padding: 0;
+
+    &, &:hover, &:focus, &:active, &:checked {
+      background: none;
+      outline: none;
+      border: none;
+      box-shadow: none;
+    }
+
+    > stylevariantpreview > .wallpaper {
+      border-radius: $corner-radius;
+      outline-color: transparent;
+      outline-width: 3px;
+      outline-offset: $space-size / 2;
+      outline-style: solid;
+      box-shadow: none;
+    }
+
+    &:hover > stylevariantpreview > .wallpaper {
+      outline-color: $fill;
+    }
+
+    &:active > stylevariantpreview > .wallpaper {
+      outline-color: $track;
+    }
+
+    &:checked > stylevariantpreview > .wallpaper {
+      outline-color: $primary;
+    }
+  }
+}
+
+//
+// dialogs
+//
+
+window.dialog {
+  > .dialog-vbox > box > scrolledwindow > viewport > widget {
+    > list.boxed-list {
+      border: none;
+      border-radius: 0;
+
+      > row {
+        &:first-child, &:last-child { border-radius: 0; }
+      }
+    }
+  }
+}
+
+window.aboutdialog {
+  stack scrolledwindow.frame > {
+    &, viewport.view {
+      border-radius: $window-radius - $space-size;
     }
   }
 }

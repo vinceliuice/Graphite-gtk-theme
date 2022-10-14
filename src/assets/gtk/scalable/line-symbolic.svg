@@ -4,44 +4,36 @@
    height="24"
    version="1.1"
    viewBox="0 0 24 24"
-   id="svg12"
-   sodipodi:docname="scale-horz-marks-before-slider-symbolic.svg"
-   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20, custom)"
+   id="svg17473"
+   sodipodi:docname="checkbox-mixed-symbolic.svg"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs17477" />
   <sodipodi:namedview
-     id="namedview14"
+     id="namedview17475"
      pagecolor="#ffffff"
      bordercolor="#666666"
      borderopacity="1.0"
-     inkscape:pageshadow="2"
+     inkscape:showpageshadow="2"
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
      showgrid="false"
-     inkscape:zoom="14.916667"
-     inkscape:cx="3.2178771"
-     inkscape:cy="15.821229"
+     inkscape:zoom="9.8333333"
+     inkscape:cx="2.2881356"
+     inkscape:cy="12.050847"
      inkscape:window-width="1920"
      inkscape:window-height="1012"
      inkscape:window-x="0"
      inkscape:window-y="32"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg12" />
-  <defs
-     id="defs5">
-    <linearGradient
-       id="a"
-       x2="24"
-       gradientUnits="userSpaceOnUse">
-      <stop
-         stop-color="#1A73E8"
-         offset="1"
-         id="stop2" />
-    </linearGradient>
-  </defs>
+     inkscape:current-layer="svg17473" />
   <path
-     d="m 12,3.5147186 4.242641,4.2426407 a 6,6 0 1 1 -8.4852817,0 z"
-     id="path9" />
+     d="m 7,11 h 10 v 2 H 7 Z"
+     id="path17471"
+     sodipodi:nodetypes="ccccc" />
 </svg>

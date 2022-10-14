@@ -1729,6 +1729,13 @@ window.background { // gnome-terminal 3.32 setting
   }
 }
 
+// Tilix
+.tilix-background {
+  &, vte-terminal {
+    border-radius: 0 0 $window-radius $window-radius;
+  }
+}
+
 /*********
  * To Do *
  *********/
