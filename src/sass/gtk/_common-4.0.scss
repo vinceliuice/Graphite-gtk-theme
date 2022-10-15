@@ -44,7 +44,8 @@ textview {
 
   text {
     background-color: $base;
-    selection { &:focus, & { @extend %selected_items_primary; }}
+
+    // > selection { &:focus, & { @extend %selected_items_primary; }}
   }
 
   border {
@@ -52,6 +53,8 @@ textview {
     color: $text-secondary; // FIXME: not working
   }
 }
+
+text > selection { @extend %selected_items_primary; }
 
 iconview {
   @extend %view;
@@ -298,8 +301,6 @@ entry {
 
       &.right { @include undershoot(right); }
     }
-
-    > text > selection { @extend %selected_items_primary; }
 
     // entry error and warning style
     @each $e_type, $e_color in (error, $error),
@@ -803,8 +804,6 @@ spinbutton {
 
   &:disabled { @include entry(disabled); }
 
-  > text > selection { @extend %selected_items_primary; }
-
   &:not(.vertical) {
     // in this horizontal configuration, the whole spinbutton
     // behaves as the entry, so we extend the entry styling
@@ -1273,35 +1272,6 @@ headerbar {
     margin-bottom: 5px;
   }
 
-  &.windowhandle {
-    > viewswitcher > box > button:not(.suggested-action):not(.destructive-action) {
-      border-radius: 0;
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-
-    > button.popup {
-      label, image { min-height: 0; }
-    }
-
-    viewswitchertitle > squeezer {
-      margin-top: 0;
-      margin-bottom: 0;
-      background: none;
-
-      > viewswitcher {
-        margin: 0 0;
-        background: none;
-
-        > box.horizontal > button.radio {
-          margin: 0;
-          padding: 0;
-          border-radius: 0;
-        }
-      }
-    }
-  }
-
   // Don't draw titlebar above titlebar
   .titlebar {
     background-color: transparent;
@@ -1434,15 +1404,9 @@ window.devel {
  ************/
 %pathbar_button,
 pathbar > button {
-  @extend %button-flat;
-
   padding-left: ($medium-size - 24px) / 2;
   padding-right: ($medium-size - 24px) / 2;
   border-radius: $corner-radius;
-
-  &:checked {
-    &, &:disabled { background-color: transparent; }
-  }
 
   label:not(:only-child) {
     &:first-child { margin-left: 0; }
@@ -1503,6 +1467,11 @@ treeview.view {
     background-color: $base;
     background-image: image($overlay-checked);
     box-shadow: none;
+  }
+
+  &:focus {
+    box-shadow: none;
+    outline: none;
   }
 
   > rubberband { @extend rubberband; } // to avoid borders being overridden by the previously set props
@@ -3424,6 +3393,12 @@ window.dialog.message { // Message Dialog styling
   }
 }
 
+window.background.csd.dialog {
+  > headerbar.titlebar {
+    box-shadow: inset 0 -1px $border;
+  }
+}
+
 filechooser {
   .dialog-action-box { border-top: 1px solid $divider; }
 
@@ -3507,7 +3482,7 @@ stacksidebar {
   }
 
   list {
-    padding: $space-size;
+    padding: $space-size - 2px 0;
     background-color: $base; // This should not be necessary, but the parent stacksidebar ignores background-color.
   }
 
@@ -3515,10 +3490,7 @@ stacksidebar {
     min-height: $small-size;
     padding: $space-size $space-size * 1.5;
     border-radius: $corner-radius;
-    margin: 2px 0;
-
-    &:first-child { margin-top: 0; }
-    &:last-child { margin-bottom: 0; }
+    margin: 2px $space-size;
 
     &:selected {
       @extend %selected_items_primary;
@@ -3526,8 +3498,8 @@ stacksidebar {
     }
 
     > label {
-      padding-left: 6px;
-      padding-right: 6px;
+      padding-left: $space-size;
+      padding-right: $space-size;
       color: inherit;
     }
 
@@ -3551,17 +3523,14 @@ separator.sidebar {
  **********************/
 
 .navigation-sidebar {
-  padding: 0; //only vertical padding. horizontal row size would clip
+  padding: $space-size - 2px 0; //only vertical padding. horizontal row size would clip
   border-right: none;
 
   > row {
     min-height: $small-size;
     padding: $space-size $space-size * 1.5;
     border-radius: $corner-radius;
-    margin: $space-size / 2 $space-size;
-
-    &:first-child { margin-top: 0; }
-    &:last-child { margin-bottom: 0; }
+    margin: 2px $space-size;
 
     &:hover,
     &:focus-visible:focus-within {
