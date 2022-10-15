@@ -483,8 +483,12 @@ button {
   &.image-button {
     min-width: 24px;
     padding: ($medium-size - 24px) / 2;
+    
+    border-radius: $circular-radius;
+  }
 
-    @extend %circular-button;
+  .linked &.image-button {
+    border-radius: $corner-radius;
   }
 
   // NOTE: Some image-only buttons use this as well
@@ -683,6 +687,55 @@ button {
 
   &:only-child {
     border-radius: $corner-radius;
+  }
+}
+
+// .linked >        element              child
+$_linked_widgets: ("button:not(.combo)", ""),
+                  ("menubutton",         "> button"),
+                  ("dropdown",           "> button"),
+                  ("colorbutton",        "> button"),
+                  ("fontbutton",         "> button"),
+                  ("tabbutton",          "> button"),
+                  ("entry:not(.combo)",  "");
+
+@each $widget, $child in $_linked_widgets {
+  .linked:not(.vertical), .linked.vertical {
+    > #{$widget}:not(:only-child) #{$child} {
+      background-color: $fill;
+    }
+  }
+
+  .linked:not(.vertical) > {
+    #{$widget} {
+      &:dir(ltr):not(:first-child) #{$child},
+      &:dir(rtl):not(:last-child) #{$child} {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        margin-left: 0;
+      }
+
+      &:dir(ltr):not(:last-child) #{$child},
+      &:dir(rtl):not(:first-child) #{$child} {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+  }
+
+  .linked.vertical {
+    #{$widget} {
+      &:not(:first-child) #{$child} {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        margin-top: 0;
+      }
+
+      &:not(:last-child) #{$child} {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
   }
 }
 
@@ -919,13 +972,12 @@ combobox {
 
   > .linked:not(.vertical) > button:not(:only-child) {
     @extend %button-flat;
-    // @extend %small-button;
 
     min-height: 16px;
     min-width: 16px;
     margin: ($medium-size - $small-size) / 2;
     padding: ($small-size - 16px) / 2;
-    border-radius: $corner-radius;
+    border-radius: $circular-radius;
   }
 }
 
@@ -1113,7 +1165,7 @@ headerbar {
   margin: 0;
   border: none;
   transition: all $duration $ease-out;
-  background-color: transparent;
+  background-color: $titlebar;
   color: $titlebar-text;
 
   @if $rimless == 'true' {
@@ -1123,10 +1175,23 @@ headerbar {
   &:disabled { color: $titlebar-text-disabled; }
 
   &:backdrop {
-    background-color: transparent;
+    background-color: $titlebar-backdrop;
     color: $titlebar-text-secondary;
 
     &:disabled { color: $titlebar-text-secondary-disabled; }
+  }
+
+  &.flat {
+    background-color: transparent;
+    color: $text;
+
+    button:not(.suggested-action):not(.destructive-action) {
+      @extend %button-basic;
+
+      &.flat {
+        @extend %button-flat;
+      }
+    }
   }
 
   .title {
@@ -1708,6 +1773,7 @@ popover.background {
     padding: $space-size;
     background-color: $surface;
     border-radius: $menu-radius;
+    color: $text;
 
     @if $rimless == 'true' {
       border: none;
