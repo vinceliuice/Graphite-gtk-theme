@@ -102,26 +102,26 @@
         .box {
           background-color: $titlebar-fill;
         }
-    
+
         &:backdrop .box {
           background-color: $titlebar-fill;
         }
       }
-    
+
       scrolledwindow:not(.pinned) > tabbox {
         tab, tab > button.flat {
           color: $titlebar-text-secondary;
-  
+
           &:hover {
             color: $titlebar-text;
             background-color: $titlebar-fill;
           }
-  
+
           &:active, &:checked, &:selected {
             color: $titlebar-text;
             background-color: $titlebar-divider;
           }
-  
+
           &:disabled {
             color: $titlebar-text-secondary-disabled;
           }
@@ -493,10 +493,6 @@ screenshot-carousel box.frame.view {
     > row.activatable:selected {
       background-color: $primary;
       color: on($primary);
-
-      // > widget > box.horizontal > label {
-      //   color: $text; // not use !
-      // }
     }
   }
 
@@ -552,7 +548,7 @@ panelframeswitcher {
 
 .frameheader.header {
   min-height: $small-size;
-  // background-color: $base-alt;
+  background-color: $fill;
 
   > button {
     border: none;
@@ -591,12 +587,13 @@ panelframeswitcher {
 }
 
 panelstatusbar {
+  background-color: $background;
+
   > menubutton > button,
   > paneltogglebutton button.image-button { border-radius: 0; }
 }
 
 // Setting window
-
 .style-variant {
   padding: 0 $space-size * 2;
 
