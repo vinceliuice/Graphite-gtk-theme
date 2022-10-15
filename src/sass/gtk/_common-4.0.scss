@@ -577,9 +577,11 @@ button {
 
         &:checked { background-color: rgba($b_color, 0.3); }
       }
-
-      .osd & { }
     }
+  }
+
+  &.card {
+    @include button(normal);
   }
 
   stackswitcher > & {

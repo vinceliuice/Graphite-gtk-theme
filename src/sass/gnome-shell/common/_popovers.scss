@@ -16,12 +16,12 @@
 .popup-menu {
   min-width: if($compact == 'true', 10em, 12em);
   color: $text-secondary;
-  padding: 0 !important;
+  padding: 0;
   font-weight: normal;
   @include fontsize($font_size - 1);
 
   .popup-menu-content {
-    padding: $base_padding 0 !important;
+    padding: $base_padding;
     background-color: $popover;
     border-radius: $menu_radius;
     box-shadow: 0 3px 8px 0 rgba(black, 0.15);
@@ -39,7 +39,7 @@
     color: $text-secondary !important;
     text-shadow: none;
     border-radius: $base_radius;
-    margin: 0 $base_padding;
+    margin: 0;
     font-weight: normal;
 
     &:checked {
@@ -80,7 +80,7 @@
   .popup-sub-menu {
     border: none;
     box-shadow: none;
-    margin: 0 $base_padding;
+    margin: 0;
     border-radius: 0 0 $base_radius $base_radius;
 
     @if $sidebar == 'styled' {
