@@ -127,6 +127,11 @@ label {
     background-color: $tooltip;
     color: on($tooltip);
   }
+
+  &.search-information {
+    background-color: $primary;
+    color: on($primary);
+  }
 }
 
 %dim-label, .dim-label { color: $text-secondary; }
@@ -700,12 +705,6 @@ $_linked_widgets: ("button:not(.combo)", ""),
                   ("entry:not(.combo)",  "");
 
 @each $widget, $child in $_linked_widgets {
-  .linked:not(.vertical), .linked.vertical {
-    > #{$widget}:not(:only-child) #{$child} {
-      background-color: $fill;
-    }
-  }
-
   .linked:not(.vertical) > {
     #{$widget} {
       &:dir(ltr):not(:first-child) #{$child},
@@ -2990,16 +2989,6 @@ actionbar > revealer > box {
   background-color: $base;
   background-clip: border-box;
   box-shadow: none;
-
-  .background.csd box.vertical > & {
-    border-radius: 0 0 $window-radius $window-radius;
-  }
-
-  button:not(.suggested-action):not(.destructive-action) { @extend %button-flat; }
-
-  .linked > button:not(.suggested-action):not(.destructive-action) { @extend %button-basic; }
-
-  // .linked:not(.vertical) > entry:not(:only-child) { border-radius: $corner-radius; }
 }
 
 statusbar {

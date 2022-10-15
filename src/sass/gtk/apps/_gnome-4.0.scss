@@ -159,6 +159,11 @@
     }
   }
 
+  label.search-information {
+    margin: $space-size / 2;
+    border-radius: $corner-radius;
+  }
+
   .floating-bar {
     min-height: 32px;
     padding: 0;
