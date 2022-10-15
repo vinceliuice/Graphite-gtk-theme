@@ -1328,12 +1328,12 @@ headerbar {
     margin: $space-size 0;
     border-radius: $circular-radius;
 
+    @if $rimless == 'false' {
+      border: 2px solid $titlebar-primary;
+    }
+
     &.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action).text-button {
       border-radius: $circular-radius;
-
-      &:active {
-        box-shadow: inset 0 0 0 9999px on($titlebar, divider);
-      }
 
       &:checked {
         background-color: $titlebar-primary;
@@ -4152,8 +4152,14 @@ stackswitcher {
 
   &.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action) {
     margin: 0 0;
-    border-radius: $circular-radius;
-    background-color: transparent;
+
+    &:not(:hover):not(:active):not(:checked) {
+      background-color: transparent;
+    }
+
+    &:first-child, &:last-child, & {
+      border-radius: $circular-radius;
+    }
 
     @if $rimless == 'false' {
       min-height: 20px;
@@ -4161,17 +4167,6 @@ stackswitcher {
     }
 
     &.text-button { min-width: 100px; }
-
-    &:focus:not(:hover) { box-shadow: inset 0 0 0 2px $overlay-focus; }
-
-    &:active {
-      box-shadow: inset 0 0 0 9999px gtkalpha($primary, 0.16);
-    }
-
-    &:checked {
-      background-color: $primary;
-      color: on($primary);
-    }
   }
 
   button.text-button { min-width: 100px; } // FIXME aggregate with buttons
