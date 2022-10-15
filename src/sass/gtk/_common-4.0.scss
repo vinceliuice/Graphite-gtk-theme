@@ -624,6 +624,9 @@ button {
   &.close,
   &.circular { // The Bloody Circul Button
     border-radius: $circular-radius;
+    min-width: $small-size;
+    min-height: $small-size;
+    padding: $space-size;
 
     label { padding: 0; }
   }
@@ -746,6 +749,8 @@ spinbutton {
 
   &:disabled { @include entry(disabled); }
 
+  > text > selection { @extend %selected_items_primary; }
+
   &:not(.vertical) {
     // in this horizontal configuration, the whole spinbutton
     // behaves as the entry, so we extend the entry styling
@@ -760,8 +765,6 @@ spinbutton {
       border-radius: 0;
       box-shadow: none;
       background-color: transparent;
-
-      selection { @extend %selected_items_primary; }
     }
 
     > button {
@@ -1173,8 +1176,14 @@ headerbar {
     @extend %titlebar-button;
   }
 
-  popover button:not(.suggested-action):not(.destructive-action):not(.flat) {
-    @extend %button-basic;
+  popover { // reset
+    button:not(.suggested-action):not(.destructive-action):not(.flat) {
+      @extend %button-basic;
+    }
+  
+    calendar > header > button {
+      @extend %button-flat-simple;
+    }
   }
 
   separator:not(.spacer) {
@@ -1735,6 +1744,11 @@ popover.background {
     list separator { margin: 0; }
 
     stack > box { padding: 0; }
+
+    stack > scrolledwindow > viewport {
+      border: 1px solid $border;
+      border-radius: 2px;
+    }
 
     > box > button { margin: 0; }
   }
@@ -3280,6 +3294,7 @@ calendar {
 
     > label.today {
       @extend %selected_items_color;
+      box-shadow: none;
 
       &:selected {
         box-shadow: none;
@@ -3292,10 +3307,11 @@ calendar {
     }
 
     > label.day-number {
-      padding: $space-size*1.5;
+      padding: $space-size * 1.5;
 
       &:selected {
-        @extend %selected_items;
+        color: $text;
+        background-color: $overlay-selected;
       }
     }
 
