@@ -43,8 +43,9 @@ textview {
   // FIXME: we need to override background-color to ensure text rendering
 
   text {
-    // background-color: $base;
-    selection { &:focus, & { @extend %selected_items_primary; }}
+    background-color: $base;
+
+    // > selection { &:focus, & { @extend %selected_items_primary; }}
   }
 
   border {
@@ -52,6 +53,8 @@ textview {
     color: $text-secondary; // FIXME: not working
   }
 }
+
+text > selection { @extend %selected_items_primary; }
 
 iconview {
   @extend %view;
@@ -126,6 +129,11 @@ label {
     border-radius: $corner-radius;
     background-color: $tooltip;
     color: on($tooltip);
+  }
+
+  &.search-information {
+    background-color: $primary;
+    color: on($primary);
   }
 }
 
@@ -288,8 +296,6 @@ entry {
 
       &.right { @include undershoot(right); }
     }
-
-    > text > selection { @extend %selected_items_primary; }
 
     // entry error and warning style
     @each $e_type, $e_color in (error, $error),
@@ -479,7 +485,11 @@ button {
     min-width: 24px;
     padding: ($medium-size - 24px) / 2;
 
-    @extend %circular-button;
+    border-radius: $circular-radius;
+  }
+
+  .linked &.image-button {
+    border-radius: $corner-radius;
   }
 
   // NOTE: Some image-only buttons use this as well
@@ -621,6 +631,9 @@ button {
   &.close,
   &.circular { // The Bloody Circul Button
     border-radius: $circular-radius;
+    min-width: $small-size;
+    min-height: $small-size;
+    padding: $space-size;
 
     label { padding: 0; }
   }
@@ -675,6 +688,49 @@ button {
 
   &:only-child {
     border-radius: $corner-radius;
+  }
+}
+
+// .linked >        element              child
+$_linked_widgets: ("button:not(.combo)", ""),
+                  ("menubutton",         "> button"),
+                  ("dropdown",           "> button"),
+                  ("colorbutton",        "> button"),
+                  ("fontbutton",         "> button"),
+                  ("tabbutton",          "> button"),
+                  ("entry:not(.combo)",  "");
+
+@each $widget, $child in $_linked_widgets {
+  .linked:not(.vertical) > {
+    #{$widget} {
+      &:dir(ltr):not(:first-child) #{$child},
+      &:dir(rtl):not(:last-child) #{$child} {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        margin-left: 0;
+      }
+
+      &:dir(ltr):not(:last-child) #{$child},
+      &:dir(rtl):not(:first-child) #{$child} {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+  }
+
+  .linked.vertical {
+    #{$widget} {
+      &:not(:first-child) #{$child} {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        margin-top: 0;
+      }
+
+      &:not(:last-child) #{$child} {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
   }
 }
 
@@ -757,8 +813,6 @@ spinbutton {
       border-radius: 0;
       box-shadow: none;
       background-color: transparent;
-
-      selection { @extend %selected_items_primary; }
     }
 
     > button {
@@ -911,13 +965,12 @@ combobox {
 
   > .linked:not(.vertical) > button:not(:only-child) {
     @extend %button-flat;
-    // @extend %small-button;
 
     min-height: 16px;
     min-width: 16px;
     margin: ($medium-size - $small-size) / 2;
     padding: ($small-size - 16px) / 2;
-    border-radius: $corner-radius;
+    border-radius: $circular-radius;
   }
 }
 
@@ -1121,6 +1174,19 @@ headerbar {
     &:disabled { color: $titlebar-text-secondary-disabled; }
   }
 
+  &.flat {
+    background-color: transparent;
+    color: $text;
+
+    button:not(.suggested-action):not(.destructive-action) {
+      @extend %button-basic;
+
+      &.flat {
+        @extend %button-flat;
+      }
+    }
+  }
+
   .title {
     padding: 0 $space-size * 2;
     font-weight: bold;
@@ -1170,8 +1236,14 @@ headerbar {
     @extend %titlebar-button;
   }
 
-  popover button:not(.suggested-action):not(.destructive-action):not(.flat) {
-    @extend %button-basic;
+  popover { // reset
+    button:not(.suggested-action):not(.destructive-action):not(.flat) {
+      @extend %button-basic;
+    }
+
+    calendar > header > button {
+      @extend %button-flat-simple;
+    }
   }
 
   separator:not(.spacer) {
@@ -1193,35 +1265,6 @@ headerbar {
   .entry-tag {
     margin-top: 5px;
     margin-bottom: 5px;
-  }
-
-  &.windowhandle {
-    > viewswitcher > box > button:not(.suggested-action):not(.destructive-action) {
-      border-radius: 0;
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-
-    > button.popup {
-      label, image { min-height: 0; }
-    }
-
-    viewswitchertitle > squeezer {
-      margin-top: 0;
-      margin-bottom: 0;
-      background: none;
-
-      > viewswitcher {
-        margin: 0 0;
-        background: none;
-
-        > box.horizontal > button.radio {
-          margin: 0;
-          padding: 0;
-          border-radius: 0;
-        }
-      }
-    }
   }
 
   // Don't draw titlebar above titlebar
@@ -1250,12 +1293,12 @@ headerbar {
     margin: $space-size 0;
     border-radius: $circular-radius;
 
+    @if $rimless == 'false' {
+      border: 2px solid $titlebar-primary;
+    }
+
     &.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action).text-button {
       border-radius: $circular-radius;
-
-      &:active {
-        box-shadow: inset 0 0 0 9999px on($titlebar, divider);
-      }
 
       &:checked {
         background-color: $titlebar-primary;
@@ -1356,15 +1399,9 @@ window.devel {
  ************/
 %pathbar_button,
 pathbar > button {
-  @extend %button-flat;
-
   padding-left: ($medium-size - 24px) / 2;
   padding-right: ($medium-size - 24px) / 2;
   border-radius: $corner-radius;
-
-  &:checked {
-    &, &:disabled { background-color: transparent; }
-  }
 
   label:not(:only-child) {
     &:first-child { margin-left: 0; }
@@ -1424,6 +1461,11 @@ treeview.view {
   &:selected {
     background-color: $overlay-checked;
     box-shadow: none;
+  }
+
+  &:focus {
+    box-shadow: none;
+    outline: none;
   }
 
   > rubberband { @extend rubberband; } // to avoid borders being overridden by the previously set props
@@ -1693,6 +1735,7 @@ popover.background {
     padding: $space-size;
     // background-color: $surface;
     border-radius: $menu-radius;
+    color: $text;
 
     @if $rimless == 'true' {
       border: none;
@@ -1731,6 +1774,11 @@ popover.background {
     list separator { margin: 0; }
 
     stack > box { padding: 0; }
+
+    stack > scrolledwindow > viewport {
+      border: 1px solid $border;
+      border-radius: 2px;
+    }
 
     > box > button { margin: 0; }
   }
@@ -2904,16 +2952,6 @@ actionbar > revealer > box {
   background-color: $base;
   background-clip: border-box;
   box-shadow: none;
-
-  .background.csd box.vertical > & {
-    border-radius: 0 0 $window-radius $window-radius;
-  }
-
-  button:not(.suggested-action):not(.destructive-action) { @extend %button-flat; }
-
-  .linked > button:not(.suggested-action):not(.destructive-action) { @extend %button-basic; }
-
-  // .linked:not(.vertical) > entry:not(:only-child) { border-radius: $corner-radius; }
 }
 
 statusbar {
@@ -3276,6 +3314,7 @@ calendar {
 
     > label.today {
       @extend %selected_items_color;
+      box-shadow: none;
 
       &:selected {
         box-shadow: none;
@@ -3288,10 +3327,11 @@ calendar {
     }
 
     > label.day-number {
-      padding: $space-size*1.5;
+      padding: $space-size * 1.5;
 
       &:selected {
-        @extend %selected_items;
+        color: $text;
+        background-color: $overlay-selected;
       }
     }
 
@@ -3344,6 +3384,12 @@ window.dialog.message { // Message Dialog styling
         &.destructive-action:not(:disabled) { color: $destructive; }
       }
     }
+  }
+}
+
+window.background.csd.dialog {
+  > headerbar.titlebar {
+    box-shadow: inset 0 -1px $border;
   }
 }
 
@@ -3430,7 +3476,7 @@ stacksidebar {
   }
 
   list {
-    padding: $space-size;
+    padding: $space-size - 2px 0;
     // background-color: $base; // This should not be necessary, but the parent stacksidebar ignores background-color.
   }
 
@@ -3438,10 +3484,7 @@ stacksidebar {
     min-height: $small-size;
     padding: $space-size $space-size * 1.5;
     border-radius: $corner-radius;
-    margin: 2px 0;
-
-    &:first-child { margin-top: 0; }
-    &:last-child { margin-bottom: 0; }
+    margin: 2px $space-size;
 
     &:selected {
       @extend %selected_items_primary;
@@ -3449,8 +3492,8 @@ stacksidebar {
     }
 
     > label {
-      padding-left: 6px;
-      padding-right: 6px;
+      padding-left: $space-size;
+      padding-right: $space-size;
       color: inherit;
     }
 
@@ -3474,17 +3517,14 @@ separator.sidebar {
  **********************/
 
 .navigation-sidebar {
-  padding: 0; //only vertical padding. horizontal row size would clip
+  padding: $space-size - 2px 0; //only vertical padding. horizontal row size would clip
   border-right: none;
 
   > row {
     min-height: $small-size;
     padding: $space-size $space-size * 1.5;
     border-radius: $corner-radius;
-    margin: $space-size / 2 $space-size;
-
-    &:first-child { margin-top: 0; }
-    &:last-child { margin-bottom: 0; }
+    margin: 2px $space-size;
 
     &:hover,
     &:focus-visible:focus-within {
@@ -4075,8 +4115,14 @@ stackswitcher {
 
   &.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action) {
     margin: 0 0;
-    border-radius: $circular-radius;
-    background-color: transparent;
+
+    &:not(:hover):not(:active):not(:checked) {
+      background-color: transparent;
+    }
+
+    &:first-child, &:last-child, & {
+      border-radius: $circular-radius;
+    }
 
     @if $rimless == 'false' {
       min-height: 20px;
@@ -4084,17 +4130,6 @@ stackswitcher {
     }
 
     &.text-button { min-width: 100px; }
-
-    &:focus:not(:hover) { box-shadow: inset 0 0 0 2px $overlay-focus; }
-
-    &:active {
-      box-shadow: inset 0 0 0 9999px gtkalpha($primary, 0.16);
-    }
-
-    &:checked {
-      background-color: $primary;
-      color: on($primary);
-    }
   }
 
   button.text-button { min-width: 100px; } // FIXME aggregate with buttons

@@ -3,6 +3,20 @@
 // Nautilus
 //
 .nautilus-window {
+  background-color: $titlebar;
+
+  &:backdrop {
+    background-color: $titlebar-backdrop;
+  }
+
+  headerbar { // reset
+    @if $sidebar == 'styled' {
+      box-shadow: none;
+    } @else {
+      box-shadow: inset 0 -1px $border;
+    }
+  }
+
   flap.unfolded > placessidebar {
     background-color: transparent;
     color: $titlebar-text-secondary;
@@ -82,6 +96,51 @@
     }
   }
 
+  @if $variant == 'light' and $topbar == 'dark' {
+    tabbar {
+      &:not(.inline) {
+        .box {
+          background-color: $titlebar-fill;
+        }
+    
+        &:backdrop .box {
+          background-color: $titlebar-fill;
+        }
+      }
+    
+      scrolledwindow:not(.pinned) > tabbox {
+        tab, tab > button.flat {
+          color: $titlebar-text-secondary;
+  
+          &:hover {
+            color: $titlebar-text;
+            background-color: $titlebar-fill;
+          }
+  
+          &:active, &:checked, &:selected {
+            color: $titlebar-text;
+            background-color: $titlebar-divider;
+          }
+  
+          &:disabled {
+            color: $titlebar-text-secondary-disabled;
+          }
+        }
+      }
+    }
+  }
+
+  .nautilus-grid-view.view {
+    &, gridview.view {
+      background-color: $base;
+      border-radius: $window-radius - $space-size;
+    }
+
+    @if $variant == 'light' and $topbar == 'dark' {
+      margin: 0 $space-size $space-size 0;
+    }
+  }
+
   @if $sidebar == 'styled' {
     flap > separator {
       background: none;
@@ -98,6 +157,11 @@
     > revealer > box {
       border-radius: $corner-radius + $space-size;
     }
+  }
+
+  label.search-information {
+    margin: $space-size / 2;
+    border-radius: $corner-radius;
   }
 
   .floating-bar {

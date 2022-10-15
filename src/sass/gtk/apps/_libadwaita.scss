@@ -210,6 +210,33 @@ viewswitcher {
     border: none;
   }
 
+  headerbar &.narrow button.toggle {
+    border-radius: if($topbar == 'dark' and $theme == 'default' and $variant == 'light', $corner-radius, 0 0 $window-radius $window-radius);
+    margin: if($topbar == 'dark' and $theme == 'default' and $variant == 'light', 2px 0, 0);
+    min-width: 120px;
+    padding: 0;
+    background-color: transparent;
+
+    &:checked {
+      background-color: $titlebar-primary;
+      color: on($titlebar-primary);
+
+      indicator {
+        background: on($titlebar-primary);
+    
+        > label {
+          color: $titlebar-primary;
+        }
+      }
+
+      &:backdrop {
+        color: on($titlebar-primary, disabled);
+      }
+    }
+
+    &:focus { box-shadow: none; }
+  }
+
   button.toggle {
     font-weight: bold;
     padding: 0;
