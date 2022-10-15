@@ -43,7 +43,7 @@ textview {
   // FIXME: we need to override background-color to ensure text rendering
 
   text {
-    background-color: $base;
+    // background-color: $base;
     selection { &:focus, & { @extend %selected_items_primary; }}
   }
 
@@ -152,7 +152,7 @@ window.assistant {
 
 %osd {
   color: on($base);
-  background-color: $base;
+  // background-color: $base;
   background-clip: padding-box;
   border-radius: $corner-radius;
   border: none;
@@ -266,11 +266,6 @@ entry {
     }
 
     image { // icons inside the entry
-      // @extend %button-flat;
-
-      // min-height: $small-size;
-      // min-width: $small-size;
-      // border-radius: $circular-radius;
       color: $text-secondary;
 
       &:hover, &:active { color: $text; }
@@ -1110,7 +1105,7 @@ headerbar {
   margin: 0;
   border: none;
   transition: all $duration $ease-out;
-  background-color: transparent;
+  // background-color: transparent;
   color: $titlebar-text;
 
   @if $rimless == 'true' {
@@ -1120,7 +1115,7 @@ headerbar {
   &:disabled { color: $titlebar-text-disabled; }
 
   &:backdrop {
-    background-color: transparent;
+    // background-color: transparent;
     color: $titlebar-text-secondary;
 
     &:disabled { color: $titlebar-text-secondary-disabled; }
@@ -1423,12 +1418,11 @@ columnview.view,
 treeview.view {
   border-left-color: $solid-border; // this is actually the tree lines color,
   border-top-color: $solid-border; // while this is the grid lines color, better then nothing
-  background-color: $base;
+  // background-color: $base;
 
   // FIXME: Avoid transparency background-color being slightly darker
   &:selected {
-    background-color: $base;
-    background-image: image($overlay-checked);
+    background-color: $overlay-checked;
     box-shadow: none;
   }
 
@@ -1545,11 +1539,11 @@ treeview.view {
 menubar {
   padding: 0;
   // box-shadow: inset 0 -1px $divider;
-  background-color: $titlebar;
+  // background-color: $titlebar;
   color: $titlebar-text;
 
   &:backdrop {
-    background-color: $titlebar-backdrop;
+    // background-color: $titlebar-backdrop;
     color: $titlebar-text-secondary;
   }
 
@@ -1697,7 +1691,7 @@ popover.background {
   > contents {
     transition: $transition-shadow;
     padding: $space-size;
-    background-color: $surface;
+    // background-color: $surface;
     border-radius: $menu-radius;
 
     @if $rimless == 'true' {
@@ -1742,8 +1736,8 @@ popover.background {
   }
 
   // FIXME: Use the popover color instead of transparent as a workaround for .view
-  .view:not(:selected),
-  toolbar { background-color: $surface; }
+  // .view:not(:selected),
+  // toolbar { background-color: $surface; }
 
   &.menu button,
   button.model {
@@ -1774,9 +1768,9 @@ popover.background {
   }
 }
 
-magnifier {
-  background-color: $base;
-}
+// magnifier {
+//   background-color: $base;
+// }
 
 /*************
  * Notebooks *
@@ -3386,7 +3380,7 @@ filechooserbutton:drop(active) {
  ***********/
 .sidebar {
   border-style: none;
-  background-color: $base;
+  // background-color: $base;
 
   &:not(separator) {
     @at-root %sidebar_left,
@@ -3437,7 +3431,7 @@ stacksidebar {
 
   list {
     padding: $space-size;
-    background-color: $base; // This should not be necessary, but the parent stacksidebar ignores background-color.
+    // background-color: $base; // This should not be necessary, but the parent stacksidebar ignores background-color.
   }
 
   row {
@@ -3687,7 +3681,7 @@ infobar {
     & > revealer > box,
     &:hover > revealer > box,
     &:backdrop > revealer > box {
-      background-color: $base;
+      // background-color: $base;
 
       button {
         &, &.text-button:not(:disabled) { color: $primary; }
