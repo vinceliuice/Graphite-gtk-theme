@@ -211,7 +211,7 @@ while [[ $# -gt 0 ]]; do
       libadwaita="true"
       shift
       ;;
-    -u|--uninstall)
+    -r|--remove|-u|--uninstall)
       uninstall="true"
       shift
       ;;
@@ -607,10 +607,10 @@ if [[ "$uninstall" == 'true' ]]; then
     echo && uninstall_theme && uninstall_link
   fi
 else
-   clean_theme && install_package && sass_temp && gnome_shell_version && install_theme && uninstall_link
+   clean_theme && install_package && sass_temp && gnome_shell_version && install_theme
 
    if [[ "$libadwaita" == 'true' ]]; then
-     link_theme
+     uninstall_link && link_theme
    fi
 fi
 
