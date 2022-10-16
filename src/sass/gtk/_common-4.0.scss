@@ -536,14 +536,24 @@ button {
   // big standalone buttons like in Documents pager
   &.osd {
     padding: ($large-size - 24px) / 2 ($large-size - 16px) / 2;
+    box-shadow: none;
+    background-color: $osd;
+    color: on($osd);
 
-    &.image-button { padding: ($large-size - 24px) / 2; }
+    &:hover {
+      background-color: lighten($osd, 15%);
+      color: on($osd);
+    }
+
+    &:active {
+      background-color: darken($osd, 10%);
+      color: on($osd);
+    }
+
+    &.image-button { padding: ($medium-size - 24px) / 2; }
 
     &:disabled { opacity: 0; }
   }
-
-  // overlay / OSD style
-  // .osd & { }
 
   // Suggested and Destructive Action buttons
   @each $b_type, $b_color in (suggested-action, $suggested),
