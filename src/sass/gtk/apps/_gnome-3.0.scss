@@ -118,11 +118,6 @@
     .nautilus-list-view {
       background-color: transparent;
       border-radius: $window-radius;
-
-      treeview.view:not(:hover):not(:active):not(:selected) {
-        background-color: transparent;
-        border-radius: 0;
-      }
     }
 
     notebook {
@@ -463,10 +458,6 @@ window.org-gnome-gedit {
 
         > scrolledwindow { // raised widget
           border-bottom-left-radius: $window-radius;
-
-          treeview.view:not(:hover):not(:selected) {
-            background: none;
-          }
         }
       }
 
@@ -895,13 +886,6 @@ window#gnome-system-monitor.background.csd {
     border-radius: 0 0 $window-radius $window-radius;
 
     > box.vertical {
-      > scrolledwindow {
-        treeview.view:not(.progressbar):not(.trough) {
-          background: none;
-          @extend .view;
-        }
-      }
-
       > revealer > actionbar > revealer > box {
         border-radius: 0 0 $window-radius $window-radius;
       }
@@ -1618,12 +1602,6 @@ box.vertical > revealer > toolbar.search-bar {
  * Document Viewer *
  *******************/
 window.background.csd {
-  > box.vertical {
-    > paned.horizontal > box.vertical > scrolledwindow {
-      > treeview.view:not(:hover):not(:selected) { background-color: transparent; }
-    }
-  }
-
   evview.view.content-view {
     border-radius: 0 0 $window-radius $window-radius;
 
@@ -1642,34 +1620,12 @@ window.background.csd {
     > scrolledwindow {
       border-radius: 0 0 $window-radius $window-radius;
       background-color: $base;
-
-      treeview.view:not(:hover):not(:selected) {
-        background-color: transparent;
-      }
     }
 
     > box.vertical {
       > scrolledwindow {
         border-radius: 0 0 0 $window-radius;
         background-color: $background;
-
-        treeview.view:not(:hover):not(:selected) {
-          background-color: transparent;
-        }
-      }
-    }
-  }
-}
-
-
-/**************
- * Gnome Disk *
- **************/
-window.background.csd {
-  > box.vertical > paned.horizontal {
-    > scrolledwindow {
-      treeview.view:not(:selected):not(:hover) {
-        background-color: transparent;
       }
     }
   }
@@ -2062,12 +2018,6 @@ dialog.background.csd {
         }
       }
 
-      > box.vertical > stack.view {
-        > scrolledwindow > treeview.view:not(:hover):not(:selected):not(:active) {
-          background-color: transparent;
-        }
-      }
-
       toolbar.toolbar {
         border-radius: 0 0 $window-radius $window-radius;
       }
@@ -2091,8 +2041,6 @@ dialog.background.csd {
           background: none;
         }
       }
-
-      treeview.view:not(:hover):not(:selected) { background: none; }
     }
 
     viewport.frame {

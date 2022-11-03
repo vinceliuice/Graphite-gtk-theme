@@ -351,3 +351,21 @@ window.background.csd {
     }
   }
 }
+
+/***********
+ * GnuCash *
+ ***********/
+
+#gnc-id-main-window {
+  gnc-id-sheet-list > scrolledwindow {
+    box-shadow: $shadow-z4;
+
+    @if $rimless == 'true' {
+      margin-top: -1px;
+      border: 1px solid $solid-border;
+    } @else {
+      margin-top: -2px;
+      border: 2px solid $primary;
+    }
+  }
+}
