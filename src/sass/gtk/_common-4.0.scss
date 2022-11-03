@@ -1249,6 +1249,8 @@ headerbar {
   spinbutton,
   button,
   stackswitcher,
+  menubutton,
+  splitbutton,
   separator {
     margin-top: $space-size;
     margin-bottom: $space-size;
@@ -1682,25 +1684,6 @@ popover.menu {
     }
   }
 
-  & > arrow,
-  &.background > contents {
-    padding: $space-size;
-    background-color: $surface;
-    background-clip: border-box;
-    border-radius: $menu-radius;
-
-    @if $rimless == 'true' {
-      border: none;
-      box-shadow: inset 0 1px highlight($surface), $shadow-z4;
-    } @else {
-      border: 2px solid $primary;
-    }
-  }
-
-  &.background separator {
-    margin: $space-size 0;
-  }
-
   arrow.left,
   radio.left,
   check.left {
@@ -1713,6 +1696,51 @@ popover.menu {
   check.right {
     margin-left: 0;
     margin-right: 0;
+  }
+}
+
+
+/************
+ * Popovers *
+ ************/
+popover.background {
+  font: initial;
+
+  &, &:backdrop {
+    background-color: transparent;
+  }
+
+  > arrow,
+  > contents {
+    transition: $transition-shadow;
+    padding: $space-size;
+    background-color: $surface;
+    background-clip: border-box;
+    border-radius: $menu-radius;
+    color: $text;
+
+    @if $rimless == 'true' {
+      border: none;
+      box-shadow: $shadow-z4;
+    } @else {
+      border: 2px solid $primary;
+    }
+  }
+
+  &:backdrop {
+    > arrow,
+    > contents {
+      @if $rimless == 'true' {
+        border: none;
+        box-shadow: $shadow-z2;
+      } @else {
+        border: 2px solid $primary;
+      }
+    }
+  }
+
+  separator {
+    margin: $space-size 0;
   }
 
   modelbutton {
@@ -1744,46 +1772,6 @@ popover.menu {
   label.title {
     font-weight: bold;
     padding: 4px ($space-size + 20px); //this will fall apart with font sizing
-  }
-}
-
-
-/************
- * Popovers *
- ************/
-popover.background {
-  font: initial;
-
-  &, &:backdrop {
-    background-color: transparent;
-  }
-
-  > arrow,
-  > contents {
-    transition: $transition-shadow;
-    padding: $space-size;
-    // background-color: $surface;
-    border-radius: $menu-radius;
-    color: $text;
-
-    @if $rimless == 'true' {
-      border: none;
-      box-shadow: $shadow-z4;
-    } @else {
-      border: 2px solid $primary;
-    }
-  }
-
-  &:backdrop {
-    > arrow,
-    > contents {
-      @if $rimless == 'true' {
-        border: none;
-        box-shadow: $shadow-z2;
-      } @else {
-        border: 2px solid $primary;
-      }
-    }
   }
 
   > contents {
