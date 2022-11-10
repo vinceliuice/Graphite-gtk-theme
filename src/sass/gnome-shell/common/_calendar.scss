@@ -115,8 +115,6 @@
     text-align: center;
     text-shadow: none;
     @include fontsize($font_size + 1);
-
-    &:focus {}
   }
 
   // prev/next month icons
@@ -131,12 +129,13 @@
   }
 
   .pager-button {
-    width: $item_size;
-    height: $item_size;
-    margin: 2px;
+    width: $item_size !important;
+    height: $item_size !important;
+    margin: 2px !important;
     border-radius: $circular_radius;
     background-color: transparent;
     color: $text;
+
     &:hover, &:focus { background-color: $divider; }
     &:active { background-color: $track; }
   }
@@ -144,16 +143,20 @@
   .calendar-day-base {
     @include fontsize($font_size - 1);
     text-align: center;
-    width: $item_size + 2px;
-    height: $item_size + 2px;
-    padding: 0;
-    margin: 2px;
+    width: $item_size + 2px !important;
+    height: $item_size + 2px !important;
+    padding: 0 !important;
+    margin: 2px !important;
     border-radius: $circular_radius;
     color: $text-secondary;
     border: none;
     font-feature-settings: "tnum";
 
-    &:hover, &:focus { background-color: $divider; }
+    &:hover, &:focus {
+      background-color: $divider;
+      box-shadow: none;
+      outline: none;
+    }
 
     &:active, &:selected {
       color: $text;
@@ -179,8 +182,6 @@
   .calendar-day-left {
     border-left-width: 0;
   }
-
-  .calendar-work-day {}
 
   .calendar-nonwork-day {
     color: $text-disabled;

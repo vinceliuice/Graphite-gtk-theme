@@ -1,51 +1,46 @@
 // Search entry
-%search-entry, .search-entry {
+.search-entry {
+  @extend %entry;
+}
+
+%search-entry,
+#overview .search-entry {
   width: 320px;
-  min-height: $item_size;
-  padding: 0 $base_padding * 2;
-  color: $text-secondary;
+  min-height: 20px;
+  padding: $base_padding $base_padding * 2;
   transition-duration: 150ms;
   border-radius: $base_radius;
-  caret-color: $text;
-  selection-background-color: $divider;
-  selected-color: on($primary) !important;
-  @include entry(normal, $bc: $base);
+  @include entry(normal, $bc: on($osd, fill), $tc: on($osd));
 
   &:hover {
-    @include entry(hover, $bc: $base);
+    @include entry(hover, $bc: on($osd, fill), $tc: on($osd), $fc: $inverse-indicator);
   }
 
   &:focus {
     @if $theme == 'grey' {
-      @include entry(focus, $bc: $base, $fc: white);
+      @include entry(focus, $bc: on($osd, fill), $tc: on($osd), $fc: white);
     } @else {
-      @include entry(focus, $bc: $base);
+      @include entry(focus, $bc: on($osd, fill), $tc: on($osd), $fc: $inverse-indicator);
     }
   }
 
   .search-entry-icon {
-    icon-size: 16px;
-    padding: 0 0;
-    color: $text-secondary-disabled;
-  }
-
-  &:hover, &:focus {
-    .search-entry-icon { color: $text-secondary; }
-  }
-
-  &:insensitive {
-    @include entry(insensitive, $bc: rgba($base, 0.35));
-
-    StLabel.hint-text, .search-entry-icon {
-      color: $track;
-    }
+    color: on($osd, disabled);
   }
 
   StLabel.hint-text {
-    color: $text-disabled;
+    color: on($osd, disabled);
   }
-}
 
-.popup-menu .search-entry { // reset
-  @extend %entry;
+  &:hover, &:focus {
+    .search-entry-icon { color: on($osd, secondary); }
+  }
+
+  &:insensitive {
+    @include entry(insensitive, $bc: transparent, $tc: on($osd, secondary-disabled));
+
+    StLabel.hint-text, .search-entry-icon {
+      color: on($osd, secondary-disabled);
+    }
+  }
 }

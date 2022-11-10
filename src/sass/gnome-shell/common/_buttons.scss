@@ -17,10 +17,11 @@
 }
 
 .button {
-  min-height: $item_size;
-  padding: 0 $base_padding * 2;
+  min-height: 20px;
+  padding: $base_padding $base_padding * 2;
   border-radius: $base_radius;
   border: none;
+  @extend %button;
 
   .popup-menu & {
     @extend %flat_button;
@@ -28,14 +29,14 @@
 }
 
 .icon-button {
-    @extend .button; // same style as buttons
+  @extend %button; // same style as buttons
 
-    border-radius: 99px;
-    padding: $base_padding*2;
-    min-height: 16px;
+  border-radius: $circular_radius;
+  padding: $base_padding * 2;
+  min-height: $base_icon_size;
 
-    StIcon {
-        icon-size: $base_icon_size;
-        -st-icon-style: symbolic;
-    }
+  StIcon {
+    icon-size: $base_icon_size;
+    -st-icon-style: symbolic;
+  }
 }

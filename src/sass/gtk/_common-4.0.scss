@@ -3484,6 +3484,17 @@ window.background.csd.dialog {
   }
 }
 
+// About dialog
+window.aboutdialog {
+  &.background.csd {
+    scrolledwindow.frame {
+      &, > viewport.view, > textview.view, > textview.view > text {
+        border-radius: $corner-radius;
+      }
+    }
+  }
+}
+
 filechooser {
   .dialog-action-box { border-top: 1px solid $divider; }
 

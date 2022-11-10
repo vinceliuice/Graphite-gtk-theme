@@ -646,11 +646,3 @@ window.dialog {
     }
   }
 }
-
-window.aboutdialog {
-  stack scrolledwindow.frame > {
-    &, viewport.view {
-      border-radius: $window-radius - $space-size;
-    }
-  }
-}

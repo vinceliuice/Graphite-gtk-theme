@@ -14,11 +14,14 @@
     background-color: $bc;
     border: 2px solid transparent;
     box-shadow: none;
+    caret-color: $tc;
+    selection-background-color: rgba($tc, 0.25);
+    selected-color: $tc;
   }
 
   @if $t == hover {
     color: $tc;
-    border-color: $track;
+    border-color: rgba($fc, 0.35);
     background-color: $bc;
   }
 
