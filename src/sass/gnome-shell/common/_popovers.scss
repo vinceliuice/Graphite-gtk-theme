@@ -134,7 +134,7 @@
 
 // symbolic icons in popover
 .popup-menu-arrow,
-.popup-menu-icon { icon-size: $base_icon_size; }
+.popup-menu-icon { icon-size: $base_icon_size !important; }
 
 // container for radio and check boxes
 .popup-menu-ornament {

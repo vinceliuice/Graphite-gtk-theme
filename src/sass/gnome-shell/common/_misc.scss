@@ -8,9 +8,8 @@
 // User icon
 .user-icon {
   background-size: contain;
-  color: on(black, secondary);
+  color: $text-secondary;
   border-radius: $circular_radius;
-  border: 2px solid $primary;
   box-shadow: none;
   icon-size: $base_icon_size * 4; // 64px
   // margin: 6px;
@@ -20,25 +19,29 @@
   }
 
   &:hover {
-    color: on(black);
+    color: on($osd);
   }
 
-  & StIcon {
-    background-color: on(black);
+  StIcon {
+    background-color: $background;
+    color: $text;
     border-radius: $circular_radius;
     padding: $base_padding * 2 ; // 12px
-    width: $base_icon_size * 2.5; height: $base_icon_size * 2.5; // 40px;
+    width: $base_icon_size * 2.5;
+    height: $base_icon_size * 2.5; // 40px;
   }
 
-  &.user-avatar {
-    border: 2px solid $primary;
+  &, &.user-avatar {
+    @if $rimless == 'false' {
+      border: 2px solid $primary;
+    } @else { border: none; }
   }
 }
 
 .user-widget.vertical .user-icon {
   icon-size: $base_icon_size * 6; // 128px
 
-  & StIcon {
+  StIcon {
     padding: $base_padding * 3 + 2px; // 20px
     padding-top: $base_padding * 3; // 18 px
     padding-bottom: $base_padding * 3 + 4px; // 22px

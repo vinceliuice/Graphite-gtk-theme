@@ -16,6 +16,17 @@
   &:insensitive { @include button(flat-insensitive); }
 }
 
+// buttons on OSD elements
+// that are undecorated by default and use OSD colors
+%osd_button {
+  @include button(flat-normal, $tc:on($osd));
+  &:insensitive { @include button(insensitive, $tc:on($osd), $bc:$osd); }
+  &:focus { @include button(focus, $tc:on($osd), $bc:$osd);}
+  &:hover { @include button(hover, $tc:on($osd), $bc:$osd);}
+  &:active { @include button(active, $tc:on($osd), $bc:$osd);}
+  &:outlined, &:checked { @include button(checked, $tc:on($osd), $bc:$osd);}
+}
+
 .button {
   min-height: 20px;
   padding: $base_padding $base_padding * 2;
@@ -30,13 +41,11 @@
 
 .icon-button {
   @extend %button; // same style as buttons
-
   border-radius: $circular_radius;
-  padding: $base_padding * 2;
-  min-height: $base_icon_size;
+  padding: $base_padding;
 
   StIcon {
-    icon-size: $base_icon_size;
+    icon-size: $base_icon_size !important;
     -st-icon-style: symbolic;
   }
 }

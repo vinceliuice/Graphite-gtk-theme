@@ -14,22 +14,10 @@
   //reset
   border: none;
   background-color: transparent;
+  color: on($osd);
 
   StEntry {
-    selection-background-color: $primary;
-    selected-color: on($primary);
-    padding: 4px 8px;
-    min-height: $item_size - $base_padding;
-    border-radius: $circular_radius;
-    caret-color: on($primary);
-
-    @include entry(flat-normal, $tc: on($primary));
-    &:focus { @include entry(flat-focus, $tc: on($primary)); }
-    &:insensitive { @include entry(flat-insensitive, $tc: on($primary, disabled)); }
-
-    StLabel.hint-text {
-      color: on($primary, disabled);
-    }
+   @extend %overview-search-entry;
   }
 
   .modal-dialog-button-box { spacing: 3px; }
@@ -37,16 +25,9 @@
   .modal-dialog-button {
     padding: 0 16px;
     border: none;
-    @include button(flat-normal, $tc: on($primary));
-    &:hover, &:focus { @include button(flat-hover, $tc: on($primary)); }
-    &:active { @include button(flat-active, $tc: on($primary)); }
-    &:insensitive { @include button(flat-insensitive, $tc: on($primary, disabled)); }
 
-    &:default {
-      @include button(normal, $tc: on($primary));
-      &:hover, &:focus { @include button(hover, $tc: on($primary)); }
-      &:active { @include button(active, $tc: on($primary)); }
-      &:insensitive { @include button(insensitive, $tc: on($primary, disabled)); }
+    &, &:default {
+      @extend %osd_button;
     }
   }
 
@@ -54,23 +35,37 @@
   .switch-user-button,
   .login-dialog-session-list-button {
     padding: 0;
-    border-radius: 100px;
+    border-radius: $circular_radius;
     width: 32px;
     height: 32px;
     border: none;
-    background-color: $divider;
-    color: on(black);
+    @extend %osd_button;
 
     StIcon { icon-size: 16px; }
   }
 
   .login-dialog-message-warning {
-    color: on(black, secondary);
+    color: on($osd, secondary);
+  }
+
+  .user-icon {
+    color: on($osd, secondary);
+
+    StIcon {
+      background-color: $osd;
+      color: on($osd);
+    }
+
+    &, &.user-avatar {
+      @if $rimless == 'false' {
+        border: 2px solid if($theme == 'default', if($color_type == 'nord', #dbdee5, #e0e0e0), $primary);
+      } @else { border: none; }
+    }
   }
 }
 
 .login-dialog-logo-bin { padding: 24px 0px; }
-.login-dialog-banner { color: on(black, secondary); }
+.login-dialog-banner { color: on($osd, secondary); }
 .login-dialog-button-box { spacing: 5px; }
 .login-dialog-message { text-align: center; }
 .login-dialog-message-warning { color: $warning; }
@@ -80,17 +75,17 @@
   padding-left: 2px;
   .login-dialog-not-listed-button:focus &,
   .login-dialog-not-listed-button:hover & {
-    color: on(black);
+    color: on($osd);
   }
 }
 
 .login-dialog-not-listed-label {
   font-size: 1em;
   font-weight: bold;
-  color: on(black, secondary);
+  color: on($osd, secondary);
   padding-top: 1em;
-  &:hover { color: on(black, secondary); }
-  &:focus { background-color: on(black, divider); }
+  &:hover { color: on($osd, secondary); }
+  &:focus { background-color: on($osd, divider); }
 }
 
 .login-dialog-user-list-view { -st-vfade-offset: 1em; }
@@ -100,45 +95,41 @@
   width: 23em;
   &:expanded .login-dialog-user-list-item:selected,
   &:expanded .login-dialog-user-list-item:hover,
-  &:expanded .login-dialog-user-list-item:active { background-color: on(black, track); color: on(black, secondary); }
+  &:expanded .login-dialog-user-list-item:active { background-color: on($osd, track); color: on($osd, secondary); }
   &:expanded .login-dialog-user-list-item:logged-in { border-right: 2px solid $primary; }
 }
 
 .login-dialog-user-list-item {
   border-radius: $menu_radius;
-  padding: 6px;
-  color: on(black, secondary);
+  padding: $base_padding;
+  color: on($osd, secondary);
 
   &:ltr .user-widget { padding-right: 1em; }
   &:rtl .user-widget { padding-left: 1em; }
 
   &:focus {
-    background-color: $fill !important;
-
-    // .login-dialog-timed-login-indicator {
-    //   background-color: $track;
-    // }
+    background-color: on($osd, fill) !important;
   }
 
   &:hover, &:focus:hover {
-    background-color: $divider !important;
-    color: on(black, secondary);
+    background-color: on($osd, divider) !important;
+    color: on($osd, secondary);
   }
 
   &:active, &:focus:active {
-    background-color: $track !important;
-    color: on(black, secondary);
+    background-color: on($osd, track) !important;
+    color: on($osd, secondary);
   }
 
   .login-dialog-timed-login-indicator {
     height: 2px;
-    margin: 6px 0 0 0;
-    background-color: overlay(black, hover) !important;
+    margin: $base_padding 0 0 0;
+    background-color: overlay($osd, hover) !important;
   }
 }
 
 .user-widget-label {
-  color: on(black, secondary);
+  color: on($osd, secondary);
 }
 
 .user-widget.horizontal .user-widget-label {
@@ -169,7 +160,7 @@
 }
 
 .login-dialog-prompt-label {
-  color: on(black, secondary);
+  color: on($osd, secondary);
   @include fontsize($font_size + 1);
   padding-top: 1em;
 }

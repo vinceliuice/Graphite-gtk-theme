@@ -4,10 +4,8 @@
 
   .icon-button, .button {
     padding: $base_padding * 1.75;
-  }
 
-  .popup-menu-content {
-    padding: $base_padding * 2 !important;
+    > StIcon { icon-size: $base_icon_size !important; }
   }
 }
 
@@ -47,17 +45,22 @@
     }
   }
 
-  & > StBoxLayout { spacing: $base_padding; }
+  > StBoxLayout {
+    spacing: $base_padding;
+    padding: 0 $base_padding * 2;
+  }
 
-  /* Move padding into the box; this is to allow menu arrows
-     to extend to the border */
-  &.button { padding: 0; }
-  & > StBoxLayout { padding: 0 $base_padding * 2; }
+  &.button {
+    padding: 0;
+  }
+
   &:ltr > StBoxLayout { padding-left: $base_padding * 2.5; }
   &:rtl > StBoxLayout { padding-right: $base_padding * 2.5; }
 
   .quick-toggle-label { font-weight: bold; }
-  .quick-toggle-icon, .quick-toggle-arrow { icon-size: $base_icon_size; }
+
+  .quick-toggle-icon,
+  .quick-toggle-arrow { icon-size: $base_icon_size !important; }
 }
 
 .quick-menu-toggle {
@@ -67,6 +70,7 @@
   .quick-toggle-arrow {
     background-color: $button !important;
     padding: $base_padding $base_padding * 1.75;
+    icon-size: $base_icon_size !important;
 
     &:active {
       background-color: $divider !important;
@@ -90,7 +94,7 @@
   }
 
   .quick-toggle-icon {
-    icon-size: $base_icon_size;
+    icon-size: $base_icon_size !important;
   }
 
   .icon-button {
@@ -108,59 +112,91 @@
 }
 
 .quick-toggle-menu {
-  background-color: $popover !important;
-  color: $text !important;
   border-radius: $base_radius + $base_padding * 2 !important;
   padding: $base_padding * 2;
   margin: $base_padding * 2 $base_padding * 5 0;
 
+  @if $sidebar == 'styled' {
+    background-color: $primary !important;
+    color: on($primary, secondary) !important;
+  } @else {
+    background-color: $popover !important;
+    color: $text !important;
+  }
+
   .popup-menu-item {
+    min-height: 20px;
+    padding: $base_padding;
+    spacing: $base_padding;
     border-radius: $base_radius !important;
 
-    &:focus, &:hover, &.selected {
-      color: $text !important;
-      background-color: rgba($text, 0.1) !important;
-    }
+    @if $sidebar == 'styled' {
+      color: on($primary, secondary) !important;
 
-    &:active {
-      color: $text !important;
-      background-color: rgba($text, 0.2) !important;
+      &:focus, &.hover, &.selected {
+        color: on($primary) !important;
+        background-color: on($primary, divider) !important;
+      }
+
+      &:active, &.selected:active {
+        color: on($primary) !important;
+        background-color: on($primary, track) !important;
+      }
+    } @else {
+      color: $text-secondary !important;
+
+      &:focus, &:hover, &.selected {
+        color: $text !important;
+        background-color: rgba($text, 0.1) !important;
+      }
+
+      &:active {
+        color: $text !important;
+        background-color: rgba($text, 0.2) !important;
+      }
     }
 
     > StIcon { -st-icon-style: symbolic; }
   }
 
-  & .header {
+  .header {
     spacing-rows: 0.5 * $base_padding;
     spacing-columns: $base_padding * 2;
     padding-bottom: 2 * $base_padding;
 
-    & .icon {
+    .icon {
       icon-size: $base_icon_size * 1.5; // a non-standard symbolic size but ok
       border-radius: $base_radius;
       padding: 1.5 * $base_padding;
       background-color: on($popover, divider) !important;
 
       &.active {
-        background-color: $primary !important;
-        color: on($primary);
+        background-color: on($primary) !important;
+        color: $primary;
       }
     }
 
-    & .title {
+    .title {
       @extend %title_3;
     }
 
-    & .subtitle {
+    .subtitle {
       @extend %caption_heading;
     }
   }
 }
 
 .quick-settings-system-item {
-  & > StBoxLayout { spacing: 2 * $base_padding; }
+  > StBoxLayout { spacing: 2 * $base_padding; }
 
-  & .power-item {
+  .icon-button {
+    > StIcon {
+      -st-icon-style: symbolic;
+      icon-size: $base_icon_size !important;
+    }
+  }
+
+  .power-item {
     min-height: 0;
     min-width: 0;
 

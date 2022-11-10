@@ -39,6 +39,8 @@
     background-color: $fill;
     color: $text-disabled;
     outline: none;
+    opacity: 1;
+    filter: none;
   }
 
   @if $t == raised-normal {
@@ -92,6 +94,7 @@
   @if $t == focus {
     box-shadow: inset 0 0 0 2px $overlay-focus;
     color: $text;
+    outline: none;
   }
 
   @if $t == active {
@@ -108,12 +111,15 @@
     background-color: $fill;
     color: $text-disabled;
     transition: none;
+    opacity: 1;
+    filter: none;
   }
 
   @if $t == checked {
     box-shadow: none;
     background-color: $primary;
     color: on($primary);
+    outline: none;
   }
 
   @if $t == checked-hover {
@@ -124,6 +130,8 @@
     box-shadow: none;
     background-color: $fill;
     color: $text-disabled;
+    opacity: 1;
+    filter: none;
   }
 
   @if $t == flat-normal {
@@ -144,22 +152,29 @@
   @if $t == flat-active {
     background-color: $overlay-active;
     color: $text;
+    box-shadow: none;
   }
 
   @if $t == flat-disabled {
     box-shadow: none;
     background-color: transparent;
     color: $text-secondary-disabled;
+    opacity: 1;
+    filter: none;
   }
 
   @if $t == flat-checked {
     background-color: $overlay-checked;
     color: $text;
+    outline: none;
+    box-shadow: none;
   }
 
   @if $t == flat-checked-disabled {
     background-color: $overlay-selected;
     color: $text-disabled;
+    opacity: 1;
+    filter: none;
   }
 }
 

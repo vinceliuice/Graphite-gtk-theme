@@ -59,29 +59,28 @@
     border: none;
   }
 
-  & .folder-name-container {
+  .folder-name-container {
     padding: ($base_padding * 4) ($base_padding * 6) 0;
     spacing: $base_spacing * 2;
 
-    & .folder-name-label,
-    & .folder-name-entry {
+    .folder-name-label,
+    .folder-name-entry {
       font-size: 18pt;
       font-weight: bold;
     }
 
-    & .folder-name-entry {
-      @extend %search-entry;
+    .folder-name-entry {
+      @extend %overview-search-entry;
       width: 300px;
       border: 2px solid transparent;
     }
 
-    /* FIXME: this is to keep the label in sync with the entry */
-    & .folder-name-label {
+    .folder-name-label {
       padding: $base_padding * 1.5 ($base_padding + 2px);
       color: on($osd, secondary);
     }
 
-    & .edit-folder-button {
+    .edit-folder-button {
       background-color: overlay($osd);
       color: on($osd, secondary);
       border: none;
@@ -90,14 +89,14 @@
       height: 36px;
       border-radius: $circular_radius;
 
-      & > StIcon { icon-size: $base_icon_size; }
+      > StIcon { icon-size: $base_icon_size; }
 
       &:hover { background-color: overlay($osd, hover); }
       &:checked, &:active { background-color: $inverse-indicator; color: on($inverse-indicator); }
     }
   }
 
-  & .icon-grid {
+  .icon-grid {
     row-spacing: 12px;
     column-spacing: 24px;
     page-padding-top: 0;
@@ -106,7 +105,7 @@
     page-padding-right: 0;
   }
 
-  & .page-indicators {
+  .page-indicators {
     margin-bottom: 18px;
   }
 }

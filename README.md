@@ -36,6 +36,8 @@ Run the following commands in the terminal:
 
 -s, --size VARIANT...   Specify size variant [standard|compact] (Default: standard variant)
 
+-g, --gdm               Install GDM theme
+
 -l, --libadwaita        Install link to gtk4 config for theming libadwaita
 
 -u, --uninstall         Uninstall themes or link for libadwaita

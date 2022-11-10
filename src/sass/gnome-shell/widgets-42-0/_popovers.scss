@@ -11,20 +11,32 @@
 // separator
 .popup-separator-menu-item {
   padding: 0;
+  margin: $base_padding 0;
+
+  &:ltr { margin-right: $base_margin; }
+  &:rtl { margin-left: $base_margin; }
 
   .popup-separator-menu-item-separator {
     height: 1px; //not really the whole box
     background-color: $divider;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    margin: $base_padding 32px;
+  }
 
-    .popup-sub-menu & { //submenu separators
-      padding: 0;
-      margin: 0 32px 0 0;
-      height: 1px;
+  .popup-menu-ornament {
+    width: 0 !important;
+  }
 
+  .popup-sub-menu & { //submenu separators
+    background-color: transparent;
+
+    // account for ornament
+    &:ltr { margin-right: 2.5em; }
+    &:rtl { margin-left: 2.5em; }
+
+    .popup-separator-menu-item-separator {
       @if $sidebar == 'styled' { background-color: on($primary, divider); }
+      @else {
+        background-color: $divider;
+      }
     }
   }
 }

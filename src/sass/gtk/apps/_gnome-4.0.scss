@@ -221,8 +221,12 @@
     &:first-child { margin-left: 0; }
   }
 
-  > menubutton > button {
-    border-radius: $circular-radius;
+  > menubutton {
+    margin: 0;
+
+    > button {
+      border-radius: $circular-radius;
+    }
   }
 }
 
