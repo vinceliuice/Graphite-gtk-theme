@@ -10,8 +10,8 @@
   background-size: contain;
   color: on(black, secondary);
   border-radius: $circular_radius;
-  border: none;
-  box-shadow: 0 2px 3px rgba(black, 0.25);
+  border: 2px solid $primary;
+  box-shadow: none;
   icon-size: $base_icon_size * 4; // 64px
   // margin: 6px;
 
