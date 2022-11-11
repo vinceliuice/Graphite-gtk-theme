@@ -3,14 +3,30 @@
 
 .message-list {
   width: if($compact == 'true', 25.5em, 31.5em);
-  padding: $base_padding;
   text-shadow: none;
+  border: solid $border;
+  padding: $base_padding;
 
-  .message-list-placeholder { spacing: $base_spacing * 2; }
+  // padding and margins to account for scrollbar
+  &:ltr { margin-left: 0; margin-right: $base_margin; padding-right: $base_padding * 2; border-right-width: 1px; }
+  &:rtl { margin-right: 0; margin-left: $base_margin; padding-left: $base_padding * 2; border-left-width: 1px; }
+
+  .message-list-placeholder {
+    @extend %title_2;
+    spacing: $base_spacing * 2;
+    color: $text-secondary-disabled;
+
+    // icon size and color
+    > StIcon {
+      icon-size: $base_icon_size * 3; // 48px
+      margin-bottom: $base_margin * 3;
+      -st-icon-style: symbolic;
+    }
+  }
 }
 
 .message-list-sections {
-  margin: 0 $base_margin * 4; // to account for scrollbar
+  margin: 0 $base_margin * 2; // to account for scrollbar
 }
 
 .message-list-section,
@@ -120,6 +136,8 @@
 
   &:last-child:ltr { margin-right: $base_margin * 4; }
   &:last-child:rtl { margin-left: $base_margin * 4; }
+
+  StIcon { icon-size: $base_icon_size; }
 }
 
 // album-art

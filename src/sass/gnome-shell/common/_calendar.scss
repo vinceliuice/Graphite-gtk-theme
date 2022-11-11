@@ -42,8 +42,8 @@
   border: 0 solid $border;
   padding: 0 $base_padding * 2;
 
-  &:ltr { margin-right: $base_margin * 2; border-left-width: 0; }
-  &:rtl { margin-left: $base_margin * 2; border-right-width: 0; }
+  &:ltr { margin-right: 0; border-left-width: 0; }
+  &:rtl { margin-left: 0; border-right-width: 0; }
 
   .datemenu-displays-section { padding-bottom: 0; }
 
@@ -102,7 +102,7 @@
   border: none;
   box-shadow: none;
   background-color: transparent;
-  padding: 0 $base_padding !important;
+  padding: 0 $base_padding / 2 !important;
   margin: 0 !important;
   text-shadow: none;
   border-radius: $menu_radius;
@@ -234,7 +234,7 @@
   .calendar-week-number {
     width: $item_size - 6px;
     height: $item_size - 12px;
-    margin: 6px $base_margin/2 !important;
+    margin: 6px $base_margin / 2 !important;
     padding: 0 0;
     border-radius: $base_radius;
     background-color: $fill;

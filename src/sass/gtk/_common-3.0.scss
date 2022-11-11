@@ -2325,12 +2325,10 @@ radio {
 
 %small_check,
 menu menuitem check {
-  & {
-    min-height: 16px;
-    min-width: 16px;
-    border-radius: $corner-radius;
-    -gtk-icon-source: -gtk-recolor(url("assets/scalable/small-checkbox-unchecked-symbolic.svg"));
-  }
+  min-height: 16px;
+  min-width: 16px;
+  border-radius: $corner-radius;
+  -gtk-icon-source: -gtk-recolor(url("assets/scalable/small-checkbox-unchecked-symbolic.svg"));
 
   &:checked { -gtk-icon-source: -gtk-recolor(url("assets/scalable/small-checkbox-checked-symbolic.svg")); }
 
@@ -2339,12 +2337,10 @@ menu menuitem check {
 
 %small_radio,
 menu menuitem radio {
-  & {
-    min-height: 16px;
-    min-width: 16px;
-    border-image: none;
-    -gtk-icon-source: -gtk-recolor(url("assets/scalable/small-radio-unchecked-symbolic.svg"));
-  }
+  min-height: 16px;
+  min-width: 16px;
+  border-image: none;
+  -gtk-icon-source: -gtk-recolor(url("assets/scalable/small-radio-unchecked-symbolic.svg"));
 
   &:checked { -gtk-icon-source: -gtk-recolor(url("assets/scalable/small-radio-checked-symbolic.svg")); }
 
@@ -2363,12 +2359,11 @@ radio:not(:checked):indeterminate:active { -gtk-icon-transform: scaleX(-1); } //
 
 check:not(:checked),
 radio:not(:checked) {
-  & {
-    transition: $transition,
-                background-size $ripple-fade-out-duration $ease-out,
-                background-image $ripple-fade-out-opacity-duration $ease-out,
-                -gtk-icon-transform 0;
-  }
+  transition: $transition,
+              background-size $ripple-fade-out-duration $ease-out,
+              background-image $ripple-fade-out-opacity-duration $ease-out,
+              -gtk-icon-transform 0;
+
   &:active {
     transition: $transition,
                 background-size 0,
@@ -2382,22 +2377,19 @@ radio:not(:checked) {
 treeview.view check,
 treeview.view radio {
   padding: 0;
+  color: $text-secondary;
+
+  &:hover, &:active { color: $text; }
+
+  &:disabled { color: $text-secondary-disabled; }
+
+  &:checked, &:indeterminate { color: $primary; }
+
+  &:checked:disabled, &:indeterminate:disabled { color: $text-secondary-disabled; }
 
   &:hover, &:selected {
     box-shadow: none;
     background-color: transparent;
-  }
-
-  & {
-    color: $text-secondary;
-
-    &:hover, &:active { color: $text; }
-
-    &:disabled { color: $text-secondary-disabled; }
-
-    &:checked, &:indeterminate { color: $primary; }
-
-    &:checked:disabled, &:indeterminate:disabled { color: $text-secondary-disabled; }
   }
 }
 
