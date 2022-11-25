@@ -19,6 +19,7 @@
 
   .level {
     height: 3px;
+    min-width: 160px;
     border-radius: 2px;
     background-color: rgba($inverse-indicator, 0.15);
     color: white;
