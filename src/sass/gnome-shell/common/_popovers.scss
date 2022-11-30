@@ -2,11 +2,11 @@
 
 //.the popover itself
 .popup-menu-boxpointer {
-  -arrow-border-radius: 2px;
+  -arrow-border-radius: $menu-radius;
   -arrow-background-color: transparent;
   -arrow-border-width: 0;
   -arrow-border-color: transparent;
-  -arrow-base: 12px;
+  -arrow-base: 30px - $menu-radius;
   -arrow-rise: 0;
   -arrow-box-shadow: none; //dreaming. bug #689995
   background: transparent; // needs to reset?
