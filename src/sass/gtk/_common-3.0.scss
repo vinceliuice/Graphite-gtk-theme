@@ -3687,10 +3687,9 @@ decoration {
     border: none;
   }
 
-  messagedialog.csd & {
-    border-radius: $window-radius;
-    border: none;
-  }
+  // messagedialog.csd & {
+  //   border-radius: $window-radius;
+  // }
 
   .solid-csd & {
     margin: 0;
