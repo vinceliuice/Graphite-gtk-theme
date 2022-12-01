@@ -11,10 +11,10 @@
 // separator
 .popup-separator-menu-item {
   padding: 0;
-  margin: $base_padding 0;
+  margin: $base_padding 0 !important;
 
-  &:ltr { margin-right: $base_margin; }
-  &:rtl { margin-left: $base_margin; }
+  &:ltr { margin-right: $base_margin !important; }
+  &:rtl { margin-left: $base_margin !important; }
 
   .popup-separator-menu-item-separator {
     height: 1px; //not really the whole box
