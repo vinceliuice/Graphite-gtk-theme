@@ -3904,6 +3904,11 @@ separator.sidebar {
   padding: $space-size - 2px 0; //only vertical padding. horizontal row size would clip
   border-right: none;
 
+  &, &.view {
+    background-color: transparent;
+    color: inherit;
+  }
+
   > row {
     min-height: $small-size;
     padding: $space-size $space-size * 1.5;
@@ -3954,9 +3959,15 @@ placessidebar {
   > viewport.frame { border-style: none; }
 
   .navigation-sidebar > row {
+    padding: 0;
+
     &:selected {
       font-weight: 500;
     }
+
+    // Using margins/padding directly in the SidebarRow
+    // will make the animation of the new bookmark row jump
+    > revealer { padding: $space-size $space-size * 1.5; }
 
     image.sidebar-icon {
       &:dir(ltr) { padding-right: 8px; }
