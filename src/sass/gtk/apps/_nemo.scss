@@ -8,9 +8,18 @@
 // https://github.com/linuxmint/nemo/blob/master/gresources/nemo-style-application.css
 
 .nemo-window {
-  .primary-toolbar {
+  @if $sidebar == 'styled' {
     background-color: $titlebar;
-    border-bottom: 1px solid $divider;
+  }
+
+  .primary-toolbar {
+    @if $sidebar == 'styled' {
+      border: none;
+      background-color: transparent;
+    } @else {
+      border: 1px solid $border;
+      background-color: $titlebar;
+    }
 
     // FIXME: workaround for wrong size allocation of Nemo
     entry {
@@ -21,46 +30,64 @@
 
     button:not(.text-button) { @extend %titlebar-button; }
 
-    // instead of .path-bar button
-    button.text-button {
-      padding-left: 8px;
-      padding-right: 8px;
-      color: $titlebar-text-secondary;
+    .path-bar > button {
+      &.slider-button {
+        padding-left: 4px;
+        padding-right: 4px;
+      }
 
-      &:hover, &:active, &:checked { color: $titlebar-text; }
+      &.text-button {
+        padding-left: 8px;
+        padding-right: 8px;
+        color: $titlebar-text-secondary;
+        border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
+                                      $applet-primary 0%,
+                                      transparent 0%)
+                                      0 0 0 / 0 0 0px;
 
-      &:disabled { color: $titlebar-text-disabled; }
-    }
+        &:hover, &:active, &:checked { color: $titlebar-text; }
 
-    // instead of .path-bar button.slider-button
-    button:not(.text-button):not(.image-button) {
-      padding-left: 4px;
-      padding-right: 4px;
+        &:disabled { color: $titlebar-text-disabled; }
+
+        &:checked {
+          border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
+                                        $applet-primary 100%,
+                                        transparent 0%)
+                                        0 0 2 / 0 0 2px;
+        }
+      }
     }
   }
 
-  // .nemo-places-sidebar { }
-
-  scrolledwindow.frame {
-    border-style: none;
-
-    .view:not(:selected) { background-color: transparent; }
+  // For Places Sidebar diskfull indicators
+  .places-treeview {
+    -NemoPlacesTreeView-disk-full-bg-color: mix($text, $background, percentage(0.3)); // Can't use translucent colors
+    -NemoPlacesTreeView-disk-full-fg-color: $primary;
+    -NemoPlacesTreeView-disk-full-bar-width: 2px;
+    -NemoPlacesTreeView-disk-full-bar-radius: 0;
+    -NemoPlacesTreeView-disk-full-bottom-padding: 1px; // There is already hard-coded 1px bottom-padding
+    -NemoPlacesTreeView-disk-full-max-length: 80px;
+    padding-top: $space-size / 2;
+    padding-bottom: $space-size / 2;
   }
-
-  // infobar { margin-top: -6px; }
 
   // Inactive F3 pane shading
   .nemo-inactive-pane .view:not(:selected) { background-color: $base-alt; }
 
-  // Rename box styling in the icon view.
-  .nemo-window-pane widget.entry {
-    border-radius: $corner-radius;
-    background-color: $fill;
+  .nemo-window-pane {
+    widget.entry { // Rename box styling in the icon view.
+      border-radius: $corner-radius;
+      background-color: $fill;
 
-    &:selected { @extend %selected_items_primary; }
+      &:selected { @extend %selected_items_primary; }
+    }
   }
 
-  .toolbar button { @extend %button-flat; }
+  .toolbar {
+    button {
+      @extend %button-flat;
+    }
+  }
 
   .view {
     selection,
@@ -68,18 +95,109 @@
       @extend %selected_items_color;
     }
   }
-}
 
-// For Places Sidebar diskfull indicators
-.places-treeview {
-  -NemoPlacesTreeView-disk-full-bg-color: mix($text, $background, percentage(0.3)); // Can't use translucent colors
-  -NemoPlacesTreeView-disk-full-fg-color: $primary;
-  -NemoPlacesTreeView-disk-full-bar-width: 2px;
-  -NemoPlacesTreeView-disk-full-bar-radius: 0;
-  -NemoPlacesTreeView-disk-full-bottom-padding: 1px; // There is already hard-coded 1px bottom-padding
-  -NemoPlacesTreeView-disk-full-max-length: 80px;
-  padding-top: $space-size/2;
-  padding-bottom: $space-size/2;
+  @if $sidebar == 'styled' {
+    paned {
+      > .sidebar {
+        padding: 0;
+
+        @if $topbar == 'dark' and $variant == 'light' {
+          background-color: transparent;
+          color: $titlebar-text;
+
+          > scrolledwindow.frame treeview.view {
+            &:not(:selected) {
+              color: $titlebar-text;
+            }
+
+            &.expander {
+              color: $titlebar-text-secondary;
+
+              &:hover, &:active { color: $titlebar-text; }
+
+              &:disabled { color: $titlebar-text-secondary-disabled; }
+            }
+          }
+
+          .places-treeview {
+            -NemoPlacesTreeView-disk-full-bg-color: mix($titlebar-text, $titlebar, 30%);
+            -NemoPlacesTreeView-disk-full-fg-color: $applet-primary;
+          }
+        } @else {
+          background-color: $primary;
+          color: on($primary);
+          border-radius: 0 $window-radius $window-radius 0;
+
+          > scrolledwindow.frame treeview.view {
+            &:not(:selected) {
+              color: on($primary);
+            }
+
+            &.expander {
+              color: on($primary, secondary);
+
+              &:hover, &:active { color: on($primary); }
+
+              &:disabled { color: on($primary, secondary-disabled); }
+            }
+          }
+
+          .places-treeview {
+            -NemoPlacesTreeView-disk-full-bg-color: mix(on($primary), $primary, 30%);
+            -NemoPlacesTreeView-disk-full-fg-color: on($primary);
+          }
+        }
+
+        > scrolledwindow.frame {
+          border: none;
+          border-radius: 0 $window-radius $window-radius 0;
+
+          treeview.view {
+            -gtk-icon-style: symbolic;
+
+            &:not(:selected) {
+              background-color: transparent;
+            }
+          }
+
+          scrollbar {
+            border: none;
+            background-color: transparent;
+          }
+        }
+      }
+
+      > separator {
+        background-color: transparent;
+        background-image: none;
+      }
+    }
+
+    @if $topbar == 'dark' and $variant == 'light' {
+      .nemo-window-pane {
+        notebook {
+          margin-right: $space-size;
+          border-radius: $window-radius;
+
+          scrolledwindow.view {
+            background-color: transparent;
+          }
+        }
+      }
+    }
+
+    .toolbar {
+      color: $titlebar-text;
+
+      button {
+        @extend %titlebar-button;
+      }
+    }
+
+    > grid > separator {
+      background-color: transparent;
+    }
+  }
 }
 
 .nemo-desktop.nemo-canvas-item {
