@@ -119,6 +119,12 @@
   @if $sidebar == 'styled' {
     background-color: $primary !important;
     color: on($primary, secondary) !important;
+
+    .popup-separator-menu-item-separator {
+      padding: 0 !important;
+      margin: 0 !important;
+      background-color: on($primary, divider) !important;
+    }
   } @else {
     background-color: $popover !important;
     color: $text !important;
