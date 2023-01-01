@@ -2130,6 +2130,7 @@ popover.background {
   min-height: $small-size;
   min-width: $small-size;
   padding: $space-size / 2 $space-size;
+  margin: 0;
   border: none;
   outline: none;
   background-clip: padding-box;
@@ -2140,6 +2141,7 @@ popover.background {
   &:hover {
     background-color: $fill;
     color: $text;
+    box-shadow: none;
   }
 
   &:disabled { color: $text-secondary-disabled; }
@@ -2246,39 +2248,48 @@ notebook {
       border-radius: $corner-radius;
     }
 
-    tab {
-      @extend %tabs_tab;
+    > tabs {
+      padding: 0;
+      margin: 0;
 
-      // FIXME: The tab node doesn't have :drop(active), instead its child box has it.
-      > box {
-        transition: background-color $duration $ease-out;
-        margin: -$space-size -12px;
-        padding: $space-size 12px;
+      > tab {
+        @extend %tabs_tab;
 
-        &:drop(active) {
-          background-color: $divider;
-          color: $text;
-        }
-      }
+        // FIXME: The tab node doesn't have :drop(active), instead its child box has it.
+        > box {
+          transition: background-color $duration $ease-out;
+          margin: -$space-size -12px;
+          padding: $space-size 12px;
 
-      // colors the button like the label, overridden otherwise
-      button.flat {
-        @extend %small-button;
-
-        &:last-child {
-          margin-left: $space-size;
-          margin-right: $space-size - 12px;
+          &:drop(active) {
+            background-color: $divider;
+            color: $text;
+          }
         }
 
-        &:first-child {
-          margin-left: $space-size - 12px;
-          margin-right: $space-size;
+        > label {
+          padding: 0 $space-size;
         }
-      }
 
-      button.close-button {
-        min-width: $small-size;
-        min-height: $small-size;
+        // colors the button like the label, overridden otherwise
+        button.flat {
+          @extend %small-button;
+
+          &:last-child {
+            margin-left: $space-size;
+            margin-right: $space-size - 12px;
+          }
+
+          &:first-child {
+            margin-left: $space-size - 12px;
+            margin-right: $space-size;
+          }
+        }
+
+        button.close-button {
+          min-width: $small-size;
+          min-height: $small-size;
+        }
       }
     }
 
