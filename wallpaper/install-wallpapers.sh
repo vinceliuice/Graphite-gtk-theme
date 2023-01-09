@@ -4,7 +4,7 @@ REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
 WALLPAPER_DIR="$HOME/.local/share/backgrounds"
 
 THEME_NAME='Graphite'
-THEME_VARIANTS=('-normal' '-nord')
+THEME_VARIANTS=('' '-nord')
 
 #COLORS
 CDEF=" \033[0m"                               # default color

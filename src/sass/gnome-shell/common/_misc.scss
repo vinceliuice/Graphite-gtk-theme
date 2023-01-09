@@ -31,7 +31,7 @@
     height: $base_icon_size * 2.5; // 40px;
   }
 
-  &, &.user-avatar {
+  &.user-avatar {
     @if $rimless == 'false' {
       border: 2px solid $primary;
     } @else { border: none; }

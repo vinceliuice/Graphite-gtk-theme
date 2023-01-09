@@ -6,7 +6,7 @@
    viewBox="0 0 508 285.75"
    id="svg100"
    sodipodi:docname="wallpaper-wave.svg"
-   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20, custom)"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
    inkscape:export-filename="/home/vince/Documents/GitHub/Graphite-gtk-theme/wallpaper/wallpaper-wave.png"
    inkscape:export-xdpi="192"
    inkscape:export-ydpi="192"
@@ -25,14 +25,16 @@
      inkscape:pagecheckerboard="0"
      showgrid="false"
      inkscape:zoom="0.048177084"
-     inkscape:cx="4836.3243"
+     inkscape:cx="3020.1081"
      inkscape:cy="1785.0811"
      inkscape:window-width="1920"
-     inkscape:window-height="1010"
+     inkscape:window-height="1012"
      inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-y="32"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg100">
+     inkscape:current-layer="svg100"
+     inkscape:showpageshadow="2"
+     inkscape:deskcolor="#d1d1d1">
     <inkscape:grid
        type="xygrid"
        id="grid953" />
@@ -105,7 +107,7 @@
     </g>
   </g>
   <g
-     id="wave-dark"
+     id="wave-Dark"
      transform="translate(0,339.12433)">
     <rect
        x="0"
@@ -182,12 +184,12 @@
     </g>
   </g>
   <g
-     id="wave-dark-arch"
+     id="wave-Dark-arch"
      transform="translate(-1.1041667e-5,1.2916667e-5)">
     <use
        x="0"
        y="0"
-       xlink:href="#wave-dark"
+       xlink:href="#wave-Dark"
        id="use20288"
        transform="translate(613.8847)"
        width="100%"
@@ -242,12 +244,12 @@
     </g>
   </g>
   <g
-     id="wave-dark-manjaro"
+     id="wave-Dark-manjaro"
      transform="translate(-1.1041667e-5,1.2916667e-5)">
     <use
        x="0"
        y="0"
-       xlink:href="#wave-dark"
+       xlink:href="#wave-Dark"
        id="use20312"
        transform="translate(1227.3873)"
        width="100%"
@@ -306,12 +308,12 @@
     </g>
   </g>
   <g
-     id="wave-dark-ubuntu"
+     id="wave-Dark-ubuntu"
      transform="translate(-1.1041667e-5,1.2916667e-5)">
     <use
        x="0"
        y="0"
-       xlink:href="#wave-dark"
+       xlink:href="#wave-Dark"
        id="use30897"
        transform="translate(1842.5435)"
        width="100%"
@@ -363,12 +365,12 @@
     </g>
   </g>
   <g
-     id="wave-dark-fedora"
+     id="wave-Dark-fedora"
      transform="translate(-1.1041667e-5,1.2916667e-5)">
     <use
        x="0"
        y="0"
-       xlink:href="#wave-dark"
+       xlink:href="#wave-Dark"
        id="use56062"
        transform="translate(2466.9519)"
        width="100%"
@@ -421,12 +423,12 @@
     </g>
   </g>
   <g
-     id="wave-dark-debian"
+     id="wave-Dark-debian"
      transform="translate(-1.1041667e-5,1.2916667e-5)">
     <use
        x="0"
        y="0"
-       xlink:href="#wave-dark"
+       xlink:href="#wave-Dark"
        id="use77296"
        transform="translate(3120.5929)"
        width="100%"

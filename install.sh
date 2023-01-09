@@ -141,7 +141,7 @@ install() {
 
   cp -r "${SRC_DIR}/assets/gnome-shell/common-assets"                                        "${THEME_DIR}/gnome-shell/assets"
   cp -r "${SRC_DIR}/assets/gnome-shell/assets${ELSE_DARK:-}/"*.svg                           "${THEME_DIR}/gnome-shell/assets"
-  cp -r "${SRC_DIR}/assets/gnome-shell/theme${theme}/"*.svg                                  "${THEME_DIR}/gnome-shell/assets"
+  cp -r "${SRC_DIR}/assets/gnome-shell/theme${theme}${ctype}/"*.svg                          "${THEME_DIR}/gnome-shell/assets"
 
   cd "${THEME_DIR}/gnome-shell"
   ln -s assets/no-events.svg no-events.svg
@@ -261,12 +261,13 @@ install_gdm() {
   local theme="${2}"
   local gcolor="${3}"
   local size="${4}"
+  local ctype="${5}"
   local TARGET=
 
   [[ "${gcolor}" == '-Light' ]] && local ELSE_LIGHT="${gcolor}"
   [[ "${gcolor}" == '-Dark' ]] && local ELSE_DARK="${gcolor}"
 
-  local THEME_TEMP="/tmp/${1}${2}${3}${4}"
+  local THEME_TEMP="/tmp/${1}${2}${3}${4}${5}"
 
   theme_tweaks
 
@@ -279,8 +280,9 @@ install_gdm() {
 
   cp -r "${SRC_DIR}/assets/gnome-shell/common-assets"                                        "${THEME_TEMP}/gnome-shell/assets"
   cp -r "${SRC_DIR}/assets/gnome-shell/assets${ELSE_DARK}/"*.svg                             "${THEME_TEMP}/gnome-shell/assets"
-  cp -r "${SRC_DIR}/assets/gnome-shell/theme${theme}/"*.svg                                  "${THEME_TEMP}/gnome-shell/assets"
+  cp -r "${SRC_DIR}/assets/gnome-shell/theme${theme}${ctype}/"*.svg                          "${THEME_TEMP}/gnome-shell/assets"
   cp -r "${SRC_DIR}/assets/gnome-shell/scalable"                                             "${THEME_TEMP}/gnome-shell"
+  cp -r "${SRC_DIR}/assets/gnome-shell/background${gcolor}${ctype}.png"                      "${THEME_TEMP}/gnome-shell/background.png"
   mv "${THEME_TEMP}/gnome-shell/assets/process-working.svg"                                  "${THEME_TEMP}/gnome-shell/process-working.svg"
 
   if check_exist "${COMMON_CSS_FILE}"; then # CSS-based theme
@@ -747,7 +749,7 @@ install_gdm_theme() {
   for theme in "${themes[@]}"; do
     for gcolor in "${gcolors[@]}"; do
       for size in "${sizes[@]}"; do
-        install_gdm "${name:-$THEME_NAME}" "$theme" "$gcolor" "$size"
+        install_gdm "${name:-$THEME_NAME}" "$theme" "$gcolor" "$size" "$ctype"
       done
     done
   done

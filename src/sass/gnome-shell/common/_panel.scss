@@ -91,14 +91,6 @@
       }
     }
 
-    .unlock-screen &,
-    .login-screen &,
-    .lock-screen & {
-      color: $panel-text;
-
-      &:focus, &:hover, &:active { color: $panel-text; }
-    }
-
     // status area icons
     .system-status-icon {
       icon-size: $base_icon_size;
@@ -126,7 +118,6 @@
   // transparent panel on lock & login screens
   &:overview,
   &.unlock-screen,
-  &.login-screen,
   &.lock-screen {
     background-color: transparent;
     box-shadow: none;

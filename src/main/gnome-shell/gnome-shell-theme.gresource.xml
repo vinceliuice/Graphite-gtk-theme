@@ -46,5 +46,6 @@
     <file alias="Yaru-dark/gnome-shell.css">gnome-shell.css</file>
     <file>process-working.svg</file>
     <file>pad-osd.css</file>
+    <file>background.png</file>
   </gresource>
 </gresources>

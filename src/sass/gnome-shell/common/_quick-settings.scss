@@ -1,9 +1,12 @@
 .quick-settings {
   padding: $base_padding * 3 !important;
   border-radius: $base_radius + $base_padding * 3 !important;
+  margin-top: 8px !important;
 
   .icon-button, .button {
-    padding: $base_padding * 1.75;
+    min-height: 22px;
+    min-width: 22px;
+    padding: $base_padding * 1.5;
 
     > StIcon { icon-size: $base_icon_size !important; }
   }
@@ -16,9 +19,9 @@
 
 .quick-toggle {
   border-radius: $base_radius;
-  min-width: 12em;
-  max-width: 12em;
-  min-height: 40px;
+  min-width: if($compact == 'false', 12em, 11em) !important;
+  max-width: if($compact == 'false', 12em, 11em) !important;
+  min-height: 22px + $base_padding * 3 !important;
   border: none;
   background-color: $button !important;
 
@@ -113,8 +116,8 @@
 
 .quick-toggle-menu {
   border-radius: $base_radius + $base_padding * 2 !important;
-  padding: $base_padding * 2;
-  margin: $base_padding * 2 $base_padding * 5 0;
+  padding: $base_padding * 2 !important;
+  margin: $base_padding * 2 12px + $base_padding * 3 0 !important;
 
   @if $sidebar == 'styled' {
     background-color: $primary !important;

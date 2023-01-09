@@ -6,7 +6,7 @@
    viewBox="0 0 508 285.75"
    id="svg100"
    sodipodi:docname="wallpaper-wave-nord.svg"
-   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20, custom)"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
    inkscape:export-filename="/home/vince/Documents/GitHub/Graphite-gtk-theme/wallpaper/wallpaper-wave.png"
    inkscape:export-xdpi="192"
    inkscape:export-ydpi="192"
@@ -25,14 +25,16 @@
      inkscape:pagecheckerboard="0"
      showgrid="false"
      inkscape:zoom="0.04"
-     inkscape:cx="5275"
+     inkscape:cx="3087.5"
      inkscape:cy="1050"
-     inkscape:window-width="1536"
-     inkscape:window-height="800"
+     inkscape:window-width="1920"
+     inkscape:window-height="1012"
      inkscape:window-x="0"
-     inkscape:window-y="28"
+     inkscape:window-y="32"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg100" />
+     inkscape:current-layer="svg100"
+     inkscape:showpageshadow="2"
+     inkscape:deskcolor="#d1d1d1" />
   <defs
      id="defs70">
     <clipPath
@@ -146,7 +148,7 @@
     </g>
   </g>
   <g
-     id="wave-dark-nord"
+     id="wave-Dark-nord"
      transform="translate(0,484.46747)">
     <rect
        x="0"
@@ -212,12 +214,12 @@
     </g>
   </g>
   <g
-     id="wave-dark-nord-arch"
+     id="wave-Dark-nord-arch"
      transform="translate(0,145.34314)">
     <use
        x="0"
        y="0"
-       xlink:href="#wave-dark-nord"
+       xlink:href="#wave-Dark-nord"
        id="use20288"
        transform="translate(613.8847,-145.34314)"
        width="100%"
@@ -271,12 +273,12 @@
     </g>
   </g>
   <g
-     id="wave-dark-nord-manjaro"
+     id="wave-Dark-nord-manjaro"
      transform="translate(0,145.34314)">
     <use
        x="0"
        y="0"
-       xlink:href="#wave-dark-nord"
+       xlink:href="#wave-Dark-nord"
        id="use20312"
        transform="translate(1227.3873,-145.34314)"
        width="100%"
@@ -334,12 +336,12 @@
     </g>
   </g>
   <g
-     id="wave-dark-nord-ubuntu"
+     id="wave-Dark-nord-ubuntu"
      transform="translate(0,145.34314)">
     <use
        x="0"
        y="0"
-       xlink:href="#wave-dark-nord"
+       xlink:href="#wave-Dark-nord"
        id="use30897"
        transform="translate(1842.5435,-145.34314)"
        width="100%"
@@ -390,12 +392,12 @@
     </g>
   </g>
   <g
-     id="wave-dark-nord-fedora"
+     id="wave-Dark-nord-fedora"
      transform="translate(0,145.34314)">
     <use
        x="0"
        y="0"
-       xlink:href="#wave-dark-nord"
+       xlink:href="#wave-Dark-nord"
        id="use56062"
        transform="translate(2466.9519,-145.34314)"
        width="100%"
@@ -447,12 +449,12 @@
     </g>
   </g>
   <g
-     id="wave-dark-nord-debian"
+     id="wave-Dark-nord-debian"
      transform="translate(0,145.34314)">
     <use
        x="0"
        y="0"
-       xlink:href="#wave-dark-nord"
+       xlink:href="#wave-Dark-nord"
        id="use77296"
        transform="translate(3120.5929,-145.34314)"
        width="100%"

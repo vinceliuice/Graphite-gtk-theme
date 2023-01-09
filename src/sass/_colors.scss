@@ -47,18 +47,27 @@
 
 @function theme($color) {
   @if ($color_type == 'nord') {
-    @if ($theme == 'default') {
-      @if ($variant == 'light') { @return #434c5e; }
-      @else { @return #dbdee5; }
+    @if ($variant == 'light') {
+      @if ($theme == 'default') { @return #434c5e; }
+      @if ($theme == 'purple')  { @return #b57daa; }
+      @if ($theme == 'pink')    { @return #cd7092; }
+      @if ($theme == 'red')     { @return #c35b65; }
+      @if ($theme == 'orange')  { @return #d0846c; }
+      @if ($theme == 'yellow')  { @return #e4b558; }
+      @if ($theme == 'green')   { @return #82ac5d; }
+      @if ($theme == 'teal')    { @return #63a6a5; }
+      @if ($theme == 'blue')    { @return #5e81ac; }
+    } @else {
+      @if ($theme == 'default') { @return #dbdee5; }
+      @if ($theme == 'purple')  { @return #c89dbf; }
+      @if ($theme == 'pink')    { @return #dc98b1; }
+      @if ($theme == 'red')     { @return #d4878f; }
+      @if ($theme == 'orange')  { @return #dca493; }
+      @if ($theme == 'yellow')  { @return #eac985; }
+      @if ($theme == 'green')   { @return #a0c082; }
+      @if ($theme == 'teal')    { @return #83b9b8; }
+      @if ($theme == 'blue')    { @return #89a3c2; }
     }
-    @if ($theme == 'purple')    { @return #b57daa; }
-    @if ($theme == 'pink')      { @return #cd7092; }
-    @if ($theme == 'red')       { @return #c35b65; }
-    @if ($theme == 'orange')    { @return #d0846c; }
-    @if ($theme == 'yellow')    { @return #e4b558; }
-    @if ($theme == 'green')     { @return #82ac5d; }
-    @if ($theme == 'teal')      { @return #83b9b8; }
-    @if ($theme == 'blue')      { @return #5e81ac; }
   } @else {
     @if ($variant == 'light') {
       @if ($theme == 'default') { @return $grey-900; }
@@ -156,6 +165,8 @@ $background:                            if($variant == 'light', background(a), b
 $surface:                               if($variant == 'light', background(a), background(h));
 $base:                                  if($variant == 'light', background(a), background(g));
 $base-alt:                              if($variant == 'light', background(b), background(f));
+
+$login-background:                      if($variant == 'light', background(d), background(g)); // For gnome-shell
 
 $tooltip:                               if($variant == 'dark', rgba(darken(background(e), 3%), 0.9), rgba(darken(background(h), 3%), 0.9));
 $osd:                                   background(e);
