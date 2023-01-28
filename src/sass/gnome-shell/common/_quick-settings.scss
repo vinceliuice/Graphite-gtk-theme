@@ -206,8 +206,9 @@
   }
 
   .power-item {
-    min-height: 0;
-    min-width: 0;
+    min-height: 0 !important;
+    min-width: 0 !important;
+    background-color: $fill;
 
     &:insensitive {
       @include button(normal);

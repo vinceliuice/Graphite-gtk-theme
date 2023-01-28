@@ -40,9 +40,10 @@
 }
 
 .icon-button {
-  @extend %button; // same style as buttons
   border-radius: $circular_radius;
   padding: $base_padding;
+  @extend %button; // same style as buttons
+  background-color: $fill;
 
   StIcon {
     icon-size: $base_icon_size !important;

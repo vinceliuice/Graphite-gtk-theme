@@ -1751,6 +1751,20 @@ frame.taskbar > border { border-style: solid none none; }
 box.vertical > paned.horizontal notebook widget .frame { border-style: none; }
 
 
+/*********************************
+ * Archive Manager (File roller) *
+ *********************************/
+window.background.csd {
+  > grid.horizontal > paned.horizontal {
+    > scrolledwindow {
+      > treeview.view:not(:selected):not(:hover):not(.progressbar):not(.expander):not(.trough):not(.separator) {
+        background-color: $base;
+      }
+    }
+  }
+}
+
+
 /***********
  * Fractal *
  ***********/
