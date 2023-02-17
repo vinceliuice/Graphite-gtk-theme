@@ -800,6 +800,7 @@ splitbutton {
   }
 
   > menubutton > button {
+    min-width: $small-size;
     padding-left: $space-size - 2px;
     padding-right: $space-size - 2px;
   }
@@ -3488,6 +3489,7 @@ listview.view {
     > row {
       margin-left: 0;
       margin-right: 0;
+      padding: $space-size $space-size * 2;
 
       &:first-child, &:last-child, & { border-radius: $corner-radius; }
     }
