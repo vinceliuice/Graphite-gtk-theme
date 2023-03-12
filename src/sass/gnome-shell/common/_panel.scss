@@ -22,8 +22,8 @@
 
   // panel menus
   .panel-button {
-    -natural-hpadding: 12px;
-    -minimum-hpadding: 6px;
+    -natural-hpadding: $base_padding * 2;
+    -minimum-hpadding: $base_padding * 2;
     font-weight: bold;
     color: $panel-text-secondary;
     transition-duration: 150ms;
@@ -32,10 +32,20 @@
     border: 2px solid transparent;
 
     &.clock-display {
+      -natural-hpadding: 0;
+      -minimum-hpadding: 0;
+      border: none;
+
+      .clock-display-box {
+        spacing: $base_padding / 2;
+      }
+
       .clock {
         transition-duration: 150ms;
         border: 2px solid transparent;
         border-radius: $circular_radius;
+        padding-left: $base_padding * 2;
+        padding-right: $base_padding * 2;
       }
     }
 
@@ -94,15 +104,29 @@
     // status area icons
     .system-status-icon {
       icon-size: $base_icon_size;
-      padding: $base_padding - 1px;
-      margin: 0 $base_margin;
+      padding: $base_padding;
+      margin: 0;
       -st-icon-style: symbolic;
     }
 
-    .panel-status-indicators-box .system-status-icon,
-    .panel-status-menu-box .system-status-icon {
-      margin: 0;
+    .appindicator-trayicons-box {
+      margin: 0 $base_padding;
     }
+
+    // .panel-status-indicators-box .system-status-icon,
+    // .panel-status-menu-box .system-status-icon {
+    //   margin: 0;
+    // }
+
+    // .panel-status-indicators-box,
+    // .panel-status-menu-box {
+    //   spacing: $base_padding / 2;
+    // }
+
+    // spacing between power icon and (optional) percentage label
+    // .power-status.panel-status-indicators-box {
+    //   spacing: 0;
+    // }
 
     // app menu icon
     .app-menu-icon {
@@ -113,6 +137,13 @@
     &#panelActivities {
       -natural-hpadding: $base_padding * 3;
     }
+  }
+
+  // Input indicators
+  Gjs_status_keyboard_InputSourceIndicator.panel-button, // Ibus
+  Gjs_appindicatorsupport_rgcjonas_gmail_com_indicatorStatusIcon_AppIndicatorsIndicatorStatusIcon.panel-button { // Fcitx
+    -natural-hpadding: $base_padding * 3 !important;
+    -minimum-hpadding: $base_padding * 3 !important;
   }
 
   // transparent panel on lock & login screens
@@ -163,16 +194,6 @@
       -panel-corner-background-color: transparent;
       -panel-corner-border-color: transparent;
     }
-  }
-
-  .panel-status-indicators-box,
-  .panel-status-menu-box {
-    spacing: 2px;
-  }
-
-  // spacing between power icon and (optional) percentage label
-  .power-status.panel-status-indicators-box {
-    spacing: 0;
   }
 
   // indicator for active
