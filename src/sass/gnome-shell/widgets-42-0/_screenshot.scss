@@ -23,7 +23,7 @@ $screenshot_ui_button_red: $error;
   spacing: $base_padding * 2;
 
   @if $rimless == 'false' {
-    border: 2px solid if($theme == 'default', if($color_type == 'nord', #dbdee5, #e0e0e0), $primary);
+    border: 2px solid $osd-primary;
   } @else { border: none; }
 }
 

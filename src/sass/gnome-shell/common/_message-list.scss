@@ -5,11 +5,11 @@
   width: if($compact == 'true', 25.5em, 31.5em);
   text-shadow: none;
   border: solid $border;
-  padding: $base_padding;
+  padding: 0;
 
   // padding and margins to account for scrollbar
-  &:ltr { margin-left: 0; margin-right: $base_margin; padding-right: $base_padding * 2; border-right-width: 1px; }
-  &:rtl { margin-right: 0; margin-left: $base_margin; padding-left: $base_padding * 2; border-left-width: 1px; }
+  &:ltr { margin-left: 0; margin-right: $base_margin * 2; padding-right: $base_padding + $base_margin; border-right-width: 1px; }
+  &:rtl { margin-right: 0; margin-left: $base_margin * 2; padding-left: $base_padding + $base_margin; border-left-width: 1px; }
 
   .message-list-placeholder {
     @extend %title_2;
@@ -26,7 +26,7 @@
 }
 
 .message-list-sections {
-  margin: 0 $base_margin * 2; // to account for scrollbar
+  margin: 0 $base_margin; // to account for scrollbar
 }
 
 .message-list-section,

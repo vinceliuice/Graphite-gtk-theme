@@ -6,7 +6,7 @@
 %app-well-app {
   & .overview-icon {
     color: on($osd, secondary);
-    border-radius: $base_radius * 1.5;
+    border-radius: $base_radius * 2.5;
     padding: 6px;
     border: none;
     transition-duration: 100ms;
@@ -31,11 +31,11 @@
 // App Folders
 .app-well-app.app-folder {
   background-color: on(black, divider);
-  border-radius: $base_radius * 2;
+  border-radius: $base_radius * 2.5;
 
   .overview-icon {
     background-color: transparent;
-    border-radius: $base_radius * 2;
+    border-radius: $base_radius * 2.5;
   }
 
   &:hover {
@@ -54,7 +54,7 @@
   background-color: $osd;
 
   @if $rimless == 'false' {
-    border: 2px solid $inverse-indicator;
+    border: 2px solid $osd-primary;
   } @else {
     border: none;
   }

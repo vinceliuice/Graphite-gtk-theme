@@ -24,14 +24,15 @@
 
 // overall menu
 #calendarArea {
-  padding: $base_padding 0;
+  padding: $base_margin;
 }
 
 // Calendar menu side column
 .datemenu-calendar-column {
   spacing: $base_spacing;
-  border: 0 solid $border;
-  padding: 0 $base_padding * 2;
+  border: none;
+  padding: 0 !important;
+  margin: 0 !important;
 
   &:ltr { margin-right: 0; border-left-width: 0; }
   &:rtl { margin-left: 0; border-right-width: 0; }
@@ -51,8 +52,7 @@
 }
 
 .datemenu-today-button,
-.datemenu-displays-box,
-.message-list-sections {
+.datemenu-displays-box {
   margin: $base_margin $base_spacing;
 }
 
@@ -61,11 +61,15 @@
   border: none;
   box-shadow: none;
   background: none;
-  padding: $base_padding;
-  margin: 0 $base_padding * 2;
+  padding: $base_padding $base_padding * 2;
+  margin: 0;
   text-shadow: none;
   color: $text-secondary;
-  border-radius: $menu_radius;
+  border-radius: $base_radius;
+  margin: $base_margin;
+
+  &:ltr { margin-left: $base_margin; }
+  &:rtl { margin-right: $base_margin; }
 
   &:hover, &:focus {
     background-color: overlay($base, hover);
@@ -241,7 +245,7 @@
 .events-button {
   @extend %popover_bubble;
   padding: $base_padding * 2 !important;
-  margin: 2px 0 !important;
+  margin: $base_margin 0 0 !important;
 }
 
 // Events
@@ -300,8 +304,6 @@
 
 // Weather
 .weather-button {
-  margin-bottom: 6px !important;
-
   .weather-box {
     spacing: $base_spacing + $base_margin;
   }

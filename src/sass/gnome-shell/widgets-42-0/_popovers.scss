@@ -11,7 +11,7 @@
 // separator
 .popup-separator-menu-item {
   padding: 0;
-  margin: $base_padding 0 !important;
+  margin: $base_padding / 2 0 !important;
 
   &:ltr { margin-right: $base_margin !important; }
   &:rtl { margin-left: $base_margin !important; }

@@ -81,17 +81,25 @@
     color: $tc;
     background-color: overlay($bc, focus);
     box-shadow: none !important;
+    outline: none !important;
   }
 
   @if $t == hover {
     color: $tc;
     background-color: overlay($bc, hover);
     box-shadow: none !important;
+    outline: none !important;
   }
 
   @if $t == active {
     color: $tc;
     background-color: overlay($bc, active);
+    box-shadow: none !important;
+  }
+
+  @if $t == checked {
+    color: on($osd-primary);
+    background-color: $osd-primary;
     box-shadow: none !important;
   }
 

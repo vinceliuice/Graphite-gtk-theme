@@ -34,14 +34,14 @@
   @include entry(normal, $bc: on($osd, fill), $tc: on($osd));
 
   &:hover {
-    @include entry(hover, $bc: on($osd, fill), $tc: on($osd), $fc: $inverse-indicator);
+    @include entry(hover, $bc: on($osd, fill), $tc: on($osd), $fc: $osd-primary);
   }
 
   &:focus {
     @if $theme == 'grey' {
       @include entry(focus, $bc: on($osd, fill), $tc: on($osd), $fc: white);
     } @else {
-      @include entry(focus, $bc: on($osd, fill), $tc: on($osd), $fc: $inverse-indicator);
+      @include entry(focus, $bc: on($osd, fill), $tc: on($osd), $fc: $osd-primary);
     }
   }
 
