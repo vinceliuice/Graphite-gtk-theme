@@ -2,13 +2,19 @@
 // a.k.a. the panel
 
 #panel {
-  background-color: $panel;
   font-weight: bold;
-  height: $item_size;
   color: $panel-text-secondary;
   font-feature-settings: "tnum";
   transition-duration: 250ms;
   @include fontsize($font_size - 1);
+
+  @if $float == 'true' {
+    background-color: transparent;
+    height: $item_size + $base_margin * 2;
+  } @else {
+    background-color: $panel;
+    height: $item_size;
+  }
 
   // the rounded outset corners
   .panel-corner {
@@ -25,11 +31,9 @@
     -natural-hpadding: $base_padding * 2;
     -minimum-hpadding: $base_padding * 2;
     font-weight: bold;
-    color: $panel-text-secondary;
     transition-duration: 150ms;
-    border-radius: $circular_radius;
     text-shadow: none;
-    border: 2px solid transparent;
+    border-radius: $circular_radius;
 
     &.clock-display {
       -natural-hpadding: 0;
@@ -42,61 +46,160 @@
 
       .clock {
         transition-duration: 150ms;
-        border: 2px solid transparent;
         border-radius: $circular_radius;
         padding-left: $base_padding * 2;
         padding-right: $base_padding * 2;
       }
     }
 
-    &:hover {
-      color: $panel-text;
-      background-color: transparent;
-      box-shadow: inset 0 0 0 1000px overlay($panel, hover);
+    @if $float == 'true' {
+      border: none;
+      margin: $base_margin;
+      background-color: $panel;
+      color: $panel-text-secondary;
+
+      @if $rimless == 'false' {
+        box-shadow: inset 0 0 0 2px $applet-primary;
+      } @else { box-shadow: none; }
 
       &.clock-display {
         box-shadow: none;
-        color: $panel-text-secondary;
+        background-color: transparent;
 
         .clock {
-          color: $panel-text;
-          box-shadow: inset 0 0 0 1000px overlay($panel, hover);
+          border: none;
+          background-color: $panel;
+
+          @if $rimless == 'false' {
+            box-shadow: inset 0 0 0 2px $applet-primary;
+          } @else { box-shadow: none; }
         }
       }
-    }
 
-    &:active, &:overview, &:focus, &:checked {
-      &, &:hover {
-        background-color: transparent;
-        color: on($applet-primary);
-        box-shadow: inset 0 0 0 1000px $applet-primary;
-      }
+      &:hover {
+        color: $panel-text;
+        background-color: mix($panel-text, $panel, 12%);
 
-      .panel-button {
-        background-color: transparent;
-        color: on($applet-primary);
-        box-shadow: inset 0 0 0 1000px $applet-primary;
-
-        &:hover {
-          color: on($applet-primary);
+        @if $rimless == 'false' {
+          box-shadow: inset 0 0 0 2px $applet-primary;
+        } @else { box-shadow: none; }
+  
+        &.clock-display {
+          box-shadow: none;
+          color: $panel-text-secondary;
           background-color: transparent;
-          box-shadow: inset 0 0 0 1000px overlay($applet-primary, hover);
-        }
+  
+          .clock {
+            color: $panel-text;
+            background-color: mix($panel-text, $panel, 12%);
 
-        &:active, &:overview, &:focus, &:checked {
-          color: on($applet-primary);
-          background-color: transparent;
-          box-shadow: inset 0 0 0 1000px overlay($applet-primary, active);
+            @if $rimless == 'false' {
+              box-shadow: inset 0 0 0 2px $applet-primary;
+            } @else { box-shadow: none; }
+          }
         }
       }
+  
+      &:active, &:focus, &:checked {
+        &, &:hover {
+          background-color: $applet-primary;
+          color: on($applet-primary);
+
+          @if $rimless == 'false' {
+            box-shadow: inset 0 0 0 2px $applet-primary;
+          } @else { box-shadow: none; }
+
+          &.clock-display {
+            box-shadow: none;
+            color: on($applet-primary);
+    
+            .clock {
+              background-color: $applet-primary;
+
+              @if $rimless == 'false' {
+                box-shadow: inset 0 0 0 2px $applet-primary;
+              } @else { box-shadow: none; }
+            }
+          }
+        }
+  
+        .panel-button {
+          background-color: $applet-primary;
+          color: on($applet-primary);
+          box-shadow: none;
+  
+          &:hover {
+            color: on($applet-primary);
+            background-color: overlay($applet-primary, hover);
+            box-shadow: none;
+          }
+  
+          &:active, &:focus, &:checked {
+            color: on($applet-primary);
+            background-color: overlay($applet-primary, active);
+            box-shadow: none;
+          }
+        }
+      }
+    } @else {
+      color: $panel-text-secondary;
+      border: 2px solid transparent;
 
       &.clock-display {
-        box-shadow: none;
-        color: $panel-text-secondary;
-
         .clock {
+          border: 2px solid transparent;
+        }
+      }
+
+      &:hover {
+        color: $panel-text;
+        background-color: transparent;
+        box-shadow: inset 0 0 0 1000px overlay($panel, hover);
+  
+        &.clock-display {
+          box-shadow: none;
+          color: $panel-text-secondary;
+  
+          .clock {
+            color: $panel-text;
+            box-shadow: inset 0 0 0 1000px overlay($panel, hover);
+          }
+        }
+      }
+  
+      &:active, &:focus, &:checked {
+        &, &:hover {
+          background-color: transparent;
+          color: on($applet-primary);
           box-shadow: inset 0 0 0 1000px $applet-primary;
+
+          &.clock-display {
+            box-shadow: none;
+            color: $panel-text-secondary;
+    
+            .clock {
+              box-shadow: inset 0 0 0 1000px $applet-primary;
+              color: on($applet-primary);
+            }
+          }
+        }
+  
+        .panel-button {
+          background-color: transparent;
           color: on($applet-primary);
+          box-shadow: inset 0 0 0 1000px $applet-primary;
+  
+          &:hover {
+            color: on($applet-primary);
+            background-color: transparent;
+            box-shadow: inset 0 0 0 1000px overlay($applet-primary, hover);
+          }
+  
+          &:active, &:focus, &:checked {
+            color: on($applet-primary);
+            background-color: transparent;
+            box-shadow: inset 0 0 0 1000px overlay($applet-primary, active);
+          }
         }
       }
     }
@@ -146,6 +249,133 @@
     -minimum-hpadding: $base_padding * 3 !important;
   }
 
+  @mixin colorful_button($theme_color: $primary) {
+    &, &:hover { color: $theme_color; }
+
+    @if $float == 'true' {
+      &, &:hover {
+        @if $rimless == 'false' {
+          box-shadow: inset 0 0 0 2px $theme_color;
+        } @else { box-shadow: none; }
+      }
+
+      &:active, &:focus, &:checked {
+        &, &:hover {
+          background-color: $theme_color;
+          color: on($theme_color);
+
+          @if $rimless == 'false' {
+            box-shadow: inset 0 0 0 2px $theme_color;
+          } @else { box-shadow: none; }
+        }
+      }
+    } @else {
+      &:active, &:focus, &:checked {
+        &, &:hover {
+          color: on($theme_color);
+          box-shadow: inset 0 0 0 1000px $theme_color;
+        }
+      }
+    }
+  }
+
+  @if $colorful == 'true' {
+    // ArcMenu and Start icon
+    .panel-button#panelActivities,
+    Gjs_arcmenu_arcmenu_com_menuButton_ArcMenuMenuButton.panel-button {
+      @include colorful_button($theme_teal_color);
+    }
+
+    // Application Menu button
+    Gjs_apps-menu_gnome-shell-extensions_gcampax_github_com_extension_ApplicationsButton.panel-button {
+      @include colorful_button($theme_green_color);
+    }
+
+    // Places Menu button
+    Gjs_places-menu_gnome-shell-extensions_gcampax_github_com_extension_PlacesMenu.panel-button {
+      @include colorful_button($theme_pink_color);
+    }
+
+    // Appmenu button
+    Gjs_ui_panel_AppMenuButton.panel-button {
+      @include colorful_button($theme_blue_color);
+    }
+
+    // Gpaste button
+    Gjs_GPaste_gnome-shell-extensions_gnome_org_indicator_GPasteIndicator.panel-button {
+      @include colorful_button($theme_green_color);
+    }
+
+    // Accessibility button
+    Gjs_status_accessibility_ATIndicator.panel-button {
+      @include colorful_button($theme_red_color);
+    }
+
+    // Input button
+    Gjs_status_keyboard_InputSourceIndicator.panel-button, // Ibus
+    Gjs_appindicatorsupport_rgcjonas_gmail_com_indicatorStatusIcon_AppIndicatorsIndicatorStatusIcon.panel-button { // Fcitx
+      @include colorful_button($theme_pink_color);
+    }
+
+    // Quicksetting button
+    Gjs_ui_panel_QuickSettings.panel-button {
+      @include colorful_button($theme_purple_color);
+    }
+
+    // OpenWeather button
+    Gjs_openweather-extension_jenslody_de_extension_OpenWeatherMenuButton.panel-button {
+      @include colorful_button($theme_orange_color);
+    }
+
+    // Date button
+    .panel-button.clock-display {
+      &, &:hover {
+        .clock {
+          color: $theme_yellow_color;
+        }
+      }
+
+      &, &:hover, &:active, &:focus, &:checked {
+        color: $theme_yellow_color;
+      }
+
+      @if $float == 'true' {
+        &, &:hover {
+          .clock {
+            @if $rimless == 'false' {
+              box-shadow: inset 0 0 0 2px $theme_yellow_color;
+            } @else { box-shadow: none; }
+          }
+        }
+  
+        &:active, &:focus, &:checked {
+          background-color: transparent;
+          box-shadow: none;
+
+          &, &:hover {
+            .clock {
+              background-color: $theme_yellow_color;
+              color: on($theme_yellow_color);
+
+              @if $rimless == 'false' {
+                box-shadow: inset 0 0 0 2px $theme_yellow_color;
+              } @else { box-shadow: none; }
+            }
+          }
+        }
+      } @else {
+        &:active, &:focus, &:checked {
+          &, &:hover {
+            .clock {
+              box-shadow: inset 0 0 0 1000px $theme_yellow_color;
+              color: on($theme_yellow_color);
+            }
+          }
+        }
+      }
+    }
+  }
+
   // transparent panel on lock & login screens
   &:overview,
   &.unlock-screen,
@@ -153,38 +383,114 @@
     background-color: transparent;
     box-shadow: none;
 
-    StLabel, StIcon { color: on(dark, secondary); }
-
-    .panel-button {
-      &:hover {
-        color: on(dark);
+    @if $float == 'true' {
+      .panel-button {
+        color: on(dark, secondary);
         background-color: transparent;
-        box-shadow: inset 0 0 0 1000px overlay(dark, hover);
+        box-shadow: none;
 
         &.clock-display {
-          box-shadow: none;
-          color: on(dark);
-
           .clock {
+            color: on(dark, secondary);
+            background-color: transparent;
+            box-shadow: none;
+          }
+        }
+
+        &:hover {
+          color: on(dark);
+          background-color: overlay(dark, hover);
+          box-shadow: none;
+  
+          &.clock-display {
+            box-shadow: none;
+            background-color: transparent;
             color: on(dark);
-            box-shadow: inset 0 0 0 1000px overlay(dark, hover);
+  
+            .clock {
+              color: on(dark);
+              background-color: overlay(dark, hover);
+              box-shadow: none;
+            }
+          }
+        }
+  
+        &:active, &:focus, &:checked {
+          &, &:hover {
+            color: on(dark);
+            background-color: overlay(dark, active);
+            box-shadow: none;
+    
+            &.clock-display {
+              background-color: transparent;
+              box-shadow: none;
+              color: on(dark);
+    
+              .clock {
+                background-color: overlay(dark, active);
+                box-shadow: none;
+                color: on(dark);
+              }
+            }
           }
         }
       }
-
-      &:active, &:overview, &:focus, &:checked {
-        color: on(dark);
-        background-color: transparent;
-        box-shadow: inset 0 0 0 1000px overlay(dark, active);
+    } @else {
+      .panel-button {
+        color: on(dark, secondary);
 
         &.clock-display {
-          box-shadow: none;
-          color: on(dark);
-
-          .clock {
-            box-shadow: inset 0 0 0 1000px overlay(dark, active);
-            color: on(dark);
+          &, .clock {
+            color: on(dark, secondary);
           }
+        }
+
+        &:hover {
+          color: on(dark);
+          background-color: transparent;
+          box-shadow: inset 0 0 0 1000px overlay(dark, hover);
+  
+          &.clock-display {
+            box-shadow: none;
+            color: on(dark);
+  
+            .clock {
+              color: on(dark);
+              box-shadow: inset 0 0 0 1000px overlay(dark, hover);
+            }
+          }
+        }
+  
+        &:active, &:focus, &:checked {
+          &, &:hover {
+            color: on(dark);
+            background-color: transparent;
+            box-shadow: inset 0 0 0 1000px overlay(dark, active);
+    
+            &.clock-display {
+              box-shadow: none;
+              color: on(dark);
+    
+              .clock {
+                box-shadow: inset 0 0 0 1000px overlay(dark, active);
+                color: on(dark);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .panel-button#panelActivities {
+      color: on(dark, secondary);
+
+      &:hover {
+        color: on(dark);
+      }
+
+      @if $float == 'true' {
+        &, &:hover {
+          box-shadow: none;
         }
       }
     }

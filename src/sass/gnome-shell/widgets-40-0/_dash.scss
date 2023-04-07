@@ -21,6 +21,8 @@ $dash_border_radius: $base_radius * 2 + $dash_padding;
   margin-bottom: $dash_bottom_margin;
   padding: $dash_padding;
   border-radius: $dash_border_radius;
+  border: none;
+  box-shadow: none;
 }
 
 // Dash Items

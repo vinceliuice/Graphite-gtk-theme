@@ -1,7 +1,7 @@
 /* Slider */
 
 $slide_active_color: if($variant == 'dark' and $theme == 'grey', rgba(white, 0.85), $primary);
-$slide_size: if($compact == 'false', 7px, 6px);
+$slide_size: if($compact == 'false', 8px, 7px);
 
 .slider {
   height: 20px;

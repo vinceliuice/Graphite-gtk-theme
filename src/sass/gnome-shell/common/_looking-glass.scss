@@ -3,22 +3,22 @@
 // Dialog
 #LookingGlassDialog {
   background-color: $base !important;
-  spacing: 4px;
+  spacing: $base_spacing;
   padding: 0;
-  border-radius: $base_radius;
+  margin: $base_spacing;
+  border-radius: $menu_radius;
   box-shadow: 0 3px 8px 0 rgba(black, 0.25);
   color: $text !important;
 
   @if $rimless == 'false' {
     border: 2px solid $primary;
-    border-top: none;
   } @else { border: none; }
 
   & > #Toolbar {
     padding: 0 $base_padding;
     border: none;
-    border-radius: 0;
-    background-color: $background !important;
+    border-radius: $menu_radius $menu_radius 0 0;
+    background-color: $fill !important;
     box-shadow: inset 0 -1px 0 $border;
     spacing: $base_padding;
 
@@ -41,6 +41,7 @@
     transition-duration: 100ms;
     border-bottom-width: 0;
     border-radius: 0;
+    background-color: transparent;
 
     &:hover {
       background-color: $fill;

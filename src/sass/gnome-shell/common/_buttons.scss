@@ -34,8 +34,22 @@
   border: none;
   @extend %button;
 
+  @if $colorful == 'true' {
+    &:active {
+      background-color: $primary;
+      color: on($primary);
+    }
+  }
+
   .popup-menu & {
     @extend %flat_button;
+
+    @if $colorful == 'true' {
+      &:active {
+        background-color: $primary;
+        color: on($primary);
+      }
+    }
   }
 }
 
@@ -44,6 +58,13 @@
   padding: $base_padding;
   @extend %button; // same style as buttons
   background-color: $fill;
+
+  @if $colorful == 'true' {
+    &:active {
+      background-color: $primary;
+      color: on($primary);
+    }
+  }
 
   StIcon {
     icon-size: $base_icon_size !important;

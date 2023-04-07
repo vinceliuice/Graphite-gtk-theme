@@ -20,11 +20,16 @@ StScrollBar {
 
   StButton#vhandle, StButton#hhandle {
     border-radius: $circular_radius;
-    background-color: $text-disabled;
+    background-color: $text-secondary-disabled;
     border: 4px solid transparent; //would be nice to margin or at least to transparent
 
-    &:hover { background-color: $text-secondary; }
-    &:active { background-color: $text; }
+    @if $colorful == 'true' {
+      &:hover { background-color: $text-secondary; }
+      &:active { background-color: $text; }
+    } @else {
+      &:hover { background-color: rgba($primary, 0.5); }
+      &:active { background-color: $primary; }
+    }
   }
 }
 

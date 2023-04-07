@@ -72,6 +72,11 @@
     &:active, &.selected:active {
       color: $text !important;
       background-color: $track !important;
+
+      @if $colorful == 'true' {
+        background-color: $primary !important;
+        color: on($primary) !important;
+      }
     }
 
     &:insensitive { color: $text-secondary-disabled !important; }

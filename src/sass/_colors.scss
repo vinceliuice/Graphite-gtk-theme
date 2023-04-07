@@ -4,6 +4,28 @@
 @import 'tweaks-temp';
 @import 'color-palette';
 
+$theme_default_color: if($variant == 'light', $grey-900, $grey-300);
+$theme_purple_color:  if($variant == 'light', $purple-400, $purple-300);
+$theme_pink_color:    if($variant == 'light', $pink-400, $pink-300);
+$theme_red_color:     if($variant == 'light', $red-600, $red-500);
+$theme_orange_color:  if($variant == 'light', $orange-700, $orange-600);
+$theme_yellow_color:  if($variant == 'light', $yellow-700, $yellow-a700);
+$theme_green_color:   if($variant == 'light', $green-500, $green-400);
+$theme_teal_color:    if($variant == 'light', $teal-500, $teal-300);
+$theme_blue_color:    if($variant == 'light', #3684dd, #5294e2);
+
+@if $color_type == 'nord' {
+  $theme_default_color: if($variant == 'light', #434c5e, #dbdee5);
+  $theme_purple_color:  if($variant == 'light', #b57daa, #c89dbf);
+  $theme_pink_color:    if($variant == 'light', #cd7092, #dc98b1);
+  $theme_red_color:     if($variant == 'light', #c35b65, #d4878f);
+  $theme_orange_color:  if($variant == 'light', #d0846c, #dca493);
+  $theme_yellow_color:  if($variant == 'light', #e4b558, #eac985);
+  $theme_green_color:   if($variant == 'light', #82ac5d, #a0c082);
+  $theme_teal_color:    if($variant == 'light', #63a6a5, #83b9b8);
+  $theme_blue_color:    if($variant == 'light', #5e81ac, #89a3c2);
+}
+
 @function gtkalpha($c, $a) {
   @return unquote("alpha(#{$c}, #{$a})");
 }
@@ -46,51 +68,15 @@
 }
 
 @function theme($color) {
-  @if ($color_type == 'nord') {
-    @if ($variant == 'light') {
-      @if ($theme == 'default') { @return #434c5e; }
-      @if ($theme == 'purple')  { @return #b57daa; }
-      @if ($theme == 'pink')    { @return #cd7092; }
-      @if ($theme == 'red')     { @return #c35b65; }
-      @if ($theme == 'orange')  { @return #d0846c; }
-      @if ($theme == 'yellow')  { @return #e4b558; }
-      @if ($theme == 'green')   { @return #82ac5d; }
-      @if ($theme == 'teal')    { @return #63a6a5; }
-      @if ($theme == 'blue')    { @return #5e81ac; }
-    } @else {
-      @if ($theme == 'default') { @return #dbdee5; }
-      @if ($theme == 'purple')  { @return #c89dbf; }
-      @if ($theme == 'pink')    { @return #dc98b1; }
-      @if ($theme == 'red')     { @return #d4878f; }
-      @if ($theme == 'orange')  { @return #dca493; }
-      @if ($theme == 'yellow')  { @return #eac985; }
-      @if ($theme == 'green')   { @return #a0c082; }
-      @if ($theme == 'teal')    { @return #83b9b8; }
-      @if ($theme == 'blue')    { @return #89a3c2; }
-    }
-  } @else {
-    @if ($variant == 'light') {
-      @if ($theme == 'default') { @return $grey-900; }
-      @if ($theme == 'purple')  { @return $purple-400; }
-      @if ($theme == 'pink')    { @return $pink-400; }
-      @if ($theme == 'red')     { @return $red-600; }
-      @if ($theme == 'orange')  { @return $orange-700; }
-      @if ($theme == 'yellow')  { @return $yellow-700; }
-      @if ($theme == 'green')   { @return $green-500; }
-      @if ($theme == 'teal')    { @return $teal-500; }
-      @if ($theme == 'blue')    { @return #3684dd; }
-    } @else {
-      @if ($theme == 'default') { @return $grey-300; }
-      @if ($theme == 'purple')  { @return $purple-300; }
-      @if ($theme == 'pink')    { @return $pink-300; }
-      @if ($theme == 'red')     { @return $red-500; }
-      @if ($theme == 'orange')  { @return $orange-600; }
-      @if ($theme == 'yellow')  { @return $yellow-a700; }
-      @if ($theme == 'green')   { @return $green-400; }
-      @if ($theme == 'teal')    { @return $teal-300; }
-      @if ($theme == 'blue')    { @return #5294e2; }
-    }
-  }
+  @if ($theme == 'default') { @return $theme_default_color; }
+  @if ($theme == 'purple')  { @return $theme_purple_color; }
+  @if ($theme == 'pink')    { @return $theme_pink_color; }
+  @if ($theme == 'red')     { @return $theme_red_color; }
+  @if ($theme == 'orange')  { @return $theme_orange_color; }
+  @if ($theme == 'yellow')  { @return $theme_yellow_color; }
+  @if ($theme == 'green')   { @return $theme_green_color; }
+  @if ($theme == 'teal')    { @return $theme_teal_color; }
+  @if ($theme == 'blue')    { @return $theme_blue_color; }
 }
 
 @function background($type) {
@@ -180,8 +166,8 @@ $popover:                               $base;
 $panel-solid:                           if($topbar == 'dark', background(e), background(c)); // for Unity panel which doesn't allow translucent colors
 $panel:                                 rgba($panel-solid, $panel_opacity);
 
-$button:                                if($variant == 'dark', on($background, secondary-fill), on($background, fill));
-$entry:                                 if($variant == 'dark', on($background, secondary-fill), on($background, fill));
+$button:                                if($variant == 'dark', on($background, fill), on($background, secondary-fill));
+$entry:                                 if($variant == 'dark', on($background, fill), on($background, secondary-fill));
 
 //
 // Misc colors

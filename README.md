@@ -49,6 +49,9 @@ Run the following commands in the terminal:
                         3. darker:   Darker (default|nord) color version (black option can not be darker)
                         4. rimless:  Remove the 2px outline about windows and menus
                         5. normal:   Normal sidebar style (Nautilus)
+                        6. float:    Float gnome-shell panel style
+                        7. colorful: Colorful gnome-shell panel style
+
 
 -h, --help              Show help
 ```

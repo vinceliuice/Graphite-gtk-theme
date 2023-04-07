@@ -4,7 +4,7 @@
 .notification-banner {
   width: 34em;
   min-height: 64px;
-  margin: 2px 5px 8px;
+  margin: 12px 8px 8px;
   border-radius: $base_radius;
   color: $text-secondary;
   background-color: $popover;
@@ -17,12 +17,19 @@
     color: $text;
     background-color: $popover;
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
-    margin: 2px 12px 17px;
+    margin: 12px 12px 18px;
   }
 
   &:focus {
     color: $text;
     background-color: $popover;
+  }
+
+  @if $colorful == 'true' {
+    &, &:hover, &:focus {
+      background-color: $theme_purple_color;
+      color: on($theme_purple_color);
+    }
   }
 
   .notification-actions {

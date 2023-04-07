@@ -22,6 +22,21 @@
   }
 }
 
+@mixin theme_bubble($theme_color: $primary) {
+  background-color: $theme_color;
+  color: on($theme_color, secondary);
+
+  &:hover, &:focus {
+    color: on($theme_color);
+    background-color: mix(on($theme_color), $theme_color, 10%);
+  }
+
+  &:active {
+    color: on($theme_color);
+    background-color: mix(on($theme_color), $theme_color, 20%);
+  }
+}
+
 // overall menu
 #calendarArea {
   padding: $base_margin;
@@ -250,6 +265,10 @@
 
 // Events
 .events-button {
+  @if $colorful == 'true' {
+    @include theme_bubble($theme_orange_color);
+  }
+
   .events-box {
     spacing: $base_spacing;
   }
@@ -260,39 +279,84 @@
   }
 
   .events-title {
-    color: $text-disabled;
     font-weight: bold;
     text-shadow: none;
+
+    @if $colorful == 'true' {
+      color: on($theme_green_color, disabled);
+    } @else {
+      color: $text-disabled;
+    }
   }
 
   .event-time {
-    color: $text-disabled;
     font-feature-settings: "tnum";
     @include fontsize($font_size - 1);
+
+    @if $colorful == 'true' {
+      color: on($theme_green_color, disabled);
+    } @else {
+      color: $text-disabled;
+    }
   }
 }
 
 // World Clock
 .world-clocks-button {
+  @if $colorful == 'true' {
+    @include theme_bubble($theme_blue_color);
+  }
+
+  .world-clocks-grid {
+    spacing-rows: $base_padding;
+    spacing-columns: $base_padding * 2;
+  }
+
+  // title
+  .world-clocks-header {
+    @extend %heading;
+
+    @if $colorful == 'true' {
+      color: on($theme_green_color, disabled);
+    } @else {
+      color: $text-disabled;
+    }
+  }
+
   .world-clocks-city {
-    color: $text-disabled;
     font-weight: bold;
     @include fontsize($font_size);
+
+    @if $colorful == 'true' {
+      color: on($theme_green_color, secondary);
+    } @else {
+      color: $text-secondary;
+    }
   }
 
   .world-clocks-time {
-    color: $text-disabled;
     font-feature-settings: "tnum";
     @include fontsize($font_size);
+
+    @if $colorful == 'true' {
+      color: on($theme_green_color);
+    } @else {
+      color: $text;
+    }
 
     &:ltr { text-align: right; }
     &:rtl { text-align: left; }
   }
 
   .world-clocks-timezone {
-    color: $text-disabled;
     font-feature-settings: "tnum";
     @include fontsize($font_size - 1);
+
+    @if $colorful == 'true' {
+      color: on($theme_green_color, disabled);
+    } @else {
+      color: $text-disabled;
+    }
   }
 }
 
@@ -304,6 +368,10 @@
 
 // Weather
 .weather-button {
+  @if $colorful == 'true' {
+    @include theme_bubble($theme_green_color);
+  }
+
   .weather-box {
     spacing: $base_spacing + $base_margin;
   }
@@ -313,13 +381,23 @@
   }
 
   .weather-header {
-    color: $text-secondary;
     font-weight: bold;
+
+    @if $colorful == 'true' {
+      color: on($theme_green_color, secondary);
+    } @else {
+      color: $text-secondary;
+    }
 
     &.location {
       font-weight: normal;
-      color: $text-disabled;
       @include fontsize($font_size - 1);
+
+      @if $colorful == 'true' {
+        color: on($theme_green_color, disabled);
+      } @else {
+        color: $text-disabled;
+      }
     }
   }
 
@@ -329,12 +407,17 @@
   }
 
   .weather-forecast-time {
-    color: $text-secondary;
     font-feature-settings: "tnum";
     @include fontsize($font_size - 2);
     font-weight: normal;
     padding-top: 0.2em;
     padding-bottom: 0.4em;
+
+    @if $colorful == 'true' {
+      color: on($theme_green_color, secondary);
+    } @else {
+      color: $text-secondary;
+    }
   }
 
   .weather-forecast-icon {

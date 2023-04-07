@@ -98,6 +98,8 @@ OPTIONS:
                           3. darker:   Darker (default|nord) color version (black option can not be darker)
                           4. rimless:  Remove the 2px outline about windows and menus
                           5. normal:   Normal sidebar style (Nautilus)
+                          6. float:    Float gnome-shell panel style
+                          7. colorful: Colorful gnome-shell panel style
 
   -h, --help              Show help
 EOF
@@ -524,6 +526,16 @@ while [[ $# -gt 0 ]]; do
             echo -e "Install Normal sidebar version! ..."
             shift
             ;;
+          float)
+            float="true"
+            echo -e "Install Float Gnome-Shell Panel version! ..."
+            shift
+            ;;
+          colorful)
+            colorful="true"
+            echo -e "Install Colorful Gnome-Shell Panel version! ..."
+            shift
+            ;;
           -*)
             break
             ;;
@@ -596,6 +608,14 @@ normal_sidebar() {
   sed -i "/\$sidebar:/s/styled/normal/" ${SRC_DIR}/sass/_tweaks-temp.scss
 }
 
+float_panel() {
+  sed -i "/\$float:/s/false/true/" ${SRC_DIR}/sass/_tweaks-temp.scss
+}
+
+colorful_panel() {
+  sed -i "/\$colorful:/s/false/true/" ${SRC_DIR}/sass/_tweaks-temp.scss
+}
+
 gnome_shell_version() {
   sed -i "/\widgets/s/40-0/${GS_VERSION}/" ${SRC_DIR}/sass/gnome-shell/_common-temp.scss
 
@@ -663,6 +683,14 @@ theme_tweaks() {
 
   if [[ "$normal" = "true" ]] ; then
     normal_sidebar
+  fi
+
+  if [[ "$float" = "true" ]] ; then
+    float_panel
+  fi
+
+  if [[ "$colorful" = "true" ]] ; then
+    colorful_panel
   fi
 }
 

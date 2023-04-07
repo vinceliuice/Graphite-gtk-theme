@@ -52,6 +52,7 @@
   border-radius: $menu_radius * 3;
   padding: $base_padding * 2;
   background-color: $osd;
+  box-shadow: none;
 
   @if $rimless == 'false' {
     border: 2px solid $osd-primary;
