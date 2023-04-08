@@ -509,7 +509,12 @@ window.org-gnome-gedit {
 }
 
 .gedit-search-slider {
-  margin: 4px 4px 8px;
+  margin: 0 6px 8px;
+  padding: $space-size;
+  background-color: $base;
+  color: $text;
+  box-shadow: $shadow-z4;
+  border-radius: 0 0 $window-radius $window-radius;
 
   .linked:not(.vertical) > entry {
     border-radius: $corner-radius;
@@ -553,7 +558,10 @@ window.org-gnome-gedit {
 
   .linked > button {
     border: solid $space-size transparent;
-    border-radius: $circular-radius;
+
+    &, &:first-child, &:last-child {
+      border-radius: $circular-radius;
+    }
 
     @extend %button-flat-simple;
     @extend %small-button;
@@ -1995,7 +2003,11 @@ window.background.csd {
  ***********/
 dialog.background.csd {
   > headerbar.titlebar {
-    box-shadow: inset 0 -1px $border;
+    @if $rimless == 'true' {
+      box-shadow: inset 0 -1px $border, inset 0 1px highlight($titlebar);
+    } @else {
+      box-shadow: inset 0 -1px $border;
+    }
   }
 
   > box.vertical.dialog-vbox {

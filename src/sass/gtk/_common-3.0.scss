@@ -1356,7 +1356,8 @@ headerbar {
   // add vertical margins to common widget on the headerbar to avoid them spanning the whole height
   entry,
   spinbutton,
-  button {
+  button,
+  stackswitcher {
     margin-top: $space-size;
     margin-bottom: $space-size;
   }
@@ -3621,10 +3622,10 @@ decoration {
 
   @if $rimless == 'true' {
     border-radius: $window-radius;
-    box-shadow: $shadow-z16, 0 0 36px transparent;
+    box-shadow: $shadow-z16, 0 0 0 100px transparent;
   } @else {
     border-radius: $window-radius + 2px;
-    box-shadow: $shadow-z4, 0 0 16px transparent;
+    box-shadow: $shadow-z4,  0 0 0 50px transparent;
     border: 2px solid $primary;
     background-clip: border-box;
   }
@@ -3641,9 +3642,9 @@ decoration {
     // or the jumping will happen during the transition.
 
     @if $rimless == 'true' {
-      box-shadow: $shadow-z4, 0 0 36px transparent;
+      box-shadow: $shadow-z4,  0 0 0 100px transparent;
     } @else {
-      box-shadow: $shadow-z1, 0 0 16px transparent;
+      box-shadow: $shadow-z1,  0 0 0 50px transparent;
       border: 2px solid $primary;
       background-clip: border-box;
     }
@@ -3661,6 +3662,8 @@ decoration {
 
   // server-side decorations as used by mutter
   .ssd & {
+    margin: 0;
+
     @if $rimless == 'true' {
       box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16);
     } @else {

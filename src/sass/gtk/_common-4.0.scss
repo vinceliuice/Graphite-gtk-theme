@@ -1444,6 +1444,7 @@ headerbar {
 
   @if $rimless == 'true' {
     box-shadow: inset 0 1px highlight($titlebar);
+    border-radius: $window-radius $window-radius 0 0;
   } @else { box-shadow: none; }
 
   &:disabled { color: $titlebar-text-disabled; }
@@ -1651,9 +1652,9 @@ headerbar {
   }
 
   &.default-decoration {
-    min-height: $small-size;
-    padding: $space-size;
-    border-radius: $corner-radius $corner-radius 0 0;
+    min-height: $medium-size;
+    // padding: $space-size;
+    border-radius: $window-radius $window-radius 0 0;
 
     windowcontrols {
       button,
@@ -1670,6 +1671,19 @@ headerbar {
     &:dir(rtl), &:dir(ltr) { // specificity bump
       border-radius: 0;
       box-shadow: none; // just remove the highlight
+    }
+  }
+}
+
+@if $rimless == 'true' {
+  leaflet {
+    > box:last-child > headerbar {
+      border-top-right-radius: 0;
+    }
+
+    > box > headerbar:not(:last-child),
+    > box > stack > widget > box > widget > headerbar {
+      border-top-left-radius: 0;
     }
   }
 }
@@ -4342,33 +4356,45 @@ colorchooser .popover.osd {
  * Window Decorations *
  **********************/
 window {
-  transition: $transition-shadow;
-  box-shadow: $shadow-z4, 0 0 0 2px $primary, 0 0 16px transparent;
-  outline: none;
+  margin: 0;
+  padding: 0;
+  border: none;
 
-  @if $rimless == 'true' {
-    box-shadow: $shadow-z16, 0 0 36px transparent;
-  } @else {
-    box-shadow: $shadow-z4, 0 0 0 2px $primary, 0 0 16px transparent;
-  }
-
-  &.csd { border-radius: $window-radius; }
-
-  &:backdrop {
-    // the transparent shadow here is to enforce that the shadow extents don't
-    // change when we go to backdrop, to prevent jumping windows.
-    // The biggest shadow should be in the same order then in the active state
-    // or the jumping will happen during the transition.
+  &.csd {
+    border-radius: $window-radius;
+    outline: none;
+  
     @if $rimless == 'true' {
-      box-shadow: $shadow-z4, 0 0 36px transparent;
+      box-shadow: $shadow-z16, 0 0 0 100px transparent;
     } @else {
-      box-shadow: $shadow-z1, 0 0 0 2px $primary, 0 0 16px transparent;
+      box-shadow: $shadow-z4, 0 0 0 2px $primary, 0 0 0 50px transparent;
     }
-  }
 
-  &.popup {
-    border-radius: $menu-radius;
-    box-shadow: none;
+    &:backdrop {
+      transition: $transition-shadow;
+      // the transparent shadow here is to enforce that the shadow extents don't
+      // change when we go to backdrop, to prevent jumping windows.
+      // The biggest shadow should be in the same order then in the active state
+      // or the jumping will happen during the transition.
+      @if $rimless == 'true' {
+        box-shadow: $shadow-z4, 0 0 0 100px transparent;
+      } @else {
+        box-shadow: $shadow-z1, 0 0 0 2px $primary, 0 0 0 50px transparent;
+      }
+    }
+
+    &.maximized,
+    &.fullscreen,
+    &.tiled,
+    &.tiled-top,
+    &.tiled-right,
+    &.tiled-bottom,
+    &.tiled-left { border-radius: 0; }
+  
+    &.maximized,
+    &.fullscreen {
+      box-shadow: none;
+    }
   }
 
   &.dialog.message {
@@ -4389,14 +4415,6 @@ window {
 
     &:backdrop { background-color: $titlebar-backdrop; }
   }
-
-  &.maximized,
-  &.fullscreen,
-  &.tiled,
-  &.tiled-top,
-  &.tiled-right,
-  &.tiled-bottom,
-  &.tiled-left { border-radius: 0; }
 }
 
 // Windows button
