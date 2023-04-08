@@ -1681,7 +1681,7 @@ headerbar {
       border-top-right-radius: 0;
     }
 
-    > box > headerbar:not(:last-child),
+    > box:not(:last-child) > headerbar,
     > box > stack > widget > box > widget > headerbar {
       border-top-left-radius: 0;
     }
