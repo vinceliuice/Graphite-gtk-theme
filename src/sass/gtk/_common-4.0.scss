@@ -1016,9 +1016,9 @@ button.color {
   min-width: $small-size;
   padding: $space-size;
 
-  colorswatch:only-child {
-    // &, overlay { border-radius: 0; }
-  }
+  // colorswatch:only-child {
+  //   &, overlay { border-radius: 0; }
+  // }
 }
 
 %list_button,
@@ -2714,7 +2714,7 @@ switch {
     color: $base;
   }
 
-  row:selected & { }
+  // row:selected & { }
 }
 
 
@@ -4341,15 +4341,15 @@ colorchooser .popover.osd {
   rubberband, .rubberband { @extend rubberband; }
 }
 
-.scale-popup {
-  // .osd & { @extend %osd; }
+// .scale-popup {
+//   .osd & { @extend %osd; }
 
-  // .osd & button.flat { // FIXME: quick hack, redo properly
-  // }
-  //
-  // button { // +/- buttons on GtkVolumeButton popup
-  // }
-}
+//   .osd & button.flat { // FIXME: quick hack, redo properly
+//   }
+  
+//   button { // +/- buttons on GtkVolumeButton popup
+//   }
+// }
 
 
 /**********************

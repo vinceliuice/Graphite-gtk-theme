@@ -37,11 +37,6 @@ UnityDecoration {
     }
   }
 
-  .left,
-  .right {}
-
-  .bottom {}
-
   .menuitem {
     color: $titlebar-text-secondary;
 
@@ -60,10 +55,6 @@ UnityDecoration {
   &.inline-toolbar { border-style: none; }
 }
 
-sheet-style-dialog.unity-force-quit {
-  // background-color: $background;
-}
-
 // Panel Style
 UnityPanelWidget,
 .unity-panel {
@@ -71,10 +62,6 @@ UnityPanelWidget,
   color: $titlebar-text;
 
   &:backdrop { color: $titlebar-text-secondary; }
-}
-
-.unity-panel.menubar,
-.unity-panel .menubar {
 }
 
 .unity-panel.menuitem,

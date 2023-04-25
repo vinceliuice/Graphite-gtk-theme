@@ -36,10 +36,6 @@ PanelToplevel.vertical > grid > button {
   min-height: 24px;
 }
 
-#PanelApplet {
-  // border-width: 0;
-}
-
 PanelSeparator {
   color: on($panel, divider);
 }
@@ -168,16 +164,6 @@ PanelApplet.wnck-applet .wnck-pager {
 na-tray-applet {
   -NaTrayApplet-icon-padding: 3px;
   -NaTrayApplet-icon-size: 16;
-}
-
-// remove right space a bit
-na-tray-applet > widget > box {
-  // margin-right: 2px;
-}
-
-// no background for icon-padding area
-na-tray-applet widget box widget {
-  // background-color: transparent;
 }
 
 // Classic icon style
@@ -331,11 +317,6 @@ na-tray-applet widget box widget {
   background-color: $base;
 }
 
-// treeview rows
-.caja-side-pane treeview.view {
-  // padding: 2px 0;
-}
-
 .caja-side-pane notebook,
 .caja-notebook {
   border-top: 1px solid $divider;
@@ -351,9 +332,6 @@ na-tray-applet widget box widget {
 // desktop mode
 .caja-desktop.caja-canvas-item {
   @extend %desktop-canvas-item;
-}
-
-.caja-desktop EelEditableLabel.entry {
 }
 
 // override https://github.com/mate-desktop/caja/blob/master/data/caja.css
@@ -486,9 +464,5 @@ MsdOsdWindow.background.osd {
   .progressbar {
     border-radius: 0;
     background-color: $primary;
-  }
-
-  // For mate-settings-daemon noncomposited osd windows
-  &.msd-osd-window-solid {
   }
 }
