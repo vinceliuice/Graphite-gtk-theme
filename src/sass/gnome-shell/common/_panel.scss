@@ -317,6 +317,11 @@
       @include colorful_button($theme_pink_color);
     }
 
+    // Pamac button
+    Gjs_pamac-updates_manjaro_org_extension_PamacUpdateIndicator.panel-button {
+      @include colorful_button($theme_blue_color);
+    }
+
     // Quicksetting button
     Gjs_ui_panel_QuickSettings.panel-button {
       @include colorful_button($theme_purple_color);
