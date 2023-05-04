@@ -99,6 +99,7 @@
     .popup-menu-item {
       border-radius: 0;
       margin: 0;
+      background-color: transparent !important;
 
       @if $sidebar == 'styled' {
         color: on($primary, secondary) !important;

@@ -276,6 +276,12 @@
   .events-list {
     spacing: 2 * $base_spacing;
     text-shadow: none;
+
+    @if $colorful == 'true' {
+      color: on($theme_green_color, secondary);
+    } @else {
+      color: $text-secondary;
+    }
   }
 
   .events-title {

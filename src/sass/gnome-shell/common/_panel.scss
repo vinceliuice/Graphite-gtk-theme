@@ -6,6 +6,8 @@
   color: $panel-text-secondary;
   font-feature-settings: "tnum";
   transition-duration: 250ms;
+  border: none !important;
+  box-shadow: none !important;
   @include fontsize($font_size - 1);
 
   @if $float == 'true' {
