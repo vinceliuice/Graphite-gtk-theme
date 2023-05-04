@@ -3590,14 +3590,13 @@ colorchooser .popover.osd {
  * Window Decorations *
  **********************/
 decoration {
-  transition: $transition-shadow;
+  transition: none;
+  box-shadow: $shadow-z16, 0 0 50px transparent;
 
   @if $rimless == 'true' {
     border-radius: $window-radius;
-    box-shadow: $shadow-z16, 0 0 0 100px transparent;
   } @else {
     border-radius: $window-radius + 2px;
-    box-shadow: $shadow-z4,  0 0 0 50px transparent;
     border: 2px solid $primary;
     background-clip: border-box;
   }
@@ -3605,18 +3604,17 @@ decoration {
   // FIXME rationalize shadows
 
   // this is used for the resize cursor area
-  margin: 8px;
+  margin: 10px;
 
   &:backdrop {
+    transition: $transition-shadow;
     // the transparent shadow here is to enforce that the shadow extents don't
     // change when we go to backdrop, to prevent jumping windows.
     // The biggest shadow should be in the same order then in the active state
     // or the jumping will happen during the transition.
+    box-shadow: $shadow-z4, 0 0 50px transparent;
 
-    @if $rimless == 'true' {
-      box-shadow: $shadow-z4,  0 0 0 100px transparent;
-    } @else {
-      box-shadow: $shadow-z1,  0 0 0 50px transparent;
+    @if $rimless == 'false' {
       border: 2px solid $primary;
       background-clip: border-box;
     }

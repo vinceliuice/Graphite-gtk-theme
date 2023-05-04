@@ -4356,30 +4356,43 @@ colorchooser .popover.osd {
  * Window Decorations *
  **********************/
 window {
-  margin: 0;
-  padding: 0;
   border: none;
+  outline: none;
 
   &.csd {
     border-radius: $window-radius;
-    outline: none;
-  
+    transition: none;
+    margin: 0;
+    padding: 0;
+
     @if $rimless == 'true' {
-      box-shadow: $shadow-z16, 0 0 0 100px transparent;
+      box-shadow: $shadow-z16,
+                  0 1px 2px transparent,
+                  0 3px 4px transparent,
+                  0 1px 6px transparent;
     } @else {
-      box-shadow: $shadow-z4, 0 0 0 2px $primary, 0 0 0 50px transparent;
+      box-shadow: $shadow-z16, 0 0 0 2px $primary,
+                  0 1px 2px transparent,
+                  0 3px 4px transparent,
+                  0 1px 6px transparent;
     }
 
     &:backdrop {
-      transition: $transition-shadow;
+      transition: none;
       // the transparent shadow here is to enforce that the shadow extents don't
       // change when we go to backdrop, to prevent jumping windows.
       // The biggest shadow should be in the same order then in the active state
       // or the jumping will happen during the transition.
       @if $rimless == 'true' {
-        box-shadow: $shadow-z4, 0 0 0 100px transparent;
+        box-shadow: $shadow-z4,
+                    0 3px 8px transparent,
+                    0 10px 18px transparent,
+                    0 8px 24px transparent;
       } @else {
-        box-shadow: $shadow-z1, 0 0 0 2px $primary, 0 0 0 50px transparent;
+        box-shadow: $shadow-z4, 0 0 0 2px $primary,
+                    0 3px 8px transparent,
+                    0 10px 18px transparent,
+                    0 8px 24px transparent;
       }
     }
 
