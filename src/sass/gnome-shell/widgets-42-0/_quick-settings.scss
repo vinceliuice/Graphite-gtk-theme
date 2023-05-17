@@ -117,7 +117,7 @@
 .quick-toggle-menu {
   border-radius: $base_radius !important;
   padding: $base_padding * 2 !important;
-  margin: $base_padding * 2 12px + $base_padding * 3 0 !important;
+  margin: $base_padding * 2 10px + $base_padding * 3 0 !important;
 
   @if $sidebar == 'styled' {
     background-color: $primary !important;
