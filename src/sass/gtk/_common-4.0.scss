@@ -2990,110 +2990,118 @@ themeswitcher {
 /************
  * GtkScale *
  ************/
- scale {
-   // sizing
-   $_marks_length: 8px;
-   $_marks_distance: 7px;
 
-   $trough_size: 2px;
-   $finetune_trough_size: 4px;
+scale {
+  // sizing
+  $_marks_length: 8px;
+  $_marks_distance: 7px;
 
-   $slider_size: 18px;
+  $trough_size: 2px;
+  $finetune_trough_size: 4px;
 
-   $slider_margin: -($slider_size - $trough_size) / 2;
-   $finetune_slider_margin: -($slider_size - $finetune_trough_size) / 2;
+  $slider_size: 18px;
 
-   $color_slider_margin: -($slider_size) * 3 / 4;
-   $color_marks_slider_margin: -($slider_size - 16px) - $color_slider_margin;
+  $slider_margin: -($slider_size - $trough_size) / 2;
+  $finetune_slider_margin: -($slider_size - $finetune_trough_size) / 2;
 
-   min-height: $trough_size;
-   min-width: $trough_size;
+  $color_slider_margin: -($slider_size) * 3 / 4;
+  $color_marks_slider_margin: -($slider_size - 16px) - $color_slider_margin;
 
-   &.horizontal { padding: ($medium-size - $trough_size) / 2 12px; }
+  min-height: $trough_size;
+  min-width: $trough_size;
 
-   &.vertical { padding: 12px ($medium-size - $trough_size) / 2; }
+  &.horizontal { padding: ($medium-size - $trough_size) / 2 12px; }
 
-   // the slider is inside the trough, so to have make it bigger there's a negative margin
-   slider {
-     min-height: $slider_size;
-     min-width: $slider_size;
-     margin: $slider_margin;
-   }
+  &.vertical { padding: 12px ($medium-size - $trough_size) / 2; }
+
+  // the slider is inside the trough, so to have make it bigger there's a negative margin
+  slider {
+    min-height: $slider_size;
+    min-width: $slider_size;
+    margin: $slider_margin;
+  }
 
    // click-and-hold the slider to activate
    &.fine-tune {
-     &.horizontal {
-       min-height: $finetune_trough_size;
-       padding-top: ($medium-size - $finetune_trough_size) / 2;
-       padding-bottom: ($medium-size - $finetune_trough_size) / 2;
-     }
+    &.horizontal {
+      min-height: $finetune_trough_size;
+      padding-top: ($medium-size - $finetune_trough_size) / 2;
+      padding-bottom: ($medium-size - $finetune_trough_size) / 2;
+    }
 
-     &.vertical {
-       min-width: $finetune_trough_size;
-       padding-left: ($medium-size - $finetune_trough_size) / 2;
-       padding-right: ($medium-size - $finetune_trough_size) / 2;
-     }
+    &.vertical {
+      min-width: $finetune_trough_size;
+      padding-left: ($medium-size - $finetune_trough_size) / 2;
+      padding-right: ($medium-size - $finetune_trough_size) / 2;
+    }
 
-     // to make the trough grow in fine-tune mode
-     slider { margin: $finetune_slider_margin; }
-   }
+    // to make the trough grow in fine-tune mode
+    slider { margin: $finetune_slider_margin; }
+  }
 
-   // the backing bit
-   trough {
-     transition: background-color $duration $ease-out;
-     outline: none;
-     background-color: $track;
+  // the backing bit
+  trough {
+    transition: background-color $duration $ease-out;
+    outline: none;
+    background-color: $track;
 
-     &:disabled { background-color: $track-disabled; }
-   }
+    &:disabled { background-color: $track-disabled; }
+  }
 
-   // the colored part of the backing bit
-   highlight {
-     transition: background-image $duration $ease-out;
-     background-image: image($primary);
+  // the colored part of the backing bit
+  highlight {
+    transition: background-image $duration $ease-out;
+    background-image: image($primary);
 
-     &:disabled {
-       background-color: $background;
-       background-image: image($text-secondary-disabled);
-     }
-   }
+    &:disabled {
+      background-color: $background;
+      background-image: image($text-secondary-disabled);
+    }
+  }
 
-   // this is another differently styled part of the backing bit, the most relevant use case is for example
-   // in media player to indicate how much video stream as been cached
-   fill {
-     transition: background-color $duration $ease-out;
-     background-color: $track;
+  // this is another differently styled part of the backing bit, the most relevant use case is for example
+  // in media player to indicate how much video stream as been cached
+  fill {
+    transition: background-color $duration $ease-out;
+    background-color: $track;
 
-     &:disabled { background-color: transparent; }
-   }
+    &:disabled { background-color: transparent; }
+  }
 
-   slider {
-     transition: all $duration $ease-out;
-     border-radius: $circular-radius;
-     color: $primary;
-     background-color: $base;
-     box-shadow: inset 0 0 0 2px $primary;
+  slider {
+    transition: all $duration $ease-out;
+    border-radius: $circular-radius;
+    color: $primary;
+    background-color: $base;
+    box-shadow: inset 0 0 0 2px $primary;
 
-     &:hover {
-       box-shadow: inset 0 0 0 2px $primary, 0 0 0 8px $divider;
-     }
+    &:hover {
+      box-shadow: inset 0 0 0 2px $primary, 0 0 0 8px $divider;
+    }
 
-     &:active {
-       box-shadow: inset 0 0 0 4px $primary, 0 0 0 8px $divider;
-     }
+    &:active {
+      box-shadow: inset 0 0 0 4px $primary, 0 0 0 8px $divider;
+    }
 
-     &:disabled {
-       box-shadow: inset 0 0 0 2px $text-secondary-disabled;
-     }
-   }
+    &:disabled {
+      box-shadow: inset 0 0 0 2px $text-secondary-disabled;
+    }
+  }
 
-   marks,
-   value { color: $text-secondary; }
+  marks,
+  value { color: $text-secondary; }
 
-   indicator {
-     background-color: $track;
-     color: transparent;
-   }
+  indicator {
+    background-color: $track;
+    color: transparent;
+  }
+
+  &.marks-before:not(.marks-after),
+  &.marks-after:not(.marks-before) {
+    > trough > slider {
+      transform: rotate(0);
+    }
+  }
 
   //marks margins
   @each $scale_orient, $marks_class, $marks_pos, $marks_margin in (horizontal, top, top, bottom),
