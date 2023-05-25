@@ -166,8 +166,8 @@ $popover:                               $base;
 $panel-solid:                           if($topbar == 'dark', background(e), background(c)); // for Unity panel which doesn't allow translucent colors
 $panel:                                 rgba($panel-solid, $panel_opacity);
 
-$button:                                if($variant == 'dark', on($background, fill), on($background, secondary-fill));
-$entry:                                 if($variant == 'dark', on($background, fill), on($background, secondary-fill));
+$button:                                on($background, fill);
+$entry:                                 on($background, fill);
 
 //
 // Misc colors
@@ -211,6 +211,7 @@ $text-secondary-disabled:               on($background, secondary-disabled);
 $track:                                 on($background, track);
 $track-disabled:                        on($background, track-disabled);
 $divider:                               on($background, divider);
+$secondary-fill:                        on($background, secondary-fill);
 $fill:                                  on($background, fill);
 
 $titlebar-text:                         on($titlebar);
