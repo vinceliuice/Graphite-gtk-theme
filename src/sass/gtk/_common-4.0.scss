@@ -164,8 +164,8 @@ window.assistant {
 }
 
 %osd {
-  color: on($base);
-  // background-color: $base;
+  color: on($osd);
+  background-color: $osd;
   background-clip: padding-box;
   border-radius: $corner-radius;
   border: none;
@@ -303,11 +303,29 @@ entry {
 
     // entry error and warning style
     @each $e_type, $e_color in (error, $error),
-                               (warning, $warning) {
+                               (warning, $warning),
+                               (success, $success) {
       &.#{$e_type} {
         @include entry(normal, $e_color);
+        background-color: $overlay-normal;
 
-        &:focus-within { @include entry(checked, $e_color); }
+        &, &:hover, &:focus-within {
+          color: $e_color;
+
+          image { color: $e_color; }
+        }
+
+        selection {
+          color: on($e_color);
+          background-color: $e_color;
+        }
+
+        &:hover { @include entry(hover, $e_color); }
+
+        &:focus-within {
+          @include entry(checked, $e_color);
+          background-color: $overlay-normal;
+        }
 
         &:disabled { @include entry(disabled, $e_color); }
       }

@@ -603,7 +603,10 @@ panelstatusbar {
   background-color: $background;
 
   > menubutton > button,
-  > paneltogglebutton button.image-button { border-radius: 0; }
+  > paneltogglebutton button.image-button {
+    border-radius: 0;
+    @extend %button-flat-simple;
+  }
 }
 
 // Setting window
