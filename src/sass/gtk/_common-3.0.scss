@@ -1799,6 +1799,7 @@ popover.background {
     @extend %button-flat;
 
     min-height: 32px;
+    min-width: 48px;
     padding: 0 8px;
     border-radius: $corner-radius;
 

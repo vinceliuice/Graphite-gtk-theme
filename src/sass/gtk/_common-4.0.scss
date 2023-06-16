@@ -334,7 +334,7 @@ entry {
 
   > progress,
   progress > trough > progress {
-    margin: 2px -8px;
+    margin: 0;
     border-bottom: 2px solid $primary;
     background-color: transparent;
   }
