@@ -19,7 +19,7 @@ $dash_border_radius: $base_radius * 2 + $dash_padding;
 .dash-background {
   background-color: $dash_background_color;
   margin-bottom: $dash_bottom_margin;
-  padding: $dash_padding;
+  padding: $dash_padding $dash_padding - $dash_spacing;
   border-radius: $dash_border_radius;
   border: none;
   box-shadow: none;
