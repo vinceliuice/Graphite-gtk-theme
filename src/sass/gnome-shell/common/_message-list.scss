@@ -63,8 +63,7 @@
 
   // icon container
   .message-icon-bin {
-    padding: $base_spacing * 3 $base_spacing * 2;
-    padding-right: $base_spacing;
+    padding: $base_padding * 3;
 
     @if $colorful == 'true' {
       color: on($theme_purple_color, disabled);
@@ -72,9 +71,8 @@
       color: $text-disabled;
     }
 
-    &:rtl {
-      padding-left: $base_spacing;
-    }
+    &:ltr { padding-right: $base_padding; }
+    &:rtl { padding-left: $base_padding; }
 
     // icon size and color
     > StIcon {
@@ -166,7 +164,7 @@
 }
 
 .message-media-control {
-  margin: $base_padding * 4.5 $base_padding;
+  margin: $base_padding * 3.5 $base_padding;
   padding: $base_padding * 2;
   border-radius: $circular_radius;
 
@@ -204,10 +202,11 @@
 // album-art
 .media-message-cover-icon {
   icon-size: $base_icon_size * 3 !important;
+  border-radius: $base_radius;
 
   &.fallback {
     icon-size: $base_icon_size * 2 !important;
-    padding: $base_padding * 2;
+    padding: $base_padding;
     border: none;
     border-radius: $base_radius;
     background-color: $divider;
