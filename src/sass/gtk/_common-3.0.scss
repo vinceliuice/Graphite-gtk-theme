@@ -308,7 +308,7 @@ entry {
 
       &:hover, &:active { color: $text; }
 
-      &:disabled { color: $text-disabled; }
+      &:disabled { color: $text-secondary-disabled; }
 
       &.left {
         margin-left: ($medium-size - 16px) / 2 - 8px;

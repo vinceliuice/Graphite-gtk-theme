@@ -150,6 +150,7 @@
     &:active { background-color: $track; }
   }
 
+  .calendar-day,
   .calendar-day-base {
     @include fontsize($font_size - 1);
     text-align: center;
@@ -158,20 +159,22 @@
     padding: 0 !important;
     margin: 2px !important;
     border-radius: $circular_radius;
-    color: $text-secondary;
+    color: $text-secondary !important;
     border: none;
     font-feature-settings: "tnum";
 
     &:hover, &:focus {
       background-color: $divider;
-      box-shadow: none;
-      outline: none;
+      box-shadow: none !important;
+      outline: none !important;
     }
 
     &:active, &:selected {
-      color: $text;
+      color: $text !important;
       background-color: $track;
-      border-color: transparent; //avoid jumparound due to today
+      border-color: transparent !important; //avoid jumparound due to today
+      box-shadow: none !important;
+      outline: none !important;
     }
 
     &.calendar-day-heading {  //day of week heading

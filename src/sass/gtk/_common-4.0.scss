@@ -282,7 +282,7 @@ entry {
 
       &:hover, &:active { color: $text; }
 
-      &:disabled { color: $text-disabled; }
+      &:disabled { color: $text-secondary-disabled; }
 
       &.left {
         margin-left: ($medium-size - 16px) / 2 - 8px;
@@ -1693,6 +1693,13 @@ headerbar {
   }
 }
 
+// Gnome >= 45.0
+.top-bar {
+  .collapse-spacing {
+    padding: 0;
+  }
+}
+
 @if $rimless == 'true' {
   leaflet {
     > box:last-child > headerbar {
@@ -2396,6 +2403,8 @@ tabbar {
   }
 
   scrolledwindow:not(.pinned) > tabbox {
+    padding: 0;
+
     > tabboxchild {
       padding: $space-size / 2 0;
       margin: 0 -3px;
@@ -2411,6 +2420,8 @@ tabbar {
   }
 
   scrolledwindow.pinned > tabbox {
+    padding: 0;
+
     > tabboxchild {
       padding: $space-size / 2 0;
       margin: 0;
@@ -2571,7 +2582,8 @@ scrollbar {
   // slider
   > range > trough {
     outline: none;
-    background: none;
+    background-color: transparent;
+    background-image: none;
     border: none;
 
     > slider {
@@ -2647,7 +2659,13 @@ scrollbar {
     }
 
     &.dragging,
-    &.hovering { background-color: rgba($surface, 0.9); }
+    &.hovering {
+      background-color: rgba($surface, 0.9);
+
+      > range > trough {
+        background-color: transparent;
+      }
+    }
   }
 
   &.horizontal > range > trough > slider { min-width: $_slider_min_length; }
@@ -3293,7 +3311,7 @@ scrolledwindow {
 
   // This is used when content is touch-dragged past boundaries.
   // draws a box on top of the content, the size changes programmatically.
-  @at-root overshoot {
+  > overshoot {
     &.top { @include overshoot(top); }
 
     &.bottom { @include overshoot(bottom); }
@@ -3304,23 +3322,22 @@ scrolledwindow {
   }
 
   // Overflow indication, works similarly to the overshoot, the size if fixed tho.
-  // @at-root undershoot {
-  //   &.top { @include undershoot(top); }
-  //
-  //   &.bottom { @include undershoot(bottom); }
-  //
-  //   &.left { @include undershoot(left); }
-  //
-  //   &.right { @include undershoot(right); }
-  // }
+  &.undershoot-top {
+    @include undershoot(top);
+  }
 
-  @at-root junction { // the small square between two scrollbars
-    border-style: solid none none solid;
-    border-width: 1px;
-    border-color: $divider;
-    background-color: $base;
+  &.undershoot-bottom {
+    @include undershoot(bottom);
+  }
 
-    &:dir(rtl) { border-style: solid solid none none; }
+  &.undershoot-start {
+    &:dir(ltr) { @include undershoot(left); }
+    &:dir(rtl) { @include undershoot(right); }
+  }
+
+  &.undershoot-end {
+    &:dir(ltr) { @include undershoot(right); }
+    &:dir(rtl) { @include undershoot(left); }
   }
 }
 
@@ -3899,13 +3916,6 @@ separator.sidebar {
 /****************
  * File chooser *
  ****************/
-// dim the sidebar icons, see bug #786613 for details on this oddity
-row image.sidebar-icon {
-  transition: color $duration $ease-out;
-  color: $text-secondary;
-
-  &:disabled { color: $text-secondary-disabled; }
-}
 
 placessidebar {
   > viewport.frame { border-style: none; }
@@ -3922,6 +3932,11 @@ placessidebar {
     > revealer { padding: $space-size $space-size * 1.5; }
 
     image.sidebar-icon {
+      transition: color $duration $ease-out;
+      color: $text-secondary;
+    
+      &:disabled { color: $text-secondary-disabled; }
+
       &:dir(ltr) { padding-right: 8px; }
       &:dir(rtl) { padding-left: 8px; }
     }
@@ -4035,6 +4050,192 @@ paned {
   }
 }
 
+%sidebar-style {
+  background-color: $primary;
+  color: on($primary);
+}
+
+%sidebar-entry {
+  background-color: on($primary, fill);
+  color: on($primary);
+
+  &:focus-within {
+    color: on($primary);
+    box-shadow: inset 0 0 0 2px on($primary);
+  }
+
+  &:drop(active) { color: on($primary); }
+
+  &:disabled { color: on($primary, disabled); }
+
+  image { // icons inside the entry
+    color: on($primary, secondary);
+
+    &:hover, &:active { color: on($primary); }
+
+    &:disabled { color: on($primary, secondary-disabled); }
+  }
+}
+
+%sidebar-button {
+  background-color: on($primary, fill);
+  color: on($primary);
+
+  &:hover, &:active { color: on($primary); }
+
+  &:checked {
+    background-color: on($primary);
+    color: $primary;
+  }
+
+  &:disabled { color: on($primary, disabled); }
+}
+
+%sidebar-flat-button {
+  background-color: transparent;
+  color: on($primary);
+
+  &:hover, &:active { color: on($primary); }
+
+  &:checked {
+    color: on($primary);
+    background-color: $overlay-checked;
+  }
+
+  &:disabled { color: on($primary, disabled); }
+}
+
+%sidebar-row {
+  &, label, image { color: on($primary, secondary); }
+
+  &:hover, &:active {
+    &, label, image { color: on($primary); }
+  }
+
+  &:selected {
+    background-color: on($primary, secondary);
+
+    &, label, image { color: $primary; }
+  }
+
+  &:disabled {
+    &, label, image { color: on($primary, secondary-disabled); }
+  }
+}
+
+/****************
+ * Sidebar Pane *
+ ****************/
+
+.sidebar-pane {
+  @extend %sidebar-style;
+
+  button:not(.suggested-action):not(.destructive-action) { @extend %sidebar-button; }
+
+  .navigation-sidebar {
+    > row {
+      @extend %sidebar-row;
+
+      button { @extend %sidebar-flat-button; }
+    }
+
+    > separator {
+      background-color: transparent;
+    }
+  }
+
+  placessidebar {
+    .navigation-sidebar > row {
+      image.sidebar-icon {
+        color: on($primary, secondary);
+
+        &:disabled { color: on($primary, secondary-disabled); }
+      }
+
+      &:selected {
+        image.sidebar-icon { color: $primary; }
+      }
+
+      button.sidebar-button {
+        @extend %sidebar-flat-button
+      }
+
+      &.sidebar-new-bookmark-row {
+        color: on($primary, secondary);
+
+        image.sidebar-icon { color: on($primary, secondary); }
+      }
+    }
+  }
+
+  headerbar {
+    @extend %sidebar-style;
+
+    entry { @extend %sidebar-entry; }
+
+    button:not(.suggested-action):not(.destructive-action) { @extend %sidebar-flat-button; }
+  }
+
+  searchbar {
+    > revealer > box {
+      @extend %sidebar-style;
+      border: none;
+
+      entry { @extend %sidebar-entry; }
+
+      button:not(.suggested-action):not(.destructive-action) { @extend %sidebar-flat-button; }
+    }
+  }
+
+  scrollbar {
+    background-color: transparent;
+
+    > range > trough {
+      > slider {
+        background-color: on($primary, disabled);
+  
+        &:hover { background-color: on($primary, secondary); }
+  
+        &:active { background-color: on($primary); }
+  
+        &:disabled { background-color: on($primary, secondary-disabled); }
+      }
+    }
+
+    &.overlay-indicator {
+      &:not(.dragging):not(.hovering) {
+        > range > trough > slider {
+          border: none;
+        }
+      }
+
+      &.dragging,
+      &.hovering {
+        background-color: transparent;
+      }
+    }
+  }
+
+  scrolledwindow {
+    > overshoot {
+      &.top { @include overshoot(top, $c: on($primary, disabled)); }
+  
+      &.bottom { @include overshoot(bottom, $c: on($primary, disabled)); }
+  
+      &.left { @include overshoot(left, $c: on($primary, disabled)); }
+  
+      &.right { @include overshoot(right, $c: on($primary, disabled)); }
+    }
+  }
+}
+
+/* Transition shadows */
+flap,
+leaflet,
+navigation-view,
+overlay-split-view {
+  @include transition-shadows($border);
+}
 
 /************
  * GtkVideo *
