@@ -3773,7 +3773,6 @@ filechooserbutton:drop(active) {
   border-color: transparent;
 }
 
-
 /***********
  * Sidebar *
  ***********/
@@ -3918,14 +3917,12 @@ separator.sidebar {
  ****************/
 
 placessidebar {
+  background-color: $background;
+
   > viewport.frame { border-style: none; }
 
   .navigation-sidebar > row {
     padding: 0;
-
-    &:selected {
-      font-weight: 500;
-    }
 
     // Using margins/padding directly in the SidebarRow
     // will make the animation of the new bookmark row jump
@@ -3959,6 +3956,16 @@ placessidebar {
       color: $primary;
 
       image.sidebar-icon { color: $primary; }
+    }
+
+    &:selected {
+      font-weight: 500;
+      @extend %selected_items_primary;
+
+      label.sidebar-label,
+      image.sidebar-icon { color: on($primary); }
+
+      button.sidebar-button { @extend %sidebar-flat-button; }
     }
 
     &:drop(active) {
@@ -4095,10 +4102,17 @@ paned {
   background-color: transparent;
   color: on($primary);
 
-  &:hover, &:active { color: on($primary); }
+  &:focus, &:hover, &:active, &:checked { color: on($primary); }
+
+  &:hover {
+    background-color: $overlay-hover;
+  }
+
+  &:active {
+    background-color: $overlay-active;
+  }
 
   &:checked {
-    color: on($primary);
     background-color: $overlay-checked;
   }
 
@@ -4116,6 +4130,8 @@ paned {
     background-color: on($primary, secondary);
 
     &, label, image { color: $primary; }
+
+    &:hover { background-color: on($primary); }
   }
 
   &:disabled {
@@ -4145,6 +4161,8 @@ paned {
   }
 
   placessidebar {
+    @extend %sidebar-style;
+
     .navigation-sidebar > row {
       image.sidebar-icon {
         color: on($primary, secondary);
@@ -4152,12 +4170,18 @@ paned {
         &:disabled { color: on($primary, secondary-disabled); }
       }
 
-      &:selected {
-        image.sidebar-icon { color: $primary; }
+      button.sidebar-button {
+        @extend %sidebar-flat-button;
       }
 
-      button.sidebar-button {
-        @extend %sidebar-flat-button
+      &:selected {
+        background-color: on($primary, secondary);
+
+        &,
+        label.sidebar-label,
+        image.sidebar-icon { color: $primary; }
+
+        button.sidebar-button { @extend %button-flat-simple; }
       }
 
       &.sidebar-new-bookmark-row {
