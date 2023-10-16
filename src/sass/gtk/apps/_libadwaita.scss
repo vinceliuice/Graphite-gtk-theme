@@ -270,9 +270,39 @@ viewswitcherbar actionbar > revealer > box {
 }
 
 // AdwViewSwitcherTitle
-viewswitchertitle viewswitcher {
-  margin-left: $space-size * 2;
-  margin-right: $space-size * 2;
+viewswitchertitle {
+  margin-top: 0;
+  margin-bottom: 0;
+
+  viewswitcher {
+    margin-left: $space-size * 2;
+    margin-right: $space-size * 2;
+
+    &.narrow {
+      margin-top: 0;
+      margin-bottom: 0;
+
+      button.toggle {
+        > stack > box {
+          &.narrow {
+            padding-top: 0;
+            padding-bottom: 0;
+            border-spacing: 0;
+          }
+        }
+      }
+    }
+
+    &.wide {
+      margin-top: $space-size;
+      margin-bottom: $space-size;
+    }
+  }
+
+  windowtitle {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 // AdwIndicatorBin

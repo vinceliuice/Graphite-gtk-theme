@@ -477,20 +477,26 @@ button:checked:not(:backdrop) .calendar-color-image,
 
 // month/year controls
 datechooser {
-  navigator { // add some space between the two controls
+  padding: $space-size;
+
+  navigator {
     margin-right: $space-size;
     margin-left: $space-size;
     margin-bottom: $space-size;
-  }
 
-  navigator {
     label { font-weight: bold; }
 
-    button, button.image-button {
+    button.flat, button.image-button {
       min-height: $medium-size;
       min-width: $medium-size;
       padding: 0;
     }
+  }
+
+  .current-week {
+    background-color: $fill;
+    color: $text;
+    border-radius: $corner-radius;
   }
 
   // day names and week numbers
@@ -500,7 +506,7 @@ datechooser {
   }
 
   // days
-  button.day {
+  button.day, button.day.flat {
     font-size: 10pt;
     font-weight: normal;
     margin: $space-size / 2;
@@ -533,15 +539,72 @@ datechooser {
     &.other-month {
       &:not(:hover),
       &:backdrop {
-        color: gtkalpha(currentColor, 0.1);
+        color: $text-secondary-disabled;
 
-        dot { background-color: gtkalpha(currentColor, 0.1); }
+        dot { background-color: $text-secondary-disabled; }
       }
 
       &:hover:not(:backdrop) {
         color: $text-disabled;
 
         dot { background-color: $text-disabled; }
+      }
+    }
+  }
+
+  @if $sidebar == 'styled' {
+    .sidebar-pane & {
+      button.day, button.day.flat {
+        &:selected, &:selected:focus, &.today:selected {
+          background-color: on($primary);
+          color: $primary;
+          outline: none;
+          box-shadow: none;
+    
+          dot { background-color: $primary; }
+        }
+
+        &.today {
+          color: on($primary);
+          background-color: on($primary, divider);
+
+          dot { background-color: on($primary); }
+        }
+
+        &.other-month {
+          &:not(:hover),
+          &:backdrop {
+            color: on($primary, secondary-disabled);
+    
+            dot { background-color: on($primary, secondary-disabled); }
+          }
+
+          &:hover:not(:backdrop) {
+            color: on($primary, disabled);
+    
+            dot { background-color: on($primary, disabled); }
+          }
+        }
+      }
+
+      .current-week {
+        background-color: on($primary, fill);
+        color: on($primary);
+      }
+
+      .weeknum, .weekday {
+        color: on($primary, disabled);
+      }
+
+      navigator popover {
+        > arrow,
+        > contents {
+          background-color: lighten($primary, 10%);
+
+          @if $rimless == 'false' {
+            border: 2px solid on($primary);
+          }
+        }
       }
     }
   }
@@ -680,6 +743,8 @@ monthpopover > box {
 
 // Agenda View CSS
 agenda-view list {
+  &.background { background-color: transparent; }
+
   > row {
     padding: 2px $space-size * 2;
   }
@@ -697,25 +762,6 @@ label.no-events {
 searchbutton > popover > arrow {
   background: none;
   border: none;
-}
-
-// Month selector
-datechooser {
-  padding: $space-size;
-
-  .current-week {
-    background-color: $fill;
-    color: $text;
-    border-radius: $corner-radius;
-  }
-}
-
-datechooser.view {
-  button.flat.pill, button.circular.day {
-    min-height: 24px;
-    min-width: 24px;
-    padding: $space-size;
-  }
 }
 
 menubutton.sources-button {

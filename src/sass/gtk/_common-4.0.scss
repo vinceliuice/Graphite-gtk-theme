@@ -4091,11 +4091,31 @@ paned {
   background-color: on($primary, fill);
   color: on($primary);
 
-  &:hover, &:active { color: on($primary); }
+  &.flat {
+    background-color: transparent;
+  }
 
-  &:checked {
+  &, &.flat {
+    &:focus { @include button(flat-focus); }
+
+    &:hover { @include button(flat-hover); }
+
+    &:active { @include button(flat-active); }
+
+    &:disabled { @include button(flat-disabled); }
+
+    &:checked, &:checked:hover { @include button(flat-checked); }
+
+    &:checked:disabled { @include button(flat-checked-disabled); }
+  }
+
+  &:hover, &:active, &:focus { color: on($primary); }
+
+  &:checked, &:checked:hover {
     background-color: on($primary);
     color: $primary;
+
+    &:disabled { color: rgba($primary, 0.5); }
   }
 
   &:disabled { color: on($primary, disabled); }
@@ -4192,6 +4212,8 @@ paned {
     @extend %sidebar-style;
 
     button:not(.suggested-action):not(.destructive-action) { @extend %sidebar-button; }
+
+    .dim-label { color: on($primary, disabled); }
   
     .navigation-sidebar {
       > row {
