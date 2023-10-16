@@ -13,11 +13,11 @@
   }
 
   .primary-toolbar {
+    border: none;
+
     @if $sidebar == 'styled' {
-      border: none;
       background-color: transparent;
     } @else {
-      border: 1px solid $border;
       background-color: $titlebar;
     }
 
@@ -70,6 +70,8 @@
     padding-top: $space-size / 2;
     padding-bottom: $space-size / 2;
   }
+
+  .nemo-places-sidebar { border: none; }
 
   // Inactive F3 pane shading
   .nemo-inactive-pane .view:not(:selected) { background-color: $base-alt; }

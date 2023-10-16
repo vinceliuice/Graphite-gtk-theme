@@ -3,25 +3,17 @@
 // Nautilus
 //
 .nautilus-window {
-  background-color: $titlebar;
+  @if $sidebar == 'styled' {
+    background-color: $titlebar;
 
-  &:backdrop {
-    background-color: $titlebar-backdrop;
-  }
-
-  headerbar { // reset
-    @if $sidebar == 'styled' {
-      box-shadow: none;
-    } @else {
-      box-shadow: inset 0 -1px $border;
+    &:backdrop {
+      background-color: $titlebar-backdrop;
     }
-  }
 
-  flap.unfolded > placessidebar {
-    background-color: transparent;
-    color: $titlebar-text-secondary;
+    flap.unfolded > placessidebar {
+      background-color: transparent;
+      color: $titlebar-text-secondary;
 
-    @if $sidebar == 'styled' {
       @if $topbar == 'dark' and $variant == 'light' {
         margin: 0;
         background-color: transparent;
@@ -94,44 +86,66 @@
         }
       }
     }
-  }
 
-  @if $variant == 'light' and $topbar == 'dark' {
-    tabbar {
-      &:not(.inline) {
-        .box {
-          background-color: $titlebar-fill;
-        }
-
-        &:backdrop .box {
-          background-color: $titlebar-fill;
-        }
+    @if $variant == 'light' and $topbar == 'dark' {
+      .sidebar-pane {
+        background-color: $titlebar;
+        border: none;
       }
 
-      scrolledwindow:not(.pinned) > tabbox {
-        tab, tab > button.flat {
-          color: $titlebar-text-secondary;
-
-          &:hover {
-            color: $titlebar-text;
+      tabbar {
+        &:not(.inline) {
+          .box {
             background-color: $titlebar-fill;
           }
-
-          &:active, &:checked, &:selected {
-            color: $titlebar-text;
-            background-color: $titlebar-divider;
+  
+          &:backdrop .box {
+            background-color: $titlebar-fill;
           }
-
-          &:disabled {
-            color: $titlebar-text-secondary-disabled;
+        }
+  
+        scrolledwindow:not(.pinned) > tabbox {
+          tab, tab > button.flat {
+            color: $titlebar-text-secondary;
+  
+            &:hover {
+              color: $titlebar-text;
+              background-color: $titlebar-fill;
+            }
+  
+            &:active, &:checked, &:selected {
+              color: $titlebar-text;
+              background-color: $titlebar-divider;
+            }
+  
+            &:disabled {
+              color: $titlebar-text-secondary-disabled;
+            }
           }
         }
       }
     }
   }
 
-  .nautilus-grid-view.view {
+  &:not(.view) headerbar {
+    @if $sidebar == 'normal' {
+      border-bottom: 1px solid $border;
+    }
+  }
+
+  .nautilus-grid-view {
     &, gridview.view {
+      background-color: $base;
+      border-radius: $window-radius - $space-size;
+    }
+
+    @if $variant == 'light' and $topbar == 'dark' {
+      margin: 0 $space-size $space-size 0;
+    }
+  }
+
+  .nautilus-list-view {
+    &, columnview.view {
       background-color: $base;
       border-radius: $window-radius - $space-size;
     }
@@ -191,10 +205,14 @@
 }
 
 #NautilusQueryEditor { // search entry
-  > menubutton > button {
-    min-width: 16px;
-    min-height: 16px;
+  > menubutton {
     margin: 0;
+
+    > button {
+      min-width: 16px;
+      min-height: 16px;
+      margin: 4px 0;
+    }
   }
 
   > text { margin: 0; }
