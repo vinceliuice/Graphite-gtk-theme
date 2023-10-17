@@ -152,6 +152,11 @@ $background:                            if($variant == 'light', background(a), b
 $surface:                               if($variant == 'light', background(a), background(h));
 $base:                                  if($variant == 'light', background(a), background(g));
 $base-alt:                              if($variant == 'light', background(b), background(f));
+$sidebg:                                if($variant == 'light', background(b), background(f));
+
+@if $sidebar == 'styled' {
+  $sidebg:                              if($variant == 'light', background(h), background(d));
+}
 
 $login-background:                      if($variant == 'light', background(d), background(g)); // For gnome-shell
 
@@ -185,6 +190,7 @@ $destructive:                           $error;
 
 $frame:                                 if($variant == 'light', rgba(black, 0.12), rgba(black, 0.20));
 $border:                                if($variant == 'light', rgba(black, 0.12), rgba(white, 0.12));
+$side-border:                           if($variant == 'light', rgba(black, 0.1), rgba(white, 0.1));
 $solid-border:                          if($variant == 'light', darken($background, 12%), lighten($background, 12%));
 $border-alt:                            rgba(black, 0.16); // darker border color for Chrome and Firefox
 

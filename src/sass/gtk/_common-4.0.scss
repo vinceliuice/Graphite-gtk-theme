@@ -3703,9 +3703,12 @@ window.dialog.message { // Message Dialog styling
   .titlebar {
     min-height: $small-size;
     border-style: none;
-    box-shadow: inset 0 1px highlight($surface);
     background-color: $surface;
     color: $text;
+
+    @if $rimless == 'true' {
+      box-shadow: inset 0 1px highlight($surface);
+    }
 
     &:backdrop {
       background-color: $surface;
@@ -3732,12 +3735,6 @@ window.dialog.message { // Message Dialog styling
         &.destructive-action:not(:disabled) { color: $destructive; }
       }
     }
-  }
-}
-
-window.background.csd.dialog {
-  > headerbar.titlebar {
-    box-shadow: inset 0 -1px $border;
   }
 }
 
@@ -4064,35 +4061,35 @@ paned {
 }
 
 %sidebar-style {
-  background-color: $primary;
-  color: on($primary);
+  background-color: $sidebg;
+  color: on($sidebg);
 }
 
 %sidebar-entry {
-  background-color: on($primary, fill);
-  color: on($primary);
+  background-color: on($sidebg, fill);
+  color: on($sidebg);
 
   &:focus-within {
-    color: on($primary);
-    box-shadow: inset 0 0 0 2px on($primary);
+    color: on($sidebg);
+    box-shadow: inset 0 0 0 2px on($sidebg);
   }
 
-  &:drop(active) { color: on($primary); }
+  &:drop(active) { color: on($sidebg); }
 
-  &:disabled { color: on($primary, disabled); }
+  &:disabled { color: on($sidebg, disabled); }
 
   image { // icons inside the entry
-    color: on($primary, secondary);
+    color: on($sidebg, secondary);
 
-    &:hover, &:active { color: on($primary); }
+    &:hover, &:active { color: on($sidebg); }
 
-    &:disabled { color: on($primary, secondary-disabled); }
+    &:disabled { color: on($sidebg, secondary-disabled); }
   }
 }
 
 %sidebar-button {
-  background-color: on($primary, fill);
-  color: on($primary);
+  background-color: on($sidebg, fill);
+  color: on($sidebg);
 
   &.flat {
     background-color: transparent;
@@ -4112,23 +4109,23 @@ paned {
     &:checked:disabled { @include button(flat-checked-disabled); }
   }
 
-  &:hover, &:active, &:focus { color: on($primary); }
+  &:hover, &:active, &:focus { color: on($sidebg); }
 
   &:checked, &:checked:hover {
-    background-color: on($primary);
-    color: $primary;
+    background-color: on($sidebg);
+    color: $sidebg;
 
-    &:disabled { color: rgba($primary, 0.5); }
+    &:disabled { color: rgba($sidebg, 0.5); }
   }
 
-  &:disabled { color: on($primary, disabled); }
+  &:disabled { color: on($sidebg, disabled); }
 }
 
 %sidebar-flat-button {
   background-color: transparent;
-  color: on($primary);
+  color: on($sidebg);
 
-  &:focus, &:hover, &:active, &:checked { color: on($primary); }
+  &:focus, &:hover, &:active, &:checked { color: on($sidebg); }
 
   &:hover {
     background-color: $overlay-hover;
@@ -4142,26 +4139,26 @@ paned {
     background-color: $overlay-checked;
   }
 
-  &:disabled { color: on($primary, disabled); }
+  &:disabled { color: on($sidebg, disabled); }
 }
 
 %sidebar-row {
-  &, label, image { color: on($primary, secondary); }
+  &, label, image { color: on($sidebg, secondary); }
 
   &:hover, &:active {
-    &, label, image { color: on($primary); }
+    &, label, image { color: on($sidebg); }
   }
 
   &:selected {
-    background-color: on($primary, secondary);
+    background-color: on($sidebg, secondary);
 
-    &, label, image { color: $primary; }
+    &, label, image { color: $sidebg; }
 
-    &:hover { background-color: on($primary); }
+    &:hover { background-color: on($sidebg); }
   }
 
   &:disabled {
-    &, label, image { color: on($primary, secondary-disabled); }
+    &, label, image { color: on($sidebg, secondary-disabled); }
   }
 }
 
@@ -4170,13 +4167,27 @@ paned {
  ****************/
 
 .sidebar-pane {
-  headerbar,
+  background-color: $sidebg;
+  color: on($sidebg);
+
   placessidebar,
   .navigation-sidebar,
   searchbar > revealer > box {
     background-color: transparent;
     box-shadow: none;
     border: none;
+  }
+
+  headerbar {
+    @if $rimless == 'true' {
+      background-color: transparent;
+      border: none;
+      border-top-right-radius: 0;
+    } @else {
+      background-color: transparent;
+      box-shadow: none;
+      border: none;
+    }
   }
 
   .navigation-sidebar {
@@ -4212,12 +4223,10 @@ paned {
   }
 
   @if $sidebar == 'styled' {
-    @extend %sidebar-style;
-
     button:not(.suggested-action):not(.destructive-action) { @extend %sidebar-button; }
 
-    .dim-label { color: on($primary, disabled); }
-  
+    .dim-label { color: on($sidebg, disabled); }
+
     .navigation-sidebar {
       > row {
         @extend %sidebar-row;
@@ -4230,34 +4239,36 @@ paned {
       @extend %sidebar-style;
   
       .navigation-sidebar > row {
+        &,
+        label.sidebar-label,
         image.sidebar-icon {
-          color: on($primary, secondary);
-  
-          &:disabled { color: on($primary, secondary-disabled); }
+          color: on($sidebg, secondary);
+
+          &:disabled { color: on($sidebg, secondary-disabled); }
         }
-  
+
         button.sidebar-button {
           @extend %sidebar-flat-button;
         }
-  
+
         &:selected {
-          background-color: on($primary, secondary);
-  
+          background-color: on($sidebg, secondary);
+
           &,
           label.sidebar-label,
-          image.sidebar-icon { color: $primary; }
-  
+          image.sidebar-icon { color: $sidebg; }
+
           button.sidebar-button { @extend %button-flat-simple; }
         }
-  
+
         &.sidebar-new-bookmark-row {
-          color: on($primary, secondary);
-  
-          image.sidebar-icon { color: on($primary, secondary); }
+          color: on($sidebg, secondary);
+
+          image.sidebar-icon { color: on($sidebg, secondary); }
         }
       }
     }
-  
+
     headerbar {
       @extend %sidebar-style;
       box-shadow: none;
@@ -4283,13 +4294,13 @@ paned {
   
       > range > trough {
         > slider {
-          background-color: on($primary, disabled);
+          background-color: on($sidebg, disabled);
     
-          &:hover { background-color: on($primary, secondary); }
+          &:hover { background-color: on($sidebg, secondary); }
     
-          &:active { background-color: on($primary); }
+          &:active { background-color: on($sidebg); }
     
-          &:disabled { background-color: on($primary, secondary-disabled); }
+          &:disabled { background-color: on($sidebg, secondary-disabled); }
         }
       }
   
@@ -4309,14 +4320,28 @@ paned {
   
     scrolledwindow {
       > overshoot {
-        &.top { @include overshoot(top, $c: on($primary, disabled)); }
+        &.top { @include overshoot(top, $c: on($sidebg, disabled)); }
     
-        &.bottom { @include overshoot(bottom, $c: on($primary, disabled)); }
+        &.bottom { @include overshoot(bottom, $c: on($sidebg, disabled)); }
     
-        &.left { @include overshoot(left, $c: on($primary, disabled)); }
+        &.left { @include overshoot(left, $c: on($sidebg, disabled)); }
     
-        &.right { @include overshoot(right, $c: on($primary, disabled)); }
+        &.right { @include overshoot(right, $c: on($sidebg, disabled)); }
       }
+    }
+  }
+}
+
+.content-pane {
+  headerbar {
+    @if $rimless == 'true' {
+      background-color: transparent;
+      border: none;
+      border-top-left-radius: 0;
+    } @else {
+      background-color: transparent;
+      box-shadow: none;
+      border: none;
     }
   }
 }
@@ -4369,7 +4394,12 @@ paned {
       }
     }
   }
+}
 
+.sidebar-pane,
+.content-pane,
+.content-pane .sidebar-pane,
+.sidebar-pane .content-pane {
   flap,
   leaflet,
   navigation-view,
@@ -4387,21 +4417,21 @@ paned {
 
   scrolledwindow {
     &.undershoot-top {
-      @include undershoot(top, $border);
+      @include undershoot(top);
     }
 
     &.undershoot-bottom {
-      @include undershoot(bottom, $border)
+      @include undershoot(bottom)
     }
 
     &.undershoot-start {
-      &:dir(ltr) { @include undershoot(left, $border); }
-      &:dir(rtl) { @include undershoot(right, $border); }
+      &:dir(ltr) { @include undershoot(left); }
+      &:dir(rtl) { @include undershoot(right); }
     }
 
     &.undershoot-end {
-      &:dir(ltr) { @include undershoot(right, $border); }
-      &:dir(rtl) { @include undershoot(left, $border); }
+      &:dir(ltr) { @include undershoot(right); }
+      &:dir(rtl) { @include undershoot(left); }
     }
   }
 }

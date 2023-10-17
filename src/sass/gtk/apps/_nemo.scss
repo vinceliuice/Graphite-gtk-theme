@@ -201,6 +201,36 @@
       background-color: transparent;
     }
   }
+
+  notebook > stack > box > overlay
+
+  // Floating status bar
+  .floating-bar {
+    min-height: 32px;
+    padding: $space-size / 2;
+    margin: 0;
+    border-style: none;
+    border-radius: 0;
+    background-color: $primary;
+    color: on($primary);
+
+    &.bottom.left {
+      border-top-right-radius: $corner-radius;
+      border-bottom-right-radius: $corner-radius;
+    }
+
+    &.bottom.right {
+      border-top-left-radius: $corner-radius;
+      border-bottom-left-radius: $corner-radius;
+    }
+
+    button {
+      margin: (32px - $small-size) / 2;
+      color: on($primary);
+
+      @extend %small-button;
+    }
+  }
 }
 
 .nemo-desktop.nemo-canvas-item {
