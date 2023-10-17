@@ -241,6 +241,17 @@
 
     &#panelActivities {
       -natural-hpadding: $base_padding * 3;
+
+      StBoxLayout {
+        spacing: $base_padding;
+      }
+
+      .workspace-dot {
+        border-radius: $circular_radius;
+        min-width: 8px;
+        min-height: 8px;
+        background-color: $panel-text;
+      }
     }
   }
 
@@ -490,6 +501,10 @@
 
     .panel-button#panelActivities {
       color: on(dark, secondary);
+
+      .workspace-dot {
+        background-color: on(dark, secondary);
+      }
 
       &:hover {
         color: on(dark);
