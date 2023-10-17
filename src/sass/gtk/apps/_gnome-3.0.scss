@@ -870,14 +870,11 @@ hdyleaflet, leaflet, box.horizontal > stack.background {
 
   frame.view {
     @extend %circular_list;
+    border: none;
 
     list {
       background: none;
-
-      > separator {
-        background: none;
-        min-height: 0;
-      }
+      border: none;
 
       row.activatable { @extend %circular_row; }
     }
