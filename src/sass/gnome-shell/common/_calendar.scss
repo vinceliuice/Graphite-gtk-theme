@@ -116,6 +116,7 @@
   margin: 0 !important;
   text-shadow: none;
   border-radius: $menu_radius;
+  color: $text-secondary;
 
   // month
   .calendar-month-label {
@@ -177,6 +178,13 @@
       outline: none !important;
     }
 
+    &.calendar-weekday {}
+
+    &.calendar-weekend {
+      color: $text-disabled !important;
+      // font-weight: normal;
+    }
+
     &.calendar-day-heading {  //day of week heading
       margin-top: 1em;
       color: $text-disabled;
@@ -197,8 +205,8 @@
   }
 
   .calendar-nonwork-day {
-    color: $text-disabled;
-    font-weight: bold;
+    color: $text;
+    // font-weight: normal;
   }
 
   // Today
@@ -239,9 +247,14 @@
     }
   }
 
+  .calendar-other-month,
   .calendar-other-month-day {
-    color: $text-secondary-disabled;
-    opacity: 0.5;
+    color: $text-secondary-disabled !important;
+    font-weight: normal;
+
+    &.calendar-weekend {
+      color: $text-secondary-disabled !important;
+    }
   }
 
   .calendar-week-number {
