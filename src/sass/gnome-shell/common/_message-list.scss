@@ -30,8 +30,8 @@
   padding-bottom: $base_padding;
 
   // to account for scrollbar
-  &:ltr { margin-right: $base_margin; }
-  &:rtl { margin-left: $base_margin; }
+  &:ltr { margin-right: 0; }
+  &:rtl { margin-left: 0; }
 }
 
 .message-list-section,
@@ -51,7 +51,7 @@
 // message bubbles
 .message {
   padding: 0;
-  margin: $base_spacing / 2 0;
+  margin: $base_spacing / 2;
   border-radius: $window_radius;
 
   @if $colorful == 'true' {
@@ -170,7 +170,7 @@
 }
 
 .message-media-control {
-  margin: $base_padding * 3.5 $base_padding;
+  margin: $base_padding * 2.5 + 2px $base_padding;
   padding: $base_padding * 2;
   border-radius: $circular_radius;
 
@@ -212,7 +212,7 @@
   margin: 0;
 
   &.fallback {
-    icon-size: $base_icon_size * 2 !important;
+    icon-size: $base_icon_size * 1.5 !important;
     padding: $base_padding;
     border: none;
     border-radius: $base_radius;

@@ -3400,10 +3400,13 @@ list {
   background-color: $base;
   color: $text-secondary;
 
-  row { padding: 2px; color: $text-secondary; }
+  row {
+    padding: 2px $space-size;
+    color: $text-secondary;
+  }
 
   > row.expander { padding: 0px; }
-  > row.expander .row-header { padding: 2px; }
+  > row.expander .row-header { padding: 2px $space-size; }
 
   &.content:not(.conversation-listbox) {
     @extend %circular_list;

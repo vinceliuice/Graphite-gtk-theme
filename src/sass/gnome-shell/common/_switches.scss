@@ -15,17 +15,20 @@
     }
   }
 
-  .popup-sub-menu & {
-    @if $variant == 'dark' { background-image: url("assets/toggle-off.svg"); }
-    @else { background-image: url("assets/toggle-off-dark.svg"); }
-
-    &:checked {
-      @if $theme == 'default' {
-        @if $variant == 'dark' { background-image: url("assets/toggle-on.svg"); }
-        @else { background-image: url("assets/toggle-on-dark.svg"); }
-      }
-      @else {
-        background-image: url("assets/toggle-on.svg");
+  @if $sidebar == 'styled' {
+    .quick-toggle-menu &,
+    .popup-sub-menu & {
+      @if $variant == 'dark' { background-image: url("assets/toggle-off.svg"); }
+      @else { background-image: url("assets/toggle-off-dark.svg"); }
+  
+      &:checked {
+        @if $theme == 'default' {
+          @if $variant == 'dark' { background-image: url("assets/toggle-on.svg"); }
+          @else { background-image: url("assets/toggle-on-dark.svg"); }
+        }
+        @else {
+          background-image: url("assets/toggle-on.svg");
+        }
       }
     }
   }
