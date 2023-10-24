@@ -3518,15 +3518,11 @@ row {
   &:selected {
     @extend %selected_items;
 
-    image,
-    label { color: $text; }
-
     button image,
     button label { color: inherit; }
 
     &:disabled {
-      image,
-      label { color: $text-disabled; }
+      color: $text-disabled;
     }
   }
 }
@@ -3826,12 +3822,13 @@ stacksidebar {
   + separator.vertical,
   separator.horizontal { @extend %hide_separators; }
 
-  leaflet.unfolded > box > &.sidebar {
+  leaflet.unfolded > box > &.sidebar,
+  .sidebar-pane &.sidebar {
     border: none;
   }
 
   list {
-    padding: $space-size - 2px 0;
+    padding: $space-size;
     // background-color: $base; // This should not be necessary, but the parent stacksidebar ignores background-color.
   }
 
@@ -3839,17 +3836,15 @@ stacksidebar {
     min-height: $small-size;
     padding: $space-size $space-size * 1.5;
     border-radius: $corner-radius;
-    margin: 2px $space-size;
+    margin: 0;
+
+    + row {
+      margin-top: $space-size / 2;
+    }
 
     &:selected {
       @extend %selected_items_primary;
       font-weight: 500;
-    }
-
-    > label {
-      padding-left: $space-size;
-      padding-right: $space-size;
-      color: inherit;
     }
 
     &.needs-attention > label { @extend %needs-attention; }
@@ -3872,7 +3867,7 @@ separator.sidebar {
  **********************/
 
 .navigation-sidebar {
-  padding: $space-size - 2px 0; //only vertical padding. horizontal row size would clip
+  padding: $space-size; //only vertical padding. horizontal row size would clip
   border-right: none;
 
   &, &.view {
@@ -3884,7 +3879,9 @@ separator.sidebar {
     min-height: $small-size;
     padding: $space-size $space-size * 1.5;
     border-radius: $corner-radius;
-    margin: 2px $space-size;
+    margin: 0;
+
+    + row { margin-top: $space-size / 2; }
 
     &:hover,
     &:focus-visible:focus-within {
@@ -3893,8 +3890,6 @@ separator.sidebar {
 
     &:selected {
       @extend %selected_items_primary;
-
-      label, image { color: on($primary); }
 
       &:hover {
         background-color: lighten($primary, 5%);
@@ -3933,9 +3928,7 @@ placessidebar {
 
     image.sidebar-icon {
       transition: color $duration $ease-out;
-      color: $text-secondary;
-    
-      &:disabled { color: $text-secondary-disabled; }
+      color: inherit;
 
       &:dir(ltr) { padding-right: 8px; }
       &:dir(rtl) { padding-left: 8px; }
@@ -3957,16 +3950,11 @@ placessidebar {
 
     &.sidebar-new-bookmark-row {
       color: $primary;
-
-      image.sidebar-icon { color: $primary; }
     }
 
     &:selected {
       font-weight: 500;
       @extend %selected_items_primary;
-
-      label.sidebar-label,
-      image.sidebar-icon { color: on($primary); }
 
       button.sidebar-button { @extend %sidebar-flat-button; }
     }
@@ -4143,22 +4131,21 @@ paned {
 }
 
 %sidebar-row {
-  &, label, image { color: on($sidebg, secondary); }
+  color: on($sidebg, secondary);
 
   &:hover, &:active {
-    &, label, image { color: on($sidebg); }
+    color: on($sidebg);
   }
 
   &:selected {
     background-color: on($sidebg, secondary);
-
-    &, label, image { color: $sidebg; }
+    color: $sidebg;
 
     &:hover { background-color: on($sidebg); }
   }
 
   &:disabled {
-    &, label, image { color: on($sidebg, secondary-disabled); }
+    color: on($sidebg, secondary-disabled);
   }
 }
 
@@ -4167,9 +4154,16 @@ paned {
  ****************/
 
 .sidebar-pane {
-  background-color: $sidebg;
-  color: on($sidebg);
+  @if $variant == 'light' and $topbar == 'dark' {
+    background-color: $titlebar;
+    color: $titlebar-text;
+  } @else {
+    background-color: if($sidebar == 'normal', $base-alt, $background);
+    color: $text;
+  }
 
+  .sidebar,
+  .toolbar,
   placessidebar,
   .navigation-sidebar,
   searchbar > revealer > box {
@@ -4187,12 +4181,6 @@ paned {
       background-color: transparent;
       box-shadow: none;
       border: none;
-    }
-  }
-
-  .navigation-sidebar {
-    > separator {
-      background-color: transparent;
     }
   }
 
@@ -4223,21 +4211,77 @@ paned {
   }
 
   @if $sidebar == 'styled' {
-    button:not(.suggested-action):not(.destructive-action) { @extend %sidebar-button; }
+    toolbarview > scrolledwindow,
+    toolbarview > placessidebar > scrolledwindow,
+    toolbarview > stacksidebar.sidebar > scrolledwindow {
+      @if $topbar == 'dark' and $variant == 'light' {
+        margin: 0;
+        background-color: transparent;
+        color: $titlebar-text-secondary;
+      } @else {
+        background-color: $sidebg;
+        color: on($sidebg);
+        margin: 0 0 $menu-radius 0;
+        border-radius: 0 $menu-radius  $menu-radius 0;
+      }
 
-    .dim-label { color: on($sidebg, disabled); }
+      .navigation-sidebar {
+        background: none;
 
-    .navigation-sidebar {
-      > row {
-        @extend %sidebar-row;
-  
-        button { @extend %sidebar-flat-button; }
+        > row {
+          @extend %sidebar-row;
+    
+          button { @extend %sidebar-flat-button; }
+        }
+
+        .dim-label { color: on($sidebg, disabled); }
+
+        > separator { background: none; }
+      }
+
+      > overshoot {
+        &.top { @include overshoot(top, $c: on($sidebg, disabled)); }
+    
+        &.bottom { @include overshoot(bottom, $c: on($sidebg, disabled)); }
+    
+        &.left { @include overshoot(left, $c: on($sidebg, disabled)); }
+    
+        &.right { @include overshoot(right, $c: on($sidebg, disabled)); }
+      }
+
+      scrollbar {
+        background-color: transparent;
+
+        > range > trough {
+          background-color: on($sidebg, divider);
+
+          > slider {
+            background-color: on($sidebg, disabled);
+      
+            &:hover { background-color: on($sidebg, secondary); }
+      
+            &:active { background-color: on($sidebg); }
+      
+            &:disabled { background-color: on($sidebg, secondary-disabled); }
+          }
+        }
+
+        &.overlay-indicator {
+          &:not(.dragging):not(.hovering) {
+            > range > trough > slider {
+              border: none;
+            }
+          }
+
+          &.dragging,
+          &.hovering {
+            background-color: transparent;
+          }
+        }
       }
     }
-  
+
     placessidebar {
-      @extend %sidebar-style;
-  
       .navigation-sidebar > row {
         &,
         label.sidebar-label,
@@ -4268,71 +4312,42 @@ paned {
         }
       }
     }
+  }
 
-    headerbar {
-      @extend %sidebar-style;
-      box-shadow: none;
-  
-      entry { @extend %sidebar-entry; }
-  
-      button:not(.suggested-action):not(.destructive-action) { @extend %sidebar-flat-button; }
-    }
-  
-    searchbar {
-      > revealer > box {
-        @extend %sidebar-style;
-        border: none;
-  
-        entry { @extend %sidebar-entry; }
-  
-        button:not(.suggested-action):not(.destructive-action) { @extend %sidebar-flat-button; }
-      }
-    }
-  
-    scrollbar {
-      background-color: transparent;
-  
-      > range > trough {
-        > slider {
-          background-color: on($sidebg, disabled);
-    
-          &:hover { background-color: on($sidebg, secondary); }
-    
-          &:active { background-color: on($sidebg); }
-    
-          &:disabled { background-color: on($sidebg, secondary-disabled); }
-        }
-      }
-  
-      &.overlay-indicator {
-        &:not(.dragging):not(.hovering) {
-          > range > trough > slider {
-            border: none;
-          }
-        }
-  
-        &.dragging,
-        &.hovering {
-          background-color: transparent;
-        }
-      }
-    }
-  
-    scrolledwindow {
-      > overshoot {
-        &.top { @include overshoot(top, $c: on($sidebg, disabled)); }
-    
-        &.bottom { @include overshoot(bottom, $c: on($sidebg, disabled)); }
-    
-        &.left { @include overshoot(left, $c: on($sidebg, disabled)); }
-    
-        &.right { @include overshoot(right, $c: on($sidebg, disabled)); }
-      }
+  @if $variant == 'light' and $topbar == 'dark' {
+    entry {
+      @extend %sidebar-entry;
     }
   }
 }
 
 .content-pane {
+  @if $variant == 'light' and $topbar == 'dark' {
+    window:not(.nautilus-window) & headerbar {
+      color: $text-secondary;
+
+      &:backdrop { color: $text-secondary-disabled; }
+
+      button:not(.suggested-action):not(.destructive-action) {
+        @include button(flat-normal);
+
+        &:focus { @include button(focus); }
+
+        &:hover { @include button(hover); }
+
+        &:active { @include button(active); }
+
+        &:disabled { @include button(disabled); }
+
+        &:checked { @include button(checked); }
+
+        &:checked:hover { @include button(checked-hover); }
+
+        &:checked:disabled { @include button(checked-disabled); }
+      }
+    }
+  }
+
   headerbar {
     @if $rimless == 'true' {
       background-color: transparent;
@@ -4394,6 +4409,64 @@ paned {
       }
     }
   }
+
+  @if $sidebar == 'styled' {
+    toolbarview.undershoot-top scrolledwindow {
+      @include undershoot(top, $c: $side-frame, $style: 'round');
+    }
+  
+    toolbarview.undershoot-bottom scrolledwindow {
+      @include undershoot(bottom, $c: $side-frame, $style: 'round');
+    }
+  
+    scrolledwindow {
+      &.undershoot-top {
+        @include undershoot(top, $c: $side-frame, $style: 'round');
+      }
+  
+      &.undershoot-bottom {
+        @include undershoot(bottom, $c: $side-frame, $style: 'round');
+      }
+  
+      &.undershoot-start {
+        &:dir(ltr) { @include undershoot(left, $c: $side-frame, $style: 'round'); }
+        &:dir(rtl) { @include undershoot(right, $c: $side-frame, $style: 'round'); }
+      }
+  
+      &.undershoot-end {
+        &:dir(ltr) { @include undershoot(right, $c: $side-frame, $style: 'round'); }
+        &:dir(rtl) { @include undershoot(left, $c: $side-frame, $style: 'round'); }
+      }
+    }
+  } @else {
+    toolbarview.undershoot-top scrolledwindow {
+      @include undershoot(top);
+    }
+  
+    toolbarview.undershoot-bottom scrolledwindow {
+      @include undershoot(bottom);
+    }
+  
+    scrolledwindow {
+      &.undershoot-top {
+        @include undershoot(top);
+      }
+  
+      &.undershoot-bottom {
+        @include undershoot(bottom)
+      }
+  
+      &.undershoot-start {
+        &:dir(ltr) { @include undershoot(left); }
+        &:dir(rtl) { @include undershoot(right); }
+      }
+  
+      &.undershoot-end {
+        &:dir(ltr) { @include undershoot(right); }
+        &:dir(rtl) { @include undershoot(left); }
+      }
+    }
+  }
 }
 
 .sidebar-pane,
@@ -4406,7 +4479,9 @@ paned {
   overlay-split-view {
     @include transition-shadows($frame);
   }
+}
 
+.content-pane {
   toolbarview.undershoot-top scrolledwindow {
     @include undershoot(top);
   }

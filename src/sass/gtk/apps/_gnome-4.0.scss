@@ -4,16 +4,15 @@
 //
 .nautilus-window {
   @if $sidebar == 'styled' {
-    background-color: $titlebar;
+    &.background {
+      background-color: $titlebar;
 
-    &:backdrop {
-      background-color: $titlebar-backdrop;
+      &:backdrop {
+        background-color: $titlebar-backdrop;
+      }
     }
 
     flap.unfolded > placessidebar {
-      background-color: transparent;
-      color: $titlebar-text-secondary;
-
       @if $topbar == 'dark' and $variant == 'light' {
         margin: 0;
         background-color: transparent;
@@ -551,63 +550,6 @@ datechooser {
       }
     }
   }
-
-  @if $sidebar == 'styled' {
-    .sidebar-pane & {
-      button.day, button.day.flat {
-        &:selected, &:selected:focus, &.today:selected {
-          background-color: on($primary);
-          color: $primary;
-          outline: none;
-          box-shadow: none;
-    
-          dot { background-color: $primary; }
-        }
-
-        &.today {
-          color: on($primary);
-          background-color: on($primary, divider);
-
-          dot { background-color: on($primary); }
-        }
-
-        &.other-month {
-          &:not(:hover),
-          &:backdrop {
-            color: on($primary, secondary-disabled);
-    
-            dot { background-color: on($primary, secondary-disabled); }
-          }
-
-          &:hover:not(:backdrop) {
-            color: on($primary, disabled);
-    
-            dot { background-color: on($primary, disabled); }
-          }
-        }
-      }
-
-      .current-week {
-        background-color: on($primary, fill);
-        color: on($primary);
-      }
-
-      .weeknum, .weekday {
-        color: on($primary, disabled);
-      }
-
-      navigator popover {
-        > arrow,
-        > contents {
-          background-color: lighten($primary, 10%);
-
-          @if $rimless == 'false' {
-            border: 2px solid on($primary);
-          }
-        }
-      }
-    }
-  }
 }
 
 // Week View CSS
@@ -784,6 +726,24 @@ menubutton.sources-button {
 
 menubutton stack > box {
   border-spacing: $space-size;
+}
+
+@if $sidebar == 'styled' {
+  window:not(.nautilus-window) toastoverlay .sidebar-pane {
+    background-color: $base-alt;
+
+    &:dir(ltr), &.end:dir(rtl) {
+      &, banner > revealer > widget {
+        box-shadow: inset -1px 0 $border;
+      }
+    }
+
+    &:dir(rtl), &.end:dir(ltr) {
+      &, banner > revealer > widget {
+        box-shadow: inset 1px 0 $border;
+      }
+    }
+  }
 }
 
 //

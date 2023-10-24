@@ -188,7 +188,8 @@ $success:                               if($variant == 'light', #0F9D58, #81C995
 $suggested:                             $primary;
 $destructive:                           $error;
 
-$frame:                                 if($variant == 'light', rgba(black, 0.12), rgba(black, 0.20));
+$frame:                                 if($variant == 'light', rgba(black, 0.12), rgba(black, 0.25));
+$side-frame:                            if($variant == 'light', rgba(black, 0.25), rgba(black, 0.12));
 $border:                                if($variant == 'light', rgba(black, 0.12), rgba(white, 0.12));
 $side-border:                           if($variant == 'light', rgba(black, 0.1), rgba(white, 0.1));
 $solid-border:                          if($variant == 'light', darken($background, 12%), lighten($background, 12%));
