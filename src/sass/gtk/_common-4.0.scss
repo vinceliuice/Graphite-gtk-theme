@@ -4345,6 +4345,31 @@ paned {
 
         &:checked:disabled { @include button(checked-disabled); }
       }
+
+      entry {
+        color: $text-secondary;
+        background-color: $fill;
+
+        &:focus-within {
+          color: $text;
+          box-shadow: inset 0 0 0 2px $primary;
+
+          image { color: $text; }
+        }
+
+        &:disabled {
+          background-color: $fill;
+          color: $text-disabled;
+        }
+
+        image {
+          color: $text-secondary;
+      
+          &:hover, &:active { color: $text; }
+      
+          &:disabled { color: $text-disabled; }
+        }
+      }
     }
   }
 
