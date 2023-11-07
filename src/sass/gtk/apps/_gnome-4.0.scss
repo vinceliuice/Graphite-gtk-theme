@@ -28,7 +28,6 @@
         > list.navigation-sidebar {
           background: none;
           padding: $space-size;
-          padding-right: $space-size + 2px;
 
           @if $topbar == 'dark' and $variant == 'light' {
             padding-right: $space-size;
@@ -139,7 +138,7 @@
     }
 
     @if $variant == 'light' and $topbar == 'dark' {
-      margin: 0 $space-size $space-size 0;
+      margin: 0 $space-size $space-size $space-size;
     }
   }
 
@@ -150,7 +149,7 @@
     }
 
     @if $variant == 'light' and $topbar == 'dark' {
-      margin: 0 $space-size $space-size 0;
+      margin: 0 $space-size $space-size $space-size;
     }
   }
 
@@ -768,6 +767,16 @@ menubutton stack > box {
         &:checked:disabled { @include button(checked-disabled); }
       }
     }
+  }
+}
+
+.content-pane {
+  toolbarview.undershoot-top calendar-view scrolledwindow {
+    @include undershoot(top, $style: 'compact');
+  }
+  
+  toolbarview.undershoot-bottom calendar-view scrolledwindow {
+    @include undershoot(bottom, $style: 'compact');
   }
 }
 

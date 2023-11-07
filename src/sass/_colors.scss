@@ -154,8 +154,12 @@ $base:                                  if($variant == 'light', background(a), b
 $base-alt:                              if($variant == 'light', background(b), background(f));
 $sidebg:                                if($variant == 'light', background(b), background(f));
 
-@if $sidebar == 'styled' {
+@if $sidebar == 'contrast' {
   $sidebg:                              if($variant == 'light', background(h), background(d));
+}
+
+@if $sidebar == 'styled' {
+  $sidebg:                              $primary;
 }
 
 $login-background:                      if($variant == 'light', background(d), background(g)); // For gnome-shell

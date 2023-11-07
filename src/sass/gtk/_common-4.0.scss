@@ -1336,6 +1336,7 @@ toolbar {
     border-radius: $corner-radius;
     box-shadow: $shadow-z4, inset 0 1px highlight($surface);
     background-color: $surface;
+    color: $text;
 
     &:backdrop { box-shadow: $shadow-z2, inset 0 1px highlight($surface); }
 
@@ -1671,8 +1672,6 @@ headerbar {
 
   &.default-decoration {
     min-height: $medium-size;
-    // padding: $space-size;
-    border-radius: $window-radius $window-radius 0 0;
 
     windowcontrols {
       button,
@@ -4048,6 +4047,10 @@ paned {
   }
 }
 
+/****************
+ * Sidebar Pane *
+ ****************/
+
 %sidebar-style {
   background-color: $sidebg;
   color: on($sidebg);
@@ -4149,10 +4152,6 @@ paned {
   }
 }
 
-/****************
- * Sidebar Pane *
- ****************/
-
 .sidebar-pane {
   @if $variant == 'light' and $topbar == 'dark' {
     background-color: $titlebar;
@@ -4199,7 +4198,7 @@ paned {
 
         &:active { @include button(active); }
 
-        &:disabled { @include button(disabled); }
+        &:disabled { @include button(flat-disabled); }
 
         &:checked { @include button(checked); }
 
@@ -4337,7 +4336,7 @@ paned {
 
         &:active { @include button(active); }
 
-        &:disabled { @include button(disabled); }
+        &:disabled { @include button(flat-disabled); }
 
         &:checked { @include button(checked); }
 
