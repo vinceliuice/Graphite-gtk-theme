@@ -1694,6 +1694,10 @@ headerbar {
 
 // Gnome >= 45.0
 .top-bar {
+  box-shadow: none;
+  background: none;
+  border: none;
+
   .collapse-spacing {
     padding: 0;
   }
@@ -3725,10 +3729,36 @@ window.dialog.message { // Message Dialog styling
 
         &:not(:disabled) { color: $primary; }
 
-        // &.suggested-action:not(:disabled) { color: $suggested; }
+        &.suggested-action:not(:disabled) { color: $suggested; }
 
         &.destructive-action:not(:disabled) { color: $destructive; }
       }
+    }
+  }
+}
+
+window.background.messagedialog {
+  .response-area {
+    padding: $space-size;
+    border-spacing: $space-size;
+
+    > button {
+      @extend %button-flat;
+
+      &, &:first-child, &:last-child { border-radius: $corner-radius; }
+
+      &:not(:last-child) { margin-right: $space-size; }
+
+      &:not(:disabled) { color: $primary; }
+
+      &.suggested-action:not(:disabled) { color: $suggested; }
+
+      &.destructive-action:not(:disabled) { color: $destructive; }
+    }
+
+    > separator {
+      border: none;
+      background: none;
     }
   }
 }
