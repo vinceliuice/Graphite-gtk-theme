@@ -624,6 +624,7 @@ frame.gedit-map-frame > border {
 .tweak-categories {
   // padding: 4px 0;
   // background-color: shade(@theme_bg_color, 0.99);
+  background-color: transparent;
 
   separator { @extend %hide_separators; }
 
@@ -634,6 +635,10 @@ frame.gedit-map-frame > border {
   .csd.maximized &, .csd.tiled & {
     border-bottom-left-radius: 0;
   }
+}
+
+leaflet > box > scrolledwindow > viewport.frame > list.navigation-sidebar {
+  background-color: transparent;
 }
 
 .tweak {
@@ -865,14 +870,11 @@ hdyleaflet, leaflet, box.horizontal > stack.background {
 
   frame.view {
     @extend %circular_list;
+    border: none;
 
     list {
       background: none;
-
-      > separator {
-        background: none;
-        min-height: 0;
-      }
+      border: none;
 
       row.activatable { @extend %circular_row; }
     }

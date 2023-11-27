@@ -116,6 +116,7 @@
   margin: 0 !important;
   text-shadow: none;
   border-radius: $menu_radius;
+  color: $text-secondary;
 
   // month
   .calendar-month-label {
@@ -150,6 +151,7 @@
     &:active { background-color: $track; }
   }
 
+  .calendar-day,
   .calendar-day-base {
     @include fontsize($font_size - 1);
     text-align: center;
@@ -158,20 +160,29 @@
     padding: 0 !important;
     margin: 2px !important;
     border-radius: $circular_radius;
-    color: $text-secondary;
+    color: $text-secondary !important;
     border: none;
     font-feature-settings: "tnum";
 
     &:hover, &:focus {
       background-color: $divider;
-      box-shadow: none;
-      outline: none;
+      box-shadow: none !important;
+      outline: none !important;
     }
 
     &:active, &:selected {
-      color: $text;
+      color: $text !important;
       background-color: $track;
-      border-color: transparent; //avoid jumparound due to today
+      border-color: transparent !important; //avoid jumparound due to today
+      box-shadow: none !important;
+      outline: none !important;
+    }
+
+    &.calendar-weekday {}
+
+    &.calendar-weekend {
+      color: $text-disabled !important;
+      // font-weight: normal;
     }
 
     &.calendar-day-heading {  //day of week heading
@@ -194,8 +205,8 @@
   }
 
   .calendar-nonwork-day {
-    color: $text-disabled;
-    font-weight: bold;
+    color: $text;
+    // font-weight: normal;
   }
 
   // Today
@@ -236,9 +247,14 @@
     }
   }
 
+  .calendar-other-month,
   .calendar-other-month-day {
-    color: $text-secondary-disabled;
-    opacity: 0.5;
+    color: $text-secondary-disabled !important;
+    font-weight: normal;
+
+    &.calendar-weekend {
+      color: $text-secondary-disabled !important;
+    }
   }
 
   .calendar-week-number {

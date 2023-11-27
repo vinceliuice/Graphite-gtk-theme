@@ -13,12 +13,13 @@
   }
 
   .primary-toolbar {
+    border: none;
+
     @if $sidebar == 'styled' {
-      border: none;
       background-color: transparent;
     } @else {
-      border: 1px solid $border;
       background-color: $titlebar;
+      box-shadow: inset 0 -1px $border;
     }
 
     // FIXME: workaround for wrong size allocation of Nemo
@@ -70,6 +71,8 @@
     padding-top: $space-size / 2;
     padding-bottom: $space-size / 2;
   }
+
+  .nemo-places-sidebar { border: none; }
 
   // Inactive F3 pane shading
   .nemo-inactive-pane .view:not(:selected) { background-color: $base-alt; }
@@ -196,6 +199,36 @@
 
     > grid > separator {
       background-color: transparent;
+    }
+  }
+
+  notebook > stack > box > overlay
+
+  // Floating status bar
+  .floating-bar {
+    min-height: 32px;
+    padding: $space-size / 2;
+    margin: 0;
+    border-style: none;
+    border-radius: 0;
+    background-color: $primary;
+    color: on($primary);
+
+    &.bottom.left {
+      border-top-right-radius: $corner-radius;
+      border-bottom-right-radius: $corner-radius;
+    }
+
+    &.bottom.right {
+      border-top-left-radius: $corner-radius;
+      border-bottom-left-radius: $corner-radius;
+    }
+
+    button {
+      margin: (32px - $small-size) / 2;
+      color: on($primary);
+
+      @extend %small-button;
     }
   }
 }
