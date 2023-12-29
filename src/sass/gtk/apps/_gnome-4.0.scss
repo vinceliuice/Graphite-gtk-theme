@@ -1035,7 +1035,8 @@ panelframeswitcher {
 
 .frameheader.header {
   min-height: $small-size;
-  background-color: $fill;
+  background-color: $base-alt;
+  border-bottom: 1px solid $border;
 
   > button {
     border: none;
@@ -1201,7 +1202,6 @@ themeswitcher {
     radio:checked, radio:active {
       &, &:hover {
         box-shadow: inset 0 0 0 2px $primary;
-        outline: none;
       }
     }
 
