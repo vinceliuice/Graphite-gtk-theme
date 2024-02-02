@@ -793,23 +793,28 @@ menubutton stack > box {
 //
 
 flowboxchild {
-  &.card {
+  &.card:not(.category-tile) {
     border: none;
     box-shadow: none;
     padding: 0;
     background: none;
   }
+}
 
-  > button.card {
-    &.category-tile {
-      padding: $space-size * 3.5;
-      border: none;
-      border-radius: $corner-radius;
-    }
-  
-    &.category-tile-iconless {
-      padding: $space-size * 1.5 $space-size * 2.5;
-    }
+.category-tile.card {
+  padding: $space-size * 3.5;
+  border: none;
+  border-radius: $corner-radius;
+  min-width: 140px;
+  font-weight: 900;
+  font-size: larger;
+
+  &.category-tile-iconless {
+    padding: $space-size * 1.5 $space-size * 2.5;
+    min-width: 130px;
+    font-size: 105%;
+    font-weight: normal;
+    border: 1px solid $border;
   }
 }
 
