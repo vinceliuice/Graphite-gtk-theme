@@ -19,7 +19,7 @@ $dash_border_radius: $base_radius * 2 + $dash_padding;
 .dash-background {
   background-color: $dash_background_color;
   margin-bottom: $dash_bottom_margin;
-  padding: $dash_padding $dash_padding - $dash_spacing;
+  padding: $dash_padding $dash_padding - $dash_spacing !important;
   border-radius: $dash_border_radius;
   border: none;
   box-shadow: none;
@@ -33,7 +33,7 @@ $dash_border_radius: $base_radius * 2 + $dash_padding;
   &:rtl { &:first-child { margin-right: 0; } }
 
   .app-well-app, .show-apps {
-    padding: $dash_padding 0 $dash_padding + $dash_bottom_margin;
+    padding: $dash_padding 0 $dash_padding + $dash_bottom_margin !important;
     border-radius: $base_radius * 2;
 
     .overview-icon {
