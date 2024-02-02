@@ -2381,20 +2381,14 @@ notebook {
 
 tabbar {
   .box {
-    min-height: $medium-size;
-  }
+    border: none;
+    background-color: $fill;
+    padding: 0;
+    margin: $space-size / 2;
+    border-radius: $modal-radius + $space-size;
+    box-shadow: none;
 
-  &:not(.inline) {
-    .box {
-      border: none;
-      background-color: $fill;
-      padding: 0;
-      margin: $space-size / 2;
-      border-radius: $modal-radius + $space-size;
-      box-shadow: none;
-    }
-
-    &:backdrop .box {
+    &:backdrop {
       background-color: $fill;
 
       > scrolledwindow,
@@ -2405,33 +2399,32 @@ tabbar {
     }
   }
 
-  scrolledwindow:not(.pinned) > tabbox {
-    padding: 0;
-
-    > tabboxchild {
-      padding: $space-size / 2 0;
-      margin: 0 -3px;
-
-      > tab {
-        margin: $space-size / 2;
-      }
-    }
+  tabbox {
+    padding: $space-size 0;
 
     tab {
       @extend %tabs_tab;
     }
-  }
 
-  scrolledwindow.pinned > tabbox {
-    padding: 0;
+    > separator {
+      margin-top: 9px;
+      margin-bottom: 9px;
 
-    > tabboxchild {
-      padding: $space-size / 2 0;
-      margin: 0;
+      &.hidden {
+        opacity: 0;
+      }
+    }
 
-      > tab {
-        margin: $space-size / 2;
-        padding: $space-size / 2;
+    > revealer > indicator {
+      min-width: 2px;
+      border-radius: 2px;
+      margin: 3px 6px;
+      background: gtkalpha($primary, 0.5);
+    }
+
+    &.single-tab tab {
+      &, &:hover, &:active {
+        background-color: transparent;
       }
     }
   }
