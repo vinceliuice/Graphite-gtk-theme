@@ -51,8 +51,13 @@
 .app-folder-dialog {
   border-radius: $menu_radius * 3;
   padding: $base_padding * 2;
-  background-color: $osd;
   box-shadow: none;
+
+  @if $color_type == 'blackness' {
+    background-color: $scrim-alt;
+  } @else {
+    background-color: $osd;
+  }
 
   @if $rimless == 'false' {
     border: 2px solid $osd-primary;
