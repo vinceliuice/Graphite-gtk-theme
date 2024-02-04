@@ -165,6 +165,7 @@ $sidebg:                                if($variant == 'light', background(b), b
 $login-background:                      if($variant == 'light', background(d), background(g)); // For gnome-shell
 
 $tooltip:                               if($variant == 'dark', rgba(darken(background(e), 3%), 0.9), rgba(darken(background(h), 3%), 0.9));
+$system:                                darken(background(e), 3%);
 $osd:                                   background(e);
 $scrim:                                 background(f);
 $scrim-alt:                             background(g);

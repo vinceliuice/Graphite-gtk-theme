@@ -6,8 +6,8 @@
 
 // Window titles
 .window-caption {
-  color: on($osd);
-  background-color: $osd;
+  color: on($scrim-alt);
+  background-color: $scrim-alt;
   border-radius: $circular_radius;
   padding: $base_padding $base_padding * 2;
   border: none;
@@ -44,6 +44,6 @@ $window_close_button_padding: 3px;
 .workspace-background {
   // keep in sync with BACKGROUND_CORNER_RADIUS_PIXELS in workspace.js
   border-radius: 30px;
-  background-color: $osd;
-  box-shadow: 0 4px 16px 4px transparentize(darken($osd, 30%), 0.7);
+  background-color: $system;
+  box-shadow: 0 4px 16px 4px rgba(black, 0.25);
 }
