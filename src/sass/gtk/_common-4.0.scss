@@ -1668,6 +1668,8 @@ headerbar {
   .maximized &,
   .fullscreen & {
     border-radius: 0;
+
+    @if $rimless == 'true' { box-shadow: none; }
   }
 
   &.default-decoration {
@@ -4244,7 +4246,7 @@ paned {
         background-color: $sidebg;
         color: on($sidebg);
         margin: 0 0 $menu-radius 0;
-        border-radius: 0 $menu-radius  $menu-radius 0;
+        border-radius: 0 $menu-radius $menu-radius 0;
       }
 
       .navigation-sidebar {
