@@ -1287,6 +1287,7 @@ searchbar > revealer > box {
   .maximized &,
   .fullscreen & {
     border-radius: 0;
+    box-shadow: none;
   }
 
   &.default-decoration {
