@@ -779,6 +779,7 @@ install_gdm_theme() {
   for theme in "${themes[@]}"; do
     for gcolor in "${gcolors[@]}"; do
       for size in "${sizes[@]}"; do
+        cp -rf ${SRC_DIR}/sass/_tweaks.scss ${SRC_DIR}/sass/_tweaks-temp.scss
         install_gdm "${name:-$THEME_NAME}" "$theme" "$gcolor" "$size" "$ctype"
       done
     done
