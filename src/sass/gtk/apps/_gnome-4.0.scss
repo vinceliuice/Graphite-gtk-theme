@@ -958,20 +958,20 @@ screenshot-carousel box.frame.view {
   color: #1c71d8;
   background-color:#fdf8d7;
   background-image: linear-gradient($border 1px, transparent 1px),
-           linear-gradient(90deg, $border 1px, transparent 1px);
+                    linear-gradient(90deg, $border 1px, transparent 1px);
   background-size: 10px 10px, 10px 10px;
   background-position: -1px -4px, center -1px;
 
   &:hover {
     background-color: lighten(#fdf8d7, 5%);
     background-image: linear-gradient($border 1px, transparent 1px),
-             linear-gradient(90deg, $border 1px, transparent 1px);
+                      linear-gradient(90deg, $border 1px, transparent 1px);
   }
 
   &:active {
     background-color: darken(#fdf8d7, 5%);
     background-image: linear-gradient($border 1px, transparent 1px),
-             linear-gradient(90deg, $border 1px, transparent 1px);
+                      linear-gradient(90deg, $border 1px, transparent 1px);
   }
 }
 
@@ -1122,114 +1122,6 @@ panelstatusbar {
 
     &:checked > stylevariantpreview > .wallpaper {
       outline-color: $primary;
-    }
-  }
-}
-
-// theme-selector
-checkbutton.theme-selector {
-  radio {
-    &, &:hover, &:disabled {
-      border-color: transparent;
-      background-color: transparent;
-    }
-
-    &:not(:checked):not(:indeterminate):not(:disabled) {
-      &:hover {
-        border-color: transparent;
-        background-color: transparent;
-      }
-    }
-
-    &:checked, &:active, &:active:hover {
-      border-color: transparent;
-      background-color: $primary;
-      color: on($primary);
-      -gtk-icon-source: -gtk-scaled(-gtk-recolor(url("assets/scalable/check-symbolic.svg")),
-                                    -gtk-recolor(url("assets/scalable/check-symbolic@2.svg")));
-    }
-
-    &:checked:hover {
-      background-color: lighten($primary, 10%);
-      color: on($primary);
-    }
-  }
-}
-
-themeswitcher {
-  padding: $space-size;
-
-  .check {
-    min-height: 16px;
-    min-width: 16px;
-    background-color: $primary;
-    color: on($primary);
-    padding: 2px;
-    border-radius: $circular-radius;
-    margin: $space-size / 2;
-    -gtk-icon-size: 20px;
-    -gtk-icon-source: -gtk-scaled(-gtk-recolor(url("assets/scalable/check-symbolic.svg")),
-                                  -gtk-recolor(url("assets/scalable/check-symbolic@2.svg")));
-
-    &:hover {
-      background-color: lighten($primary, 10%);
-      color: on($primary);
-    }
-
-    &:active {
-      background-color: $primary;
-      color: on($primary);
-    }
-  }
-
-  checkbutton {
-    radio {
-      padding: 0;
-      margin: 2px;
-      min-height: 48px;
-      min-width: 48px;
-
-      &, &:active, &:hover {
-        outline-color: $border;
-        outline-width: 1px;
-        outline-offset: -1px;
-        outline-style: solid;
-        box-shadow: none;
-      }
-
-      &, &:hover, &:active, &:checked, &:checked:hover {
-        -gtk-icon-source: none;
-        transition: none;
-        border: none;
-      }
-    }
-
-    radio:checked, radio:active {
-      &, &:hover {
-        box-shadow: inset 0 0 0 2px $primary;
-      }
-    }
-
-    &.system radio {
-      &, &:hover, &:active, &:checked, &:checked:hover {
-        background-image: linear-gradient(-45deg, #242424 49.99%, white 50.01%);
-        background-color: transparent;
-      }
-    }
-
-    &.light radio {
-      &, &:hover, &:active, &:checked, &:checked:hover {
-        color: rgba(black, 0.8);
-        background-color: white;
-      }
-    }
-
-    &.dark radio {
-      &, &:hover, &:active, &:checked, &:checked:hover {
-        color: white;
-        background-image: image(#242424);
-        background-color: transparent;
-      }
     }
   }
 }

@@ -2829,7 +2829,7 @@ radio {
 
   &:not(:hover):focus { box-shadow: none; }
 
-  popover.menu & {
+  popover & {
     transition: none;
     margin: 0; // this is a workaround for a menu check/radio size allocation issue
     padding: 0;
