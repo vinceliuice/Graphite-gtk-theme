@@ -2,6 +2,7 @@
 
 REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
 WALLPAPER_DIR="$HOME/.local/share/backgrounds"
+XML_DIR="$HOME/.local/share/gnome-background-properties"
 
 THEME_NAME='Graphite'
 THEME_VARIANTS=('' '-nord')
@@ -35,6 +36,10 @@ prompt () {
   esac
 }
 
+old_string="@BACKGROUNDDIR@"
+
+new_filepath="$HOME/.local/share/backgrounds/"
+
 install() {
   local theme="$1"
 
@@ -42,6 +47,10 @@ install() {
   mkdir -p "${WALLPAPER_DIR}"
 
   cp -rf ${REPO_DIR}/${THEME_NAME}${theme}/*.png ${WALLPAPER_DIR}
+  cp -rf ${REPO_DIR}/${THEME_NAME}${theme}/*.xml ${XML_DIR}
+  for file in "$XML_DIR"/*; do
+    sed -i "s/$old_string/$(printf '%s\n' "$new_filepath" | sed 's/[\/&]/\\&/g')/g" "$file"
+  done
 }
 
 if [[ "${#themes[@]}" -eq 0 ]] ; then
