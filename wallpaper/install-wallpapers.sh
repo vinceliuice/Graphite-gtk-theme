@@ -1,8 +1,10 @@
 #!/bin/bash
 
 REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
-WALLPAPER_DIR="$HOME/.local/share/backgrounds"
+WALLPAPER_DIR="$HOME/.local/share/Graphite-backgrounds"
 XML_DIR="$HOME/.local/share/gnome-background-properties"
+old_string="@BACKGROUNDDIR@"
+
 
 THEME_NAME='Graphite'
 THEME_VARIANTS=('' '-nord')
@@ -36,20 +38,18 @@ prompt () {
   esac
 }
 
-old_string="@BACKGROUNDDIR@"
-
-new_filepath="$HOME/.local/share/backgrounds/"
-
 install() {
   local theme="$1"
 
   prompt -i "\n * Install ${THEME_NAME}${theme} in ${WALLPAPER_DIR}... "
   mkdir -p "${WALLPAPER_DIR}"
+  mkdir -p "${XML_DIR}"
+  mkdir -p "${new_filepath}"
 
   cp -rf ${REPO_DIR}/${THEME_NAME}${theme}/*.png ${WALLPAPER_DIR}
   cp -rf ${REPO_DIR}/${THEME_NAME}${theme}/*.xml ${XML_DIR}
   for file in "$XML_DIR"/*; do
-    sed -i "s/$old_string/$(printf '%s\n' "$new_filepath" | sed 's/[\/&]/\\&/g')/g" "$file"
+    sed -i "s/$old_string/$(printf '%s\n' "$WALLPAPER_DIR" | sed 's/[\/&]/\\&/g')/g" "$file"
   done
 }
 
