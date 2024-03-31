@@ -6,9 +6,6 @@
     <filename>@BACKGROUNDDIR@/wave-Light-debian.png</filename>
     <filename-dark>@BACKGROUNDDIR@/wave-Dark-debian.png</filename-dark>
     <options>zoom</options>
-    <shade_type>solid</shade_type>
-    <pcolor>#3071AE</pcolor>
-    <scolor>#000000</scolor>
   </wallpaper>
 </wallpapers>
 

@@ -6,9 +6,6 @@
     <filename>@BACKGROUNDDIR@/wave-Light-nord-pop-os.png</filename>
     <filename-dark>@BACKGROUNDDIR@/wave-Dark-nord-pop-os.png</filename-dark>
     <options>zoom</options>
-    <shade_type>solid</shade_type>
-    <pcolor>#3071AE</pcolor>
-    <scolor>#000000</scolor>
   </wallpaper>
 </wallpapers>
 
