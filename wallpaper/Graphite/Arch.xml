@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
+<wallpapers>
+  <wallpaper deleted="false">
+    <name>Wave Arch</name>
+    <filename>@BACKGROUNDDIR@/wave-Light-arch.png</filename>
+    <filename-dark>@BACKGROUNDDIR@/wave-Dark-arch.png</filename-dark>
+    <options>zoom</options>
+  </wallpaper>
+</wallpapers>
+

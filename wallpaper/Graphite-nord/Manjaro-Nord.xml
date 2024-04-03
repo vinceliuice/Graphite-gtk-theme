@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
+<wallpapers>
+  <wallpaper deleted="false">
+    <name>Wave Manjaro Nord</name>
+    <filename>@BACKGROUNDDIR@/wave-Light-nord-manjaro.png</filename>
+    <filename-dark>@BACKGROUNDDIR@/wave-Dark-nord-manjaro.png</filename-dark>
+    <options>zoom</options>
+  </wallpaper>
+</wallpapers>
+

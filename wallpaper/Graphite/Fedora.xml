@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
+<wallpapers>
+  <wallpaper deleted="false">
+    <name>Wave Fedora</name>
+    <filename>@BACKGROUNDDIR@/wave-Light-fedora.png</filename>
+    <filename-dark>@BACKGROUNDDIR@/wave-Dark-fedora.png</filename-dark>
+    <options>zoom</options>
+  </wallpaper>
+</wallpapers>
+
