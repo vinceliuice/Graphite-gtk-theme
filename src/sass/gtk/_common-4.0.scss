@@ -3386,10 +3386,6 @@ separator:not(.spacer) {
   &:not(:last-child) {
     border-bottom: 1px solid $border;
   }
-
-  &:focus {
-    box-shadow: inset 0 0 0 1000px $overlay-focus;
-  }
 }
 
 listview,
@@ -3419,6 +3415,7 @@ list {
 
     > row {
       @extend %circular_row;
+      box-shadow: none;
 
       &.expander {
         list {
@@ -3457,6 +3454,7 @@ listview.view {
 row {
   color: $text-secondary;
   background-clip: padding-box;
+  outline: none;
 
   label.subtitle {
     font-size: smaller;
@@ -3482,22 +3480,25 @@ row {
   @at-root %row_activatable, &.activatable {
     transition: $transition;
     outline: none;
-    box-shadow: inset 0 0 0 9999px transparent;
+    background-color: transparent;
 
-    &:focus {
-      box-shadow: inset 0 0 0 9999px $overlay-focus;
+    &:focus, &:focus-visible {
+      background-color: transparent;
+      box-shadow: none;
+      outline: none;
     }
 
     &:hover {
       transition: $transition,
-                  box-shadow 0ms;
-      box-shadow: inset 0 0 0 9999px $overlay-hover;
+                  background-color 0ms;
+      background-color: $overlay-hover;
     }
 
     &.has-open-popup, // this is for indicathing which row generated a popover see https://bugzilla.gnome.org/show_bug.cgi?id=754411
     &:active {
       transition: $transition;
-      box-shadow: inset 0 0 0 9999px $overlay-active;
+      background-color: $overlay-active;
+      box-shadow: none;
     }
 
     button.circular {
@@ -3506,7 +3507,7 @@ row {
   }
 
   button &.activatable {
-    &:focus, &:hover, &:active { box-shadow: none; }
+    &:focus, &:hover, &:active { background-color: transparent; }
   }
 
   button:checked &.activatable {
@@ -3912,6 +3913,10 @@ separator.sidebar {
       background-color: $overlay-hover;
     }
 
+    &:active {
+      background-color: $overlay-active;
+    }
+
     &:selected {
       @extend %selected_items_primary;
 
@@ -3985,8 +3990,8 @@ placessidebar {
 
     &:drop(active) {
       transition: $transition,
-                  box-shadow 0ms;
-      box-shadow: inset 0 0 0 9999px $overlay-hover;
+                  background-color 0ms;
+      background-color: $overlay-hover;
     }
   }
 }

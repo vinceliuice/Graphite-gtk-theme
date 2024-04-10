@@ -16,6 +16,14 @@
   &:insensitive { @include button(flat-insensitive); }
 }
 
+%default_button {
+  @include button(normal, $bc:$primary, $tc:on($primary),);
+  &:focus { @include button(focus, $bc:$primary, $tc:on($primary)); }
+  &:hover { @include button(hover, $bc:$primary, $tc:on($primary)); }
+  &:insensitive { @include button(insensitive, $bc:$primary, $tc:on($primary)); }
+  &:active { @include button(active, $bc:$primary, $tc:on($primary),); }
+}
+
 // buttons on OSD elements
 // that are undecorated by default and use OSD colors
 %osd_button {
@@ -51,13 +59,24 @@
       }
     }
   }
+
+  // default style
+  &.default {
+    @extend %default_button;
+  }
+
+  // flat style
+  &.flat {
+    @extend %flat_button;
+  }
 }
 
 .icon-button {
+  @extend %button; // same style as buttons
   border-radius: $circular_radius;
   padding: $base_padding;
-  @extend %button; // same style as buttons
   background-color: $fill;
+  min-height: $scalable_icon_size;
 
   @if $colorful == 'true' {
     &:active {
@@ -67,7 +86,17 @@
   }
 
   StIcon {
-    icon-size: $base_icon_size !important;
+    icon-size: $scalable_icon_size;
     -st-icon-style: symbolic;
+  }
+
+  // default style
+  &.default {
+    @extend %default_button;
+  }
+
+  // flat style
+  &.flat {
+    @extend %flat_button;
   }
 }

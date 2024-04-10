@@ -50,7 +50,7 @@
 
 // message bubbles
 .message {
-  padding: 0;
+  padding: $base_padding;
   margin: $base_spacing / 2;
   border-radius: $window_radius;
 

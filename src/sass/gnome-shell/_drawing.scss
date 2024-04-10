@@ -12,8 +12,8 @@
   @if $t == normal {
     color: $tc;
     background-color: $bc;
-    border: 2px solid transparent;
-    box-shadow: none;
+    border: 2px solid transparent !important;
+    box-shadow: none !important;
     caret-color: $tc;
     selection-background-color: rgba($tc, 0.25);
     selected-color: $tc;
@@ -21,46 +21,47 @@
 
   @if $t == hover {
     color: $tc;
-    border-color: rgba($fc, 0.35);
+    border: 2px solid rgba($fc, 0.35) !important;
     background-color: $bc;
+    box-shadow: none !important;
   }
 
   @if $t == focus {
     color: $tc;
-    border-color: $fc;
+    border: 2px solid $fc !important;
     background-color: $bc;
-    box-shadow: none;
+    box-shadow: none !important;
   }
 
   @if $t == insensitive {
     background-color: $bc;
     color: rgba($tc, 0.35);
-    border-color: transparent;
+    box-shadow: none !important;
   }
 
   @if $t == flat-normal {
     background-color: $bc;
     border-radius: 0;
-    border: none;
-    box-shadow: inset 0 -1px rgba($tc, 0.15);
+    border: none !important;
+    box-shadow: inset 0 -1px rgba($tc, 0.15) !important;
     color: $tc;
   }
 
   @if $t == flat-hover {
     background-color: $bc;
-    box-shadow: inset 0 -1px rgba($tc, 0.35);
+    box-shadow: inset 0 -1px rgba($tc, 0.35) !important;
     color: $tc;
   }
 
   @if $t == flat-focus {
-    border: none;
+    border: none !important;
     background-color: $bc;
-    box-shadow: inset 0 -2px $fc;
+    box-shadow: inset 0 -2px $fc !important;
     color: $tc;
   }
 
   @if $t == flat-insensitive {
-    border: none;
+    border: none !important;
     background-color: $bc;
     color: rgba($tc, 0.35);
   }
