@@ -2,14 +2,15 @@
 
 %theme_dialogs {
   background-color: $popover;
-  border-radius: $modal_radius + $base_padding / 2;
   box-shadow: 3px 3px 8px -5px rgba(black, 0.35);
   margin: 15px;
 
   @if $rimless == 'false' {
     border: 2px solid $primary;
+    border-radius: $modal_radius + $base_padding / 2 + 2px;
   } @else {
     border: none;
+    border-radius: $modal_radius + $base_padding / 2;
   }
 }
 

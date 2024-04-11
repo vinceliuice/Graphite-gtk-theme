@@ -1,7 +1,12 @@
 .quick-settings {
   padding: $base_padding * 3 !important;
-  border-radius: $base_radius + $base_padding * 3 !important;
   margin-top: 8px !important;
+
+  @if $rimless == 'false' {
+    border-radius: $base_radius + $base_padding * 3 + 2px !important;
+  } @else {
+    border-radius: $base_radius + $base_padding * 3 !important;
+  }
 
   .icon-button, .button {
     min-height: 22px;

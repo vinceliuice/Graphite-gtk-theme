@@ -23,14 +23,17 @@
   .popup-menu-content {
     padding: $base_padding;
     background-color: $popover;
-    border-radius: $menu_radius;
     box-shadow: 0 3px 8px 0 rgba(black, 0.15);
     margin: 4px 10px 12px;
     font-weight: normal;
 
     @if $rimless == 'false' {
       border: 2px solid $primary;
-    } @else { border: none; }
+      border-radius: $menu_radius + 2px;
+    } @else {
+      border: none;
+      border-radius: $menu_radius;
+    }
   }
 
   .popup-menu-item {

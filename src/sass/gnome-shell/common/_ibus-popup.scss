@@ -9,13 +9,21 @@
 }
 
 .candidate-popup-content {
-  @extend %theme_dialogs;
+  background-color: $popover;
   color: $text-secondary;
-  box-shadow: 0 3px 8px 0 rgba(black, 0.35) !important;
-  border: none;
-  margin: ($base_padding / 2) 8px 12px !important;
+  box-shadow: 0 3px 5px 0 rgba(black, 0.15) !important;
+  margin: ($base_padding / 2) 5px 8px !important;
   padding: $base_padding;
   spacing: $base_padding;
+  background-clip: padding-box;
+
+  @if $rimless == 'false' {
+    border: 2px solid $primary;
+    border-radius: $modal_radius + 2px;
+  } @else {
+    border: none;
+    border-radius: $modal_radius;
+  }
 }
 
 .candidate-index {
