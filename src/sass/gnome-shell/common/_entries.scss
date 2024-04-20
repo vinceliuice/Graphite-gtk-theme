@@ -4,8 +4,9 @@ StEntry, %entry {
   min-height: 20px;
   padding: $base_padding $base_padding * 2;
   margin: $base_margin / 2;
-  border: none;
   border-radius: $base_radius;
+  selection-background-color: $primary;
+  selected-color: on($primary);
 
   @include entry(normal);
   &:hover { @include entry(hover); }
