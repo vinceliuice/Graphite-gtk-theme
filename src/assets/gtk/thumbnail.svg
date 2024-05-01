@@ -23,7 +23,7 @@
      inkscape:pagecheckerboard="0"
      showgrid="false"
      inkscape:zoom="1.1933333"
-     inkscape:cx="148.74302"
+     inkscape:cx="647.76538"
      inkscape:cy="91.340785"
      inkscape:window-width="1920"
      inkscape:window-height="1016"
@@ -73,7 +73,7 @@
        id="path10" />
   </g>
   <g
-     id="thumbnail-bue-Dark"
+     id="thumbnail-blue-Dark"
      transform="translate(133.36,-257.31)">
     <rect
        x="12.171"
@@ -269,7 +269,10 @@
   </g>
   <g
      id="thumbnail"
-     transform="translate(-2.6471995,-257.31)">
+     transform="translate(-2.6471995,-257.31)"
+     inkscape:export-filename="thumbnail.png"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96">
     <rect
        x="12.171"
        y="265.25"
