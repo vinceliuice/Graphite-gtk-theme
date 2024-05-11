@@ -41,6 +41,10 @@
   padding: $base_margin;
 }
 
+.datemenu-popover {
+  border-radius: $base_radius + $base_padding + $base_margin !important;
+}
+
 // Calendar menu side column
 .datemenu-calendar-column {
   spacing: $base_spacing;
@@ -56,13 +60,6 @@
   .datemenu-displays-box {
     spacing: $base_spacing;
   }
-}
-
-.world-clocks-header,
-.weather-header,
-.events-section-title {
-  color: $text-secondary;
-  font-weight: bold;
 }
 
 .datemenu-today-button,
@@ -284,7 +281,7 @@
 .events-button {
   @extend %popover_bubble;
   padding: $base_padding * 2 !important;
-  margin: $base_margin 0 0 !important;
+  margin: $base_margin 0 2px !important;
 }
 
 // Events

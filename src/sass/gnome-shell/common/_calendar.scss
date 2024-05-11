@@ -276,7 +276,7 @@
 .events-button {
   @extend %popover_bubble;
   padding: $base_padding * 2 !important;
-  margin: $base_margin 0 0 !important;
+  margin: $base_padding 0 0 !important;
 }
 
 // Events
