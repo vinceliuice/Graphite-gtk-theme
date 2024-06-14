@@ -621,7 +621,7 @@ colorful_panel() {
 gnome_shell_version() {
   sed -i "/\widgets/s/40-0/${GS_VERSION}/" ${SRC_DIR}/sass/gnome-shell/_common-temp.scss
 
-  if [[ "${GS_VERSION}" == '3-28' ]]; then
+  if [[ "${GS_VERSION}" == '3-28' || "${GS_VERSION}" == '46-0' ]]; then
     sed -i "/\extensions/s/40-0/${GS_VERSION}/" ${SRC_DIR}/sass/gnome-shell/_common-temp.scss
   fi
 }
