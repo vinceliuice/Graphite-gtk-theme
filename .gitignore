@@ -12,3 +12,5 @@ src/main/gtk-4.0/gtk.css
 src/main/gnome-shell/gnome-shell-Dark.css
 src/main/gnome-shell/gnome-shell-Light.css
 src/main/gnome-shell/gnome-shell.css
+release/Graphite-teal-nord-rimless.tar.xz
+release/Graphite-teal-nord-outlined.tar.xz
