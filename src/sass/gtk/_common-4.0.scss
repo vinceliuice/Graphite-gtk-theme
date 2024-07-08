@@ -1879,7 +1879,7 @@ treeview.view {
 
   > header {
     > button {
-      @extend %row_activatable;
+      @extend %button-flat-simple;
 
       padding: 2px 6px;
       border-style: none solid solid none;
@@ -3456,7 +3456,7 @@ row {
     }
   }
 
-  @at-root %row_activatable, &.activatable {
+  &.activatable {
     transition: $transition,
                 background-size $ripple-fade-out-duration $ease-out,
                 background-image $ripple-fade-out-opacity-duration $ease-out,
