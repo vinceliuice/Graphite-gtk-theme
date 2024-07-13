@@ -562,7 +562,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 if [[ "${#themes[@]}" -eq 0 ]] ; then
-  themes=("${THEME_VARIANTS[@]}")
+  themes=("${THEME_VARIANTS[0]}")
 fi
 
 if [[ "${#colors[@]}" -eq 0 ]] ; then
@@ -578,7 +578,7 @@ if [[ "${#gcolors[@]}" -eq 0 ]] ; then
 fi
 
 if [[ "${#sizes[@]}" -eq 0 ]] ; then
-  sizes=("${SIZE_VARIANTS[@]}")
+  sizes=("${SIZE_VARIANTS[0]}")
 fi
 
 sass_temp() {
@@ -769,9 +769,9 @@ clean_theme() {
 }
 
 uninstall_theme() {
-  for theme in "${themes[@]}"; do
-    for color in "${colors[@]}"; do
-      for size in "${sizes[@]}"; do
+  for theme in "${THEME_VARIANTS[@]}"; do
+    for color in "${COLOR_VARIANTS[@]}"; do
+      for size in "${SIZE_VARIANTS[@]}"; do
         uninstall "${dest:-$DEST_DIR}" "${_name:-$THEME_NAME}" "$theme" "$color" "$size" "$ctype"
       done
     done
@@ -779,9 +779,9 @@ uninstall_theme() {
 }
 
 install_theme() {
-  for theme in "${themes[0]}"; do
+  for theme in "${themes[@]}"; do
     for color in "${colors[@]}"; do
-      for size in "${sizes[0]}"; do
+      for size in "${sizes[@]}"; do
         install "${dest:-$DEST_DIR}" "${name:-$THEME_NAME}" "$theme" "$color" "$size" "$ctype"
       done
     done
@@ -789,7 +789,7 @@ install_theme() {
 }
 
 install_gdm_theme() {
-  for theme in "${themes[@0]}"; do
+  for theme in "${themes[0]}"; do
     for gcolor in "${gcolors[2]}"; do
       for size in "${sizes[0]}"; do
         install_gdm "${name:-$THEME_NAME}" "$theme" "$gcolor" "$size" "$ctype"
