@@ -32,9 +32,9 @@ done
 }
 
 Clear_theme() {
-for theme in "${_THEME_VARIANTS[8]}"; do
+for theme in "${_THEME_VARIANTS[@]}"; do
   for color in "${_COLOR_VARIANTS[@]}"; do
-      rm -rf ${THEME_NAME}${theme}${color}{'','-hdpi','-xhdpi'}
+    rm -rf ${THEME_NAME}${theme}${color}{'','-hdpi','-xhdpi'}
   done
 done
 }
