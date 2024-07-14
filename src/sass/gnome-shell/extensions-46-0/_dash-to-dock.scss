@@ -31,119 +31,296 @@
     text-align: center;
   }
 
-  &.straight-corner #dash,
-  &.shrink.straight-corner #dash {
-    border-radius: 0;
-    margin: 0;
+  @each $_pos, $b_pos in (top, bottom),
+                         (bottom, top),
+                         (left, right),
+                         (right, left) {
+    &.#{$_pos} #dash .dash-background {
+      border-radius: $dash_border_radius !important;
+    }
 
-    .dash-background {
-      border-radius: 0;
+    &.#{$_pos}.shrink {
+      #dash .dash-background {
+        border-radius: $modal_radius + $base_margin !important;
+      }
+    }
+
+    &.#{$_pos}.straight-corner,
+    &.#{$_pos}.shrink.straight-corner,
+    &.#{$_pos}.extended,
+    &.#{$_pos}.shrink.extended {
+      #dash {
+        margin: 0 !important;
+        margin-top: 0 !important;
+        padding: 0 !important;
+
+        .dash-background {
+          margin: 0 !important;
+          margin-bottom: 0 !important;
+          border-radius: 0 !important;
+        }
+
+        .show-apps,
+        .overview-tile {
+          margin: 0 !important;
+        }
+      }
     }
   }
 
-  &.extended.top,
-  &.extended.bottom,
-  &.extended.right,
-  &.extended.left {
-    #dash {
-      margin-left: 0;
-      margin-right: 0;
-      margin-top: 0;
-      margin-bottom: 0;
-      padding: 0;
-
-      .dash-background {
-        border-radius: 0;
-        margin-left: 0;
-        margin-right: 0;
-        margin-top: 0;
-        margin-bottom: 0;
-      }
+  &.extended,
+  &.straight-corner {
+    .dash-background {
+      border-radius: 0 !important;
     }
+  }
+
+  #dash,
+  &:overview #dash {
+    background: transparent;
   }
 
   &.left,
   &.right {
     #dash {
-      margin-top: 0;
-      padding: 10px 0;
+      margin-top: 0 !important;
+      padding: $dash_padding !important;
 
-      .dash-background { // default-mode
-        margin-bottom: 0;
+      #dashtodockDashContainer {
+        padding: $dash_padding - $dash_spacing 0 !important;
       }
     }
 
     .show-apps,
     .overview-tile {
-      padding: $base_padding;
+      padding: $dash_spacing $base_padding !important;
+    }
+
+    .dash-background {
+      margin-bottom: 0 !important;
+    }
+
+    &.shrink {
+      #dash {
+        #dashtodockDashContainer {
+          padding: $base_margin 0 !important;
+        }
+      }
+
+      .dash-background {
+        padding: $base_margin !important;
+      }
+
+      .show-apps,
+      .overview-tile {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+    }
+
+    &.extended,
+    &.straight-corner {
+      #dash {
+        #dashtodockDashContainer {
+          padding: 0 !important;
+
+          #dashtodockDashScrollview:first-child {
+            padding-top: 0 !important;
+          }
+
+          #dashtodockDashScrollview:last-child {
+            padding-bottom: 0 !important;
+          }
+
+          & > :first-child {
+            .show-apps {
+              padding-bottom: $base_padding !important;
+            }
+          }
+
+          & > :last-child {
+            .show-apps {
+              padding-bottom: $dash_padding + $base_padding * 2 !important;
+            }
+          }
+        }
+      }
+
+      &.shrink {
+        #dash {
+          #dashtodockDashContainer {
+            & > :last-child {
+              .show-apps {
+                padding-bottom: 0 !important;
+              }
+            }
+          }
+        }
+
+        .dash-background {
+          padding: 0 !important;
+        }
+  
+        .show-apps,
+        .overview-tile {
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+      }
+
+      .overview-tile {
+        padding: $dash_spacing $dash_padding !important;
+      }
+
+      .show-apps {
+        padding: $dash_spacing $dash_padding $dash_padding * 2 !important;
+      }
     }
   }
 
-  &.left #dash {
-    margin-left: $base_padding;
-  }
-
-  &.right #dash {
-    margin-right: $base_padding;
-  }
-
-  &.dashtodock #dash .dash-background { background-color: $panel; }
-
-  #dash .dash-background { // default-mode
-    background-color: $panel;
-  }
-
-  .app-grid-running-dot {
-    background-color: on($panel, track);
-    offset-y: 0 !important;
-    margin: 0 !important;
-  }
-
-  StWidget.focused .app-grid-running-dot {
-    background-color: $applet-primary !important;
-  }
-
-  &:overview #dash .app-grid-running-dot {
-    background-color: on(dark, track);
-  }
-
-  &:overview #dash StWidget.focused .app-grid-running-dot {
-    background-color: $inverse-indicator !important;
-  }
-
-  .show-apps,
-  .overview-tile {
-    & .overview-icon {
-      color: on($panel, secondary) !important;
+  &.top,
+  &.bottom {
+    .dash-background {
+      padding: $dash_padding ($dash_padding - $dash_spacing) !important;;
     }
 
-    &:hover .overview-icon,
-    &:focus .overview-icon,
-    &:selected .overview-icon {
-      background-color: on($panel, divider) !important;
+    .show-apps,
+    .overview-tile {
+      margin: 0 $dash_spacing !important;
+      padding-bottom: $dash_edge_offset !important;
+
+      .overview-icon {
+        padding: $base_padding !important;
+        spacing: $base_padding !important;
+      }
     }
 
-    &:active .overview-icon,
-    &:checked .overview-icon {
-      background-color: on($panel, track) !important;
+    &.shrink {
+      .dash-background {
+        padding: $base_margin $base_margin / 2 !important;
+      }
+
+      .show-apps,
+      .overview-tile {
+        margin: 0 !important;
+        padding: 0 $base_margin / 2 $dash_padding !important;
+      }
+    }
+
+    &.extended,
+    &.straight-corner {
+      #dash {
+        #dashtodockDashContainer {
+          padding: 0 !important;
+
+          #dashtodockDashScrollview:first-child {
+            padding-left: 0 !important;
+          }
+
+          #dashtodockDashScrollview:last-child {
+            padding-right: 0 !important;
+          }
+
+          & > :first-child {
+            .show-apps {
+              padding-left: 0 !important;
+            }
+          }
+
+          & > :last-child {
+            .show-apps {
+              padding-right: $dash_padding + $base_padding !important;
+            }
+          }
+        }
+      }
+
+      &.shrink {
+        .dash-background {
+          padding: 0 !important;
+        }
+  
+        .show-apps,
+        .overview-tile {
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+
+        #dash {
+          #dashtodockDashContainer {
+            & > :last-child {
+              .show-apps {
+                padding-right: 0 !important;
+              }
+            }
+          }
+        }
+      }
+
+      .dash-separator {
+        margin: 0 ($dash_spacing + ($dash_padding / 2)) !important;
+      }
+
+      .show-apps,
+      .overview-tile {
+        padding: $dash_padding $dash_spacing !important;
+      }
     }
   }
 
-  &:overview #dash .show-apps,
-  &:overview #dash .overview-tile {
-    & .overview-icon {
-      color: on(dark, secondary) !important;
+  #dash {
+    .dash-background {
+      background-color: $panel;
     }
 
-    &:hover .overview-icon,
-    &:focus .overview-icon,
-    &:selected .overview-icon {
-      background-color: on(dark, divider) !important;
+    .overview-tile,
+    .show-apps {
+      .overview-icon {
+        color: $panel-text;
+      }
+
+      &:focus .overview-icon { background-color: $panel-fill; }
+      &:hover .overview-icon { background-color: $panel-divider; }
+      &:active .overview-icon { background-color: $panel-track; }
+      &:checked .overview-icon { background-color: $panel-divider; }
     }
 
-    &:active .overview-icon,
-    &:checked .overview-icon {
-      background-color: on(dark, track) !important;
+    .app-grid-running-dot {
+      margin: 0 !important;
+      offset-y: 0 !important;
+      background-color: $panel-text-disabled !important;
+    }
+
+    StWidget.focused .app-grid-running-dot {
+      background-color: $applet-primary !important;
+    }
+  }
+
+  &:overview #dash { // overview-mode #1
+    background: none;
+
+    .overview-tile,
+    .show-apps {
+      .overview-icon {
+        color: on($osd);
+      }
+
+      &:focus .overview-icon { background-color: on($osd, fill); }
+      &:hover .overview-icon { background-color: on($osd, divider); }
+      &:active .overview-icon { background-color: on($osd, track); }
+      &:checked .overview-icon { background-color: on($osd, divider); }
+    }
+
+    .dash-background {
+      background-color: on($osd, divider) !important;
+    }
+
+    .app-grid-running-dot {
+      background-color: on($osd, disabled) !important;
+    }
+
+    StWidget.focused .app-grid-running-dot {
+      background-color: $inverse-indicator !important;
     }
   }
 
@@ -153,10 +330,6 @@
 
   &.transparent #dash .dash-background { // translucent-mode
     background-color: rgba($panel, 0.35); // does not work
-  }
-
-  &:overview #dash .dash-background { // overview-mode #1
-    background-color: on(black, divider);
   }
 
   &.opaque:overview,
@@ -214,4 +387,8 @@
   height: auto;
   border-right-width: 1px;
   margin: 32px 0;
+}
+
+.dash-label.bottom {
+  margin-bottom: $dash_padding !important;
 }
