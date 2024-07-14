@@ -114,36 +114,36 @@
   .show-apps,
   .overview-tile {
     & .overview-icon {
-      color: on($panel, secondary);
+      color: on($panel, secondary) !important;
     }
 
     &:hover .overview-icon,
     &:focus .overview-icon,
     &:selected .overview-icon {
-      background-color: on($panel, divider);
+      background-color: on($panel, divider) !important;
     }
 
     &:active .overview-icon,
     &:checked .overview-icon {
-      background-color: on($panel, track);
+      background-color: on($panel, track) !important;
     }
   }
 
   &:overview #dash .show-apps,
   &:overview #dash .overview-tile {
     & .overview-icon {
-      color: on(dark, secondary);
+      color: on(dark, secondary) !important;
     }
 
     &:hover .overview-icon,
     &:focus .overview-icon,
     &:selected .overview-icon {
-      background-color: on(dark, divider);
+      background-color: on(dark, divider) !important;
     }
 
     &:active .overview-icon,
     &:checked .overview-icon {
-      background-color: on(dark, track);
+      background-color: on(dark, track) !important;
     }
   }
 
