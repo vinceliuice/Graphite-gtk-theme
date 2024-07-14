@@ -6,7 +6,7 @@ THEME_NAME=Graphite
 
 _COLOR_VARIANTS=('' '-Light' '-Dark')
 _SCHEME_VARIANTS=('' '-nord')
-_THEME_VARIANTS=('' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-grey' '-teal')
+_THEME_VARIANTS=('' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-blue' '-teal')
 _TYPE_VARIANTS=('-rimless' '-outlined')
 
 if [ ! -z "${COLOR_VARIANTS:-}" ]; then
