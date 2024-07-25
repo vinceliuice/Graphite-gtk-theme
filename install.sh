@@ -14,6 +14,9 @@ themes=()
 colors=()
 sizes=()
 
+lcolors=()
+gcolors=()
+
 # Destination directory
 if [[ "$UID" -eq "$ROOT_UID" ]]; then
   DEST_DIR="/usr/share/themes"
@@ -574,11 +577,11 @@ if [[ "${#colors[@]}" -eq 0 ]] ; then
 fi
 
 if [[ "${#lcolors[@]}" -eq 0 ]] ; then
-  lcolors=("${COLOR_VARIANTS[@]}")
+  lcolors=("${COLOR_VARIANTS[1]}")
 fi
 
 if [[ "${#gcolors[@]}" -eq 0 ]] ; then
-  gcolors=("${COLOR_VARIANTS[@]}")
+  gcolors=("${COLOR_VARIANTS[2]}")
 fi
 
 if [[ "${#sizes[@]}" -eq 0 ]] ; then
@@ -751,9 +754,9 @@ uninstall() {
 }
 
 link_theme() {
-  for theme in "${themes[0]}"; do
-    for lcolor in "${lcolors[1]}"; do
-      for size in "${sizes[0]}"; do
+  for theme in "${themes[@]}"; do
+    for lcolor in "${lcolors[@]}"; do
+      for size in "${sizes[@]}"; do
         link_libadwaita "${dest:-$DEST_DIR}" "${_name:-$THEME_NAME}" "$theme" "$lcolor" "$size" "$ctype"
       done
     done
@@ -805,9 +808,9 @@ install_theme() {
 }
 
 install_gdm_theme() {
-  for theme in "${themes[0]}"; do
-    for gcolor in "${gcolors[2]}"; do
-      for size in "${sizes[0]}"; do
+  for theme in "${themes[@]}"; do
+    for gcolor in "${gcolors[@]}"; do
+      for size in "${sizes[@]}"; do
         install_gdm "${name:-$THEME_NAME}" "$theme" "$gcolor" "$size" "$ctype"
       done
     done
