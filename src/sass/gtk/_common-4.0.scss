@@ -2009,7 +2009,7 @@ popover.background {
     padding: $space-size;
     background-color: $surface;
     background-clip: border-box;
-    border-radius: $menu-radius;
+    border-radius: if($rimless == 'true', $menu-radius, $menu-radius + 2px);
     color: $text;
 
     @if $rimless == 'true' {
@@ -3425,7 +3425,7 @@ listview.view {
       margin-right: 0;
       padding: $space-size $space-size * 2;
 
-      &:first-child, &:last-child, & { border-radius: $corner-radius; }
+      &, &:first-child, &:last-child { border-radius: $corner-radius; }
     }
   }
 }
@@ -3904,7 +3904,7 @@ separator.sidebar {
 
   > row {
     min-height: $small-size;
-    padding: $space-size $space-size * 1.5;
+    padding: $space-size / 2;
     border-radius: $corner-radius;
     margin: 0;
 

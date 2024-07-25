@@ -20,10 +20,10 @@ $root-font-size: if($compact == 'false', 14px, 13px);
 // Radii
 //
 
-$window-radius: 12px;
 $modal-radius: 6px;
 $corner-radius: 6px;
 $menu-radius: $corner-radius + $space-size;
+$window-radius: $corner-radius + $space-size;
 $circular-radius: 9999px;
 
 //
