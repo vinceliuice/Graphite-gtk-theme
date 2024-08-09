@@ -1378,7 +1378,7 @@ toolbar {
 // searchbar
 searchbar > revealer > box {
   padding: $space-size;
-  border-spacing: $space-size;
+  border-spacing: 0;
   border-style: solid;
   border-width: 0 0 1px;
   border-color: $border;
@@ -1386,7 +1386,10 @@ searchbar > revealer > box {
   background-clip: border-box;
   box-shadow: none;
 
-  entry, button { margin: 0; }
+  entry,
+  button,
+  menubutton,
+  splitbutton { margin: 0; }
 }
 
 /***************
