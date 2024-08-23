@@ -17,13 +17,13 @@ $app_folder_size: 720px;
 }
 
 .overview-tile {
-    color: on($osd, secondary);
-    border-radius: $base_radius * 2.5;
-    padding: 6px;
-    border: none;
-    transition-duration: 100ms;
-    text-align: center;
-    background-color: transparent;
+  color: on($osd, secondary);
+  border-radius: $base_radius * 2.5;
+  padding: 6px;
+  border: none;
+  transition-duration: 100ms;
+  text-align: center;
+  background-color: transparent;
 
   &:hover,
   &:focus,
@@ -32,6 +32,8 @@ $app_folder_size: 720px;
     background-color: on($osd, divider);
     border-image: none;
     background-image: none;
+    border: none !important;
+    box-shadow: none !important;
   }
 
   &:active,

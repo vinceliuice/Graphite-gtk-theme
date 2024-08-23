@@ -1670,6 +1670,15 @@ headerbar {
 
   &.default-decoration {
     min-height: $medium-size;
+    background-color: $titlebar;
+    background-image: image($titlebar);
+    color: $titlebar-text;
+
+    &:backdrop {
+      background-color: $titlebar-backdrop;
+      background-image: image($titlebar-backdrop);
+      color: $titlebar-text-secondary;
+    }
 
     windowcontrols {
       button,

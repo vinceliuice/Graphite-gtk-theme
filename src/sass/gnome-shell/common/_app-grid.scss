@@ -19,6 +19,8 @@
     background-color: on($osd, divider);
     border-image: none;
     background-image: none;
+    border: none !important;
+    box-shadow: none !important;
   }
 
   &:active .overview-icon,
