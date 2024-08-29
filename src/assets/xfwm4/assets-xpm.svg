@@ -1,152 +1,30 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   width="80"
-   height="80"
-   version="1.1"
-   viewBox="0 0 80 80"
-   id="svg10"
-   sodipodi:docname="assets-xpm.svg"
-   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <defs
-     id="defs10" />
-  <sodipodi:namedview
-     id="namedview10"
-     pagecolor="#ffffff"
-     bordercolor="#000000"
-     borderopacity="0.25"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1"
-     showgrid="true"
-     inkscape:zoom="4.72"
-     inkscape:cx="42.478814"
-     inkscape:cy="52.754237"
-     inkscape:window-width="1920"
-     inkscape:window-height="1020"
-     inkscape:window-x="0"
-     inkscape:window-y="28"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg10">
-    <inkscape:grid
-       id="grid10"
-       units="px"
-       originx="0"
-       originy="0"
-       spacingx="1"
-       spacingy="1"
-       empcolor="#0099e5"
-       empopacity="0.30196078"
-       color="#0099e5"
-       opacity="0.14901961"
-       empspacing="5"
-       dotted="false"
-       gridanglex="30"
-       gridanglez="30"
-       visible="true" />
-  </sodipodi:namedview>
-  <g
-     id="title"
-     transform="translate(-3,-6)">
-    <rect
-       x="22"
-       y="18"
-       width="6"
-       height="34"
-       fill="#2c2c2c"
-       id="rect1" />
-    <rect
-       x="22"
-       y="16"
-       width="6"
-       height="2"
-       fill="#e0e0e0"
-       id="rect2" />
-  </g>
-  <g
-     id="top-left-active"
-     transform="translate(-3,-6)">
-    <path
-       d="m 19,18 v 1 h -2 v 1 h -1 v 2 h -1 v 30 h 6 V 18 Z"
-       fill="#2c2c2c"
-       id="path2" />
-    <path
-       d="m 18,16 v 1 h -2 v 1 h -1 v 1 h -1 v 2 h -1 v 31 h 2 V 22 h 1 v -2 h 1 v -1 h 2 v -1 h 2 v -2 z"
-       fill="#e0e0e0"
-       id="path3" />
-  </g>
-  <g
-     id="left-active"
-     transform="translate(-36,-687.36)">
-    <rect
-       transform="scale(-1,1)"
-       x="-48"
-       y="734.35999"
-       width="2"
-       height="16"
-       fill="#e0e0e0"
-       id="rect3" />
-  </g>
-  <g
-     id="bottom-left-active"
-     transform="translate(-86,-666.36)">
-    <path
-       d="m 98,730.36 h -2 v 9 h 1 v 1 l 9,-1.2e-4 v -2 l -8,1.2e-4 z"
-       fill="#e0e0e0"
-       id="path4" />
-  </g>
-  <g
-     id="bottom-right-active"
-     transform="matrix(-1,0,0,1,146,-666.36)">
-    <path
-       d="m 98,730.36 h -2 v 9 h 1 v 1 l 9,-1.2e-4 v -2 l -8,1.2e-4 z"
-       fill="#e0e0e0"
-       id="path5" />
-  </g>
-  <g
-     id="bottom-active"
-     transform="matrix(0,-1,-1,0,772.36,120)">
-    <rect
-       transform="scale(-1,1)"
-       x="-48"
-       y="734.35999"
-       width="2"
-       height="16"
-       fill="#e0e0e0"
-       id="rect5" />
-  </g>
-  <g
-     id="button"
-     transform="translate(-3,-6)">
-    <rect
-       x="29"
-       y="18"
-       width="34"
-       height="34"
-       fill="#2c2c2c"
-       id="rect8" />
-    <rect
-       x="29"
-       y="16"
-       width="34"
-       height="2"
-       fill="#e0e0e0"
-       id="rect9" />
-  </g>
-  <g
-     id="top-right-active"
-     transform="translate(-3,-6)">
-    <path
-       d="m 67,18 v 1 h 2 v 1 h 1 v 2 h 1 V 52 H 65 V 18 Z"
-       fill="#2c2c2c"
-       id="path9" />
-    <path
-       d="m 68,16 v 1 h 2 v 1 h 1 v 1 h 1 v 2 h 1 V 52 H 71 V 22 h -1 v -2 h -1 v -1 h -2 v -1 h -2 v -2 z"
-       fill="#e0e0e0"
-       id="path10" />
-  </g>
+<svg width="80" height="80" version="1.1" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+ <g id="title" transform="translate(-3,-6)">
+  <rect x="22" y="18" width="6" height="34" fill="#2c2c2c"/>
+  <rect x="22" y="16" width="6" height="2" fill="#e0e0e0"/>
+ </g>
+ <g id="top-left-active" transform="translate(-3,-6)">
+  <path d="m19 18v1h-2v1h-1v2h-1v30h6v-34z" fill="#2c2c2c"/>
+  <path d="m18 16v1h-2v1h-1v1h-1v2h-1v31h2v-30h1v-2h1v-1h2v-1h2v-2z" fill="#e0e0e0"/>
+ </g>
+ <g id="left-active" transform="translate(-36,-687.36)">
+  <rect transform="scale(-1,1)" x="-48" y="734.36" width="2" height="16" fill="#e0e0e0"/>
+ </g>
+ <g id="bottom-left-active" transform="translate(-86,-666.36)">
+  <path d="m98 730.36h-2v9h1v1l9-1.2e-4v-2l-8 1.2e-4z" fill="#e0e0e0"/>
+ </g>
+ <g id="bottom-right-active" transform="matrix(-1,0,0,1,146,-666.36)">
+  <path d="m98 730.36h-2v9h1v1l9-1.2e-4v-2l-8 1.2e-4z" fill="#e0e0e0"/>
+ </g>
+ <g id="bottom-active" transform="matrix(0,-1,-1,0,772.36,120)">
+  <rect transform="scale(-1,1)" x="-48" y="734.36" width="2" height="16" fill="#e0e0e0"/>
+ </g>
+ <g id="button">
+  <rect x="26" y="10" width="34" height="36" fill="none"/>
+  <path d="m40 15v1h-2v1h-2v1h-2v1h-1v1h-1v2h-0.99023v2h-1.0098v2h-0.99023v6h0.99023v2h1.0098v2h0.99023v2h1v1h1v1h2v1h2v1h2v1h6v-1h2v-1h2v-1h2v-1h1v-1h1v-2h0.99023v-2h1.0098v-2h0.99023v-6h-0.99023v-2h-1.0098v-2h-0.99023v-2h-1v-1h-1v-1h-2v-1h-2v-1h-2v-1z" fill="#2c2c2c"/>
+ </g>
+ <g id="top-right-active" transform="translate(-3,-6)">
+  <path d="m67 18v1h2v1h1v2h1v30h-6v-34z" fill="#2c2c2c"/>
+  <path d="m68 16v1h2v1h1v1h1v2h1v31h-2v-30h-1v-2h-1v-1h-2v-1h-2v-2z" fill="#e0e0e0"/>
+ </g>
 </svg>
