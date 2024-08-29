@@ -1,172 +1,160 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 INKSCAPE="/usr/bin/inkscape"
 OPTIPNG="/usr/bin/optipng"
 
-ASSETS_DIR="assets"
-HD_ASSETS_DIR="assets-hdpi"
-XHD_ASSETS_DIR="assets-xhdpi"
-SRC_FILE="assets.svg"
+svg_main() {
+  local color="${1}"
+  local screen="${2}"
 
-LIGHT_ASSETS_DIR="assets-Light"
-LIGHT_HD_ASSETS_DIR="assets-Light-hdpi"
-LIGHT_XHD_ASSETS_DIR="assets-Light-xhdpi"
-LIGHT_SRC_FILE="assets-Light.svg"
+  local SRC_FILE="assets-${type}${color}.svg"
+  local ASSETS_DIR="${type}/assets${color}${screen}"
 
-NORD_ASSETS_DIR="assets-nord"
-NORD_HD_ASSETS_DIR="assets-nord-hdpi"
-NORD_XHD_ASSETS_DIR="assets-nord-xhdpi"
-NORD_SRC_FILE="assets-nord.svg"
+  case "${screen}" in
+    -hdpi)
+      DPI='144'
+      ;;
+    -xhdpi)
+      DPI='192'
+      ;;
+    *)
+      DPI='96'
+      ;;
+  esac
 
-NORD_LIGHT_ASSETS_DIR="assets-Light-nord"
-NORD_LIGHT_HD_ASSETS_DIR="assets-Light-nord-hdpi"
-NORD_LIGHT_XHD_ASSETS_DIR="assets-Light-nord-xhdpi"
-NORD_LIGHT_SRC_FILE="assets-Light-nord.svg"
+  mkdir -p "$ASSETS_DIR"
 
-INDEX="assets.txt"
-
-for i in `cat $INDEX`
-do
-
-# Normal
-
-if [ -f $ASSETS_DIR/$i.png ]; then
-    echo $ASSETS_DIR/$i.png exists.
-else
+  if [[ -f "$ASSETS_DIR/$i.svg" ]]; then
+    echo -e "$ASSETS_DIR/$i.svg exists."
+  else
     echo
-    echo Rendering $ASSETS_DIR/$i.png
+    echo -e "Rendering $ASSETS_DIR/$i.svg"
     $INKSCAPE --export-id=$i \
               --export-id-only \
-              --export-filename=$ASSETS_DIR/$i.png $SRC_FILE >/dev/null \
-    && $OPTIPNG -o7 --quiet $ASSETS_DIR/$i.png 
-fi
-if [ -f $LIGHT_ASSETS_DIR/$i.png ]; then
-    echo $LIGHT_ASSETS_DIR/$i.png exists.
-else
-    echo
-    echo Rendering $LIGHT_ASSETS_DIR/$i.png
-    $INKSCAPE --export-id=$i \
-              --export-id-only \
-              --export-filename=$LIGHT_ASSETS_DIR/$i.png $LIGHT_SRC_FILE >/dev/null \
-    && $OPTIPNG -o7 --quiet $LIGHT_ASSETS_DIR/$i.png 
-fi
+              --export-dpi=$DPI \
+              --export-filename=$ASSETS_DIR/$i.svg $SRC_FILE >/dev/null
+    # $OPTIPNG -o7 --quiet "$ASSETS_DIR/$i.svg"
+    svgo "$ASSETS_DIR/$i.svg"
+  fi
+}
 
-if [ -f $NORD_ASSETS_DIR/$i.png ]; then
-    echo $NORD_ASSETS_DIR/$i.png exists.
-else
-    echo
-    echo Rendering $NORD_ASSETS_DIR/$i.png
-    $INKSCAPE --export-id=$i \
-              --export-id-only \
-              --export-filename=$NORD_ASSETS_DIR/$i.png $NORD_SRC_FILE >/dev/null \
-    && $OPTIPNG -o7 --quiet $NORD_ASSETS_DIR/$i.png 
-fi
-if [ -f $NORD_LIGHT_ASSETS_DIR/$i.png ]; then
-    echo $NORD_LIGHT_ASSETS_DIR/$i.png exists.
-else
-    echo
-    echo Rendering $NORD_LIGHT_ASSETS_DIR/$i.png
-    $INKSCAPE --export-id=$i \
-              --export-id-only \
-              --export-filename=$NORD_LIGHT_ASSETS_DIR/$i.png $NORD_LIGHT_SRC_FILE >/dev/null \
-    && $OPTIPNG -o7 --quiet $NORD_LIGHT_ASSETS_DIR/$i.png 
-fi
+xpm_main() {
+  local screen="${1}"
 
-# HDPI
+  local SRC_FILE="assets-${type}.svg"
+  local ASSETS_DIR="${type}/assets${screen}"
 
-if [ -f $HD_ASSETS_DIR/$i.png ]; then
-    echo $HD_ASSETS_DIR/$i.png exists.
-else
-    echo
-    echo Rendering $HD_ASSETS_DIR/$i.png
-    $INKSCAPE --export-id=$i \
-              --export-id-only \
-              --export-dpi=144 \
-              --export-filename=$HD_ASSETS_DIR/$i.png $SRC_FILE >/dev/null \
-    && $OPTIPNG -o7 --quiet $HD_ASSETS_DIR/$i.png 
-fi
-if [ -f $LIGHT_HD_ASSETS_DIR/$i.png ]; then
-    echo $LIGHT_HD_ASSETS_DIR/$i.png exists.
-else
-    echo
-    echo Rendering $LIGHT_HD_ASSETS_DIR/$i.png
-    $INKSCAPE --export-id=$i \
-              --export-id-only \
-              --export-dpi=144 \
-              --export-filename=$LIGHT_HD_ASSETS_DIR/$i.png $LIGHT_SRC_FILE >/dev/null \
-    && $OPTIPNG -o7 --quiet $LIGHT_HD_ASSETS_DIR/$i.png 
-fi
+  case "${screen}" in
+    -hdpi)
+      DPI='144'
+      ;;
+    -xhdpi)
+      DPI='192'
+      ;;
+    *)
+      DPI='96'
+      ;;
+  esac
 
-if [ -f $NORD_HD_ASSETS_DIR/$i.png ]; then
-    echo $NORD_HD_ASSETS_DIR/$i.png exists.
-else
-    echo
-    echo Rendering $NORD_HD_ASSETS_DIR/$i.png
-    $INKSCAPE --export-id=$i \
-              --export-id-only \
-              --export-dpi=144 \
-              --export-filename=$NORD_HD_ASSETS_DIR/$i.png $NORD_SRC_FILE >/dev/null \
-    && $OPTIPNG -o7 --quiet $NORD_HD_ASSETS_DIR/$i.png 
-fi
-if [ -f $NORD_LIGHT_HD_ASSETS_DIR/$i.png ]; then
-    echo $NORD_LIGHT_HD_ASSETS_DIR/$i.png exists.
-else
-    echo
-    echo Rendering $NORD_LIGHT_HD_ASSETS_DIR/$i.png
-    $INKSCAPE --export-id=$i \
-              --export-id-only \
-              --export-dpi=144 \
-              --export-filename=$NORD_LIGHT_HD_ASSETS_DIR/$i.png $NORD_LIGHT_SRC_FILE >/dev/null \
-    && $OPTIPNG -o7 --quiet $NORD_LIGHT_HD_ASSETS_DIR/$i.png 
-fi
+  mkdir -p "$ASSETS_DIR"
 
-# XHDPI
+  if [[ -f "$ASSETS_DIR/$i.xpm" ]]; then
+    echo -e "$ASSETS_DIR/$i.xpm exists."
+  else
+    echo
+    echo -e "Rendering $ASSETS_DIR/$i.xpm"
+    $INKSCAPE --export-id=$i \
+              --export-id-only \
+              --export-dpi=$DPI \
+              --export-filename=$ASSETS_DIR/$i.png $SRC_FILE >/dev/null
+    convert "$ASSETS_DIR/$i.png" "$ASSETS_DIR/$i.xpm"
+    sed -i "s/c #2C2C2C/c #2C2C2C s active_color_2/g" "$ASSETS_DIR/$i.xpm"
+    sed -i "s/c gray88/c gray88 s active_color_1/g" "$ASSETS_DIR/$i.xpm"
+    rm -rf $ASSETS_DIR/$i.png
+  fi
 
-if [ -f $XHD_ASSETS_DIR/$i.png ]; then
-    echo $XHD_ASSETS_DIR/$i.png exists.
-else
-    echo
-    echo Rendering $XHD_ASSETS_DIR/$i.png
-    $INKSCAPE --export-id=$i \
-              --export-id-only \
-              --export-dpi=192 \
-              --export-filename=$XHD_ASSETS_DIR/$i.png $SRC_FILE >/dev/null \
-    && $OPTIPNG -o7 --quiet $XHD_ASSETS_DIR/$i.png 
-fi
-if [ -f $LIGHT_XHD_ASSETS_DIR/$i.png ]; then
-    echo $LIGHT_XHD_ASSETS_DIR/$i.png exists.
-else
-    echo
-    echo Rendering $LIGHT_XHD_ASSETS_DIR/$i.png
-    $INKSCAPE --export-id=$i \
-              --export-id-only \
-              --export-dpi=192 \
-              --export-filename=$LIGHT_XHD_ASSETS_DIR/$i.png $LIGHT_SRC_FILE >/dev/null \
-    && $OPTIPNG -o7 --quiet $LIGHT_XHD_ASSETS_DIR/$i.png 
-fi
+  (
+  cd $ASSETS_DIR
+  ln -sf button.xpm close-active.xpm
+  ln -sf button.xpm close-prelight.xpm
+  ln -sf button.xpm close-pressed.xpm
+  ln -sf button.xpm close-inactive.xpm
+  ln -sf button.xpm hide-active.xpm
+  ln -sf button.xpm hide-prelight.xpm
+  ln -sf button.xpm hide-pressed.xpm
+  ln -sf button.xpm hide-inactive.xpm
+  ln -sf button.xpm maximize-active.xpm
+  ln -sf button.xpm maximize-prelight.xpm
+  ln -sf button.xpm maximize-pressed.xpm
+  ln -sf button.xpm maximize-inactive.xpm
+  ln -sf button.xpm maximize-toggled-active.xpm
+  ln -sf button.xpm maximize-toggled-prelight.xpm
+  ln -sf button.xpm maximize-toggled-pressed.xpm
+  ln -sf button.xpm maximize-toggled-inactive.xpm
+  ln -sf button.xpm shade-active.xpm
+  ln -sf button.xpm shade-prelight.xpm
+  ln -sf button.xpm shade-pressed.xpm
+  ln -sf button.xpm shade-inactive.xpm
+  ln -sf button.xpm shade-toggled-active.xpm
+  ln -sf button.xpm shade-toggled-prelight.xpm
+  ln -sf button.xpm shade-toggled-pressed.xpm
+  ln -sf button.xpm shade-toggled-inactive.xpm
+  ln -sf button.xpm stick-active.xpm
+  ln -sf button.xpm stick-prelight.xpm
+  ln -sf button.xpm stick-pressed.xpm
+  ln -sf button.xpm stick-inactive.xpm
+  ln -sf button.xpm stick-toggled-active.xpm
+  ln -sf button.xpm stick-toggled-prelight.xpm
+  ln -sf button.xpm stick-toggled-pressed.xpm
+  ln -sf button.xpm stick-toggled-inactive.xpm
+  ln -sf button.xpm menu-active.xpm
+  ln -sf button.xpm menu-prelight.xpm
+  ln -sf button.xpm menu-pressed.xpm
+  ln -sf button.xpm menu-inactive.xpm
+  ln -sf title.xpm title-1-active.xpm
+  ln -sf title.xpm title-2-active.xpm
+  ln -sf title.xpm title-3-active.xpm
+  ln -sf title.xpm title-4-active.xpm
+  ln -sf title.xpm title-5-active.xpm
+  ln -sf title.xpm title-1-inactive.xpm
+  ln -sf title.xpm title-2-inactive.xpm
+  ln -sf title.xpm title-3-inactive.xpm
+  ln -sf title.xpm title-4-inactive.xpm
+  ln -sf title.xpm title-5-inactive.xpm
+  ln -sf top-left-active.xpm top-left-inactive.xpm
+  ln -sf top-right-active.xpm top-right-inactive.xpm
+  ln -sf left-active.xpm left-inactive.xpm
+  ln -sf left-active.xpm right-active.xpm
+  ln -sf right-active.xpm right-inactive.xpm
+  ln -sf bottom-active.xpm bottom-inactive.xpm
+  ln -sf bottom-left-active.xpm bottom-left-inactive.xpm
+  ln -sf bottom-right-active.xpm bottom-right-inactive.xpm
+  )
+}
 
-if [ -f $NORD_XHD_ASSETS_DIR/$i.png ]; then
-    echo $NORD_XHD_ASSETS_DIR/$i.png exists.
-else
-    echo
-    echo Rendering $NORD_XHD_ASSETS_DIR/$i.png
-    $INKSCAPE --export-id=$i \
-              --export-id-only \
-              --export-dpi=192 \
-              --export-filename=$NORD_XHD_ASSETS_DIR/$i.png $NORD_SRC_FILE >/dev/null \
-    && $OPTIPNG -o7 --quiet $NORD_XHD_ASSETS_DIR/$i.png 
-fi
-if [ -f $NORD_LIGHT_XHD_ASSETS_DIR/$i.png ]; then
-    echo $NORD_LIGHT_XHD_ASSETS_DIR/$i.png exists.
-else
-    echo
-    echo Rendering $NORD_LIGHT_XHD_ASSETS_DIR/$i.png
-    $INKSCAPE --export-id=$i \
-              --export-id-only \
-              --export-dpi=192 \
-              --export-filename=$NORD_LIGHT_XHD_ASSETS_DIR/$i.png $NORD_LIGHT_SRC_FILE >/dev/null \
-    && $OPTIPNG -o7 --quiet $NORD_LIGHT_XHD_ASSETS_DIR/$i.png 
-fi
+make_svg() {
+  local type="svg"
+  local INDEX="assets-${type}.txt"
 
-done
-exit 0
+  for i in `cat $INDEX`; do
+    for color in '' '-Light'; do
+      for screen in '' '-hdpi' '-xhdpi'; do
+        svg_main "${color}" "${screen}"
+      done
+    done
+  done
+}
+
+make_xpm() {
+  local type="xpm"
+  local INDEX="assets-${type}.txt"
+
+  for i in `cat $INDEX`; do
+    for screen in '' '-hdpi' '-xhdpi'; do
+      xpm_main "${screen}"
+    done
+  done
+}
+
+make_svg && make_xpm
+

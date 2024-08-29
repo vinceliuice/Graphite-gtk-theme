@@ -22,6 +22,8 @@ if [[ "$UID" -eq "$ROOT_UID" ]]; then
   DEST_DIR="/usr/share/themes"
 elif [[ -n "$XDG_DATA_HOME" ]]; then
   DEST_DIR="$XDG_DATA_HOME/themes"
+elif [[ -d "$HOME/.themes" ]]; then
+  DEST_DIR="$HOME/.themes"
 elif [[ -d "$HOME/.local/share/themes" ]]; then
   DEST_DIR="$HOME/.local/share/themes"
 else
@@ -162,7 +164,8 @@ install() {
   ln -s assets/no-notifications.svg no-notifications.svg
 
   mkdir -p                                                                                   "${THEME_DIR}/gtk-2.0"
-  cp -r "${SRC_DIR}/main/gtk-2.0/gtkrc${theme}${ELSE_DARK:-}${ctype}"                        "${THEME_DIR}/gtk-2.0/gtkrc"
+  # cp -r "${SRC_DIR}/main/gtk-2.0/gtkrc${theme}${ELSE_DARK:-}${ctype}"                        "${THEME_DIR}/gtk-2.0/gtkrc"
+  make_gtkrc
   cp -r "${SRC_DIR}/main/gtk-2.0/common/"*'.rc'                                              "${THEME_DIR}/gtk-2.0"
   cp -r "${SRC_DIR}/assets/gtk-2.0/assets-common${ELSE_DARK:-}${ctype}"                      "${THEME_DIR}/gtk-2.0/assets"
   cp -r "${SRC_DIR}/assets/gtk-2.0/assets${theme}${ELSE_DARK:-}${ctype}/"*.png               "${THEME_DIR}/gtk-2.0/assets"
@@ -196,20 +199,171 @@ install() {
   cd "${THEME_DIR}/metacity-1" && ln -s metacity-theme-2.xml metacity-theme-1.xml
 
   mkdir -p                                                                                   "${THEME_DIR}/xfwm4"
-  cp -r "${SRC_DIR}/assets/xfwm4/assets${ELSE_LIGHT:-}${ctype}/"*.png                        "${THEME_DIR}/xfwm4"
-  cp -r "${SRC_DIR}/main/xfwm4/themerc${ELSE_LIGHT:-}"                                       "${THEME_DIR}/xfwm4/themerc"
+  cp -r "${SRC_DIR}/assets/xfwm4/svg/assets${ELSE_LIGHT:-}/"*.svg                            "${THEME_DIR}/xfwm4"
+  cp -r "${SRC_DIR}/assets/xfwm4/xpm/assets/"*.xpm                                           "${THEME_DIR}/xfwm4"
+  cp -r "${SRC_DIR}/main/xfwm4/themerc"                                                      "${THEME_DIR}/xfwm4/themerc"
   mkdir -p                                                                                   "${THEME_DIR}-hdpi/xfwm4"
-  cp -r "${SRC_DIR}/assets/xfwm4/assets${ELSE_LIGHT:-}${ctype}-hdpi/"*.png                   "${THEME_DIR}-hdpi/xfwm4"
-  cp -r "${SRC_DIR}/main/xfwm4/themerc${ELSE_LIGHT:-}"                                       "${THEME_DIR}-hdpi/xfwm4/themerc"
+  cp -r "${SRC_DIR}/assets/xfwm4/svg/assets${ELSE_LIGHT:-}-hdpi/"*.svg                       "${THEME_DIR}-hdpi/xfwm4"
+  cp -r "${SRC_DIR}/assets/xfwm4/xpm/assets-hdpi/"*.xpm                                      "${THEME_DIR}-hdpi/xfwm4"
+  cp -r "${SRC_DIR}/main/xfwm4/themerc"                                                      "${THEME_DIR}-hdpi/xfwm4/themerc"
   mkdir -p                                                                                   "${THEME_DIR}-xhdpi/xfwm4"
-  cp -r "${SRC_DIR}/assets/xfwm4/assets${ELSE_LIGHT:-}${ctype}-xhdpi/"*.png                  "${THEME_DIR}-xhdpi/xfwm4"
-  cp -r "${SRC_DIR}/main/xfwm4/themerc${ELSE_LIGHT:-}"                                       "${THEME_DIR}-xhdpi/xfwm4/themerc"
+  cp -r "${SRC_DIR}/assets/xfwm4/svg/assets${ELSE_LIGHT:-}-xhdpi/"*.svg                      "${THEME_DIR}-xhdpi/xfwm4"
+  cp -r "${SRC_DIR}/assets/xfwm4/xpm/assets-xhdpi/"*.xpm                                     "${THEME_DIR}-xhdpi/xfwm4"
+  cp -r "${SRC_DIR}/main/xfwm4/themerc"                                                      "${THEME_DIR}-xhdpi/xfwm4/themerc"
+  xfwm_button
 
   mkdir -p                                                                                   "${THEME_DIR}/plank"
   if [[ "$color" == '-Light' ]]; then
     cp -r "${SRC_DIR}/main/plank/theme-Light/"*                                              "${THEME_DIR}/plank"
   else
     cp -r "${SRC_DIR}/main/plank/theme-Dark/"*                                               "${THEME_DIR}/plank"
+  fi
+}
+
+color_value() {
+  case "$theme" in
+      '')
+        theme_color_dark='#E0E0E0'
+        theme_color_light='#333333'
+        ;;
+      -purple)
+        theme_color_dark='#AB47BC'
+        theme_color_light='#BA68C8'
+        ;;
+      -pink)
+        theme_color_dark='#EC407A'
+        theme_color_light='#F06292'
+        ;;
+      -red)
+        theme_color_dark='#E53935'
+        theme_color_light='#F44336'
+        ;;
+      -orange)
+        theme_color_dark='#F57C00'
+        theme_color_light='#FB8C00'
+        ;;
+      -yellow)
+        theme_color_dark='#FBC02D'
+        theme_color_light='#FFD600'
+        ;;
+      -green)
+        theme_color_dark='#4CAF50'
+        theme_color_light='#66BB6A'
+        ;;
+      -teal)
+        theme_color_dark='#009688'
+        theme_color_light='#4DB6AC'
+        ;;
+      -blue)
+        theme_color_dark='#1A73E8'
+        theme_color_light='#3281EA'
+        ;;
+  esac
+
+  if [[ "$ctype" == '-nord' ]]; then
+      case "$theme" in
+        '')
+          theme_color_dark='#dbdee5'
+          theme_color_light='#434c5e'
+          ;;
+        -purple)
+          theme_color_dark='#b57daa'
+          theme_color_light='#c89dbf'
+          ;;
+        -pink)
+          theme_color_dark='#cd7092'
+          theme_color_light='#dc98b1'
+          ;;
+        -red)
+          theme_color_dark='#c35b65'
+          theme_color_light='#d4878f'
+          ;;
+        -orange)
+          theme_color_dark='#d0846c'
+          theme_color_light='#dca493'
+          ;;
+        -yellow)
+          theme_color_dark='#e4b558'
+          theme_color_light='#eac985'
+          ;;
+        -green)
+          theme_color_dark='#82ac5d'
+          theme_color_light='#a0c082'
+          ;;
+        -teal)
+          theme_color_dark='#63a6a5'
+          theme_color_light='#83b9b8'
+          ;;
+        -blue)
+          theme_color_dark='#5e81ac'
+          theme_color_light='#89a3c2'
+          ;;
+      esac
+  fi
+}
+
+make_gtkrc() {
+  local GTKRC_DIR="${SRC_DIR}/main/gtk-2.0"
+
+  color_value
+
+  if [[ "$blackness" == 'true' ]]; then
+    background_light='#FFFFFF'
+    background_dark='#0F0F0F'
+    background_alt='#181818'
+  else
+    if [[ "$ctype" == '-nord' ]]; then
+      if [[ "$darker" == 'true' ]]; then
+        background_light='#f9fafb'
+        background_dark='#252a33'
+        background_alt='#313744'
+      else
+        background_light='#f9fafb'
+        background_dark='#313744'
+        background_alt='#3a4150'
+      fi
+    else
+      if [[ "$darker" == 'true' ]]; then
+        background_light='#FFFFFF'
+        background_dark='#1F1F1F'
+        background_alt='#282828'
+      else
+        background_light='#FFFFFF'
+        background_dark='#2C2C2C'
+        background_alt='#464646'
+      fi
+    fi
+  fi
+
+  cp -r "${GTKRC_DIR}/gtkrc${ELSE_DARK:-}"                                      "${THEME_DIR}/gtk-2.0/gtkrc"
+  sed -i "s/#FFFFFF/${background_light}/g"                                      "${THEME_DIR}/gtk-2.0/gtkrc"
+  sed -i "s/#2C2C2C/${background_dark}/g"                                       "${THEME_DIR}/gtk-2.0/gtkrc"
+  sed -i "s/#464646/${background_alt}/g"                                        "${THEME_DIR}/gtk-2.0/gtkrc"
+
+  if [[ "${color}" == '-Light' ]]; then
+    sed -i "s/#333333/${theme_color_light}/g"                                   "${THEME_DIR}/gtk-2.0/gtkrc"
+  else
+    sed -i "s/#E0E0E0/${theme_color_dark}/g"                                    "${THEME_DIR}/gtk-2.0/gtkrc"
+  fi
+}
+
+xfwm_button() {
+  color_value
+
+  if [[ "${color}" == '-Light' ]]; then
+    sed -i "s/#333/${theme_color_light}/g"                                      "${THEME_DIR}/xfwm4/close-prelight.svg"
+    sed -i "s/#333/${theme_color_light}/g"                                      "${THEME_DIR}/xfwm4/close-pressed.svg"
+    sed -i "s/#333/${theme_color_light}/g"                                      "${THEME_DIR}-hdpi/xfwm4/close-prelight.svg"
+    sed -i "s/#333/${theme_color_light}/g"                                      "${THEME_DIR}-hdpi/xfwm4/close-pressed.svg"
+    sed -i "s/#333/${theme_color_light}/g"                                      "${THEME_DIR}-xhdpi/xfwm4/close-prelight.svg"
+    sed -i "s/#333/${theme_color_light}/g"                                      "${THEME_DIR}-xhdpi/xfwm4/close-pressed.svg"
+  else
+    sed -i "s/#e0e0e0/${theme_color_dark}/g"                                    "${THEME_DIR}/xfwm4/close-prelight.svg"
+    sed -i "s/#e0e0e0/${theme_color_dark}/g"                                    "${THEME_DIR}/xfwm4/close-pressed.svg"
+    sed -i "s/#e0e0e0/${theme_color_dark}/g"                                    "${THEME_DIR}-hdpi/xfwm4/close-prelight.svg"
+    sed -i "s/#e0e0e0/${theme_color_dark}/g"                                    "${THEME_DIR}-hdpi/xfwm4/close-pressed.svg"
+    sed -i "s/#e0e0e0/${theme_color_dark}/g"                                    "${THEME_DIR}-xhdpi/xfwm4/close-prelight.svg"
+    sed -i "s/#e0e0e0/${theme_color_dark}/g"                                    "${THEME_DIR}-xhdpi/xfwm4/close-pressed.svg"
   fi
 }
 
@@ -778,7 +932,7 @@ clean_theme() {
     for color in "${COLOR_VARIANTS[@]}"; do
       for size in "${SIZE_VARIANTS[@]}"; do
         for type in '' '-nord'; do
-          uninstall "${dest:-$HOME/.themes}" "${_name:-$THEME_NAME}" "$theme" "$color" "$size" "$type"
+          uninstall "${dest:-$HOME/.local/share/themes}" "${_name:-$THEME_NAME}" "$theme" "$color" "$size" "$type"
         done
       done
     done
