@@ -40,7 +40,8 @@ Run the following commands in the terminal:
 
 -l, --libadwaita        Install link to gtk4 config for theming libadwaita
 
--u, --uninstall         Uninstall themes or link for libadwaita
+-u, --uninstall
+-r, --remove            Uninstall/Remove themes or link for libadwaita
 
 --tweaks                Specify versions for tweaks [nord|black|darker|rimless|normal]
                         (WORRING: 'nord' and 'darker' can not mix use with 'black'!)
