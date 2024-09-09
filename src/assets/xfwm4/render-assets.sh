@@ -7,20 +7,8 @@ svg_main() {
   local color="${1}"
   local screen="${2}"
 
-  local SRC_FILE="assets-${type}${color}.svg"
+  local SRC_FILE="assets-${type}${color}${screen}.svg"
   local ASSETS_DIR="${type}/assets${color}${screen}"
-
-  case "${screen}" in
-    -hdpi)
-      DPI='144'
-      ;;
-    -xhdpi)
-      DPI='192'
-      ;;
-    *)
-      DPI='96'
-      ;;
-  esac
 
   mkdir -p "$ASSETS_DIR"
 
@@ -31,9 +19,7 @@ svg_main() {
     echo -e "Rendering $ASSETS_DIR/$i.svg"
     $INKSCAPE --export-id=$i \
               --export-id-only \
-              --export-dpi=$DPI \
               --export-filename=$ASSETS_DIR/$i.svg $SRC_FILE >/dev/null
-    # $OPTIPNG -o7 --quiet "$ASSETS_DIR/$i.svg"
     svgo "$ASSETS_DIR/$i.svg"
   fi
 }
