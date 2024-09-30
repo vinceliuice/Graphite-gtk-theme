@@ -13,6 +13,8 @@
 
 - `Icon theme` [Tela-circle-icon-theme](https://github.com/vinceliuice/Tela-circle-icon-theme)
 
+- `Wallpapers` [Graphite Wallpapers](/wallpaper)
+
 ## Installation
 
 ### Manual Installation
