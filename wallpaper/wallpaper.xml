@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
+<wallpapers>
+  <wallpaper deleted="false">
+    <name>@NAME@</name>
+    <filename>@BACKGROUNDDIR@/wave-Light@STRING@.jpg</filename>
+    <filename-dark>@BACKGROUNDDIR@/wave-Dark@STRING@.jpg</filename-dark>
+    <options>zoom</options>
+  </wallpaper>
+</wallpapers>
+
