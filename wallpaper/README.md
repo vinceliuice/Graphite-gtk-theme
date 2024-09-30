@@ -4,9 +4,9 @@
 ![wave-Dark](wallpapers/wave-Dark.jpg?raw=true)
 ![wave-Light](wallpapers/wave-Light.jpg?raw=true)
 
-![wave-color-nord](wallpapers/wave-color-nord.jpg?raw=true)
-![wave-Dark-nord](wallpapers/wave-Dark-nord.jpg?raw=true)
-![wave-Light-nord](wallpapers/wave-Light-nord.jpg?raw=true)
+![wave-color-nord](wallpapers-nord/wave-color-nord.jpg?raw=true)
+![wave-Dark-nord](wallpapers-nord/wave-Dark-nord.jpg?raw=true)
+![wave-Light-nord](wallpapers-nord/wave-Light-nord.jpg?raw=true)
 
 ## Donate
 
