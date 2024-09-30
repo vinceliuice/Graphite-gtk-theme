@@ -1,13 +1,5 @@
 ## Graphite wallpapers
 
-![wave-color](wallpapers/wave-color.jpg?raw=true)
-![wave-Dark](wallpapers/wave-Dark.jpg?raw=true)
-![wave-Light](wallpapers/wave-Light.jpg?raw=true)
-
-![wave-color-nord](wallpapers-nord/wave-color-nord.jpg?raw=true)
-![wave-Dark-nord](wallpapers-nord/wave-Dark-nord.jpg?raw=true)
-![wave-Light-nord](wallpapers-nord/wave-Light-nord.jpg?raw=true)
-
 ## Donate
 
 If you like my project, you can buy me a coffee:
@@ -41,4 +33,12 @@ Run the following commands in the terminal:
 ```
 
 > For more information, run: `./install-wallpapers.sh --help`
+
+![wave-color](wallpapers/wave-color.jpg?raw=true)
+![wave-Dark](wallpapers/wave-Dark.jpg?raw=true)
+![wave-Light](wallpapers/wave-Light.jpg?raw=true)
+
+![wave-color-nord](wallpapers-nord/wave-color-nord.jpg?raw=true)
+![wave-Dark-nord](wallpapers-nord/wave-Dark-nord.jpg?raw=true)
+![wave-Light-nord](wallpapers-nord/wave-Light-nord.jpg?raw=true)
 
