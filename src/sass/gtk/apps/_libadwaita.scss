@@ -457,3 +457,62 @@ popover themeswitcher { // Gnome console
     }
   }
 }
+
+//
+// AdwDialog
+//
+
+ floating-sheet {
+  > dimming {
+    background-color: rgba(black, 0.35);
+  }
+
+  > sheet {
+    border-radius: $window-radius;
+    outline: none;
+
+    @if $rimless == 'true' {
+      box-shadow: $shadow-z16;
+    } @else {
+      box-shadow: $shadow-z16, 0 0 0 2px $primary;
+    }
+  }
+}
+
+dialog.bottom-sheet {
+  &:not(.narrow) sheet {
+    margin-left: 30px;
+    margin-right: 30px;
+
+    &.flush-left, &.flush-right, &.flush-left.flush-right {
+      > outline {
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+dialog-host > dialog.background {
+  background: none;
+
+  sheet {
+    background-color: $background;
+    color: $text;
+  }
+}
+
+dialog-host > dialog.view {
+  background: none;
+
+  sheet {
+    @extend %view;
+  }
+}
+
+dialog-host > dialog.osd:not(progressbar):not(button):not(menubutton):not(splitbutton) {
+  background: none;
+
+  sheet {
+    @extend %osd;
+  }
+}

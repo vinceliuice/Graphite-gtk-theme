@@ -1894,17 +1894,24 @@ treeview.view {
       @extend %button-flat-simple;
 
       padding: 2px 6px;
-      border-style: none solid solid none;
-      border-width: 1px;
-      border-color: $divider;
       border-radius: 0;
       background-clip: border-box;
+      border-style: none none none solid;
+      border-radius: 0;
+      border-image: linear-gradient(to bottom,
+                                    transparent 20%,
+                                    $border 20%,
+                                    $border 80%,
+                                    transparent 80%) 0 0 0 1 / 0 0 0 1px stretch;
 
       &:not(:focus):not(:hover):not(:active) { color: $text-secondary; }
 
       &, &:disabled { background-color: $base; }
 
-      &:last-child { border-right-style: none; }
+      &:first-child {
+        border-left-style: none;
+        border-image: none;
+      }
     }
   }
 
@@ -4884,6 +4891,11 @@ window {
     &.fullscreen {
       box-shadow: none;
     }
+
+    &.ssd-frame {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
   }
 
   &.dialog.message {
@@ -4903,6 +4915,16 @@ window {
     }
 
     &:backdrop { background-color: $titlebar-backdrop; }
+  }
+
+  // server-side decorations as used by mutter
+  &.ssd {
+    // just doing borders, wm draws actual shadows
+    @if $rimless == 'true' {
+      box-shadow: none
+    } @else {
+      box-shadow: 0 0 0 2px $primary;
+    }
   }
 }
 
