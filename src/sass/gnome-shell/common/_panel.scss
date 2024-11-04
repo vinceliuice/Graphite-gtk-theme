@@ -259,8 +259,8 @@
   Gjs_status_keyboard_InputSourceIndicator.panel-button, // Ibus
   Gjs_appindicatorsupport_rgcjonas_gmail_com_indicatorStatusIcon_IndicatorStatusIcon.panel-button,
   Gjs_appindicatorsupport_rgcjonas_gmail_com_indicatorStatusIcon_AppIndicatorsIndicatorStatusIcon.panel-button { // Fcitx
-    -natural-hpadding: $base_padding * 3 !important;
-    -minimum-hpadding: $base_padding * 3 !important;
+    -natural-hpadding: 12px !important;
+    -minimum-hpadding: 12px !important;
   }
 
   @mixin colorful_button($theme_color: $primary) {
