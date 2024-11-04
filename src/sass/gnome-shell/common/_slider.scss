@@ -5,7 +5,7 @@ $slide_size: if($compact == 'false', 8px, 7px);
 
 .slider {
   height: 20px;
-  color: $base;
+  color: $slide_active_color;
 
   -slider-height: 2px;
   -slider-background-color: $track; //background of the trough
