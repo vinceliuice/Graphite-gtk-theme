@@ -1,0 +1,243 @@
+/* Modal Dialogs */
+
+%theme_dialogs {
+  background-color: $popover;
+  box-shadow: 3px 3px 8px -5px rgba(black, 0.35);
+  margin: 15px;
+
+  @if $rimless == 'false' {
+    border: 2px solid $primary;
+    border-radius: $modal_radius + $base_padding / 2 + 2px;
+  } @else {
+    border: none;
+    border-radius: $modal_radius + $base_padding / 2;
+  }
+}
+
+%dialog_button {
+  min-height: $item_size;
+  padding: $base_padding;
+  margin: 0;
+  border: none !important;
+  border-radius: $base_radius;
+  @extend %flat_button;
+
+  &:first-child {
+    background-color: $fill;
+    &:focus { @include button(flat-focus); }
+    &:hover { @include button(flat-hover); }
+    &:active { @include button(flat-active); }
+  }
+
+  &:last-child {
+    color: on($primary);
+    background-color: $primary;
+
+    &:hover {
+      color: on($primary);
+      background-color: lighten($primary, 9%);
+    }
+
+    &:active {
+      color: on($primary);
+      background-color: darken($primary, 5%);
+    }
+
+   &:insensitive {
+      background-color: rgba($primary, 0.05);
+      color: rgba($primary, 0.35);
+    }
+  }
+}
+
+// modal dialog
+.modal-dialog {
+  color: $text-secondary;
+  padding: $base_padding * 1.5;
+  @extend %theme_dialogs;
+
+  .modal-dialog-content-box {
+    margin: $base_padding * 5 $base_padding * 7;
+    spacing: $base_padding * 5;
+    max-width: 28em;
+  }
+
+  .modal-dialog-button-box {
+    padding-top: $base_padding;
+
+    .modal-dialog-button {
+      @extend %dialog_button;
+    }
+  }
+}
+
+// Dialog List
+.dialog-list {
+  spacing: $base_spacing * 3;
+
+  .dialog-list-title {
+    text-align: center;
+    @extend %heading;
+  }
+
+  .dialog-list-scrollview { max-height: 200px; }
+  .dialog-list-box {
+    spacing: 1em;
+
+    .dialog-list-item {
+      spacing: 1em;
+
+      .dialog-list-item-title { font-weight: bold; }
+      .dialog-list-item-description {
+        color: $text-secondary;
+        @extend %caption;
+      }
+    }
+  }
+}
+
+// End Session Dialog
+.end-session-dialog {
+  width: if($compact == 'true', 24em, 26em);
+  // border: none;
+
+  .end-session-dialog-battery-warning,
+  .dialog-list-title {
+    color: $warning;
+    background-color: transparentize($warning, 0.9);
+    padding: $base_padding * 1.5;
+    border-radius: $base_radius;
+    margin: $base_margin 0;
+  }
+}
+
+// Message Dialog
+.message-dialog-content {
+  spacing: $base_padding * 3;
+
+  .message-dialog-title {
+    text-align: center;
+    @extend %title_2;
+
+    &.lightweight {
+      @extend %title_4;
+    }
+  }
+  .message-dialog-description {
+    text-align: center;
+  }
+}
+
+// Run Dialog
+.run-dialog {
+  width: if($compact == 'true', 24em, 26em);
+  // run dialog needs to override bottom padding
+  // to account for inexplicable extra padding
+  padding-bottom: $base_padding;
+
+  .run-dialog-entry {
+    padding: $base_padding * 2 $base_padding * 1.5;
+  }
+  .run-dialog-description {
+    @extend %caption;
+    color: $text-secondary;
+  }
+}
+
+// Password or Authentication Dialog
+.prompt-dialog {
+  //this is the width of the entire modal popup
+  width: if($compact == 'true', 22em, 26em);
+  // border: none;
+
+  .prompt-dialog-password-grid {
+    spacing-rows: $base_margin * 2;
+    spacing-columns: $base_margin;
+
+    .prompt-dialog-password-entry {
+      width: auto;
+      // 4px (spacing) + 16px (spinner-width)
+      &:ltr { margin-left: $base_margin+$base_icon_size; }
+      &:rtl { margin-right: $base_margin+$base_icon_size; }
+    }
+  }
+
+  .prompt-dialog-password-layout {
+    spacing: $base_margin * 2;
+  }
+
+  .prompt-dialog-password-entry {
+    width: 20em;
+    padding: $base_padding * 2 $base_padding * 1.5;
+  }
+
+  .prompt-dialog-error-label,
+  .prompt-dialog-info-label,
+  .prompt-dialog-null-label {
+    @extend %caption;
+    text-align: center;
+  }
+
+  .prompt-dialog-error-label {
+    color: $warning;
+  }
+}
+
+// Polkit Dialog
+.polkit-dialog-user-layout {
+  text-align: center;
+  spacing: $base_margin * 2;
+  margin-bottom: $base_margin * 1.5;
+
+  .polkit-dialog-user-label,
+  .polkit-dialog-user-root-label {
+    @extend %title_4;
+  }
+
+  .polkit-dialog-user-root-label {
+    color: $warning;
+  }
+}
+
+// Audio selection dialog
+.audio-device-selection-dialog {
+  .modal-dialog-content-box { margin-bottom: $base_margin * 7; }
+  .audio-selection-box { spacing: $base_margin * 5; }
+}
+
+.audio-selection-device {
+  border: 1px solid $border;
+  border-radius: $base_radius;
+  &:hover, &:focus { background-color: overlay($popover, hover); }
+  &:active {
+    background-color: $primary;
+    color: on($primary);
+  }
+}
+
+.audio-selection-device-box {
+  padding: $base_padding * 3;
+  spacing: $base_padding * 3;
+}
+
+.audio-selection-device-icon {
+  icon-size: $base_icon_size * 4;
+}
+
+// Welcome dialog
+.welcome-dialog-image {
+  background-image: url("resource:///org/gnome/shell/theme/gnome-shell-start.svg");
+  background-size: contain;
+  height: 300px;
+  width: 300px;
+}
+
+/* Access portal dialog */
+.access-dialog {
+  text-align: center;
+}
+
+// specific label style for restart message
+.restart-message {
+  @extend %title_4;
+}

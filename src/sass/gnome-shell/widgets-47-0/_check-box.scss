@@ -1,0 +1,53 @@
+/* Check Boxes */
+
+.check-box {
+  StBoxLayout { spacing: .8em; }
+
+  StBin {
+    width: 24px;
+    height: 24px;
+    padding: $base_padding;
+  }
+
+  StBin, &:focus StBin {
+    background-image: url("assets/checkbox-off.svg");
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  &:hover StBin {
+    background-color: $divider;
+  }
+
+  &:active StBin {
+    background-color: $track;
+  }
+
+  &:checked StBin, &:focus:checked StBin {
+    @if $theme == 'default' {
+      background-image: url("assets/checkbox#{$asset_suffix}.svg");
+    }
+    @else {
+      background-image: url("assets/checkbox.svg");
+    }
+  }
+
+  StIcon {
+    icon-size: 0;
+    padding: 0;
+    color: transparent;
+    border: none;
+  }
+
+  &:hover StIcon,
+  &:active StIcon {
+    border: none;
+  }
+
+  &:checked StIcon,
+  &:checked:hover StIcon,
+  &:checked:active StIcon {
+    background-color: transparent;
+    color: transparent;
+  }
+}

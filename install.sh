@@ -40,7 +40,9 @@ SIZE_VARIANTS=('' '-compact')
 if [[ "$(command -v gnome-shell)" ]]; then
   gnome-shell --version
   SHELL_VERSION="$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f -1)"
-  if [[ "${SHELL_VERSION:-}" -ge "46" ]]; then
+  if [[ "${SHELL_VERSION:-}" -ge "47" ]]; then
+    GS_VERSION="47-0"
+  elif [[ "${SHELL_VERSION:-}" -ge "46" ]]; then
     GS_VERSION="46-0"
   elif [[ "${SHELL_VERSION:-}" -ge "44" ]]; then
     GS_VERSION="44-0"
@@ -53,7 +55,7 @@ if [[ "$(command -v gnome-shell)" ]]; then
   fi
   else
     echo "'gnome-shell' not found, using styles for last gnome-shell version available."
-    GS_VERSION="46-0"
+    GS_VERSION="47-0"
 fi
 
 #  Check command avalibility
@@ -783,8 +785,10 @@ colorful_panel() {
 gnome_shell_version() {
   sed -i "/\widgets/s/40-0/${GS_VERSION}/" ${SRC_DIR}/sass/gnome-shell/_common-temp.scss
 
-  if [[ "${GS_VERSION}" == '3-28' || "${GS_VERSION}" == '46-0' ]]; then
-    sed -i "/\extensions/s/40-0/${GS_VERSION}/" ${SRC_DIR}/sass/gnome-shell/_common-temp.scss
+  if [[ "${GS_VERSION}" == '3-28' ]]; then
+    sed -i "/\extensions/s/40-0/3-28/" ${SRC_DIR}/sass/gnome-shell/_common-temp.scss
+  elif [[ "${GS_VERSION}" -ge '46-0' ]]; then
+    sed -i "/\extensions/s/40-0/46-0/" ${SRC_DIR}/sass/gnome-shell/_common-temp.scss
   fi
 }
 

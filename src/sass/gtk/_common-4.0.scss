@@ -492,12 +492,12 @@ button {
   }
 
   &.text-button {
-    min-width: 64px - 16px * 2;
+    min-width: 32px;
     padding-left: 16px;
     padding-right: 16px;
 
     &.flat {
-      min-width: 64px - 8px * 2;
+      min-width: 48px;
       padding-left: 8px;
       padding-right: 8px;
     }
@@ -515,6 +515,7 @@ button {
   }
 
   // NOTE: Some image-only buttons use this as well
+  &.text-image-button,
   &.text-button.image-button {
     min-width: 24px;
     padding: ($medium-size - 24px) / 2;

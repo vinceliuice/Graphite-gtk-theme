@@ -1,0 +1,72 @@
+/* Notifications & Message Tray */
+
+$notification_banner_height: 64px;
+$notification_banner_width: 34em;
+
+// Banner notifications
+.notification-banner {
+  min-height: $notification_banner_height;
+  width: $notification_banner_width;
+  margin: 12px 8px 8px;
+  border-radius: $base_radius;
+  color: $text-secondary;
+  background-color: $popover;
+  border: none;
+  text-shadow: none;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
+  border-radius: $base_radius + $base_padding * 2;
+  padding: $base_padding;
+
+  &:hover {
+    color: $text;
+    background-color: $popover;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.25);
+    margin: 12px 8px 13px;
+  }
+
+  &:focus {
+    color: $text;
+    background-color: $popover;
+  }
+
+  @if $colorful == 'true' {
+    &, &:hover, &:focus {
+      background-color: $theme_purple_color;
+      color: on($theme_purple_color);
+    }
+  }
+}
+
+.notification-buttons-bin {
+  background-color: transparent;
+  padding-top: 0;
+  border: none;
+  spacing: 0;
+}
+
+.notification-button {
+  min-height: $item_size + $base_padding * 2;
+  padding: 0 $base_padding * 3;
+  background-color: transparent;
+  color: $text-secondary;
+  font-weight: 500;
+  border: none;
+  border-radius: $base_radius;
+
+  &:focus {
+    background-color: transparent;
+    color: $text;
+    box-shadow: inset 0 0 0 2px $divider;
+  }
+
+  &:hover, &:focus:hover {
+    background-color: $divider;
+    color: $text;
+    box-shadow: none;
+  }
+
+  &:active {
+    background-color: $track;
+    color: $text;
+  }
+}

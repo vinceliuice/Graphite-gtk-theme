@@ -1,0 +1,54 @@
+/* Switches */
+
+.toggle-switch {
+  width: 40px;
+  height: 20px;
+  background-size: contain;
+  background-image: url("assets/toggle-off#{$asset_suffix}.svg");
+  background-color: transparent;
+  color: transparent;
+
+  &:checked {
+    @if $theme == 'default' {
+      background-image: url("assets/toggle-on#{$asset_suffix}.svg");
+    }
+    @else {
+      background-image: url("assets/toggle-on.svg");
+    }
+  }
+
+  @if $sidebar == 'styled' {
+    .quick-toggle-menu &,
+    .popup-sub-menu & {
+      @if $variant == 'dark' { background-image: url("assets/toggle-off.svg"); }
+      @else { background-image: url("assets/toggle-off-dark.svg"); }
+  
+      &:checked {
+        @if $theme == 'default' {
+          @if $variant == 'dark' { background-image: url("assets/toggle-on.svg"); }
+          @else { background-image: url("assets/toggle-on-dark.svg"); }
+        }
+        @else {
+          background-image: url("assets/toggle-on.svg");
+        }
+      }
+    }
+  }
+
+  StIcon {
+    icon-size: 0;
+  }
+
+  .handle {
+    margin: 0;
+    background: none;
+    box-shadow: none;
+    transition-duration: 0;
+  }
+
+  &:checked {
+    .handle {
+      background: none;
+    }
+  }
+}
