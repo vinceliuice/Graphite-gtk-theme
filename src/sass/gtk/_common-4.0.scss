@@ -1433,6 +1433,7 @@ searchbar > revealer > box {
 
   &:focus-within {
     box-shadow: inset 0 0 0 2px $titlebar-primary;
+    outline-color: $titlebar-primary;
   }
 
   &:disabled {

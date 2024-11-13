@@ -123,6 +123,10 @@
         }
       }
     }
+
+    @if $variant == 'light' and $topbar == 'dark' {
+      headerbar entry { @extend %sidebar-entry; }
+    }
   }
 
   &:not(.view) headerbar {
@@ -203,10 +207,6 @@
 }
 
 #NautilusQueryEditor { // search entry
-  @if $variant == 'light' and $topbar == 'dark' and $sidebar == 'styled' {
-    @extend %sidebar-entry;
-  }
-
   > menubutton {
     margin: 0;
 
