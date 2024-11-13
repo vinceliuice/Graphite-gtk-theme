@@ -4115,6 +4115,7 @@ paned {
   &:focus-within {
     color: on($sidebg);
     box-shadow: inset 0 0 0 2px on($sidebg);
+    outline-color: on($sidebg);
   }
 
   &:drop(active) { color: on($sidebg); }
