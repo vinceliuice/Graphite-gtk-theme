@@ -221,7 +221,7 @@
 }
 
 #NautilusPathBar {
-  background-color: $titlebar-fill;
+  background-color: if($sidebar == 'styled', $titlebar-fill, $fill);
   border-radius: $circular-radius;
   margin: $space-size 0;
 
@@ -230,7 +230,7 @@
     border-radius: $circular-radius;
 
     &.current-dir {
-      color: $titlebar-text;
+      color: if($sidebar == 'styled', $titlebar-text, $text);
 
       &:hover, &:active {
         background: none;
@@ -254,10 +254,10 @@
   border-radius: $circular-radius;
 
   > button {
-   margin: $space-size / 2;
-   padding: 0;
-   min-height: $small-size - 2px;
-   min-width: $small-size - 2px;
+    margin: $space-size / 2;
+    padding: 0;
+    min-height: $small-size - 2px;
+    min-width: $small-size - 2px;
   }
 }
 

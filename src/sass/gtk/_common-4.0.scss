@@ -4208,8 +4208,8 @@ paned {
 
 .sidebar-pane {
   @if $variant == 'light' and $topbar == 'dark' {
-    background-color: $titlebar;
-    color: $titlebar-text;
+    background-color: if($sidebar == 'normal', $base-alt, $titlebar);
+    color: if($sidebar == 'normal', $text, $titlebar-text);
   } @else {
     background-color: if($sidebar == 'normal', $base-alt, $background);
     color: $text;
@@ -4374,55 +4374,63 @@ paned {
   }
 }
 
+%content_headerbar_style {
+  color: $text-secondary;
+
+  &:backdrop { color: $text-secondary-disabled; }
+
+  .dim-label { color: if($sidebar == 'styled', $titlebar-text-disabled, $text-disabled); }
+
+  button:not(.suggested-action):not(.destructive-action) {
+    @include button(flat-normal);
+
+    &:focus { @include button(focus); }
+
+    &:hover { @include button(hover); }
+
+    &:active { @include button(active); }
+
+    &:disabled { @include button(flat-disabled); }
+
+    &:checked { @include button(checked); }
+
+    &:checked:hover { @include button(checked-hover); }
+
+    &:checked:disabled { @include button(checked-disabled); }
+  }
+
+  entry {
+    color: $text-secondary;
+    background-color: $fill;
+
+    &:focus-within {
+      color: $text;
+      outline-color: $primary;
+
+      image { color: $text; }
+    }
+
+    &:disabled {
+      background-color: $fill;
+      color: $text-disabled;
+    }
+
+    image {
+      color: $text-secondary;
+  
+      &:hover, &:active { color: $text; }
+  
+      &:disabled { color: $text-disabled; }
+    }
+  }
+}
+
 .content-pane {
   @if $variant == 'light' and $topbar == 'dark' {
-    window:not(.nautilus-window) & headerbar {
-      color: $text-secondary;
-
-      &:backdrop { color: $text-secondary-disabled; }
-
-      button:not(.suggested-action):not(.destructive-action) {
-        @include button(flat-normal);
-
-        &:focus { @include button(focus); }
-
-        &:hover { @include button(hover); }
-
-        &:active { @include button(active); }
-
-        &:disabled { @include button(flat-disabled); }
-
-        &:checked { @include button(checked); }
-
-        &:checked:hover { @include button(checked-hover); }
-
-        &:checked:disabled { @include button(checked-disabled); }
-      }
-
-      entry {
-        color: $text-secondary;
-        background-color: $fill;
-
-        &:focus-within {
-          color: $text;
-          box-shadow: inset 0 0 0 2px $primary;
-
-          image { color: $text; }
-        }
-
-        &:disabled {
-          background-color: $fill;
-          color: $text-disabled;
-        }
-
-        image {
-          color: $text-secondary;
-      
-          &:hover, &:active { color: $text; }
-      
-          &:disabled { color: $text-disabled; }
-        }
-      }
+    @if $sidebar == 'styled' {
+      window:not(.nautilus-window) & headerbar { @extend %content_headerbar_style; }
+    } @else {
+      headerbar { @extend %content_headerbar_style; }
     }
   }
 
