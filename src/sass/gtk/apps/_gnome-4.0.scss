@@ -127,6 +127,70 @@
     @if $variant == 'light' and $topbar == 'dark' {
       headerbar entry { @extend %sidebar-entry; }
     }
+
+    .nautilus-grid-view {
+      &, .view {
+        background-color: $base;
+        border-radius: $window-radius - $space-size;
+      }
+
+      @if $variant == 'light' and $topbar == 'dark' {
+        margin: 0 $space-size $space-size $space-size;
+      }
+    }
+
+    .nautilus-list-view,
+    .nautilus-network-view {
+      &, columnview.view {
+        background-color: $base;
+        border-radius: $window-radius - $space-size;
+      }
+
+      @if $variant == 'light' and $topbar == 'dark' {
+        margin: 0 $space-size $space-size;
+      }
+    }
+
+    placesview {
+      border-radius: $window-radius - $space-size;
+      margin: 0 $space-size $space-size 0;
+      background-color: $base;
+
+      list, actionbar, actionbar > revealer > box {
+        background-color: transparent;
+      }
+    }
+
+    flap > separator {
+      background: none;
+    }
+
+    .toolbar {
+      border-radius: $window-radius - $space-size;
+
+      @if $variant == 'light' and $topbar == 'dark' {
+        margin: 0 $space-size $space-size / 2;
+      }
+    }
+
+    banner > revealer > widget {
+      border-radius: $window-radius - $space-size;
+
+      @if $variant == 'light' and $topbar == 'dark' {
+        margin: 0 $space-size $space-size;
+      }
+    }
+
+    tabview stack {
+      background-color: transparent;
+
+      statuspage {
+        color: $text;
+        background-color: $base;
+        border-radius: $window-radius - $space-size;
+        margin: 0 $space-size $space-size 0;
+      }
+    }
   }
 
   &:not(.view) headerbar {
@@ -135,36 +199,14 @@
     }
   }
 
-  .nautilus-grid-view {
-    &, gridview.view {
-      background-color: $base;
-      border-radius: $window-radius - $space-size;
-    }
-
-    @if $variant == 'light' and $topbar == 'dark' {
-      margin: 0 $space-size $space-size $space-size;
-    }
-  }
-
-  .nautilus-list-view {
-    &, columnview.view {
-      background-color: $base;
-      border-radius: $window-radius - $space-size;
-    }
-
-    @if $variant == 'light' and $topbar == 'dark' {
-      margin: 0 $space-size $space-size $space-size;
-    }
-  }
-
-  @if $sidebar == 'styled' {
-    flap > separator {
-      background: none;
-    }
-  }
-
   placesview {
-    label { color: $text-secondary; }
+    label {
+      color: $text-secondary;
+
+      &:disabled {
+        color: $text-secondary-disabled;
+      }
+    }
   }
 
   infobar {
