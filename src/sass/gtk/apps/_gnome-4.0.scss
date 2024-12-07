@@ -222,22 +222,32 @@
     border-radius: $corner-radius;
   }
 
-  .floating-bar {
-    min-height: 32px;
-    padding: 0;
-    margin: $space-size;
-    border-style: none;
-    border-radius: $corner-radius;
-    background-color: $primary;
-    color: on($primary);
-    box-shadow: $shadow-z3;
+  #NautilusPathBar {
+    background-color: if($sidebar == 'styled', $titlebar-fill, $fill);
 
-    button {
-      margin: (32px - $small-size) / 2;
-      color: on($primary);
-
-      @extend %small-button;
+    #NautilusPathButton {
+      &.current-dir {
+        color: if($sidebar == 'styled', $titlebar-text, $text);
+      }
     }
+  }
+}
+
+.floating-bar {
+  min-height: 32px;
+  padding: 0;
+  margin: $space-size;
+  border-style: none;
+  border-radius: $corner-radius;
+  background-color: $primary;
+  color: on($primary);
+  box-shadow: $shadow-z3;
+
+  button {
+    margin: (32px - $small-size) / 2;
+    color: on($primary);
+
+    @extend %small-button;
   }
 }
 
@@ -263,7 +273,6 @@
 }
 
 #NautilusPathBar {
-  background-color: if($sidebar == 'styled', $titlebar-fill, $fill);
   border-radius: $circular-radius;
   margin: $space-size 0;
 
@@ -272,8 +281,6 @@
     border-radius: $circular-radius;
 
     &.current-dir {
-      color: if($sidebar == 'styled', $titlebar-text, $text);
-
       &:hover, &:active {
         background: none;
         box-shadow: none;
@@ -774,7 +781,7 @@ menubutton stack > box {
 }
 
 @if $sidebar == 'styled' {
-  window:not(.nautilus-window) toastoverlay .sidebar-pane {
+  window:not(.nautilus-window) > dialog-host toastoverlay navigation-split-view .sidebar-pane {
     background-color: $base-alt;
     color: $text;
 
@@ -790,29 +797,7 @@ menubutton stack > box {
       }
     }
 
-    headerbar {
-      color: $text-secondary;
-
-      &:backdrop { color: $text-secondary-disabled; }
-
-      button:not(.suggested-action):not(.destructive-action) {
-        @include button(flat-normal);
-
-        &:focus { @include button(focus); }
-
-        &:hover { @include button(hover); }
-
-        &:active { @include button(active); }
-
-        &:disabled { @include button(disabled); }
-
-        &:checked { @include button(checked); }
-
-        &:checked:hover { @include button(checked-hover); }
-
-        &:checked:disabled { @include button(checked-disabled); }
-      }
-    }
+    @extend %content_headerbar_style;
   }
 }
 

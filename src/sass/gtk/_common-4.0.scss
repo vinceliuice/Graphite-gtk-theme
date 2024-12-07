@@ -1471,6 +1471,13 @@ headerbar {
     color: $titlebar-text-secondary;
 
     &:disabled { color: $titlebar-text-secondary-disabled; }
+
+    > windowhandle {
+      // opacity looks weird with GtkSwitch, but filter works fine
+      filter: none;
+
+      transition: none;
+    }
   }
 
   &.flat {
@@ -1555,6 +1562,17 @@ headerbar {
     @extend %titlebar-button;
   }
 
+  entry { @extend %titlebar-entry; }
+
+  .linked:not(.vertical) > entry:not(:only-child) { border-radius: $corner-radius; }
+
+  button.suggested-action, button.destructive-action {
+    &:disabled {
+      background-color: $titlebar-fill;
+      color: $titlebar-text-disabled;
+    }
+  }
+
   popover { // reset
     button:not(.suggested-action):not(.destructive-action):not(.flat) {
       @extend %button-basic;
@@ -1595,17 +1613,6 @@ headerbar {
   // The separator for split headerbars
   headerbar + separator {
     background-color: $titlebar-divider;
-  }
-
-  entry { @extend %titlebar-entry; }
-
-  .linked:not(.vertical) > entry:not(:only-child) { border-radius: $corner-radius; }
-
-  button.suggested-action, button.destructive-action {
-    &:disabled {
-      background-color: $titlebar-fill;
-      color: $titlebar-text-disabled;
-    }
   }
 
   stackswitcher { // reset
@@ -4379,7 +4386,7 @@ paned {
 
   &:backdrop { color: $text-secondary-disabled; }
 
-  .dim-label { color: if($sidebar == 'styled', $titlebar-text-disabled, $text-disabled); }
+  .dim-label { color: $text-disabled; }
 
   button:not(.suggested-action):not(.destructive-action) {
     @include button(flat-normal);
@@ -4603,6 +4610,69 @@ leaflet,
 navigation-view,
 overlay-split-view {
   @include transition-shadows($frame);
+}
+
+/******************
+ * AdwToolbarView *
+ ******************/
+ toolbarview {
+  > .top-bar,
+  > .bottom-bar {
+    // headerbar { @extend %headerbar-inline; }
+    // searchbar { @extend %searchbar-inline; }
+    // actionbar { @extend %actionbar-inline; }
+    // menubar   { @extend %menubar-inline; }
+    // tabbar    { @extend %tabbar-inline; }
+
+    .collapse-spacing {
+      padding-top: 0;
+      padding-bottom: 0;
+
+      // headerbar { @extend %headerbar-shrunk; }
+      // searchbar { @extend %searchbar-shrunk; }
+      // actionbar { @extend %actionbar-shrunk; }
+      // menubar   { @extend %menubar-shrunk; }
+      // .toolbar  { @extend %toolbar-shrunk; }
+      // tabbar    { @extend %tabbar-shrunk; }
+
+      // viewswitcherbar { @extend %viewswitcherbar-shrunk; }
+    }
+
+    &.raised {
+      background-color: $titlebar;
+      color: $titlebar-text;
+
+      &:backdrop {
+        background-color: $titlebar-backdrop;
+      }
+    }
+
+    &:backdrop > windowhandle {
+      filter: none;
+      transition: none;
+    }
+  }
+
+  > .top-bar.raised {
+    box-shadow: 0 1px $border,
+                0 2px 4px rgba(black, 0.25);
+
+    &.border {
+      box-shadow: 0 1px $border;
+    }
+  }
+
+  > .bottom-bar.raised {
+    box-shadow: 0 -1px $border,
+                0 -2px 4px rgba(black, 0.25);
+
+    &.border {
+      box-shadow: 0 -1px $border;
+    }
+  }
+
+  &.undershoot-top    scrolledwindow { @include undershoot(top); }
+  &.undershoot-bottom scrolledwindow { @include undershoot(bottom); }
 }
 
 /************
