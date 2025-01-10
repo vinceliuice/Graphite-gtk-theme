@@ -1,5 +1,37 @@
 // generic drawing of more complex things
 
+// ripple effect animations
+
+@keyframes ripple {
+  from {
+    background-image: radial-gradient(circle farthest-corner at center, $overlay-checked 30%, transparent 0%);
+  }
+
+  to {
+    background-image: radial-gradient(circle farthest-corner at center, $overlay-checked 100%, transparent 0%);
+  }
+}
+
+@keyframes ripple-on-slider {
+  from {
+    background-image: radial-gradient(circle farthest-corner at center, $overlay-active 0%, transparent 0%);
+  }
+
+  to {
+    background-image: radial-gradient(circle farthest-corner at center, $overlay-active 100%, transparent 0%);
+  }
+}
+
+@keyframes ripple-on-headerbar {
+  from {
+    background-image: radial-gradient(circle farthest-corner at center, $primary 30%, transparent 0%);
+  }
+
+  to {
+    background-image: radial-gradient(circle farthest-corner at center, $primary 100%, transparent 0%);
+  }
+}
+
 @mixin entry($t, $fc: $primary) {
 //
 // entry
@@ -94,6 +126,7 @@
                 outline $ripple-fade-out-duration $ease-out;
     background-color: $button;
     color: $text;
+    background-image: radial-gradient(circle, transparent 0%, transparent 0%);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 1000% 1000%;
@@ -119,7 +152,7 @@
                 border 0ms;
     animation: ripple $ripple-fade-in-duration $ease-out forwards;
     background-image: radial-gradient(circle, $overlay-hover 10%, transparent 0%);
-    background-size: 0% 0%;
+    background-size: 100% 100%;
     background-color: $overlay-hover;
     outline: 0 solid transparent;
     color: $text;
@@ -157,7 +190,7 @@
                 background-size $ripple-fade-out-duration $ease-out,
                 background-image $ripple-fade-out-opacity-duration $ease-out,
                 outline $ripple-fade-out-duration $ease-out;
-    background-image: radial-gradient(circle, transparent 10%, transparent 0%);
+    background-image: radial-gradient(circle, transparent 0%, transparent 0%);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 1000% 1000%;
@@ -185,7 +218,7 @@
                 background-image 0ms;
     animation: ripple $ripple-fade-in-duration $ease-out forwards;
     background-image: radial-gradient(circle, $overlay-hover 10%, transparent 0%);
-    background-size: 0% 0%;
+    background-size: 100% 100%;
     background-color: $overlay-hover;
     color: $text;
   }

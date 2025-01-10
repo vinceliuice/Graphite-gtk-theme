@@ -589,16 +589,16 @@ button {
       &:disabled { @include button(disabled); }
 
       &:hover {
-        box-shadow: $shadow-z3;
+        box-shadow: none;
       }
 
       &:checked { background-color: mix(on($b_color), $b_color, percentage(0.3)); }
 
       &:checked:hover {
-        box-shadow: $shadow-z4;
+        box-shadow: none;
       }
 
-      &:focus { box-shadow: 0 0 0 2px rgba($b_color, 0.35); }
+      &:focus { box-shadow: none; }
 
       &.flat {
         background-color: transparent;
@@ -5132,7 +5132,7 @@ stackswitcher {
   }
 
   &.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action) {
-    margin: 0 0;
+    margin: 0;
 
     &:not(:hover):not(:active):not(:checked) {
       background-color: transparent;
