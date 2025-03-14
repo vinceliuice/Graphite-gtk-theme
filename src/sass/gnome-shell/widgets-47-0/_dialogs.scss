@@ -53,7 +53,7 @@
 // modal dialog
 .modal-dialog {
   color: $text-secondary;
-  padding: $base_padding * 1.5;
+  padding: $base_padding / 2 + 8px;
   @extend %theme_dialogs;
 
   .modal-dialog-content-box {

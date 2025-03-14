@@ -188,9 +188,6 @@ viewswitcher {
   margin: 0;
 
   &.wide {
-    margin-top: $space-size;
-    margin-bottom: $space-size;
-
     button.toggle:checked, button.toggle.flat:checked {
       background-color: $primary;
       color: on($primary);

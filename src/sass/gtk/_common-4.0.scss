@@ -1528,34 +1528,13 @@ headerbar {
   }
 
   > windowhandle > box {
-    padding: 0 $space-size;
+    padding: $space-size;
 
     &,
     > box.start,
     > box.end {
       border-spacing: $space-size;
     }
-  }
-
-  // add vertical margins to common widget on the headerbar to avoid them spanning the whole height
-  entry,
-  spinbutton,
-  button,
-  stackswitcher,
-  menubutton,
-  splitbutton,
-  separator {
-    margin-top: $space-size;
-    margin-bottom: $space-size;
-  }
-
-  menubutton > button,
-  spinbutton > button,
-  splitbutton > button,
-  splitbutton > menubutton,
-  stackswitcher > button {
-    margin-top: 0;
-    margin-bottom: 0;
   }
 
   button:not(.suggested-action):not(.destructive-action) {
@@ -1587,23 +1566,6 @@ headerbar {
     background-color: $titlebar-divider;
   }
 
-  switch {
-    margin-top: ($large-size - 24px) / 2;
-    margin-bottom: ($large-size - 24px) / 2;
-  }
-
-  // reset button margins of the spinbutton
-  spinbutton button {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  // FIXME: This is a hacky workaround.
-  .entry-tag {
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
-
   // Don't draw titlebar above titlebar
   .titlebar {
     background-color: transparent;
@@ -1616,7 +1578,7 @@ headerbar {
   }
 
   stackswitcher { // reset
-    margin: $space-size 0;
+    margin: 0;
     border-radius: $circular-radius;
 
     @if $rimless == 'false' {
@@ -1689,6 +1651,10 @@ headerbar {
       color: $titlebar-text-secondary;
     }
 
+    > windowhandle > box {
+      padding: 0;
+    }
+
     windowcontrols {
       button,
       menubutton {
@@ -1705,17 +1671,6 @@ headerbar {
       border-radius: 0;
       box-shadow: none; // just remove the highlight
     }
-  }
-}
-
-// Gnome >= 45.0
-.top-bar {
-  box-shadow: none;
-  background: none;
-  border: none;
-
-  .collapse-spacing {
-    padding: 0;
   }
 }
 
@@ -4618,24 +4573,40 @@ overlay-split-view {
  toolbarview {
   > .top-bar,
   > .bottom-bar {
-    // headerbar { @extend %headerbar-inline; }
-    // searchbar { @extend %searchbar-inline; }
-    // actionbar { @extend %actionbar-inline; }
-    // menubar   { @extend %menubar-inline; }
-    // tabbar    { @extend %tabbar-inline; }
+    searchbar,
+    actionbar {
+      > revealer > box {
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+      }
+    }
+
+    .toolbar  {
+      background-color: transparent;
+    }
 
     .collapse-spacing {
       padding-top: 0;
       padding-bottom: 0;
 
-      // headerbar { @extend %headerbar-shrunk; }
-      // searchbar { @extend %searchbar-shrunk; }
-      // actionbar { @extend %actionbar-shrunk; }
-      // menubar   { @extend %menubar-shrunk; }
-      // .toolbar  { @extend %toolbar-shrunk; }
-      // tabbar    { @extend %tabbar-shrunk; }
+      headerbar {
+        min-height: $medium-size;
 
-      // viewswitcherbar { @extend %viewswitcherbar-shrunk; }
+        > windowhandle > box {
+          padding-top: $space-size;
+          padding-bottom: $space-size;
+        }
+
+        &.default-decoration {
+          min-height: $medium-size;
+
+          > windowhandle > box {
+            padding-top: 0;
+            padding-bottom: 0;
+          }
+        }
+      }
     }
 
     &.raised {
@@ -4654,8 +4625,7 @@ overlay-split-view {
   }
 
   > .top-bar.raised {
-    box-shadow: 0 1px $border,
-                0 2px 4px rgba(black, 0.25);
+    box-shadow: 0 1px $border;
 
     &.border {
       box-shadow: 0 1px $border;
@@ -4663,8 +4633,7 @@ overlay-split-view {
   }
 
   > .bottom-bar.raised {
-    box-shadow: 0 -1px $border,
-                0 -2px 4px rgba(black, 0.25);
+    box-shadow: 0 -1px $border;
 
     &.border {
       box-shadow: 0 -1px $border;
