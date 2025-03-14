@@ -4157,10 +4157,10 @@ paned {
   }
 
   &:selected {
-    background-color: on($sidebg, secondary);
+    background-color: $base;
     color: $sidebg;
 
-    &:hover { background-color: on($sidebg); }
+    &:hover { background-color: mix($sidebg, $base, 10%); }
   }
 
   &:disabled {
@@ -4311,13 +4311,15 @@ paned {
         }
 
         &:selected {
-          background-color: on($sidebg, secondary);
+          background-color: $base;
 
           &,
           label.sidebar-label,
           image.sidebar-icon { color: $sidebg; }
 
           button.sidebar-button { @extend %button-flat-simple; }
+
+          &:hover { background-color: mix($sidebg, $base, 10%); }
         }
 
         &.sidebar-new-bookmark-row {
