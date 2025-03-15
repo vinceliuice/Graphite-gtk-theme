@@ -59,12 +59,12 @@
     color: on($primary);
 
     &:hover {
-      background-color: mix($text, $primary, 6%) !important;
+      background-color: mix(on($primary), $primary, 8%) !important;
       color: on($primary);
     }
 
     &:active {
-      background-color: mix($text, $primary, 15%) !important;
+      background-color: mix(on($primary), $primary, 15%) !important;
       color: on($primary);
     }
   }
@@ -115,65 +115,6 @@
   }
 }
 
-%toggle_button {
-  padding: $scaled_padding $scaled_padding * 1.75;
-  icon-size: $base_icon_size !important;
-  border: none;
-
-  @if $colorful == 'true' {
-    background-color: rgba($primary, 0.13) !important;
-    color: $primary;
-
-    &:hover {
-      background-color: rgba($primary, 0.25) !important;
-      color: $primary;
-    }
-  
-    &:active {
-      background-color: $primary !important;
-      color: on($primary);
-    }
-  } @else {
-    background-color: rgba($text, 0.08) !important;
-    color: $text-secondary;
-
-    &:hover {
-      background-color: rgba($text, 0.12) !important;
-      color: $text;
-    }
-  
-    &:active {
-      background-color: rgba($text, 0.2) !important;
-      color: $text;
-    }
-  }
-
-  &:checked {
-    background-color: $primary !important;
-    color: on($primary);
-
-    &:hover {
-      background-color: mix($text, $primary, 6%) !important;
-      color: on($primary);
-    }
-
-    &:active {
-      background-color: mix($text, $primary, 15%) !important;
-      color: on($primary);
-    }
-  }
-
-  &:ltr {
-    border-radius: 0 $base_radius $base_radius 0;
-    border-left-width: 0;
-  }
-
-  &:rtl {
-    border-radius: $base_radius 0 0 $base_radius;
-    border-right-width: 0;
-  }
-}
-
 .quick-menu-toggle {
   & .quick-toggle {
     min-width: auto;
@@ -189,7 +130,62 @@
   }
 
   .quick-toggle-arrow {
-    @extend %toggle_button;
+    padding: $scaled_padding $scaled_padding * 1.75;
+    icon-size: $base_icon_size !important;
+    border: none;
+  
+    @if $colorful == 'true' {
+      background-color: rgba($primary, 0.13) !important;
+      color: $primary;
+  
+      &:hover {
+        background-color: rgba($primary, 0.25) !important;
+        color: $primary;
+      }
+    
+      &:active {
+        background-color: $primary !important;
+        color: on($primary);
+      }
+    } @else {
+      background-color: rgba($text, 0.08) !important;
+      color: $text-secondary;
+  
+      &:hover {
+        background-color: rgba($text, 0.12) !important;
+        color: $text;
+      }
+    
+      &:active {
+        background-color: rgba($text, 0.2) !important;
+        color: $text;
+      }
+    }
+  
+    &:checked {
+      background-color: $primary !important;
+      color: on($primary);
+  
+      &:hover {
+        background-color: mix(on($primary), $primary, 8%) !important;
+        color: on($primary);
+      }
+  
+      &:active {
+        background-color: mix(on($primary), $primary, 15%) !important;
+        color: on($primary);
+      }
+    }
+  
+    &:ltr {
+      border-radius: 0 $base_radius $base_radius 0;
+      border-left-width: 0;
+    }
+  
+    &:rtl {
+      border-radius: $base_radius 0 0 $base_radius;
+      border-right-width: 0;
+    }
   }
 }
 
@@ -214,7 +210,60 @@
   }
 
   & .quick-toggle-menu-button {
-    @extend %toggle_button;
+    padding: $scaled_padding $scaled_padding * 1.75;
+    icon-size: $base_icon_size !important;
+    border: none;
+
+    @if $colorful == 'true' {
+      background-color: rgba($primary, 0.15) !important;
+      color: $primary;
+
+      &:hover {
+        background-color: rgba($primary, 0.25) !important;
+        color: $primary;
+      }
+
+      &:active {
+        background-color: $primary !important;
+        color: on($primary);
+      }
+    } @else {
+      background-color: rgba($text, 0.07) !important;
+      color: $text-secondary;
+
+      &:hover {
+        background-color: rgba($text, 0.15) !important;
+        color: $text;
+      }
+
+      &:active {
+        background-color: rgba($text, 0.23) !important;
+        color: $text;
+      }
+    }
+
+    &:checked {
+      background-color: mix(on($primary), $primary, 6%) !important;
+      color: on($primary);
+
+      &:hover {
+        background-color: mix(on($primary), $primary, 16%) !important;
+        color: on($primary);
+      }
+
+      &:active {
+        background-color: mix(on($primary), $primary, 25%) !important;
+        color: on($primary);
+      }
+    }
+
+    &:ltr {
+      border-radius: 0 $base_radius $base_radius 0;
+    }
+  
+    &:rtl {
+      border-radius: $base_radius 0 0 $base_radius;
+    }
   }
 
   & .quick-toggle-separator {
