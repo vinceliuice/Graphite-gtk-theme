@@ -4983,22 +4983,22 @@ window {
 // Windows button
 windowcontrols {
   border-spacing: $space-size;
+  padding: $space-size;
+  margin: 0;
 
   &:not(.empty) {
     &.start:dir(ltr),
     &.end:dir(rtl) {
-      margin-right: $space-size;
-      margin-left: $space-size / 2;
+      padding-left: $space-size / 2;
     }
 
     &.start:dir(rtl),
     &.end:dir(ltr) {
-      margin-left: $space-size;
-      margin-right: $space-size / 2;
+      padding-right: $space-size / 2;
     }
   }
 
-  button:not(.suggested-action):not(.destructive-action) {
+  > button:not(.suggested-action):not(.destructive-action) {
     @extend %circular-button;
     min-height: 24px;
     min-width: 24px;
