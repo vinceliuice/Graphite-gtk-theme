@@ -998,7 +998,7 @@ else
       echo -e "\nNeed root permission !"
     fi
   else
-    clean_theme && install_package && sass_temp && gnome_shell_version && install_theme
+    install_package && sass_temp && gnome_shell_version && install_theme
 
     if [[ "$libadwaita" == 'true' ]]; then
       uninstall_link && link_theme
