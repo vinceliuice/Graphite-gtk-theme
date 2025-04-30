@@ -135,6 +135,15 @@ $theme_blue_color:    if($variant == 'light', #3684dd, #5294e2);
   @if ($state == 'selected') { @return rgba(on($color), 0.1); }
 }
 
+@function solid_on($color, $state: 'normal') {
+  @if ($state == 'normal') { @return mix(on($color), $color, 6%); }
+  @if ($state == 'hover') { @return mix(on($color), $color, 12%); }
+  @if ($state == 'focus') { @return mix(on($color), $color, 8%); }
+  @if ($state == 'active') { @return mix(on($color), $color, 20%); }
+  @if ($state == 'checked') { @return mix(on($color), $color, 15%); }
+  @if ($state == 'selected') { @return mix(on($color), $color, 10%); }
+}
+
 //
 // Basic colors
 //

@@ -118,7 +118,7 @@ label {
   &:disabled {
     color: $text-disabled;
     opacity: 1;
-    filter: 0;
+    filter: none;
 
     // selection { color: $text-disabled; }
 

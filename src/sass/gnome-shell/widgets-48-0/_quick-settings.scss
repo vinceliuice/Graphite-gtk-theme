@@ -17,7 +17,7 @@
   spacing-columns: $base_padding * 2;
 }
 
-.quick-toggle, .quick-menu-toggle {
+.quick-toggle, .quick-toggle-has-menu {
   border-radius: $base_radius;
   min-width: if($compact == 'false', 12em, 11em);
   max-width: if($compact == 'false', 12em, 11em);
@@ -115,77 +115,85 @@
   }
 }
 
-.quick-menu-toggle {
+// toggle with a menu button
+.quick-toggle-has-menu {
   & .quick-toggle {
     min-width: auto;
     max-width: auto;
 
-    &:ltr { border-radius: $base_radius 0 0 $base_radius; }
-    &:ltr > StBoxLayout { padding-right: $base_padding * 1.5; }
-    &:rtl { border-radius: 0 $base_radius $base_radius 0; }
-    &:rtr > StBoxLayout { padding-left: $base_padding * 1.5; }
+    &:ltr {
+      border-radius: $base_radius 0 0 $base_radius;
+      > StBoxLayout { padding-right: $scaled_padding * 1.5; }
+    }
+
+    &:rtl {
+      border-radius: 0 $base_radius $base_radius 0;
+      > StBoxLayout { padding-left: $scaled_padding * 1.5; }
+    }
 
     &:ltr:last-child { border-radius: $base_radius; }
     &:rtl:last-child { border-radius: $base_radius; }
   }
 
-  .quick-toggle-arrow {
+  & .quick-toggle-menu-button {
     padding: $scaled_padding $scaled_padding * 1.75;
     icon-size: $base_icon_size !important;
     border: none;
-  
+
     @if $colorful == 'true' {
-      background-color: rgba($primary, 0.13) !important;
+      background-color: rgba($primary, 0.15) !important;
       color: $primary;
-  
+
       &:hover {
         background-color: rgba($primary, 0.25) !important;
         color: $primary;
       }
-    
+
       &:active {
         background-color: $primary !important;
         color: on($primary);
       }
     } @else {
-      background-color: rgba($text, 0.08) !important;
+      background-color: rgba($text, 0.07) !important;
       color: $text-secondary;
-  
+
       &:hover {
-        background-color: rgba($text, 0.12) !important;
+        background-color: rgba($text, 0.15) !important;
         color: $text;
       }
-    
+
       &:active {
-        background-color: rgba($text, 0.2) !important;
+        background-color: rgba($text, 0.23) !important;
         color: $text;
       }
     }
-  
+
     &:checked {
-      background-color: $primary !important;
+      background-color: mix(on($primary), $primary, 6%) !important;
       color: on($primary);
-  
+
       &:hover {
-        background-color: mix(on($primary), $primary, 8%) !important;
+        background-color: mix(on($primary), $primary, 16%) !important;
         color: on($primary);
       }
-  
+
       &:active {
-        background-color: mix(on($primary), $primary, 15%) !important;
+        background-color: mix(on($primary), $primary, 25%) !important;
         color: on($primary);
       }
     }
-  
+
     &:ltr {
       border-radius: 0 $base_radius $base_radius 0;
-      border-left-width: 0;
     }
   
     &:rtl {
       border-radius: $base_radius 0 0 $base_radius;
-      border-right-width: 0;
     }
+  }
+
+  & .quick-toggle-separator {
+    width: 0;
   }
 }
 
