@@ -60,6 +60,30 @@
   }
 }
 
+// message notification group
+.message-notification-group {
+  spacing: $base_padding * 2;
+
+  .message-group-header {
+    padding: $base_padding;
+    .message-group-title {
+      @extend %title_2;
+      margin: 0 $base_margin;
+    }
+  }
+
+  // close button
+  .message-collapse-button {
+    @extend .icon-button;
+    color: $text;
+    background-color: transparentize($text, 0.8);
+    padding: 4px !important;
+    border: 4px transparent solid;
+    &:hover {background-color: transparentize($text, 0.7);}
+    &:active {background-color: transparentize($text, 0.8);}
+  }
+}
+
 %solid_bubble {
   color: $text-secondary;
   background-color: $base-alt;
@@ -99,7 +123,7 @@
     @if $colorful == 'true' {
       @include theme_bubble($theme_purple_color);
     } @else {
-      @extend %popover_bubble;
+      @extend %solid_bubble;
     }
   }
 
