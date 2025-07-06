@@ -359,7 +359,8 @@ entry {
 
   // entry error and warning style
   @each $e_type, $e_color in (error, $error),
-                             (warning, $warning) {
+                             (warning, $warning),
+                             (success, $success) {
     &.#{$e_type} {
       @include entry(raised-normal, $e_color);
 
@@ -2349,7 +2350,7 @@ tabbar {
     background-color: $fill;
     padding: 0;
     margin: $space-size / 2;
-    border-radius: $modal-radius + $space-size;
+    border-radius: $modal-radius + $space-size / 2;
     box-shadow: none;
 
     &:backdrop {
@@ -2364,15 +2365,23 @@ tabbar {
   }
 
   tabbox {
-    padding: $space-size 0;
+    padding: $space-size / 2 0;
+    margin: 0 -2px;
 
-    tab {
-      @extend %tabs_tab;
+    > tabboxchild {
+      border-radius: 0;
+      padding: 0;
+      margin: 0;
+      background-color: transparent;
+
+      > tab {
+        @extend %tabs_tab;
+      }
     }
 
     > separator {
-      margin-top: 9px;
-      margin-bottom: 9px;
+      margin-top: 8px;
+      margin-bottom: 8px;
 
       &.hidden {
         opacity: 0;
@@ -2391,6 +2400,10 @@ tabbar {
         background-color: transparent;
       }
     }
+  }
+
+  .pinned > tabbox {
+    margin-right: $space-size / 2;
   }
 
   .start-action,
@@ -3326,6 +3339,7 @@ separator:not(.spacer) {
   border-radius: $corner-radius + 1px;
   box-shadow: none;
   border: 1px solid $border;
+  background-color: $base;
 }
 
 %circular_row {
@@ -3352,7 +3366,7 @@ separator:not(.spacer) {
 
 listview,
 list {
-  border-color: $divider;
+  border-color: $border;
   background-color: $base;
   color: $text-secondary;
 
@@ -3396,6 +3410,13 @@ list {
 
 list.frame { border-radius: $corner-radius; }
 
+listview > header {
+  @extend .heading;
+  padding: 2px;
+  padding-top: $space-size * 3;
+  padding-bottom: $space-size;
+}
+
 listview.view {
   color: $text;
   background-color: transparent;
@@ -3412,6 +3433,10 @@ listview.view {
     }
   }
 }
+
+/****************
+ * AdwActionRow *
+ ****************/
 
 row {
   color: $text-secondary;
@@ -3436,7 +3461,48 @@ row {
       margin-top: $space-size;
       margin-bottom: $space-size;
       border-spacing: $space-size / 2;
+      padding: 0;
+
+      // Specificity bump for header bar
+      &,
+      > .title,
+      > .subtitle {
+        padding: 0;
+        font-weight: inherit;
+      }
     }
+
+    > .prefixes,
+    > .suffixes {
+      border-spacing: $space-size;
+
+      > .suffixes {
+        border-spacing: $space-size;
+      }
+    }
+
+    > .icon,
+    > .prefixes {
+      &:dir(ltr) { margin-right: $space-size; }
+      &:dir(rtl) { margin-left: $space-size; }
+    }
+  }
+
+  &.property > box.header > box.title > {
+    .title {
+      font-size: smaller;
+      @extend .dimmed;
+    }
+
+    .subtitle {
+      font-size: inherit;
+      opacity: 1;
+    }
+  }
+
+  &.property.monospace {
+    font-family: inherit;
+    font-size: inherit;
   }
 
   &.activatable {
@@ -3511,6 +3577,394 @@ row {
   }
 }
 
+/******************************
+ * AdwEntryRow and AdwSpinRow *
+ ******************************/
+
+ row.entry {
+  &:disabled {
+    text {
+      opacity: 0.35;
+    }
+
+    .dimmed, .dim-label, .subtitle {
+      opacity: 1;
+    }
+  }
+
+  > box.header {
+    border-spacing: 0;
+    margin-left: $space-size;
+    margin-right: $space-size;
+
+    > .editable-area {
+      padding: 0 $space-size;
+
+      > .edit-icon, > .indicator {
+        min-width: 24px;
+        min-height: 24px;
+        padding: $space-size;
+      }
+
+      > .edit-icon, > .indicator, > .apply-button {
+        &:dir(ltr) { margin-left: $space-size; }
+        &:dir(rtl) { margin-right: $space-size; }
+      }
+
+      > .edit-icon:disabled {
+        opacity: 0.5;
+      }
+
+      > .indicator {
+        opacity: 0.65;
+      }
+    }
+
+    > .prefixes {
+      &:dir(ltr) { margin-left: $space-size; }
+      &:dir(rtl) { margin-right: $space-size; }
+    }
+
+    > .suffixes {
+      &:dir(ltr) { margin-right: $space-size; }
+      &:dir(rtl) { margin-left: $space-size; }
+    }
+  }
+
+  &.monospace {
+    font-family: inherit;
+    font-size: inherit;
+  }
+}
+
+row.spin {
+  spinbutton {
+    background: none;
+    border-spacing: $space-size;
+    box-shadow: none;
+
+    &, &:focus {
+      outline: none;
+    }
+
+    > button.image-button.up:not(.flat):not(.raised):not(.suggested-action):not(.destructive-action):not(.opaque):last-child,
+    > button.image-button.down:not(.flat):not(.raised):not(.suggested-action):not(.destructive-action):not(.opaque) {
+      &, &:dir(ltr):last-child, &:dir(rtl):first-child {
+        @extend %button-basic;
+        @extend %circular-button;
+        min-width: 24px;
+        min-height: 24px;
+        padding: $space-size / 2;
+        margin: $space-size $space-size / 2;
+        border: none;
+      }
+    }
+  }
+
+  &:disabled spinbutton {
+    > button.image-button.up:not(.flat):not(.raised):not(.suggested-action):not(.destructive-action):not(.opaque):last-child,
+    > button.image-button.down:not(.flat):not(.raised):not(.suggested-action):not(.destructive-action):not(.opaque) {
+      &, &:dir(ltr):last-child, &:dir(rtl):first-child {
+        &:disabled {
+          filter: none;
+        }
+      }
+    }
+  }
+}
+
+row.entry,
+row.spin {
+  &:not(:selected).activatable.focused:hover,
+  &:not(:selected).activatable.focused:active {
+    background-color: transparent;
+  }
+
+  @each $e_type, $e_color in (error, $error),
+                             (warning, $warning),
+                             (success, $success) {
+    &.#{$e_type} {
+      @include entry(normal, $e_color);
+      background-color: $overlay-normal;
+
+      &, &:hover, &:focus-within {
+        color: $e_color;
+
+        image { color: $e_color; }
+      }
+
+      selection {
+        color: on($e_color);
+        background-color: $e_color;
+      }
+
+      &:hover { @include entry(hover, $e_color); }
+
+      &:focus-within {
+        @include entry(checked, $e_color);
+        background-color: $overlay-normal;
+      }
+
+      &:disabled { @include entry(disabled, $e_color); }
+
+      .dimmed, .dim-label, .subtitle {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+/***************
+ * AdwComboRow *
+ ***************/
+
+row.combo {
+  image.dropdown-arrow:disabled {
+    filter: Opacity(0.35);
+  }
+
+  listview.inline {
+    background: none;
+    border: none;
+    box-shadow: none;
+    color: inherit;
+
+    &, &:disabled {
+      background: none;
+      color: inherit;
+    }
+  }
+
+  popover > contents {
+    min-width: 120px;
+
+    .combo-searchbar {
+      margin: $space-size;
+
+      + scrolledwindow {
+        @include undershoot(top);
+      }
+    }
+  }
+}
+
+/******************
+ * AdwExpanderRow *
+ ******************/
+
+@mixin margin-start($margin) {
+  &:dir(ltr) {
+    margin-left: $margin;
+  }
+
+  &:dir(rtl) {
+    margin-right: $margin;
+  }
+}
+
+%boxed_list_row {
+  border-bottom: 1px solid $border;
+
+  &:not(:selected).activatable {
+    &:hover {
+      background-color: color-mix(in srgb, currentColor 3%, transparent);
+    }
+
+    &:active {
+      background-color: color-mix(in srgb, currentColor 8%, transparent);
+    }
+
+    &.has-open-popup {
+      background-color: color-mix(in srgb, currentColor 3%, transparent);
+    }
+  }
+}
+
+row.expander {
+  // Drop transparent background on expander rows to let nested rows handle it,
+  // avoiding double highlights.
+  background: none;
+  padding: 0px;
+
+  > box > list {
+    background: none;
+    color: inherit;
+  }
+
+  list.nested {
+    background-color: $base-alt;
+    color: inherit;
+  }
+
+  list.nested > row {
+    @extend %boxed_list_row;
+  }
+
+  // AdwExpanderRow arrow rotation
+
+  image.expander-row-arrow {
+    @extend .dimmed;
+
+    transition: -gtk-icon-transform 200ms ease-out;
+    @include margin-start(3px);
+
+    &:dir(ltr) {
+      -gtk-icon-transform: rotate(0.5turn);
+    }
+
+    &:dir(rtl) {
+      -gtk-icon-transform: rotate(-0.5turn);
+    }
+
+    &:disabled {
+      filter: Opacity(0.35);
+    }
+  }
+
+  &:checked image.expander-row-arrow {
+    -gtk-icon-transform: rotate(0turn);
+    opacity: 1;
+
+    &:not(:disabled) {
+      color: $primary;
+    }
+  }
+
+  .osd &:checked image.expander-row-arrow:not(:disabled) {
+    color: inherit;
+  }
+
+  &.property > box > list > row {
+    @extend .property;
+  }
+}
+
+/***************
+ * AdwButtonRow *
+ ***************/
+
+row.button {
+  > box {
+    margin-left: $space-size * 2;
+    margin-right: $space-size * 2;
+    border-spacing: $space-size;
+    min-height: 40px;
+
+    > .icon:disabled {
+      filter: Opacity(0.35);
+    }
+  }
+
+  .title {
+    @extend .heading;
+  }
+
+  // Suggested and Destructive Action buttons
+  @each $b_type, $b_color in (suggested-action, $suggested),
+                             (destructive-action, $destructive) {
+    &.#{$b_type} {
+      background-color: $b_color;
+      color: on($b_color);
+
+      &:disabled { @include button(disabled); }
+
+      &:checked { background-color: mix(on($b_color), $b_color, percentage(0.3)); }
+
+      &:hover, &:checked:hover, &:focus { box-shadow: none; }
+    }
+  }
+
+  &.suggested-action, &.destructive-action {
+    &:disabled {
+      opacity: 1;
+
+      > box > .icon:disabled,
+      > box > label:disabled {
+        filter: none;
+      }
+    }
+  }
+}
+
+/*****************
+ * Boxed Lists *
+ *****************/
+
+list.boxed-list {
+  @extend %circular_list;
+
+  > row {
+    // Regular rows and expander header rows background
+    &, &.expander row.header {
+      @extend %boxed_list_row;
+    }
+
+    &.expander {
+      border: none;
+    }
+
+    // Rounded top
+    &:first-child {
+      &, &.expander row.header {
+        border-top-left-radius: $corner-radius;
+        border-top-right-radius: $corner-radius;
+      }
+    }
+
+    // Rounded bottom
+    &:last-child {
+      &,
+      &.expander:not(:checked),
+      &.expander:not(:checked) row.header,
+      &.expander:checked list.nested,
+      &.expander:checked list.nested > row:last-child {
+        border-bottom-left-radius: $corner-radius;
+        border-bottom-right-radius: $corner-radius;
+        border-bottom-width: 0;
+      }
+    }
+  }
+}
+
+list.boxed-list-separate {
+  background: none;
+  color: $text;
+
+  > row {
+    @extend %circular_list;
+    // border: none;
+    margin-bottom: $space-size * 2;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &.entry, &.spin {
+      &:not(:selected).activatable.focused:hover,
+      &:not(:selected).activatable.focused:active {
+        background-color: $base;
+        background-image: none;
+      }
+    }
+
+    &.expander {
+      row.header {
+        @extend %boxed_list_row;
+        border-top-left-radius: $corner-radius;
+        border-top-right-radius: $corner-radius;
+      }
+
+      &:not(:checked) row.header,
+      &.expander:checked list.nested,
+      &.expander:checked list.nested > row:last-child {
+        border-bottom-left-radius: $corner-radius;
+        border-bottom-right-radius: $corner-radius;
+        border-bottom: none;
+      }
+    }
+  }
+}
+
 treeexpander {
   border-spacing: 4px;
 }
@@ -3534,12 +3988,17 @@ columnview {
 
 .rich-list { /* rich lists usually containing other widgets than just labels/text */
   & > row {
-    padding: $space-size*1.5 $space-size*2;
+    padding: $space-size * 1.5 $space-size * 2;
     min-height: 32px; /* should be tall even when only containing a label */
 
     & > box {
-      border-spacing: $space-size*2;
+      border-spacing: $space-size * 2;
     }
+  }
+
+  > header {
+    padding-left: $space-size * 2;
+    padding-right: $space-size * 2;
   }
 }
 
@@ -5115,7 +5574,7 @@ stackswitcher {
 
     @if $rimless == 'false' {
       min-height: 20px;
-      padding: ($medium-size - 26px) / 2 ($medium-size - 16px) / 2;
+      padding: ($medium-size - 28px) / 2 ($medium-size - 16px) / 2;
     }
 
     &.text-button { min-width: 100px; }

@@ -781,7 +781,7 @@ menubutton stack > box {
 }
 
 @if $sidebar == 'styled' {
-  window:not(.nautilus-window) > dialog-host toastoverlay navigation-split-view .sidebar-pane {
+  window:not(.nautilus-window) > dialog-host toastoverlay navigation-split-view.drop-target .sidebar-pane {
     background-color: $base-alt;
     color: $text;
 

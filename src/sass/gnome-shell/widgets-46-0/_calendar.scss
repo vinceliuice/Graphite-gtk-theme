@@ -42,7 +42,7 @@
 }
 
 .datemenu-popover {
-  border-radius: $base_radius + $base_padding + $base_margin !important;
+  border-radius: $base_radius + $base_padding * 2 + $base_margin !important;
 }
 
 // Calendar menu side column
