@@ -30,8 +30,8 @@ $large_scalable_icon_size: $scalable_icon_size * 2;
 
 // radiuses
 $circular_radius: 9999px;
-$base_radius: 6px;
-$window_radius: 12px;
+$base_radius: $default_corner;
+$window_radius: if($compact == 'false', $default_corner * 2, $default_corner);
 $menu_radius: $base_radius + $base_padding;
 $modal_radius: $menu_radius;
 
