@@ -55,6 +55,12 @@ Run the following commands in the terminal:
                         6. float:    Float gnome-shell panel style
                         7. colorful: Colorful gnome-shell panel style
 
+--round                 Change theme round corner border-radius [Input the px value you want] (Suggested: 2px < value < 16px)
+                          1. 3px
+                          2. 4px
+                          3. 5px
+                          ...
+                          13. 15px
 
 -h, --help              Show help
 ```
