@@ -65,6 +65,14 @@ Run the following commands in the terminal:
 -h, --help              Show help
 ```
 
+### Uninstall theme
+
+Uninstall legacy theme, run: `./install.sh -u`
+
+Uninstall libadwaita theme, run: `./install.sh -u -l`
+
+Uninstall gdm theme, run: `sudo ./install.sh -u -g`
+
 > For more information, run: `./install.sh --help`
 
 ![Tweaks](tweaks.png?raw=true)
