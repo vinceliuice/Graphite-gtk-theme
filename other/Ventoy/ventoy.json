@@ -1,0 +1,284 @@
+{
+    "theme":{
+        "file":[
+            "/ventoy/themes/graphite/1920x1080/dark/theme.txt",
+            "/ventoy/themes/graphite/1920x1080/dark-nord/theme.txt",
+            "/ventoy/themes/graphite/1920x1080/light/theme.txt",
+            "/ventoy/themes/graphite/1920x1080/light-nord/theme.txt"
+            "/ventoy/themes/graphite/2048x1080/dark/theme.txt",
+            "/ventoy/themes/graphite/2048x1080/dark-nord/theme.txt",
+            "/ventoy/themes/graphite/2048x1080/light/theme.txt",
+            "/ventoy/themes/graphite/2048x1080/light-nord/theme.txt"
+            "/ventoy/themes/graphite/3840x2160/dark/theme.txt",
+            "/ventoy/themes/graphite/3840x2160/dark-nord/theme.txt",
+            "/ventoy/themes/graphite/3840x2160/light/theme.txt",
+            "/ventoy/themes/graphite/3840x2160/light-nord/theme.txt"
+        ],
+        "default_file": 1,
+        "resolution_fit": 1,
+        "gfxmode": "max",
+        "ventoy_color": "#00000000",
+        "fonts":[
+            "/ventoy/themes/graphite/common/dejavu_sans_12.pf2",
+            "/ventoy/themes/graphite/common/dejavu_sans_14.pf2",
+            "/ventoy/themes/graphite/common/dejavu_sans_16.pf2",
+            "/ventoy/themes/graphite/common/dejavu_sans_24.pf2",
+            "/ventoy/themes/graphite/common/dejavu_sans_32.pf2",
+            "/ventoy/themes/graphite/common/dejavu_sans_48.pf2",
+            "/ventoy/themes/graphite/common/terminus-12.pf2",
+            "/ventoy/themes/graphite/common/terminus-14.pf2",
+            "/ventoy/themes/graphite/common/terminus-16.pf2",
+            "/ventoy/themes/graphite/common/terminus-18.pf2"
+        ]
+    },
+    "menu_class":[
+        {
+            "key": "4MLinux",
+            "class": "4MLinux"
+        },
+        {
+            "key": "AlpineLinux",
+            "class": "AlpineLinux"
+        },
+        {
+            "key": "android",
+            "class": "android"
+        },
+        {
+            "key": "anonymous",
+            "class": "anonymous"
+        },
+        {
+            "key": "antergos",
+            "class": "antergos"
+        },
+        {
+            "key": "archlinux",
+            "class": "archlinux"
+        },
+        {
+            "key": "artix",
+            "class": "artix"
+        },
+        {
+            "key": "chakra",
+            "class": "chakra"
+        },
+        {
+            "key": "clonezilla",
+            "class": "clonezilla"
+        },
+        {
+            "key": "debian",
+            "class": "debian"
+        },
+        {
+            "key": "deepin",
+            "class": "deepin"
+        },
+        {
+            "key": "devuan",
+            "class": "devuan"
+        },
+        {
+            "key": "edit",
+            "class": "edit"
+        },
+        {
+            "key": "efi",
+            "class": "efi"
+        },
+        {
+            "key": "elementary",
+            "class": "elementary"
+        },
+        {
+            "key": "endeavouros",
+            "class": "endeavouros"
+        },
+        {
+            "key": "fedora",
+            "class": "fedora"
+        },
+        {
+            "key": "find.efi",
+            "class": "find.efi"
+        },
+        {
+            "key": "find.none",
+            "class": "find.none"
+        },
+        {
+            "key": "freebsd",
+            "class": "freebsd"
+        },
+        {
+            "key": "gpart",
+            "class": "gpart"
+        },
+        {
+            "key": "gentoo",
+            "class": "gentoo"
+        },
+        {
+            "key": "gnu-linux",
+            "class": "gnu-linux"
+        },
+        {
+            "key": "haiku",
+            "class": "haiku"
+        },
+        {
+            "key": "help",
+            "class": "help"
+        },
+        {
+            "key": "kbd",
+            "class": "kbd"
+        },
+        {
+            "key": "kaos",
+            "class": "kaos"
+        },
+        {
+            "key": "kernel",
+            "class": "kernel"
+        },
+        {
+            "key": "kubuntu",
+            "class": "kubuntu"
+        },
+        {
+            "key": "lubuntu",
+            "class": "lubuntu"
+        },
+        {
+            "key": "linuxmint",
+            "class": "linuxmint"
+        },
+        {
+            "key": "macosx",
+            "class": "macosx"
+        },
+        {
+            "key": "mageia",
+            "class": "mageia"
+        },
+        {
+            "key": "manjaro",
+            "class": "manjaro"
+        },
+        {
+            "key": "mx-linux",
+            "class": "mx-linux"
+        },
+        {
+            "key": "neon",
+            "class": "neon"
+        },
+        {
+            "key": "opensuse",
+            "class": "opensuse"
+        },
+        {
+            "key": "parrot",
+            "class": "parrot"
+        },
+        {
+            "key": "pop-os",
+            "class": "pop-os"
+        },
+        {
+            "key": "recovery",
+            "class": "recovery"
+        },
+        {
+            "key": "regolith",
+            "class": "regolith"
+        },
+        {
+            "key": "restart",
+            "class": "restart"
+        },
+        {
+            "key": "shutdown",
+            "class": "shutdown"
+        },
+        {
+            "key": "siduction",
+            "class": "siduction"
+        },
+        {
+            "key": "solus",
+            "class": "solus"
+        },
+        {
+            "key": "steamos",
+            "class": "steamos"
+        },
+        {
+            "key": "submenu",
+            "class": "submenu"
+        },
+        {
+            "key": "SystemRescueCD",
+            "class": "SystemRescueCD"
+        },
+        {
+            "key": "type",
+            "class": "type"
+        },
+        {
+            "key": "tz",
+            "class": "tz"
+        },
+        {
+            "key": "ubuntu",
+            "class": "ubuntu"
+        },
+        {
+            "key": "unset",
+            "class": "unset"
+        },
+        {
+            "key": "void",
+            "class": "void"
+        },
+        {
+            "key": "win7",
+            "class": "windows"
+        },
+        {
+            "key": "win8",
+            "class": "windows"
+        },
+        {
+            "key": "win10",
+            "class": "windows"
+        },
+        {
+            "key": "win11",
+            "class": "windows"
+        },
+        {
+            "key": "windows",
+            "class": "windows"
+        },
+        {
+            "key": "winvista",
+            "class": "windows"
+        },
+        {
+            "key": "winxp",
+            "class": "windows"
+        },
+        {
+            "key": "xubuntu",
+            "class": "xubuntu"
+        },
+        {
+            "key": "zorin",
+            "class": "zorin"
+        }
+    ]
+}
