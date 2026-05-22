@@ -107,15 +107,16 @@ OPTIONS:
   -u, --uninstall
   -r, --remove            Uninstall/Remove themes or link for libadwaita
 
-  --tweaks                Specify versions for tweaks [nord|black|darker|rimless|normal]
+  --tweaks                Specify versions for tweaks [nord|ferra|black|darker|rimless|normal]
                           (WORRING: 'nord' and 'darker' can not mix use with 'black'!)
                           1. nord       Nord colorscheme version
-                          2. black      Blackness colorscheme version
-                          3. darker     Darker (default|nord) color version (black option can not be darker)
-                          4. rimless    Remove the 2px outline about windows and menus
-                          5. normal     Normal sidebar style (Nautilus)
-                          6. float      Float gnome-shell panel style
-                          7. colorful   Colorful gnome-shell panel style
+                          2. ferra      Ferra colorscheme version (Kanagawa/Gruvbox inspired)
+                          3. black      Blackness colorscheme version
+                          4. darker     Darker (default|nord|ferra) color version (black option can not be darker)
+                          5. rimless    Remove the 2px outline about windows and menus
+                          6. normal     Normal sidebar style (Nautilus)
+                          7. float      Float gnome-shell panel style
+                          8. colorful   Colorful gnome-shell panel style
 
   --round                 Change theme round corner border-radius [Input the px value you want] (Suggested: 2px < value < 16px)
                           1. 3px
@@ -183,14 +184,18 @@ install() {
   cp -r "${SRC_DIR}/assets/gtk-2.0/assets${theme}${ELSE_DARK:-}${ctype}/"*.png               "${THEME_DIR}/gtk-2.0/assets"
 
   mkdir -p                                                                                   "${THEME_DIR}/gtk-3.0"
-  cp -r "${SRC_DIR}/assets/gtk/assets${theme}"                                               "${THEME_DIR}/gtk-3.0/assets"
+  local gtk_assets="assets${theme}"
+  if [[ "$ctype" == '-ferra' && -n "$theme" && -d "${SRC_DIR}/assets/gtk/assets${theme}-ferra" ]]; then
+    gtk_assets="assets${theme}-ferra"
+  fi
+  cp -r "${SRC_DIR}/assets/gtk/${gtk_assets}"                                                "${THEME_DIR}/gtk-3.0/assets"
   cp -r "${SRC_DIR}/assets/gtk/scalable"                                                     "${THEME_DIR}/gtk-3.0/assets"
   cp -r "${SRC_DIR}/assets/gtk/thumbnail${theme}${ELSE_DARK:-}.png"                          "${THEME_DIR}/gtk-3.0/thumbnail.png"
   sassc $SASSC_OPT "${SRC_DIR}/main/gtk-3.0/gtk${color}.scss"                                "${THEME_DIR}/gtk-3.0/gtk.css"
   sassc $SASSC_OPT "${SRC_DIR}/main/gtk-3.0/gtk-Dark.scss"                                   "${THEME_DIR}/gtk-3.0/gtk-dark.css"
 
   mkdir -p                                                                                   "${THEME_DIR}/gtk-4.0"
-  cp -r "${SRC_DIR}/assets/gtk/assets${theme}"                                               "${THEME_DIR}/gtk-4.0/assets"
+  cp -r "${SRC_DIR}/assets/gtk/${gtk_assets}"                                                "${THEME_DIR}/gtk-4.0/assets"
   cp -r "${SRC_DIR}/assets/gtk/scalable"                                                     "${THEME_DIR}/gtk-4.0/assets"
   cp -r "${SRC_DIR}/assets/gtk/thumbnail${theme}${ELSE_DARK:-}.png"                          "${THEME_DIR}/gtk-4.0/thumbnail.png"
   sassc $SASSC_OPT "${SRC_DIR}/main/gtk-4.0/gtk${color}.scss"                                "${THEME_DIR}/gtk-4.0/gtk.css"
@@ -312,6 +317,47 @@ color_value() {
           ;;
       esac
   fi
+
+  if [[ "$ctype" == '-ferra' ]]; then
+      case "$theme" in
+        '')
+          theme_color_dark='#d1d1e0'
+          theme_color_light='#6f5d63'
+          ;;
+        -purple)
+          theme_color_dark='#c9b8c4'
+          theme_color_light='#b8a0b0'
+          ;;
+        -pink)
+          theme_color_dark='#f6b6c9'
+          theme_color_light='#ffb9cc'
+          ;;
+        -red)
+          theme_color_dark='#e06b75'
+          theme_color_light='#c05862'
+          ;;
+        -orange)
+          theme_color_dark='#ffa07a'
+          theme_color_light='#e88c6f'
+          ;;
+        -yellow)
+          theme_color_dark='#f5d76e'
+          theme_color_light='#fff27a'
+          ;;
+        -green)
+          theme_color_dark='#b1b695'
+          theme_color_light='#9f9f7c'
+          ;;
+        -teal)
+          theme_color_dark='#bfbfcf'
+          theme_color_light='#a8b0a0'
+          ;;
+        -blue)
+          theme_color_dark='#d1d1e0'
+          theme_color_light='#c4b8c8'
+          ;;
+      esac
+  fi
 }
 
 make_gtkrc() {
@@ -333,6 +379,16 @@ make_gtkrc() {
         background_light='#f9fafb'
         background_dark='#313744'
         background_alt='#3a4150'
+      fi
+    elif [[ "$ctype" == '-ferra' ]]; then
+      if [[ "$darker" == 'true' ]]; then
+        background_light='#faf6f2'
+        background_dark='#2b292d'
+        background_alt='#4d424b'
+      else
+        background_light='#faf6f2'
+        background_dark='#2b292d'
+        background_alt='#4d424b'
       fi
     else
       if [[ "$darker" == 'true' ]]; then
@@ -687,6 +743,12 @@ while [[ $# -gt 0 ]]; do
             echo -e "Install Nord version! ..."
             shift
             ;;
+          ferra)
+            ferra="true"
+            ctype="-ferra"
+            echo -e "Install Ferra version! ..."
+            shift
+            ;;
           black)
             blackness="true"
             echo -e "Install Blackness version! ..."
@@ -773,6 +835,10 @@ nord_color() {
   sed -i "/\$color_type:/s/default/nord/" ${SRC_DIR}/sass/_tweaks-temp.scss
 }
 
+ferra_color() {
+  sed -i "/\$color_type:/s/default/ferra/" ${SRC_DIR}/sass/_tweaks-temp.scss
+}
+
 blackness_color() {
   sed -i "/\$color_type:/s/default/blackness/" ${SRC_DIR}/sass/_tweaks-temp.scss
 }
@@ -856,6 +922,10 @@ theme_tweaks() {
 
   if [[ "$nord" = "true" ]] ; then
     nord_color
+  fi
+
+  if [[ "$ferra" = "true" ]] ; then
+    ferra_color
   fi
 
   if [[ "$blackness" = "true" ]] ; then
@@ -949,7 +1019,7 @@ clean_theme() {
   for theme in "${THEME_VARIANTS[@]}"; do
     for color in '' '-light' '-dark'; do
       for size in "${SIZE_VARIANTS[@]}"; do
-        for type in '' '-nord'; do
+        for type in '' '-nord' '-ferra'; do
           clean "${dest:-$DEST_DIR}" "${name:-$THEME_NAME}" "$theme" "$color" "$size" "$type"
         done
       done
@@ -959,7 +1029,7 @@ clean_theme() {
   for theme in "${THEME_VARIANTS[@]}"; do
     for color in "${COLOR_VARIANTS[@]}"; do
       for size in "${SIZE_VARIANTS[@]}"; do
-        for type in '' '-nord'; do
+        for type in '' '-nord' '-ferra'; do
           uninstall "${dest:-$HOME/.local/share/themes}" "${_name:-$THEME_NAME}" "$theme" "$color" "$size" "$type"
         done
       done
@@ -971,7 +1041,7 @@ uninstall_theme() {
   for theme in "${THEME_VARIANTS[@]}"; do
     for color in "${COLOR_VARIANTS[@]}"; do
       for size in "${SIZE_VARIANTS[@]}"; do
-        for type in '' '-nord'; do
+        for type in '' '-nord' '-ferra'; do
           uninstall "${dest:-$DEST_DIR}" "${_name:-$THEME_NAME}" "$theme" "$color" "$size" "$type"
         done
       done

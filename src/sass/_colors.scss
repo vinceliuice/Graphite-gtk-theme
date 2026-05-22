@@ -26,6 +26,18 @@ $theme_blue_color:    if($variant == 'light', #3684dd, #5294e2);
   $theme_blue_color:    if($variant == 'light', #5e81ac, #89a3c2);
 }
 
+@if $color_type == 'ferra' {
+  $theme_default_color: if($variant == 'light', #6f5d63, #d1d1e0);
+  $theme_purple_color:  if($variant == 'light', #b8a0b0, #c9b8c4);
+  $theme_pink_color:    if($variant == 'light', #ffb9cc, #f6b6c9);
+  $theme_red_color:     if($variant == 'light', #c05862, #e06b75);
+  $theme_orange_color:  if($variant == 'light', #e88c6f, #ffa07a);
+  $theme_yellow_color:  if($variant == 'light', #fff27a, #f5d76e);
+  $theme_green_color:   if($variant == 'light', #9f9f7c, #b1b695);
+  $theme_teal_color:    if($variant == 'light', #a8b0a0, #bfbfcf);
+  $theme_blue_color:    if($variant == 'light', #c4b8c8, #d1d1e0);
+}
+
 @function gtkalpha($c, $a) {
   @return unquote("alpha(#{$c}, #{$a})");
 }
@@ -97,6 +109,23 @@ $theme_blue_color:    if($variant == 'light', #3684dd, #5294e2);
       @if ($type == 'g') { @return #313744; }
       @if ($type == 'h') { @return #404859; }
     }
+  } @else if ($color_type == 'ferra') {
+    @if ($type == 'a') { @return #faf6f2; }
+    @if ($type == 'b') { @return #f5f0eb; }
+    @if ($type == 'c') { @return #efe8e0; }
+    @if ($type == 'd') { @return #b1b695; }
+
+    @if ($darker == 'true') {
+      @if ($type == 'e') { @return #1f1e20; }
+      @if ($type == 'f') { @return #2b292d; }
+      @if ($type == 'g') { @return #383539; }
+      @if ($type == 'h') { @return #4d424b; }
+    } @else {
+      @if ($type == 'e') { @return #2b292d; }
+      @if ($type == 'f') { @return #383539; }
+      @if ($type == 'g') { @return #4d424b; }
+      @if ($type == 'h') { @return #6f5d63; }
+    }
   } @else {
     @if ($type == 'a') { @return #FFFFFF; }
     @if ($type == 'b') { @return #FAFAFA; }
@@ -154,8 +183,8 @@ $indicator:                             theme(color);
 $titlebar-indicator:                    if($variant == 'dark', currentColor, $primary);
 $inverse-indicator:                     if($theme == 'default', white, $primary);
 $applet-primary:                        if($topbar == 'dark' and $theme == 'default' and $variant == 'light', #DDDDDD, $primary);
-$titlebar-primary:                      if($topbar == 'dark' and $theme == 'default' and $variant == 'light', if($color_type == 'nord', #dbdee5, #e0e0e0), $primary);
-$osd-primary:                           if($theme == 'default', if($color_type == 'nord', #dbdee5, #e0e0e0), $primary);
+$titlebar-primary:                      if($topbar == 'dark' and $theme == 'default' and $variant == 'light', if($color_type == 'ferra', #fecdb2, if($color_type == 'nord', #dbdee5, #e0e0e0)), $primary);
+$osd-primary:                           if($theme == 'default', if($color_type == 'ferra', #fecdb2, if($color_type == 'nord', #dbdee5, #e0e0e0)), $primary);
 
 $background:                            if($variant == 'light', background(a), background(g));
 $surface:                               if($variant == 'light', background(a), background(h));
@@ -192,12 +221,12 @@ $entry:                                 on($background, fill);
 // Misc colors
 //
 
-$link:                                  $blue-500;
-$link-visited:                          if($variant == 'light', $purple-500, $purple-200);
+$link:                                  if($color_type == 'ferra', if($variant == 'light', #e88c6f, #ffa07a), $blue-500);
+$link-visited:                          if($color_type == 'ferra', if($variant == 'light', #ffb9cc, #f6b6c9), if($variant == 'light', $purple-500, $purple-200));
 
-$warning:                               if($variant == 'light', #F4B400, #FDD633);
-$error:                                 if($variant == 'light', #D93025, #F28B82);
-$success:                               if($variant == 'light', #0F9D58, #81C995);
+$warning:                               if($color_type == 'ferra', if($variant == 'light', #fff27a, #f5d76e), if($variant == 'light', #F4B400, #FDD633));
+$error:                                 if($color_type == 'ferra', if($variant == 'light', #c05862, #e06b75), if($variant == 'light', #D93025, #F28B82));
+$success:                               if($color_type == 'ferra', if($variant == 'light', #9f9f7c, #b1b695), if($variant == 'light', #0F9D58, #81C995));
 
 $suggested:                             $primary;
 $destructive:                           $error;
