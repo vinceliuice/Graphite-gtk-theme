@@ -185,8 +185,12 @@ install() {
 
   mkdir -p                                                                                   "${THEME_DIR}/gtk-3.0"
   local gtk_assets="assets${theme}"
-  if [[ "$ctype" == '-ferra' && -n "$theme" && -d "${SRC_DIR}/assets/gtk/assets${theme}-ferra" ]]; then
-    gtk_assets="assets${theme}-ferra"
+  if [[ "$ctype" == '-ferra' ]]; then
+    if [[ -d "${SRC_DIR}/assets/gtk/assets${theme}-ferra" ]]; then
+      gtk_assets="assets${theme}-ferra"
+    elif [[ "${theme}" == '' && -d "${SRC_DIR}/assets/gtk/assets-ferra" ]]; then
+      gtk_assets="assets-ferra"
+    fi
   fi
   cp -r "${SRC_DIR}/assets/gtk/${gtk_assets}"                                                "${THEME_DIR}/gtk-3.0/assets"
   cp -r "${SRC_DIR}/assets/gtk/scalable"                                                     "${THEME_DIR}/gtk-3.0/assets"
@@ -321,8 +325,8 @@ color_value() {
   if [[ "$ctype" == '-ferra' ]]; then
       case "$theme" in
         '')
-          theme_color_dark='#d1d1e0'
-          theme_color_light='#6f5d63'
+          theme_color_dark='#fecdb2'
+          theme_color_light='#fecdb2'
           ;;
         -purple)
           theme_color_dark='#c9b8c4'
@@ -412,6 +416,11 @@ make_gtkrc() {
     sed -i "s/#333333/${theme_color_light}/g"                                   "${THEME_DIR}/gtk-2.0/gtkrc"
   else
     sed -i "s/#E0E0E0/${theme_color_dark}/g"                                    "${THEME_DIR}/gtk-2.0/gtkrc"
+  fi
+
+  # Ferra default accent (blush): gtkrc templates use #333333 for selection on light schemes
+  if [[ "$ctype" == '-ferra' ]]; then
+    sed -i "s/#333333/${theme_color_light}/g"                                   "${THEME_DIR}/gtk-2.0/gtkrc"
   fi
 }
 

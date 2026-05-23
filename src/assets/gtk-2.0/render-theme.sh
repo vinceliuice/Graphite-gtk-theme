@@ -139,9 +139,9 @@ for type in '' '-nord' '-ferra'; do
         ;;
       *)
         if [[ "$color" == '' ]]; then
-          theme_color='#6f5d63'
+          theme_color='#fecdb2'
         else
-          theme_color='#d1d1e0'
+          theme_color='#fecdb2'
         fi
         ;;
     esac
@@ -162,6 +162,10 @@ for type in '' '-nord' '-ferra'; do
     sed -i "s/#333333/${theme_color}/g" "$out_svg"
   else
     sed -i "s/#E0E0E0/${theme_color}/g; s/#e0e0e0/${theme_color}/g" "$out_svg"
+  fi
+
+  if [[ "$type" == '-ferra' ]]; then
+    sed -i "s/#333333/${theme_color}/g" "$out_svg"
   fi
 
 done

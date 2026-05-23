@@ -91,8 +91,8 @@ for theme in '' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-teal' '-
     if [[ "$type" == '-ferra' ]]; then
       case "$theme" in
         '')
-          theme_color_dark='#6f5d63'
-          theme_color_light='#d1d1e0'
+          theme_color_dark='#fecdb2'
+          theme_color_light='#fecdb2'
           ;;
         -purple)
           theme_color_dark='#b8a0b0'

@@ -27,7 +27,7 @@ $theme_blue_color:    if($variant == 'light', #3684dd, #5294e2);
 }
 
 @if $color_type == 'ferra' {
-  $theme_default_color: if($variant == 'light', #6f5d63, #d1d1e0);
+  $theme_default_color: if($variant == 'light', #fecdb2, #fecdb2);
   $theme_purple_color:  if($variant == 'light', #b8a0b0, #c9b8c4);
   $theme_pink_color:    if($variant == 'light', #ffb9cc, #f6b6c9);
   $theme_red_color:     if($variant == 'light', #c05862, #e06b75);
@@ -124,7 +124,7 @@ $theme_blue_color:    if($variant == 'light', #3684dd, #5294e2);
       @if ($type == 'e') { @return #2b292d; }
       @if ($type == 'f') { @return #383539; }
       @if ($type == 'g') { @return #4d424b; }
-      @if ($type == 'h') { @return #6f5d63; }
+      @if ($type == 'h') { @return #4d424b; }
     }
   } @else {
     @if ($type == 'a') { @return #FFFFFF; }

@@ -9,6 +9,8 @@ INKSCAPE="$(command -v inkscape)" || true
 OPTIPNG="$(command -v optipng)" || true
 INDEX="assets.txt"
 
+ferra_default_accent='#fecdb2:#fecdb2'
+
 ferra_colors() {
   local theme="$1"
   case "$theme" in
@@ -23,12 +25,18 @@ ferra_colors() {
   esac
 }
 
-for theme in '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-blue' '-teal'; do
-  src="assets${theme}.svg"
-  dst="assets${theme}-ferra.svg"
-  [[ -f "$src" ]] || continue
+for theme in '' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-blue' '-teal'; do
+  if [[ "$theme" == '' ]]; then
+    src="assets.svg"
+    dst="assets-ferra.svg"
+    IFS=':' read -r dark light <<< "$ferra_default_accent"
+  else
+    src="assets${theme}.svg"
+    dst="assets${theme}-ferra.svg"
+    [[ -f "$src" ]] || continue
 
-  IFS=':' read -r dark light <<< "$(ferra_colors "$theme")"
+    IFS=':' read -r dark light <<< "$(ferra_colors "$theme")"
+  fi
   cp -f "$src" "$dst"
   sed -i "s/#333333/${dark}/g; s/#E0E0E0/${light}/g; s/#e0e0e0/${light}/g" "$dst"
   sed -i "s/#F57C00/${dark}/g; s/#FB8C00/${light}/g" "$dst"
