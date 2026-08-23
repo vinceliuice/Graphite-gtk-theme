@@ -45,15 +45,16 @@ Run the following commands in the terminal:
 -u, --uninstall
 -r, --remove            Uninstall/Remove themes or link for libadwaita
 
---tweaks                Specify versions for tweaks [nord|black|darker|rimless|normal]
+--tweaks                Specify versions for tweaks [nord|ferra|black|darker|rimless|normal]
                         (WORRING: 'nord' and 'darker' can not mix use with 'black'!)
                         1. nord:     Nord colorscheme version
-                        2. black:    Blackness colorscheme version
-                        3. darker:   Darker (default|nord) color version (black option can not be darker)
-                        4. rimless:  Remove the 2px outline about windows and menus
-                        5. normal:   Normal sidebar style (Nautilus)
-                        6. float:    Float gnome-shell panel style
-                        7. colorful: Colorful gnome-shell panel style
+                        2. ferra:    Ferra colorscheme version (https://github.com/casperstorm/ferra)
+                        3. black:    Blackness colorscheme version
+                        4. darker:   Darker (default|nord|ferra) color version (black option can not be darker)
+                        5. rimless:  Remove the 2px outline about windows and menus
+                        6. normal:   Normal sidebar style (Nautilus)
+                        7. float:    Float gnome-shell panel style
+                        8. colorful: Colorful gnome-shell panel style
 
 --round                 Change theme round corner border-radius [Input the px value you want] (Suggested: 2px < value < 16px)
                           1. 3px
