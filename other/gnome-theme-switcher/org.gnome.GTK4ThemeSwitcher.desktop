@@ -1,0 +1,15 @@
+[Desktop Entry]
+Name[zh_CN]=GNOME-GTK-主题设置
+Name=GNOME-GTK-Theme-Setting
+Comment[zh_CN]=调整 GNOME GTK 主题设置
+Comment=Tweak GNOME GTK Theme settings
+GenericName[zh_CN]=调整 GNOME GTK 主题设置
+GenericName=Tweak GNOME GTK Theme settings
+Icon=preferences-desktop-theme
+Exec=gnome-theme-switcher
+Terminal=false
+Type=Application
+StartupWMClass=org.gnome.GTK4ThemeSwitcher
+Categories=Settings;DesktopSettings;GTK;
+Keywords[zh_CN]=Settings;Advanced;Preferences;Fonts;Theme;XKB;Keyboard;Typing;Startup;设置;高级;首选项;字体;主题;键盘;打字;开始;
+Keywords=Settings;Advanced;Preferences;Fonts;Theme;XKB;Keyboard;Typing;Startup;

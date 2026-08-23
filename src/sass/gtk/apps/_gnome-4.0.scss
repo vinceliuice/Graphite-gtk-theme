@@ -752,7 +752,7 @@ datechooser {
     &.today:selected,
     &:selected:focus,
     &.today:selected:focus {
-      background-image: color($primary);
+      background-image: image($primary);
       color: on($primary);
       font-weight: bold;
 
