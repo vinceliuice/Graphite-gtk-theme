@@ -211,16 +211,14 @@ updating_grub() {
   elif has_command zypper; then
     grub2-mkconfig -o /boot/grub2/grub.cfg
   elif has_command dnf; then
-    if [[ -f /boot/efi/EFI/fedora/grub.cfg ]]; then
-      prompt -i "Find config file on /boot/efi/EFI/fedora/grub.cfg ...\n"
-      grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
-    fi
     if [[ -f /boot/grub2/grub.cfg ]]; then
       prompt -i "Find config file on /boot/grub2/grub.cfg ...\n"
       grub2-mkconfig -o /boot/grub2/grub.cfg
+    elif [[ -f /boot/efi/EFI/fedora/grub.cfg ]]; then
+      prompt -i "Find config file on /boot/efi/EFI/fedora/grub.cfg ...\n"
+      grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
     fi
   fi
-
   # Success message
   prompt -s "\n * All done!"
 }
