@@ -240,6 +240,30 @@
       }
     }
   }
+
+  .nautilus-pathbar {
+    background-color: if($sidebar =='styled', $titlebar-fill, $fill);
+
+    .nautilus-path-button {
+      &.current-dir {
+        color: if($sidebar =='styled', $titlebar-text, $text);
+      }
+    }
+  }
+
+  .mc-toggle-group {
+    background-color: if($sidebar =='styled', $titlebar-fill, $fill);
+  }
+}
+
+.mc-toggle-group {
+  border-radius: $circular-radius;
+  padding: 0;
+
+  > button {
+    border-radius: $circular-radius;
+    padding: $space-size / 2 2px;
+  }
 }
 
 .floating-bar {
@@ -265,7 +289,7 @@
     padding: 0;
     border-radius: $corner-radius * 2;
 
-    #NautilusViewCell {
+    #NautilusViewCell, .nautilus-view-cell {
       padding: $space-size;
 
       .icon-ui-labels-box {
@@ -296,10 +320,23 @@
       margin: 0;
       border-radius: $corner-radius;
 
+      &:selected {
+        background-color: $primary;
+        color: on($primary);
+
+        expander, .dim-label {
+          color: on($primary);
+        }
+
+        button {
+          @extend %button-on-primary;
+        }
+      }
+
       > cell {
         padding: 0;
 
-        > widget#NautilusViewCell {
+        > widget#NautilusViewCell, .nautilus-view-cell {
           padding: $space-size / 2 $space-size * 1.5;
         }
       }
@@ -311,7 +348,7 @@
   }
 }
 
-#NautilusQueryEditor {
+#NautilusQueryEditor, .nautilus-query-editor {
 
   // search entry
   > menubutton {
@@ -329,11 +366,11 @@
   }
 }
 
-#NautilusPathBar {
+#NautilusPathBar, .nautilus-pathbar {
   border-radius: $circular-radius;
   margin: 0;
 
-  #NautilusPathButton {
+  #NautilusPathButton, .nautilus-path-button {
     margin: 0 $space-size / 2;
     border-radius: $circular-radius;
 
@@ -358,7 +395,7 @@
   }
 }
 
-#NautilusQueryEditorTag {
+#NautilusQueryEditorTag, .nautilus-query-editor-tag {
   border-radius: $circular-radius;
 
   > button {

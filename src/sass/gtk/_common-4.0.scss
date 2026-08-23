@@ -525,6 +525,22 @@ editablelabel > stack > text {
   }
 }
 
+%button-on-primary {
+  color: on($primary, secondary);
+
+  &:focus, &:hover, &:active, &:checked {
+    color: on($primary);
+  }
+
+  &:disabled {
+    color: on($primary, secondary-disabled);
+  }
+
+  &:checked:disabled {
+    color: on($primary, disabled);
+  }
+}
+
 %button-basic {
   @include button(normal);
 
@@ -4177,13 +4193,16 @@ row {
   }
 
   button &.activatable {
-    &:focus, &:hover, &:active {
+    &:focus, &:hover, &:active, &:selected {
       background-color: transparent;
+      background-image: none;
+      animation: none;
+      transition: none;
     }
   }
 
   button:checked &.activatable {
-    color: on($primary);
+    color: inherit;
   }
 
   &:selected {
