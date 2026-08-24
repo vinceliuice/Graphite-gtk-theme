@@ -123,7 +123,7 @@
 
     &.user-avatar {
       @if $rimless == 'false' {
-        border: 2px solid if($theme == 'default', if($color_type == 'ferra', #fecdb2, if($color_type == 'nord', #dbdee5, #e0e0e0)), $primary) !important;
+        border: 2px solid if($theme == 'default', if($color_type == 'ferra', #fecdb2, if($color_type == 'nord', #dbdee5, if($color_type == 'dracula', #f8f8f2, #e0e0e0))), $primary) !important;
       } @else { border: none; }
     }
   }
