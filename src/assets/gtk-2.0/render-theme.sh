@@ -2,7 +2,7 @@
 
 for theme in '' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-teal' '-blue'; do
 for color in '' '-Dark'; do
-for type in '' '-nord' '-ferra'; do
+for type in '' '-nord' '-dracula' '-ferra'; do
   if [[ "$theme" == '' ]]; then
     base_svg="assets.svg"
   else
@@ -106,6 +106,42 @@ for type in '' '-nord' '-ferra'; do
           theme_color='#434c5e'
         else
           theme_color='#dbdee5'
+        fi
+        ;;
+    esac
+  fi
+
+  if [[ "$type" == '-dracula' ]]; then
+    case "$theme" in
+      -purple)
+        theme_color='#9d6cf9'
+        ;;
+      -pink)
+        theme_color='#e85aaa'
+        ;;
+      -red)
+        theme_color='#e83333'
+        ;;
+      -orange)
+        theme_color='#e8943c'
+        ;;
+      -yellow)
+        theme_color='#c5cf60'
+        ;;
+      -green)
+        theme_color='#2dd154'
+        ;;
+      -teal)
+        theme_color='#5fc8dd'
+        ;;
+      -blue)
+        theme_color='#3f4d7a'
+        ;;
+      *)
+        if [[ "$color" == '' ]]; then
+          theme_color='#44475a'
+        else
+          theme_color='#f8f8f2'
         fi
         ;;
     esac

@@ -26,6 +26,18 @@ $theme_blue_color:    if($variant == 'light', #3684dd, #5294e2);
   $theme_blue_color:    if($variant == 'light', #5e81ac, #89a3c2);
 }
 
+@if $color_type == 'dracula' {
+  $theme_default_color: if($variant == 'light', #44475a, #f8f8f2);
+  $theme_purple_color:  if($variant == 'light', #9d6cf9, #bd93f9);
+  $theme_pink_color:    if($variant == 'light', #e85aaa, #ff79c6);
+  $theme_red_color:     if($variant == 'light', #e83333, #ff5555);
+  $theme_orange_color:  if($variant == 'light', #e8943c, #ffb86c);
+  $theme_yellow_color:  if($variant == 'light', #c5cf60, #f1fa8c);
+  $theme_green_color:   if($variant == 'light', #2dd154, #50fa7b);
+  $theme_teal_color:    if($variant == 'light', #5fc8dd, #8be9fd);
+  $theme_blue_color:    if($variant == 'light', #3f4d7a, #6272a4);
+}
+
 @if $color_type == 'ferra' {
   $theme_default_color: if($variant == 'light', #fecdb2, #fecdb2);
   $theme_purple_color:  if($variant == 'light', #b8a0b0, #c9b8c4);
@@ -109,6 +121,23 @@ $theme_blue_color:    if($variant == 'light', #3684dd, #5294e2);
       @if ($type == 'g') { @return #313744; }
       @if ($type == 'h') { @return #404859; }
     }
+  } @else if ($color_type == 'dracula') {
+    @if ($type == 'a') { @return #f8f8f2; }
+    @if ($type == 'b') { @return #f0f0eb; }
+    @if ($type == 'c') { @return #e8e8e0; }
+    @if ($type == 'd') { @return #c8c8c2; }
+
+    @if ($darker == 'true') {
+      @if ($type == 'e') { @return #15161b; }
+      @if ($type == 'f') { @return #1a1b22; }
+      @if ($type == 'g') { @return #21222c; }
+      @if ($type == 'h') { @return #353746; }
+    } @else {
+      @if ($type == 'e') { @return #1e1f29; }
+      @if ($type == 'f') { @return #232532; }
+      @if ($type == 'g') { @return #282a36; }
+      @if ($type == 'h') { @return #44475a; }
+    }
   } @else if ($color_type == 'ferra') {
     @if ($type == 'a') { @return #faf6f2; }
     @if ($type == 'b') { @return #f5f0eb; }
@@ -183,8 +212,8 @@ $indicator:                             theme(color);
 $titlebar-indicator:                    if($variant == 'dark', currentColor, $primary);
 $inverse-indicator:                     if($theme == 'default', white, $primary);
 $applet-primary:                        if($topbar == 'dark' and $theme == 'default' and $variant == 'light', #DDDDDD, $primary);
-$titlebar-primary:                      if($topbar == 'dark' and $theme == 'default' and $variant == 'light', if($color_type == 'ferra', #fecdb2, if($color_type == 'nord', #dbdee5, #e0e0e0)), $primary);
-$osd-primary:                           if($theme == 'default', if($color_type == 'ferra', #fecdb2, if($color_type == 'nord', #dbdee5, #e0e0e0)), $primary);
+$titlebar-primary:                      if($topbar == 'dark' and $theme == 'default' and $variant == 'light', if($color_type == 'ferra', #fecdb2, if($color_type == 'nord', #dbdee5, if($color_type == 'dracula', #f8f8f2, #e0e0e0))), $primary);
+$osd-primary:                           if($theme == 'default', if($color_type == 'ferra', #fecdb2, if($color_type == 'nord', #dbdee5, if($color_type == 'dracula', #f8f8f2, #e0e0e0))), $primary);
 
 $background:                            if($variant == 'light', background(a), background(g));
 $surface:                               if($variant == 'light', background(a), background(h));

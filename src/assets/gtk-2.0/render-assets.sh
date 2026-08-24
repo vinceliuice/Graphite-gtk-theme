@@ -8,7 +8,7 @@ INDEX_COMMON="assets-common.txt"
 INDEX_THEME="assets-theme.txt"
 
 for color in '' '-Dark'; do
-  for type in '' '-nord' '-ferra'; do
+  for type in '' '-nord' '-dracula' '-ferra'; do
     ASSETS_DIR="assets-common${color}${type}"
     SRC_FILE="assets-common${color}${type}.svg"
 
@@ -38,7 +38,7 @@ done
 
 for theme in '' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-teal' '-blue'; do
   for color in '' '-Dark'; do
-    for type in '' '-nord' '-ferra'; do
+    for type in '' '-nord' '-dracula' '-ferra'; do
       ASSETS_DIR="assets${theme}${color}${type}"
       SRC_FILE="assets${theme}${color}${type}.svg"
 

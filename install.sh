@@ -107,16 +107,17 @@ OPTIONS:
   -u, --uninstall
   -r, --remove            Uninstall/Remove themes or link for libadwaita
 
-  --tweaks                Specify versions for tweaks [nord|ferra|black|darker|rimless|normal]
-                          (WORRING: 'nord' and 'darker' can not mix use with 'black'!)
+  --tweaks                Specify versions for tweaks [nord|dracula|ferra|black|darker|rimless|normal]
+                          (WORRING: 'nord', 'dracula', 'ferra' and 'darker' can not mix use with 'black'!)
                           1. nord       Nord colorscheme version
-                          2. ferra      Ferra colorscheme version (Kanagawa/Gruvbox inspired)
-                          3. black      Blackness colorscheme version
-                          4. darker     Darker (default|nord|ferra) color version (black option can not be darker)
-                          5. rimless    Remove the 2px outline about windows and menus
-                          6. normal     Normal sidebar style (Nautilus)
-                          7. float      Float gnome-shell panel style
-                          8. colorful   Colorful gnome-shell panel style
+                          2. dracula    Dracula colorscheme version
+                          3. ferra      Ferra colorscheme version (Kanagawa/Gruvbox inspired)
+                          4. black      Blackness colorscheme version
+                          5. darker     Darker (default|nord|dracula|ferra) color version (black option can not be darker)
+                          6. rimless    Remove the 2px outline about windows and menus
+                          7. normal     Normal sidebar style (Nautilus)
+                          8. float      Float gnome-shell panel style
+                          9. colorful   Colorful gnome-shell panel style
 
   --round                 Change theme round corner border-radius [Input the px value you want] (Suggested: 2px < value < 16px)
                           1. 3px
@@ -185,6 +186,13 @@ install() {
 
   mkdir -p                                                                                   "${THEME_DIR}/gtk-3.0"
   local gtk_assets="assets${theme}"
+  if [[ "$ctype" == '-dracula' ]]; then
+    if [[ -d "${SRC_DIR}/assets/gtk/assets${theme}-dracula" ]]; then
+      gtk_assets="assets${theme}-dracula"
+    elif [[ "${theme}" == '' && -d "${SRC_DIR}/assets/gtk/assets-dracula" ]]; then
+      gtk_assets="assets-dracula"
+    fi
+  fi
   if [[ "$ctype" == '-ferra' ]]; then
     if [[ -d "${SRC_DIR}/assets/gtk/assets${theme}-ferra" ]]; then
       gtk_assets="assets${theme}-ferra"
@@ -343,6 +351,47 @@ color_value() {
       esac
   fi
 
+  if [[ "$ctype" == '-dracula' ]]; then
+      case "$theme" in
+        '')
+          theme_color_dark='#f8f8f2'
+          theme_color_light='#44475a'
+          ;;
+        -purple)
+          theme_color_dark='#bd93f9'
+          theme_color_light='#9d6cf9'
+          ;;
+        -pink)
+          theme_color_dark='#ff79c6'
+          theme_color_light='#e85aaa'
+          ;;
+        -red)
+          theme_color_dark='#ff5555'
+          theme_color_light='#e83333'
+          ;;
+        -orange)
+          theme_color_dark='#ffb86c'
+          theme_color_light='#e8943c'
+          ;;
+        -yellow)
+          theme_color_dark='#f1fa8c'
+          theme_color_light='#c5cf60'
+          ;;
+        -green)
+          theme_color_dark='#50fa7b'
+          theme_color_light='#2dd154'
+          ;;
+        -teal)
+          theme_color_dark='#8be9fd'
+          theme_color_light='#5fc8dd'
+          ;;
+        -blue)
+          theme_color_dark='#6272a4'
+          theme_color_light='#3f4d7a'
+          ;;
+      esac
+  fi
+
   if [[ "$ctype" == '-ferra' ]]; then
       case "$theme" in
         '')
@@ -404,6 +453,16 @@ make_gtkrc() {
         background_light='#f9fafb'
         background_dark='#313744'
         background_alt='#3a4150'
+      fi
+    elif [[ "$ctype" == '-dracula' ]]; then
+      if [[ "$darker" == 'true' ]]; then
+        background_light='#f8f8f2'
+        background_dark='#21222c'
+        background_alt='#353746'
+      else
+        background_light='#f8f8f2'
+        background_dark='#282a36'
+        background_alt='#44475a'
       fi
     elif [[ "$ctype" == '-ferra' ]]; then
       if [[ "$darker" == 'true' ]]; then
@@ -785,6 +844,12 @@ while [[ $# -gt 0 ]]; do
             echo -e "Install Nord version! ..."
             shift
             ;;
+          dracula)
+            dracula="true"
+            ctype="-dracula"
+            echo -e "Install Dracula version! ..."
+            shift
+            ;;
           ferra)
             ferra="true"
             ctype="-ferra"
@@ -877,6 +942,10 @@ nord_color() {
   sed -i "/\$color_type:/s/default/nord/" ${SRC_DIR}/sass/_tweaks-temp.scss
 }
 
+dracula_color() {
+  sed -i "/\$color_type:/s/default/dracula/" ${SRC_DIR}/sass/_tweaks-temp.scss
+}
+
 ferra_color() {
   sed -i "/\$color_type:/s/default/ferra/" ${SRC_DIR}/sass/_tweaks-temp.scss
 }
@@ -964,6 +1033,10 @@ theme_tweaks() {
 
   if [[ "$nord" = "true" ]] ; then
     nord_color
+  fi
+
+  if [[ "$dracula" = "true" ]] ; then
+    dracula_color
   fi
 
   if [[ "$ferra" = "true" ]] ; then
@@ -1061,7 +1134,7 @@ clean_theme() {
   for theme in "${THEME_VARIANTS[@]}"; do
     for color in '' '-light' '-dark'; do
       for size in "${SIZE_VARIANTS[@]}"; do
-        for type in '' '-nord' '-ferra'; do
+        for type in '' '-nord' '-dracula' '-ferra'; do
           clean "${dest:-$DEST_DIR}" "${name:-$THEME_NAME}" "$theme" "$color" "$size" "$type"
         done
       done
@@ -1071,7 +1144,7 @@ clean_theme() {
   for theme in "${THEME_VARIANTS[@]}"; do
     for color in "${COLOR_VARIANTS[@]}"; do
       for size in "${SIZE_VARIANTS[@]}"; do
-        for type in '' '-nord' '-ferra'; do
+        for type in '' '-nord' '-dracula' '-ferra'; do
           uninstall "${dest:-$HOME/.local/share/themes}" "${_name:-$THEME_NAME}" "$theme" "$color" "$size" "$type"
         done
       done
@@ -1083,7 +1156,7 @@ uninstall_theme() {
   for theme in "${THEME_VARIANTS[@]}"; do
     for color in "${COLOR_VARIANTS[@]}"; do
       for size in "${SIZE_VARIANTS[@]}"; do
-        for type in '' '-nord' '-ferra'; do
+        for type in '' '-nord' '-dracula' '-ferra'; do
           uninstall "${dest:-$DEST_DIR}" "${_name:-$THEME_NAME}" "$theme" "$color" "$size" "$type"
         done
       done
