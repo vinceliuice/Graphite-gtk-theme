@@ -14,17 +14,17 @@ try:
     gi.require_version('Gtk', '4.0')
     from gi.repository import Gtk, Gio, Pango, GLib
 except ImportError as e:
-    print("错误: 缺少必要的依赖。请确保已安装 PyGObject 和 GTK4。")
-    print("在 Ubuntu/Debian 上运行: sudo apt install python3-gi libgtk-4-dev")
-    print("在 Fedora 上运行: sudo dnf install python3-gobject gtk4")
-    print("在 Arch Linux 上运行: sudo pacman -S python-gobject gtk4")
+    print("ERROR: Missing necessary dependencies. Please ensure PyGObject and GTK4 are installed.")
+    print("On Ubuntu/Debian RUN: sudo apt install python3-gi libgtk-4-dev")
+    print("On Fedora RUN: sudo dnf install python3-gobject gtk4")
+    print("On Arch Linux RUN: sudo pacman -S python-gobject gtk4")
     sys.exit(1)
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 
 class ThemeManager:
-    """负责搜索、解析以及处理 GTK4 主题文件软链接的核心类"""
+    """The core class responsible for searching, parsing, and processing symbolic links to GTK4 theme files."""
 
     SEARCH_PATHS = [
         os.path.expanduser("~/.themes"),
@@ -35,7 +35,7 @@ class ThemeManager:
 
     @classmethod
     def get_available_themes(cls):
-        """扫描所有指定目录，搜寻存在 gtk-4.0 子目录的主题文件夹"""
+        """Scan all specified directories to search for theme folders containing a gtk-4.0 subdirectory."""
         themes = []
 
         for base_path in cls.SEARCH_PATHS:
@@ -57,7 +57,7 @@ class ThemeManager:
                             "has_gtk4": has_gtk4
                         })
             except Exception as err:
-                logging.error(f"读取目录 {base_path} 失败: {err}")
+                logging.error(f"Read directory {base_path} Fail: {err}")
 
         # 去重并排序 (优先保留用户目录下的同名主题)
         unique_themes = {}
@@ -71,10 +71,10 @@ class ThemeManager:
 
     @classmethod
     def apply_gtk4_theme(cls, theme_info):
-        """将选定主题的 gtk-4.0 内容软链接到 ~/.config/gtk-4.0/"""
+        """Symlink the `gtk-4.0` content of the selected theme to `~/.config/gtk-4.0/`."""
         src_gtk4_dir = theme_info.get("gtk4_path")
         if not src_gtk4_dir or not os.path.exists(src_gtk4_dir):
-            return False, f"主题 '{theme_info['name']}' 不包含 gtk-4.0 文件夹！"
+            return False, f"Theme '{theme_info['name']}' Does not include the gtk-4.0 folder!"
 
         target_dir = cls.TARGET_CONFIG_DIR
 
@@ -104,21 +104,21 @@ class ThemeManager:
             try:
                 settings = Gio.Settings.new("org.gnome.desktop.interface")
                 settings.set_string("gtk-theme", theme_info["name"])
-                gtk3_msg = f"\n同时已将 GTK 3 主题设置为 '{theme_info['name']}'。"
+                gtk3_msg = f"\nAt the same time, the GTK 3 theme has been set to '{theme_info['name']}'。"
             except Exception as gset_err:
-                logging.error(f"设置 GTK 3 主题失败: {gset_err}")
-                gtk3_msg = f"\n(注意: 设置 GTK 3 主题失败: {gset_err})"
+                logging.error(f"Failed to set GTK 3 theme: {gset_err}")
+                gtk3_msg = f"\n(Notice: Failed to set GTK 3 theme: {gset_err})"
 
-            logging.info(f"成功为主题 {theme_info['name']} 创建软链接: {linked_files}")
-            return True, f"已成功将主题 '{theme_info['name']}' 应用到 GTK 4！\n共链接了 {len(linked_files)} 个项。{gtk3_msg}"
+            logging.info(f"Successfully link the theme {theme_info['name']} created a symbolic: {linked_files}")
+            return True, f"Successfully applied the theme '{theme_info['name']}' to GTK 4! \nA total of {len(linked_files)} items were linked. {gtk3_msg}"
 
         except Exception as e:
-            logging.error(f"应用主题失败: {e}")
-            return False, f"发生错误: {str(e)}"
+            logging.error(f"Failed to apply theme: {e}")
+            return False, f"An error occurred: {str(e)}"
 
     @classmethod
     def get_active_theme_name(cls):
-        """通过分析 ~/.config/gtk-4.0 中的软链接目标，判断当前生效的主题"""
+        """Determine the currently active theme by analyzing the target of the symbolic link in ~/.config/gtk-4.0"""
         target_dir = cls.TARGET_CONFIG_DIR
         if not os.path.exists(target_dir):
             return None
@@ -135,12 +135,12 @@ class ThemeManager:
                             if len(parts) >= 1:
                                 return parts[0]
         except Exception as e:
-            logging.error(f"检测当前生效主题失败: {e}")
+            logging.error(f"Failed to detect the currently active theme: {e}")
         return None
 
 
 class ThemeRow(Gtk.ListBoxRow):
-    """用于在列表中展示主题条目的自定义 Widget"""
+    """A custom widget for displaying topic items in a list"""
 
     def __init__(self, theme_data, is_active=False):
         super().__init__()
@@ -168,9 +168,9 @@ class ThemeRow(Gtk.ListBoxRow):
         title_label.add_css_class("title-4")
         vbox.append(title_label)
 
-        sub_text = f"路径: {theme_data['path']}"
+        sub_text = f"path: {theme_data['path']}"
         if not theme_data["has_gtk4"]:
-            sub_text += " (无 gtk-4.0 配置)"
+            sub_text += " (No gtk-4.0 configuration)"
         subtitle_label = Gtk.Label(label=sub_text)
         subtitle_label.set_xalign(0)
         subtitle_label.add_css_class("dim-label")
@@ -181,12 +181,12 @@ class ThemeRow(Gtk.ListBoxRow):
 
         # 状态或标签
         if theme_data["has_gtk4"]:
-            badge = Gtk.Label(label="GTK 4 支持")
+            badge = Gtk.Label(label="GTK4 support")
             badge.add_css_class("accent")
             badge.add_css_class("caption")
             box.append(badge)
         else:
-            badge = Gtk.Label(label="缺少 GTK4")
+            badge = Gtk.Label(label="GTK4 missing")
             badge.add_css_class("dim-label")
             badge.add_css_class("caption")
             box.append(badge)
@@ -196,7 +196,7 @@ class ThemeRow(Gtk.ListBoxRow):
             active_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=4)
             check_icon = Gtk.Image.new_from_icon_name("emblem-ok-symbolic")
             check_icon.add_css_class("accent")
-            active_label = Gtk.Label(label=" 已应用")
+            active_label = Gtk.Label(label=" Applied")
             active_label.add_css_class("accent")
             active_label.add_css_class("caption")
 
@@ -208,12 +208,12 @@ class ThemeRow(Gtk.ListBoxRow):
 
 
 class MainWindow(Gtk.ApplicationWindow):
-    """主程序窗口组件"""
+    """Main program window component"""
 
     def __init__(self, app):
         super().__init__(application=app)
-        self.set_title("GNOME GTK4 主题管理器")
-        self.set_default_size(580, 620)
+        self.set_title("GNOME GTK4 Theme Manager")
+        self.set_default_size(720, 620)
 
         self.all_themes = []
         self.selected_theme = None
@@ -229,7 +229,7 @@ class MainWindow(Gtk.ApplicationWindow):
 
         # 刷新按钮
         refresh_btn = Gtk.Button.new_from_icon_name("view-refresh-symbolic")
-        refresh_btn.set_tooltip_text("重新检索主题目录")
+        refresh_btn.set_tooltip_text("Re-index the subject directory")
         refresh_btn.connect("clicked", lambda x: self.load_themes())
         header.pack_start(refresh_btn)
 
@@ -241,7 +241,7 @@ class MainWindow(Gtk.ApplicationWindow):
         toolbar.set_margin_end(16)
 
         self.search_entry = Gtk.SearchEntry()
-        self.search_entry.set_placeholder_text("搜索本地主题...")
+        self.search_entry.set_placeholder_text("Search for local themes...")
         self.search_entry.set_hexpand(True)
         self.search_entry.connect("search-changed", self.on_search_changed)
         toolbar.append(self.search_entry)
@@ -268,14 +268,14 @@ class MainWindow(Gtk.ApplicationWindow):
         bottom_bar.set_margin_end(16)
 
         # 状态文字
-        self.status_label = Gtk.Label(label="正在加载主题...")
+        self.status_label = Gtk.Label(label="Loading themes...")
         self.status_label.set_xalign(0)
         self.status_label.set_hexpand(True)
         self.status_label.set_ellipsize(3)  # Pango.EllipsizeMode.END
         bottom_bar.append(self.status_label)
 
         # 应用按钮
-        self.apply_button = Gtk.Button(label="应用所选主题到 GTK 4")
+        self.apply_button = Gtk.Button(label="Apply the selected theme to GTK 4")
         self.apply_button.add_css_class("suggested-action")
         self.apply_button.set_sensitive(False)
         self.apply_button.connect("clicked", self.on_apply_clicked)
@@ -288,19 +288,19 @@ class MainWindow(Gtk.ApplicationWindow):
         self.load_themes()
 
     def load_themes(self):
-        """从磁盘重新加载和渲染主题列表"""
+        """Reload and render the theme list from disk"""
         self.all_themes = ThemeManager.get_available_themes()
         self.active_theme_name = ThemeManager.get_active_theme_name()
         self.filter_and_render_themes()
         
         count_gtk4 = sum(1 for t in self.all_themes if t["has_gtk4"])
-        status_msg = f"已找到 {len(self.all_themes)} 个主题 (其中 {count_gtk4} 个包含 GTK 4 配置)"
+        status_msg = f"{len(self.all_themes)} themes / {count_gtk4} have GTK4 theme"
         if self.active_theme_name:
-            status_msg += f" | 当前生效: {self.active_theme_name}"
+            status_msg += f" | Active: {self.active_theme_name}"
         self.status_label.set_text(status_msg)
 
     def filter_and_render_themes(self):
-        """根据搜索关键词过滤并填充 ListBox"""
+        """Filter and populate the ListBox based on search keywords"""
         # 清除原有 ListBox 节点
         while True:
             row = self.list_box.get_row_at_index(0)
@@ -321,11 +321,11 @@ class MainWindow(Gtk.ApplicationWindow):
         self.selected_theme = None
 
     def on_search_changed(self, entry):
-        """搜索框输入变更事件处理"""
+        """Handling the search box input change event"""
         self.filter_and_render_themes()
 
     def on_row_selected(self, listbox, row):
-        """用户选中列表中某行主题的处理"""
+        """Handling the user's selection of a topic row in the list"""
         if row is None:
             self.selected_theme = None
             self.apply_button.set_sensitive(False)
@@ -336,13 +336,13 @@ class MainWindow(Gtk.ApplicationWindow):
         # 仅当主题包含 gtk-4.0 文件夹时才启用应用按钮
         if self.selected_theme["has_gtk4"]:
             self.apply_button.set_sensitive(True)
-            self.status_label.set_text(f"已选中: {self.selected_theme['name']}")
+            self.status_label.set_text(f"Selected: {self.selected_theme['name']}")
         else:
             self.apply_button.set_sensitive(False)
-            self.status_label.set_text(f"警告: {self.selected_theme['name']} 缺少 gtk-4.0 目录")
+            self.status_label.set_text(f"Warning: {self.selected_theme['name']} Missing gtk-4.0 directory")
 
     def on_apply_clicked(self, button):
-        """点击应用按钮的响应逻辑"""
+        """Response logic for clicking the Apply button"""
         if not self.selected_theme:
             return
 
@@ -350,7 +350,7 @@ class MainWindow(Gtk.ApplicationWindow):
 
         if success:
             self.active_theme_name = self.selected_theme["name"]
-            self.status_label.set_text(f"当前生效主题: {self.active_theme_name}")
+            self.status_label.set_text(f"Currently active theme: {self.active_theme_name}")
             self.filter_and_render_themes()
 
 
@@ -372,7 +372,7 @@ def main():
     # 显式设置进程名 (prgname) 和应用名称
     # 解决 Python 脚本运行时默认进程名被识别为 python3 导致 Wayland / X11 WM_CLASS 不匹配图标的问题
     GLib.set_prgname(APP_ID)
-    GLib.set_application_name("GNOME GTK4 主题管理器")
+    GLib.set_application_name("GNOME GTK4 Theme Manager")
 
     app = Application()
     return app.run(sys.argv)
