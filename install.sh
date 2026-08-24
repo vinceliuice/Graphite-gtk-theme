@@ -251,8 +251,8 @@ install() {
 
 # Destination directory
 if [[ "$UID" -eq "$ROOT_UID" ]]; then
-  APP_DIR="/usr/share/applications"
-  BIN_DIR="/usr/bin"
+  APP_DIR="${DESTDIR}/usr/share/applications"
+  BIN_DIR="${DESTDIR}/usr/bin"
 else
   APP_DIR="$HOME/.local/share/applications"
   BIN_DIR="$HOME/.local/bin"
