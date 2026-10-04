@@ -102,13 +102,15 @@ OPTIONS:
 
   -g, --gdm               Install GDM theme
 
+  -s, --install-app       Install the gnome-theme-switcher app
+
   -l, --libadwaita        Install link to gtk4 config for theming libadwaita
 
   -u, --uninstall
   -r, --remove            Uninstall/Remove themes or link for libadwaita
 
   --tweaks                Specify versions for tweaks [nord|dracula|ferra|black|darker|rimless|normal]
-                          (WORRING: 'nord', 'dracula', 'ferra' and 'darker' can not mix use with 'black'!)
+                          (WARNING: 'nord', 'dracula', 'ferra' and 'darker' can not mix use with 'black'!)
                           1. nord       Nord colorscheme version
                           2. dracula    Dracula colorscheme version
                           3. ferra      Ferra colorscheme version (Kanagawa/Gruvbox inspired)
@@ -699,6 +701,10 @@ while [[ $# -gt 0 ]]; do
       libadwaita="true"
       shift
       ;;
+    -s|--install-app)
+      install_app="true"
+      shift
+      ;;
     --round)
       round="true"
       corner="$2"
@@ -1212,7 +1218,11 @@ else
       echo -e "\nNeed root permission !"
     fi
   else
-    install_package && sass_temp && gnome_shell_version && install_theme && install_app
+    install_package && sass_temp && gnome_shell_version && install_theme
+
+    if [[ "$install_app" == 'true' ]]; then
+      install_app
+    fi
 
     if [[ "$libadwaita" == 'true' ]]; then
       uninstall_link && link_theme
